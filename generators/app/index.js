@@ -76,7 +76,7 @@ var AppGenerator = module.exports = yeoman.Base.extend({
           if (_.isEmpty(_.trim(pluginname)) === false && _.includes(pluginname, ' ') === false && _.includes(pluginname, '.') === false && _.includes(pluginname, '-') === false) {
             return true;
           }
-          return 'Invalid plugin name. Try removing spaces and dots.';
+          return 'Invalid plugin name. Try removing spaces, dots and dashes.';
         }
       },
       {
