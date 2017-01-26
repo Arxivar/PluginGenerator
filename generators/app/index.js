@@ -73,7 +73,7 @@ var AppGenerator = module.exports = yeoman.Base.extend({
           if (_.isEmpty(_.trim(pluginname)) === true) {
             return 'Empty plugin name. Type a plugin name';
           }
-          if (_.isEmpty(_.trim(pluginname)) === false && _.includes(pluginname, ' ') === false && _.includes(pluginname, '.') === false) {
+          if (_.isEmpty(_.trim(pluginname)) === false && _.includes(pluginname, ' ') === false && _.includes(pluginname, '.') === false && _.includes(pluginname, '-') === false) {
             return true;
           }
           return 'Invalid plugin name. Try removing spaces and dots.';
