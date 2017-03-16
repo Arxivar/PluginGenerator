@@ -25,6 +25,9 @@ var AppGenerator = module.exports = yeoman.Base.extend({
     this.log(
         'Type ' + chalk.green('yo arxivar-plugins:widget') + ' in order to create ' + chalk.green('widget plugin')
     );
+	    this.log(
+        'Type ' + chalk.green('yo arxivar-plugins:widget-task') + ' in order to create ' + chalk.green('widget-task plugin')
+    );
     var logo = [
       '           _____  __   ___             ',
       '     /\\   |  __ \\ \\ \\ / (_)                ',
@@ -46,7 +49,7 @@ var AppGenerator = module.exports = yeoman.Base.extend({
         description: '// Plugin description (type: string)',
         author: '// Plugin author (type: string)',
         minVersion: '// Minimun portal version this plugin supports. (type: string, format example: 0.0.1)',
-        requireRefresh: '// If this plugin requires grid data refresh (type boolean. Default: false)',
+        requireRefresh: '// If this plugin requires grid data refresh (type boolean. Default: false)'
       },
       customSettings: {
         MAIN: `// OPTIONAL settings. These objects require the following properties: name, description, defaultValue and type.
