@@ -23,9 +23,9 @@ var AppGenerator = module.exports = yeoman.Base.extend({
         'Type ' + chalk.green('yo arxivar-plugins:route') + ' in order to create ' + chalk.green('route plugin')
     );
     this.log(
-        'Type ' + chalk.green('yo arxivar-plugins:widget') + ' in order to create ' + chalk.green('widget plugin')
+        'Type ' + chalk.green('yo arxivar-plugins:widget-desktop') + ' in order to create ' + chalk.green('widget-desktop plugin')
     );
-	    this.log(
+	            this.log(
         'Type ' + chalk.green('yo arxivar-plugins:widget-task') + ' in order to create ' + chalk.green('widget-task plugin')
     );
     var logo = [
