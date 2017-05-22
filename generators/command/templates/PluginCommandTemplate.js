@@ -25,12 +25,12 @@ angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['$q', 'Plu
 	
 	<%= props.explanations.pluginCommand.canRun %>
     myPlugin.canRun = function(docnumbers) {
-        return $q.when(docnumbers.length === 1);
+        return $q.when(docnumbers.length >= 1);
     };
 	
 	<%= props.explanations.pluginCommand.run %>
     myPlugin.run = function(docnumbers) {
-		myPlugin.canRun(docnumbers).then(function(canRun){
+		return myPlugin.canRun(docnumbers).then(function(canRun){
 			if(canRun){
 				alert('Hello <%= props.label %>');
 			}
