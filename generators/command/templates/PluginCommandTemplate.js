@@ -25,7 +25,7 @@ angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['$q', 'Plu
 	
 	<%= props.explanations.pluginCommand.canRun %>
     myPlugin.canRun = function(docnumbers) {
-        return $q.when(docnumbers.length >= 1);
+	    return params.hasOwnProperty('docnumbers') ? $q.when(params.docnumbers.length >= 1) : $q.resolve(false);
     };
 	
 	<%= props.explanations.pluginCommand.run %>
