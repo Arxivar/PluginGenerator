@@ -24,13 +24,13 @@ angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['$q', 'Plu
     var myPlugin = new PluginCommand(requiredSettings, customSettings, userSettings);
 	
 	<%= props.explanations.pluginCommand.canRun %>
-    myPlugin.canRun = function(docnumbers) {
+    myPlugin.canRun = function(params) {
 	    return params.hasOwnProperty('docnumbers') ? $q.when(params.docnumbers.length >= 1) : $q.resolve(false);
     };
 	
 	<%= props.explanations.pluginCommand.run %>
-    myPlugin.run = function(docnumbers) {
-		return myPlugin.canRun(docnumbers).then(function(canRun){
+    myPlugin.run = function(params) {
+		return myPlugin.canRun(params).then(function(canRun){
 			if(canRun){
 				alert('Hello <%= props.label %>');
 			}
