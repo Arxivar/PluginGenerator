@@ -5,14 +5,14 @@ var path = require('path');
 
 var AppGenerator = require('../app');
 
-module.exports = AppGenerator.extend({
-  initializing: function () {
+module.exports = class extends AppGenerator {
+  initializing() {
     this.showInfo();
     this.log(
         'Running ' + chalk.red('COMMAND') + ' generator!'
     );
-  },
-  prompting: function () {
+  }
+  prompting() {
     var prompts = this.requiredSettings();
 
     return this.prompt(prompts).then(function (props) {
@@ -28,9 +28,9 @@ module.exports = AppGenerator.extend({
       props.explanations = this.getPluginsExplanations();
       this.props = props;
     }.bind(this));
-  },
+  }
 
-  writing: function () {
+  writing() {
     this.destinationRoot(path.join(this.destinationRoot(), '/' + this.props.pluginname));
     var pluginCommandFilename = this.props.pluginname + 'PluginCommand.js';
     this.fs.copyTpl(
@@ -38,7 +38,7 @@ module.exports = AppGenerator.extend({
         this.destinationPath(pluginCommandFilename), {props: this.props}
     );
     this.log(chalk.green('Written file: ' + pluginCommandFilename));
-  },
+  }
 
   // install: function () {
   //   this.log(
@@ -46,4 +46,4 @@ module.exports = AppGenerator.extend({
   //   );
   //   this.installDependencies();
   // }
-});
+};

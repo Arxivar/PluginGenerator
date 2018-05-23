@@ -7,16 +7,16 @@ var path = require('path');
 
 var AppGenerator = require('../app');
 
-module.exports = AppGenerator.extend({
+module.exports = class extends AppGenerator {
 
-  initializing: function () {
+  initializing() {
     this.showInfo();
     this.log(
         'Running ' + chalk.red('ROUTE') + ' generator!'
     );
-  },
+  }
 
-  prompting: function () {
+  prompting() {
     var prompts = this.requiredSettings({exclude: ['requireRefresh']});
     return this.prompt(prompts).then(function (props) {
       props.folderName = this.appname;
@@ -34,8 +34,8 @@ module.exports = AppGenerator.extend({
       props.explanations = this.getPluginsExplanations();
       this.props = props;
     }.bind(this));
-  },
-  writing: function () {
+  }
+  writing() {
     this.destinationRoot(path.join(this.destinationRoot(), '/' + this.props.pluginname));
     // Copio la factory che conterra' i riferimenti agli asset statici del plugin rotta e che mi permette di recuperarli.
     var factoryRouteFilename = this.props.pluginname + '.js';
@@ -69,4 +69,4 @@ module.exports = AppGenerator.extend({
     );
     this.log(chalk.green('Written file: ' + styleRouteFilename));
   }
-});
+};

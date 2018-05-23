@@ -5,10 +5,11 @@ var chalk = require('chalk');
 
 var uuid = require('node-uuid');
 var _ = require('lodash');
+const Generator = require('yeoman-generator');
 
-var AppGenerator = module.exports = yeoman.Base.extend({
+var AppGenerator = module.exports = class extends Generator {
 
-  showInfo: function () {
+  showInfo() {
     // Have Yeoman greet the user.
     this.log(
         'Welcome to the pioneering ' + chalk.red('generator-arxivar-plugins') + ' generator!'
@@ -25,7 +26,7 @@ var AppGenerator = module.exports = yeoman.Base.extend({
     this.log(
         'Type ' + chalk.green('yo arxivar-plugins:widget-desktop') + ' in order to create ' + chalk.green('widget-desktop plugin')
     );
-	            this.log(
+	                                                                                            this.log(
         'Type ' + chalk.green('yo arxivar-plugins:widget-task') + ' in order to create ' + chalk.green('widget-task plugin')
     );
     var logo = [
@@ -38,8 +39,8 @@ var AppGenerator = module.exports = yeoman.Base.extend({
       '                                           '
     ].join('\n');
     this.log(logo);
-  },
-  getPluginsExplanations: function () {
+  }
+  getPluginsExplanations() {
     return {
       requiredSettings: {
         MAIN: '// MANDATORY settings in order for the plugin to work.',
@@ -64,8 +65,8 @@ var AppGenerator = module.exports = yeoman.Base.extend({
         run: '// This function is a promise with asyncronous run logic. Input parameters: array of docnumbers.'
       }
     };
-  },
-  requiredSettings: function (options) {
+  }
+  requiredSettings(options) {
     var prompts = [
       {
         type: 'input',
@@ -151,4 +152,4 @@ var AppGenerator = module.exports = yeoman.Base.extend({
     return prompts;
   }
 
-});
+};
