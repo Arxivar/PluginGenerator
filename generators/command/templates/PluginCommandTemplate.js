@@ -4,6 +4,7 @@ angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['$q', 'Plu
     var requiredSettings = {
         id: '<%= props.id %>',  <%= props.explanations.requiredSettings.id %>
         name: '<%= props.pluginname %>', <%= props.explanations.requiredSettings.pluginname %>
+        icon: '<%= props.icon %>', <%= props.explanations.requiredSettings.icon %>
         label: '<%= props.label %>', <%= props.explanations.requiredSettings.label %>
         description: '<%= props.description %>', <%= props.explanations.requiredSettings.description %>
         author: '<%= props.author %>', <%= props.explanations.requiredSettings.author %>

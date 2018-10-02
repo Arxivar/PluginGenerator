@@ -26,7 +26,7 @@ var AppGenerator = module.exports = class extends Generator {
     this.log(
         'Type ' + chalk.green('yo arxivar-plugins:widget-desktop') + ' in order to create ' + chalk.green('widget-desktop plugin')
     );
-	                                                                                            this.log(
+	                                                                                                this.log(
         'Type ' + chalk.green('yo arxivar-plugins:widget-task') + ' in order to create ' + chalk.green('widget-task plugin')
     );
     var logo = [
@@ -117,6 +117,14 @@ var AppGenerator = module.exports = class extends Generator {
         message: 'Label for UI',
         default: function (answers) {
           return answers.pluginname + ' label';
+        }
+      },
+    	  {
+        type: 'input',
+        name: 'icon',
+        message: 'FontAwesome icon for command (https://fontawesome.com/v4.7.0/icons/)',
+        default: function (answers) {
+          return 'puzzle-piece';
         }
       },
       {
