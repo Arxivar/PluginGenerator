@@ -12,22 +12,22 @@ var AppGenerator = module.exports = class extends Generator {
   showInfo() {
     // Have Yeoman greet the user.
     this.log(
-        'Welcome to the pioneering ' + chalk.red('generator-arxivar-plugins') + ' generator!'
+      'Welcome to the pioneering ' + chalk.red('generator-arxivar-plugins') + ' generator!'
     );
     this.log(
-        'Type yo --help to see available generators and subgenerators'
+      'Type yo --help to see available generators and subgenerators'
     );
     this.log(
-        'Type ' + chalk.green('yo arxivar-plugins:command') + ' in order to create ' + chalk.green('command plugin')
+      'Type ' + chalk.green('yo arxivar-plugins:command') + ' in order to create ' + chalk.green('command plugin')
     );
     this.log(
-        'Type ' + chalk.green('yo arxivar-plugins:route') + ' in order to create ' + chalk.green('route plugin')
+      'Type ' + chalk.green('yo arxivar-plugins:route') + ' in order to create ' + chalk.green('route plugin')
     );
     this.log(
-        'Type ' + chalk.green('yo arxivar-plugins:widget-desktop') + ' in order to create ' + chalk.green('widget-desktop plugin')
+      'Type ' + chalk.green('yo arxivar-plugins:widget-desktop') + ' in order to create ' + chalk.green('widget-desktop plugin')
     );
-	                                                                                                this.log(
-        'Type ' + chalk.green('yo arxivar-plugins:widget-task') + ' in order to create ' + chalk.green('widget-task plugin')
+    this.log(
+      'Type ' + chalk.green('yo arxivar-plugins:widget-task') + ' in order to create ' + chalk.green('widget-task plugin')
     );
     var logo = [
       '           _____  __   ___             ',
@@ -67,22 +67,21 @@ var AppGenerator = module.exports = class extends Generator {
     };
   }
   requiredSettings(options) {
-    var prompts = [
-      {
-        type: 'input',
-        name: 'pluginname',
-        message: 'Your plugin name',
+    var prompts = [{
+      type: 'input',
+      name: 'pluginname',
+      message: 'Your plugin name',
         // default: _.upperFirst(_.replace(_(this.appname).toString().trim().toLowerCase().replace(/ /g, '-').replace(/([^a-zA-Z0-9\._-]+)/, ''), '.', '')), // Default to current folder name
-        validate: function (pluginname) {
-          if (_.isEmpty(_.trim(pluginname)) === true) {
-            return 'Empty plugin name. Type a plugin name';
-          }
-          if (_.isEmpty(_.trim(pluginname)) === false && _.includes(pluginname, ' ') === false && _.includes(pluginname, '.') === false && _.includes(pluginname, '-') === false) {
-            return true;
-          }
-          return 'Invalid plugin name. Try removing spaces, dots and dashes.';
+      validate: function (pluginname) {
+        if (_.isEmpty(_.trim(pluginname)) === true) {
+          return 'Empty plugin name. Type a plugin name';
         }
-      },
+        if (_.isEmpty(_.trim(pluginname)) === false && _.includes(pluginname, ' ') === false && _.includes(pluginname, '.') === false && _.includes(pluginname, '-') === false) {
+          return true;
+        }
+        return 'Invalid plugin name. Try removing spaces, dots and dashes.';
+      }
+    },
       {
         type: 'input',
         name: 'description',
@@ -119,12 +118,12 @@ var AppGenerator = module.exports = class extends Generator {
           return answers.pluginname + ' label';
         }
       },
-    	  {
+      {
         type: 'input',
         name: 'icon',
-        message: 'FontAwesome icon for command (https://fontawesome.com/v4.7.0/icons/)',
+        message: 'FontAwesome icon for command (https://fontawesome.com/icons?d=gallery&v=5.3.0,5.3.1&m=pro)',
         default: function (answers) {
-          return 'puzzle-piece';
+          return 'fa fa-puzzle-piece';
         }
       },
       {
@@ -150,7 +149,8 @@ var AppGenerator = module.exports = class extends Generator {
         type: 'input',
         name: 'dependencies',
         message: 'Plugin dependencies (space-separated values)'
-      }];
+      }
+    ];
 
     if (options && options.exclude) {
       prompts = prompts.filter(function (obj) {
