@@ -15,6 +15,3 @@
 * [HttpOptions](interfaces/httpoptions.md)
 
 
-
----
-
