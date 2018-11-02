@@ -2,6 +2,9 @@
 
 # Class: ArxivarResourceService
 
+
+
+
 This module contains the essential method for an AngularJS application to consume the ARXivar api calls. The methods exposed permits to create,read,edit and update resources from ARXivar.
 
 ```javascript
@@ -27,13 +30,17 @@ angular
 ]);
 ```
 
+
 ## Hierarchy
 
 **ArxivarResourceService**
 
+
+
+
 ## Index
 
-### Properties
+### Methods
 
 * [delete](arxivarresourceservice.md#delete)
 * [get](arxivarresourceservice.md#get)
@@ -45,278 +52,358 @@ angular
 * [update](arxivarresourceservice.md#update)
 * [updateCollection](arxivarresourceservice.md#updatecollection)
 
+
+
 ---
 
-## Properties
+## Methods
 
 <a id="delete"></a>
 
 ###  delete
 
-**● delete**: *`function`*
+▸ **delete**(resourceName: *`string`*, postData: *`any`*, options: *[HttpOptions](../interfaces/httpoptions.md)*): `any`
 
-*Defined in services/externals/ArxivarResourceService.ts:110*
+
+
+*Defined in services/externals/ArxivarResourceService.ts:128*
+
+
 
 Delete the selected resource from Arxivar
-*__param__*: The resource name
 
-*__param__*: The identifier of the resource
 
-*__param__*: The options of the call
-
-*__returns__*: The deleted resource
-
-#### Type declaration
-▸(resourceName: *`string`*, postData: *`any`*, options: *[HttpOptions](../interfaces/httpoptions.md)*): `any`
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| resourceName | `string` |
-| postData | `any` |
-| options | [HttpOptions](../interfaces/httpoptions.md) |
+
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| resourceName | `string` |  The resource name |
+| postData | `any` |  The identifier of the resource |
+| options | [HttpOptions](../interfaces/httpoptions.md) |  The options of the call |
+
+
+
+
+
 
 **Returns:** `any`
+The deleted resource
+
+
+
+
+
 
 ___
 <a id="get"></a>
 
 ###  get
 
-**● get**: *`function`*
+▸ **get**(resourceName: *`string`*, options: *[HttpOptions](../interfaces/httpoptions.md)*): `any`
 
-*Defined in services/externals/ArxivarResourceService.ts:39*
+
+
+*Defined in services/externals/ArxivarResourceService.ts:56*
+
+
 
 Retrieve informations on a certain type of resource ofs ARXivar
-*__param__*: The resource name
 
-*__param__*: The options of the call
 
-*__returns__*: The resource informations
-
-#### Type declaration
-▸(resourceName: *`string`*, options: *[HttpOptions](../interfaces/httpoptions.md)*): `any`
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| resourceName | `string` |
-| options | [HttpOptions](../interfaces/httpoptions.md) |
+
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| resourceName | `string` |  The resource name |
+| options | [HttpOptions](../interfaces/httpoptions.md) |  The options of the call |
+
+
+
+
+
 
 **Returns:** `any`
+The resource informations
+
+
+
+
+
 
 ___
 <a id="getbytearray"></a>
 
 ###  getByteArray
 
-**● getByteArray**: *`function`*
+▸ **getByteArray**(resourceName: *`string`*, options: *[HttpOptions](../interfaces/httpoptions.md)*): `any`
 
-*Defined in services/externals/ArxivarResourceService.ts:74*
+
+
+*Defined in services/externals/ArxivarResourceService.ts:91*
+
+
 
 Retrieve a download stream for a certain resource of ARXivar
-*__param__*: The resource name
 
-*__param__*: The options of the call
 
-*__returns__*: The download stream for the resource
-
-#### Type declaration
-▸(resourceName: *`string`*, options: *[HttpOptions](../interfaces/httpoptions.md)*): `any`
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| resourceName | `string` |
-| options | [HttpOptions](../interfaces/httpoptions.md) |
+
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| resourceName | `string` |  The resource name |
+| options | [HttpOptions](../interfaces/httpoptions.md) |  The options of the call |
+
+
+
+
+
 
 **Returns:** `any`
+The download stream for the resource
+
+
+
+
+
 
 ___
 <a id="getpost"></a>
 
 ###  getPost
 
-**● getPost**: *`function`*
+▸ **getPost**(resourceName: *`string`*, postData: *`any`*, options: *[HttpOptions](../interfaces/httpoptions.md)*): `any`
 
-*Defined in services/externals/ArxivarResourceService.ts:67*
+
+
+*Defined in services/externals/ArxivarResourceService.ts:82*
+
+
 
 Retrieve informations of a certain resource of ARXivar
-*__param__*: The resource name
 
-*__param__*: Additional parameter of the call
 
-*__param__*: The options of the call
-
-*__returns__*: The resource value
-
-#### Type declaration
-▸(resourceName: *`string`*, postData: *`any`*, options: *[HttpOptions](../interfaces/httpoptions.md)*): `any`
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| resourceName | `string` |
-| postData | `any` |
-| options | [HttpOptions](../interfaces/httpoptions.md) |
+
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| resourceName | `string` |  The resource name |
+| postData | `any` |  Additional parameter of the call |
+| options | [HttpOptions](../interfaces/httpoptions.md) |  The options of the call |
+
+
+
+
+
 
 **Returns:** `any`
+The resource value
+
+
+
+
+
 
 ___
 <a id="getvalue"></a>
 
 ###  getValue
 
-**● getValue**: *`function`*
+▸ **getValue**(resourceName: *`string`*, options: *[HttpOptions](../interfaces/httpoptions.md)*): `any`
 
-*Defined in services/externals/ArxivarResourceService.ts:58*
+
+
+*Defined in services/externals/ArxivarResourceService.ts:73*
+
+
 
 Retrieve the value of a certain resource of ARXivar
-*__param__*: The resource name
 
-*__param__*: The options of the call
 
-*__returns__*: The resource value
-
-#### Type declaration
-▸(resourceName: *`string`*, options: *[HttpOptions](../interfaces/httpoptions.md)*): `any`
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| resourceName | `string` |
-| options | [HttpOptions](../interfaces/httpoptions.md) |
+
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| resourceName | `string` |  The resource name |
+| options | [HttpOptions](../interfaces/httpoptions.md) |  The options of the call |
+
+
+
+
+
 
 **Returns:** `any`
+The resource value
+
+
+
+
+
 
 ___
 <a id="querywithoptions"></a>
 
 ###  queryWithOptions
 
-**● queryWithOptions**: *`function`*
+▸ **queryWithOptions**(resourceName: *`string`*, options: *[HttpOptions](../interfaces/httpoptions.md)*, httpOptions: *`any`*): `any`
 
-*Defined in services/externals/ArxivarResourceService.ts:47*
+
+
+*Defined in services/externals/ArxivarResourceService.ts:65*
+
+
 
 Retrieve informations on a certain type of resource of ARXivar with additional options
-*__param__*: The options of the call
 
-*__param__*: The resource name
 
-*__param__*: The additional options of the call
-
-*__returns__*: The resource informations
-
-#### Type declaration
-▸(resourceName: *`string`*, options: *[HttpOptions](../interfaces/httpoptions.md)*, httpOptions: *`any`*): `any`
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| resourceName | `string` |
-| options | [HttpOptions](../interfaces/httpoptions.md) |
-| httpOptions | `any` |
+
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| resourceName | `string` |  The resource name |
+| options | [HttpOptions](../interfaces/httpoptions.md) |  The options of the call |
+| httpOptions | `any` |  The additional options of the call |
+
+
+
+
+
 
 **Returns:** `any`
+The resource informations
+
+
+
+
+
 
 ___
 <a id="save"></a>
 
 ###  save
 
-**● save**: *`function`*
+▸ **save**(resourceName: *`string`*, postData: *`any`*, options: *[HttpOptions](../interfaces/httpoptions.md)*): `any`
 
-*Defined in services/externals/ArxivarResourceService.ts:82*
+
+
+*Defined in services/externals/ArxivarResourceService.ts:100*
+
+
 
 Submit and save the selected resource on Arxivar
-*__param__*: The resource name
 
-*__param__*: The resource data
 
-*__param__*: The options of the call
-
-*__returns__*: The resource
-
-#### Type declaration
-▸(resourceName: *`string`*, postData: *`any`*, options: *[HttpOptions](../interfaces/httpoptions.md)*): `any`
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| resourceName | `string` |
-| postData | `any` |
-| options | [HttpOptions](../interfaces/httpoptions.md) |
+
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| resourceName | `string` |  The resource name |
+| postData | `any` |  The resource data |
+| options | [HttpOptions](../interfaces/httpoptions.md) |  The options of the call |
+
+
+
+
+
 
 **Returns:** `any`
+The resource
+
+
+
+
+
 
 ___
 <a id="update"></a>
 
 ###  update
 
-**● update**: *`function`*
+▸ **update**(resourceName: *`string`*, postData: *`any`*, options: *[HttpOptions](../interfaces/httpoptions.md)*): `any`
 
-*Defined in services/externals/ArxivarResourceService.ts:90*
+
+
+*Defined in services/externals/ArxivarResourceService.ts:109*
+
+
 
 Submit and update the selected resource on Arxivar
-*__param__*: The resource name
 
-*__param__*: The resource data
 
-*__param__*: The options of the call
-
-*__returns__*: The resource
-
-#### Type declaration
-▸(resourceName: *`string`*, postData: *`any`*, options: *[HttpOptions](../interfaces/httpoptions.md)*): `any`
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| resourceName | `string` |
-| postData | `any` |
-| options | [HttpOptions](../interfaces/httpoptions.md) |
+
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| resourceName | `string` |  The resource name |
+| postData | `any` |  The resource data |
+| options | [HttpOptions](../interfaces/httpoptions.md) |  The options of the call |
+
+
+
+
+
 
 **Returns:** `any`
+The resource
+
+
+
+
+
 
 ___
 <a id="updatecollection"></a>
 
 ###  updateCollection
 
-**● updateCollection**: *`function`*
+▸ **updateCollection**(resourceName: *`string`*, postData: *`any`*, options: *[HttpOptions](../interfaces/httpoptions.md)*): `any`
 
-*Defined in services/externals/ArxivarResourceService.ts:98*
+
+
+*Defined in services/externals/ArxivarResourceService.ts:119*
+
+
 
 Submit and update a collection of resources on Arxivar
-*__param__*: The resource name
 
-*__param__*: The resources data collection
 
-*__param__*: The options of the call
-
-*__returns__*: The resources
-
-#### Type declaration
-▸(resourceName: *`string`*, postData: *`any`*, options: *[HttpOptions](../interfaces/httpoptions.md)*): `any`
 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| resourceName | `string` |
-| postData | `any` |
-| options | [HttpOptions](../interfaces/httpoptions.md) |
+
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| resourceName | `string` |  The resource name |
+| postData | `any` |  The resources data collection |
+| options | [HttpOptions](../interfaces/httpoptions.md) |  The options of the call |
+
+
+
+
+
 
 **Returns:** `any`
+The resources
+
+
+
+
+
 
 ___
 

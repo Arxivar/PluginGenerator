@@ -2,9 +2,14 @@
 
 # Interface: HttpOptions
 
+
+
 ## Hierarchy
 
 **HttpOptions**
+
+
+
 
 ## Index
 
@@ -12,6 +17,8 @@
 
 * [hideUserMessageError](httpoptions.md#hideusermessageerror)
 * [openload](httpoptions.md#openload)
+
+
 
 ---
 
@@ -25,7 +32,12 @@
 
 *Defined in dtos/HttpOptions.ts:9*
 
+
 *__property__*: Defines if the eventual call error should be shown
+
+
+
+
 
 ___
 <a id="openload"></a>
@@ -36,7 +48,12 @@ ___
 
 *Defined in dtos/HttpOptions.ts:5*
 
+
 *__property__*: Defines if the ARXivar loader should be shown during the call execution
+
+
+
+
 
 ___
 

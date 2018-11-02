@@ -2,13 +2,45 @@
 
 # Class: UserService
 
+
+
+
+This module contains the essential methods to access the informations of the user currently logged into ARXivar.
+
+```javascript
+angular
+.module('arxivar.plugins.directives')
+.directive('widgetdesktopplugindirective', [
+    'userService',
+    function(userService) {
+        return {
+            restrict: 'E',
+            scope: {
+                instanceId: '@',
+                desktopId: '=?'
+            },
+            templateUrl: 'WidgetDesktopPlugin.html',
+            link: function(scope) {
+                userService.getDatabaseInfo().then(() => {
+                    scope.userId = userService.getUserId();
+                });
+            }
+        };
+    }
+]);
+```
+
+
 ## Hierarchy
 
 **UserService**
 
+
+
+
 ## Index
 
-### Properties
+### Methods
 
 * [getAoo](userservice.md#getaoo)
 * [getAvatar](userservice.md#getavatar)
@@ -27,331 +59,462 @@
 * [hasAvatar](userservice.md#hasavatar)
 * [hasRole](userservice.md#hasrole)
 * [isNotAdmin](userservice.md#isnotadmin)
-* [updateProfile](userservice.md#updateprofile)
+
+
 
 ---
 
-## Properties
+## Methods
 
 <a id="getaoo"></a>
 
 ###  getAoo
 
-**● getAoo**: *`function`*
+▸ **getAoo**(): `string`
 
-*Defined in services/externals/UserService.ts:91*
+
+
+*Defined in services/externals/UserService.ts:112*
+
+
 
 Get the Aoo of the user
-*__returns__*: The Aoo name
 
-#### Type declaration
-▸(): `string`
+
+
 
 **Returns:** `string`
+The Aoo name
+
+
+
+
+
 
 ___
 <a id="getavatar"></a>
 
 ###  getAvatar
 
-**● getAvatar**: *`function`*
+▸ **getAvatar**(): `string`
 
-*Defined in services/externals/UserService.ts:76*
+
+
+*Defined in services/externals/UserService.ts:91*
+
+
 
 Get the user's avatar
-*__returns__*: The base64 code of the user's avatar
 
-#### Type declaration
-▸(): `string`
+
+
 
 **Returns:** `string`
+The base64 code of the user's avatar
+
+
+
+
+
 
 ___
 <a id="getdatabase"></a>
 
 ###  getDatabase
 
-**● getDatabase**: *`function`*
+▸ **getDatabase**(): `string`
 
-*Defined in services/externals/UserService.ts:96*
+
+
+*Defined in services/externals/UserService.ts:119*
+
+
 
 Get the database name
-*__returns__*: The database name
 
-#### Type declaration
-▸(): `string`
+
+
 
 **Returns:** `string`
+The database name
+
+
+
+
+
 
 ___
 <a id="getdatabaseinfo"></a>
 
 ###  getDatabaseInfo
 
-**● getDatabaseInfo**: *`function`*
+▸ **getDatabaseInfo**(): [UserService](userservice.md)
 
-*Defined in services/externals/UserService.ts:133*
+
+
+*Defined in services/externals/UserService.ts:171*
+
+
 
 Load the database informations
 
-#### Type declaration
-▸(): [UserService](userservice.md)
+
+
 
 **Returns:** [UserService](userservice.md)
+
+
+
+
 
 ___
 <a id="getdescription"></a>
 
 ###  getDescription
 
-**● getDescription**: *`function`*
+▸ **getDescription**(): `string`
 
-*Defined in services/externals/UserService.ts:61*
+
+
+*Defined in services/externals/UserService.ts:70*
+
+
 
 Get the description of the user
-*__returns__*: The description of the user
 
-#### Type declaration
-▸(): `string`
+
+
 
 **Returns:** `string`
+The description of the user
+
+
+
+
+
 
 ___
 <a id="getlang"></a>
 
 ###  getLang
 
-**● getLang**: *`function`*
+▸ **getLang**(): `string`
 
-*Defined in services/externals/UserService.ts:71*
+
+
+*Defined in services/externals/UserService.ts:84*
+
+
 
 Get the language of the user
-*__returns__*: The language of the user
 
-#### Type declaration
-▸(): `string`
+
+
 
 **Returns:** `string`
+The language of the user
+
+
+
+
+
 
 ___
 <a id="getprovider"></a>
 
 ###  getProvider
 
-**● getProvider**: *`function`*
+▸ **getProvider**(): `string`
 
-*Defined in services/externals/UserService.ts:106*
+
+
+*Defined in services/externals/UserService.ts:133*
+
+
 
 Get the database provider name
-*__returns__*: The database provider name
 
-#### Type declaration
-▸(): `string`
+
+
 
 **Returns:** `string`
+The database provider name
+
+
+
+
+
 
 ___
 <a id="getroles"></a>
 
 ###  getRoles
 
-**● getRoles**: *`function`*
+▸ **getRoles**(): `Array`<`object`>
 
-*Defined in services/externals/UserService.ts:86*
+
+
+*Defined in services/externals/UserService.ts:105*
+
+
 
 Get the roles of the user
-*__returns__*: The user roles
 
-#### Type declaration
-▸(): `Array`<`object`>
+
+
 
 **Returns:** `Array`<`object`>
+The user roles
+
+
+
+
+
 
 ___
 <a id="getservername"></a>
 
 ###  getServerName
 
-**● getServerName**: *`function`*
+▸ **getServerName**(): `string`
 
-*Defined in services/externals/UserService.ts:101*
+
+
+*Defined in services/externals/UserService.ts:126*
+
+
 
 Get the server name
-*__returns__*: The server name
 
-#### Type declaration
-▸(): `string`
+
+
 
 **Returns:** `string`
+The server name
+
+
+
+
+
 
 ___
 <a id="getstatus"></a>
 
 ###  getStatus
 
-**● getStatus**: *`function`*
+▸ **getStatus**(): `number`
 
-*Defined in services/externals/UserService.ts:81*
+
+
+*Defined in services/externals/UserService.ts:98*
+
+
 
 Get the status of the user
-*__returns__*: The user id
 
-#### Type declaration
-▸(): `number`
+
+
 
 **Returns:** `number`
+The user id
+
+
+
+
+
 
 ___
 <a id="getusergroup"></a>
 
 ###  getUserGroup
 
-**● getUserGroup**: *`function`*
+▸ **getUserGroup**(): `object`
 
-*Defined in services/externals/UserService.ts:35*
+
+
+*Defined in services/externals/UserService.ts:36*
+
+
 
 Retrieve informations about the group of the current user
-*__returns__*: The user group
 
-#### Type declaration
-▸(): `object`
+
+
 
 **Returns:** `object`
+The user group
+
+
+
+
+
 
 ___
 <a id="getuserid"></a>
 
 ###  getUserId
 
-**● getUserId**: *`function`*
+▸ **getUserId**(): `number`
 
-*Defined in services/externals/UserService.ts:46*
+
+
+*Defined in services/externals/UserService.ts:49*
+
+
 
 Get the id of the user
-*__returns__*: The user id
 
-#### Type declaration
-▸(): `number`
+
+
 
 **Returns:** `number`
+The user id
+
+
+
+
+
 
 ___
 <a id="getusername"></a>
 
 ###  getUserName
 
-**● getUserName**: *`function`*
+▸ **getUserName**(): `string`
 
-*Defined in services/externals/UserService.ts:51*
+
+
+*Defined in services/externals/UserService.ts:56*
+
+
 
 Get the name of the user
-*__returns__*: The username
 
-#### Type declaration
-▸(): `string`
+
+
 
 **Returns:** `string`
+The username
+
+
+
+
+
 
 ___
 <a id="getusernamecomplete"></a>
 
 ###  getUserNameComplete
 
-**● getUserNameComplete**: *`function`*
+▸ **getUserNameComplete**(): `string`
 
-*Defined in services/externals/UserService.ts:56*
+
+
+*Defined in services/externals/UserService.ts:63*
+
+
 
 Get the complete name of the user
-*__returns__*: The complete name of the user
 
-#### Type declaration
-▸(): `string`
+
+
 
 **Returns:** `string`
+The complete name of the user
+
+
+
+
+
 
 ___
 <a id="hasavatar"></a>
 
 ###  hasAvatar
 
-**● hasAvatar**: *`function`*
+▸ **hasAvatar**(): `boolean`
 
-*Defined in services/externals/UserService.ts:66*
+
+
+*Defined in services/externals/UserService.ts:77*
+
+
 
 Get the information about the user's avatar status
-*__returns__*: The state of the avatar
 
-#### Type declaration
-▸(): `boolean`
+
+
 
 **Returns:** `boolean`
+The state of the avatar
+
+
+
+
+
 
 ___
 <a id="hasrole"></a>
 
 ###  hasRole
 
-**● hasRole**: *`function`*
+▸ **hasRole**(roleName: *`any`*): `any`
 
-*Defined in services/externals/UserService.ts:164*
+
+
+*Defined in services/externals/UserService.ts:216*
+
+
 
 Check if the currently logged user has a certain role enabled
-*__param__*: object containing the name of the role
 
-*__returns__*: true if the user has the selected roles, false otherwise
 
-#### Type declaration
-▸(__namedParameters: *`object`*): `any`
 
 **Parameters:**
 
-**__namedParameters: `object`**
 
-| Name | Type |
-| ------ | ------ |
-| any | `any` |
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| roleName | `any` |  object containing the name of the role |
+
+
+
+
+
 
 **Returns:** `any`
+true if the user has the selected roles, false otherwise
+
+
+
+
+
 
 ___
 <a id="isnotadmin"></a>
 
 ###  isNotAdmin
 
-**● isNotAdmin**: *`function`*
+▸ **isNotAdmin**(): `boolean`
 
-*Defined in services/externals/UserService.ts:158*
+
+
+*Defined in services/externals/UserService.ts:208*
+
+
 
 Check if the user currently logged is not an administrator
-*__returns__*: false if the user is administrator, true otherwise
 
-#### Type declaration
-▸(): `boolean`
+
+
 
 **Returns:** `boolean`
+false if the user is administrator, true otherwise
 
-___
-<a id="updateprofile"></a>
 
-###  updateProfile
 
-**● updateProfile**: *`function`*
 
-*Defined in services/externals/UserService.ts:129*
 
-Update the user informations
-*__param__*: The updated user profile info
-
-#### Type declaration
-▸(userProfile: *`any`*): `any`
-
-**Parameters:**
-
-| Name | Type |
-| ------ | ------ |
-| userProfile | `any` |
-
-**Returns:** `any`
 
 ___
 
