@@ -79,7 +79,7 @@ var AppGenerator = module.exports = class extends Generator {
         }
         const validPlugiNnamePattern = /^[a-zA-Z0-9]*$/g;
            if (!validPlugiNnamePattern.test(pluginname)) {           
-            return 'Invalid plugin name. Try removing spaces and special characters';
+            return 'Invalid plugin name. Try removing spaces and special characters ([a-zA-Z0-9] allowed only)';
          }
         return true;
       }
