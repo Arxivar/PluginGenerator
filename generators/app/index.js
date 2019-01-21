@@ -45,7 +45,7 @@ var AppGenerator = module.exports = class extends Generator {
       requiredSettings: {
         MAIN: '// MANDATORY settings in order for the plugin to work.',
         id: '// Unique plugin identifier (type: string)',
-        pluginname: '// Plugin name. Spaces and dots not allowed (type: string)',
+        pluginname: '// Plugin name. Spaces special characters not allowed (type: string)',
         label: '// User Interface label (type: string)',
         description: '// Plugin description (type: string)',
         author: '// Plugin author (type: string)',
@@ -67,19 +67,21 @@ var AppGenerator = module.exports = class extends Generator {
     };
   }
   requiredSettings(options) {
+
     var prompts = [{
       type: 'input',
       name: 'pluginname',
       message: 'Your plugin name',
         // default: _.upperFirst(_.replace(_(this.appname).toString().trim().toLowerCase().replace(/ /g, '-').replace(/([^a-zA-Z0-9\._-]+)/, ''), '.', '')), // Default to current folder name
-      validate: function (pluginname) {
+      validate: function (pluginname) {        
         if (_.isEmpty(_.trim(pluginname)) === true) {
           return 'Empty plugin name. Type a plugin name';
         }
-        if (_.isEmpty(_.trim(pluginname)) === false && _.includes(pluginname, ' ') === false && _.includes(pluginname, '.') === false && _.includes(pluginname, '-') === false) {
-          return true;
-        }
-        return 'Invalid plugin name. Try removing spaces, dots and dashes.';
+        const validPlugiNnamePattern = /^[a-zA-Z0-9]*$/g;
+           if (!validPlugiNnamePattern.test(pluginname)) {           
+            return 'Invalid plugin name. Try removing spaces and special characters ([a-zA-Z0-9] allowed only)';
+         }
+        return true;
       }
     },
       {
