@@ -4,9 +4,6 @@ var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
 describe('generator-arxivar-plugins:app', function () {
-  // before(function () {
-
-    // });
 
   var tempDir = 'testTmp';
   var commandName = 'Hodor';
@@ -51,4 +48,48 @@ describe('generator-arxivar-plugins:app', function () {
         ]);
       });
   });
+
+  
+  it('Plugin route: creates files', function () {
+    return helpers.run(path.join(__dirname, '../generators/route'))
+      .inDir(path.join(__dirname, tempDir))
+      .withPrompts(mockedPrompts)
+      .then(() => {
+        assert.file([
+          path.join(__dirname, tempDir, commandName, commandName + '.css'),
+          path.join(__dirname, tempDir, commandName, commandName + '.html'),
+          path.join(__dirname, tempDir, commandName, commandName + '.js'),
+          path.join(__dirname, tempDir, commandName, commandName + 'Ctrl.js')
+        ]);
+      });
+  });
+
+  it('Plugin widget task: creates files', function () {
+    return helpers.run(path.join(__dirname, '../generators/widget-task'))
+      .inDir(path.join(__dirname, tempDir))
+      .withPrompts(mockedPrompts)
+      .then(() => {
+        assert.file([
+          path.join(__dirname, tempDir, commandName, commandName + '.css'),
+          path.join(__dirname, tempDir, commandName, commandName + '.html'),
+          path.join(__dirname, tempDir, commandName, commandName + '.js'),
+          path.join(__dirname, tempDir, commandName, commandName + 'Directive.js')
+        ]);
+      });
+  });
+
+  it('Plugin widget desktop: creates files', function () {
+    return helpers.run(path.join(__dirname, '../generators/widget-desktop'))
+      .inDir(path.join(__dirname, tempDir))
+      .withPrompts(mockedPrompts)
+      .then(() => {
+        assert.file([
+          path.join(__dirname, tempDir, commandName, commandName + '.css'),
+          path.join(__dirname, tempDir, commandName, commandName + '.html'),
+          path.join(__dirname, tempDir, commandName, commandName + '.js'),
+          path.join(__dirname, tempDir, commandName, commandName + 'Directive.js')
+        ]);
+      });
+  });
+
 });

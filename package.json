@@ -59,15 +59,9 @@
     },
     "rules": {
       "linebreak-style": 0,
-      "no-unused-vars": [
-        "warn"
-      ],
-      "no-useless-escape": [
-        "warn"
-      ],
-      "no-multi-spaces": [
-        "warn"
-      ],
+      "no-unused-vars": 0,
+      "no-useless-escape": 0,
+      "no-multi-spaces": 0,
       "no-trailing-spaces": 0,
       "space-before-function-paren": 0,
       "no-mixed-spaces-and-tabs": 0,
@@ -78,7 +72,9 @@
       "spaced-comment": 0,
       "padded-blocks": 0,
       "space-before-blocks": 0,
-      "indent": 0
+      "indent": 0,
+      "comma-spacing": 0
+
     }
   },
   "repository": "/generator-arxivar-plugins",
