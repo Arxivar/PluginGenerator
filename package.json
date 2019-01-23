@@ -27,22 +27,54 @@
     "yosay": "^1.0.0"
   },
   "devDependencies": {
-    "yeoman-test": "^1.0.0",
-    "yeoman-assert": "^2.0.0",
     "eslint": "^2.1.0",
+    "eslint-plugin-angular": "^4.0.0",
     "eslint-config-xo-space": "^0.13.0",
     "gulp": "^3.9.0",
     "gulp-eslint": "^2.0.0",
     "gulp-exclude-gitignore": "^1.0.0",
-    "gulp-line-ending-corrector": "^1.0.1",
     "gulp-istanbul": "^0.10.3",
+    "gulp-line-ending-corrector": "^1.0.1",
     "gulp-mocha": "^2.0.0",
-    "gulp-plumber": "^1.0.0"
+    "gulp-plumber": "^1.0.0",
+    "yeoman-assert": "^2.0.0",
+    "yeoman-test": "^1.0.0"
   },
   "eslintConfig": {
     "extends": "xo-space",
     "env": {
+      "jquery": true,
+      "es6": true,
       "mocha": true
+    },
+    "plugins": [
+      "angular"
+    ],
+    "globals": {
+      "global": true,
+      "angular": true,
+      "module": true,
+      "confirm": true,
+      "alert": true
+    },
+    "rules": {
+      "linebreak-style": 0,
+      "no-unused-vars": 0,
+      "no-useless-escape": 0,
+      "no-multi-spaces": 0,
+      "no-trailing-spaces": 0,
+      "space-before-function-paren": 0,
+      "no-mixed-spaces-and-tabs": 0,
+      "keyword-spacing": 0,
+      "no-alert": 0,
+      "no-multiple-empty-lines": 0,
+      "object-curly-spacing": 0,
+      "spaced-comment": 0,
+      "padded-blocks": 0,
+      "space-before-blocks": 0,
+      "indent": 0,
+      "comma-spacing": 0
+
     }
   },
   "repository": "/generator-arxivar-plugins",

@@ -1,11 +1,10 @@
 'use strict';
-var path = require('path');
+
 var gulp = require('gulp');
 var eslint = require('gulp-eslint');
 var excludeGitignore = require('gulp-exclude-gitignore');
 var mocha = require('gulp-mocha');
 var istanbul = require('gulp-istanbul');
-var nsp = require('gulp-nsp');
 var plumber = require('gulp-plumber');
 
 gulp.task('static', function () {
@@ -16,8 +15,8 @@ gulp.task('static', function () {
     .pipe(eslint.failAfterError());
 });
 
-
 gulp.task('pre-test', function () {
+  // eslint-disable-next-line no-useless-escape
   return gulp.src('generators\**\*.js')
     .pipe(excludeGitignore())
     .pipe(istanbul({
@@ -42,6 +41,7 @@ gulp.task('test', ['pre-test'], function (cb) {
 });
 
 gulp.task('watch', function () {
+  // eslint-disable-next-line no-useless-escape
   gulp.watch(['generators\**\*.js', 'test/**'], ['test']);
 });
 
