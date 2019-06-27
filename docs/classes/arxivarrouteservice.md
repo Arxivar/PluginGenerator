@@ -2,7 +2,10 @@
 
 # Class: ArxivarRouteService
 
-This module contains the essential method for an AngularJS application to consume the ARXivar api calls. The methods exposed permits to create,read,edit and update resources from ARXivar.
+
+
+
+This module contains the methods to interface with the ARXivar Next Portal Routes
 
 ```javascript
 angular
@@ -18,7 +21,8 @@ angular
             },
             templateUrl: 'WidgetDesktopPlugin.html',
             link: function(scope) {
-                var url = arxivarRouteService.getURLProfileReadonly(100);
+                var docnumber = 100;
+                var url = arxivarRouteService.getURLProfileReadonly(docnumber);
             }
         };
     }
@@ -29,6 +33,9 @@ angular
 
 **ArxivarRouteService**
 
+
+
+
 ## Index
 
 ### Methods
@@ -38,6 +45,8 @@ angular
 * [getURLProfileReadonly](arxivarrouteservice.md#geturlprofilereadonly)
 * [getURLRevisionsByDocnumber](arxivarrouteservice.md#geturlrevisionsbydocnumber)
 
+
+
 ---
 
 ## Methods
@@ -46,80 +55,144 @@ angular
 
 ###  getDocumentByDocnumber
 
-▸ **getDocumentByDocnumber**(docnumber: *`Int32Array`*): `any`
+▸ **getDocumentByDocnumber**(docnumber: *`number`*): `Promise`<`any`>
 
-*Defined in services/externals/ArxivarRouteService.ts:76*
 
-This call is used for download the file by docnumber, if exists it
+
+*Defined in services/externals/ArxivarRouteService.ts:75*
+
+
+
+Download document linked to a profile
+
 
 **Parameters:**
 
+
 | Name | Type | Description |
 | ------ | ------ | ------ |
-| docnumber | `Int32Array` |  Docnumber |
+| docnumber | `number` |  Docnumber |
 
-**Returns:** `any`
+
+
+
+
+
+**Returns:** `Promise`<`any`>
 The file Downloaded
+
+
+
+
+
 
 ___
 <a id="getrevisionbyid"></a>
 
 ###  getRevisionByID
 
-▸ **getRevisionByID**(idRevision: *`Int32Array`*): `any`
+▸ **getRevisionByID**(idRevision: *`number`*): `Promise`<`any`>
 
-*Defined in services/externals/ArxivarRouteService.ts:87*
 
-This call is used for download the file from specific revision
+
+*Defined in services/externals/ArxivarRouteService.ts:86*
+
+
+
+Download document from specific revision ID
+
 
 **Parameters:**
 
+
 | Name | Type | Description |
 | ------ | ------ | ------ |
-| idRevision | `Int32Array` |  Id from DM\_REVISIONI |
+| idRevision | `number` |  Id from DM\_REVISIONI |
 
-**Returns:** `any`
+
+
+
+
+
+**Returns:** `Promise`<`any`>
 The file Downloaded
+
+
+
+
+
 
 ___
 <a id="geturlprofilereadonly"></a>
 
 ###  getURLProfileReadonly
 
-▸ **getURLProfileReadonly**(docnumber: *`Int32Array`*): `string`
+▸ **getURLProfileReadonly**(docnumber: *`number`*): `string`
 
-*Defined in services/externals/ArxivarRouteService.ts:56*
 
-Retrieve the URL Profile legacy from Docnumber
+
+*Defined in services/externals/ArxivarRouteService.ts:55*
+
+
+
+Retrieve the URL of the profile route
+
 
 **Parameters:**
 
+
 | Name | Type | Description |
 | ------ | ------ | ------ |
-| docnumber | `Int32Array` |  Docnumber |
+| docnumber | `number` |  Docnumber |
+
+
+
+
+
 
 **Returns:** `string`
 The URL Profile
+
+
+
+
+
 
 ___
 <a id="geturlrevisionsbydocnumber"></a>
 
 ###  getURLRevisionsByDocnumber
 
-▸ **getURLRevisionsByDocnumber**(docnumber: *`Int32Array`*): `string`
+▸ **getURLRevisionsByDocnumber**(docnumber: *`number`*): `string`
 
-*Defined in services/externals/ArxivarRouteService.ts:66*
 
-Retrieve the URL for the Revisions from docnumber
+
+*Defined in services/externals/ArxivarRouteService.ts:65*
+
+
+
+Retrieve the URL's route that contains the list of Revisions for a specific document
+
 
 **Parameters:**
 
+
 | Name | Type | Description |
 | ------ | ------ | ------ |
-| docnumber | `Int32Array` |  Docnumber |
+| docnumber | `number` |  Docnumber |
+
+
+
+
+
 
 **Returns:** `string`
 The URL Revisions List
+
+
+
+
+
 
 ___
 
