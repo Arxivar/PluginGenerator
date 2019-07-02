@@ -59,11 +59,11 @@ angular
 
 
 
-*Defined in services/externals/ArxivarRouteService.ts:75*
+*Defined in services/externals/ArxivarRouteService.ts:73*
 
 
 
-Download document linked to a profile
+Download the document linked to a profile.
 
 
 **Parameters:**
@@ -71,7 +71,7 @@ Download document linked to a profile
 
 | Name | Type | Description |
 | ------ | ------ | ------ |
-| docnumber | `number` |  Docnumber |
+| docnumber | `number` |  The docnumber of the profile. |
 
 
 
@@ -79,7 +79,7 @@ Download document linked to a profile
 
 
 **Returns:** `Promise`<`any`>
-The file Downloaded
+The file download Promise.
 
 
 
@@ -91,15 +91,15 @@ ___
 
 ###  getRevisionByID
 
-▸ **getRevisionByID**(idRevision: *`number`*): `Promise`<`any`>
+▸ **getRevisionByID**(revisionId: *`number`*): `Promise`<`any`>
 
 
 
-*Defined in services/externals/ArxivarRouteService.ts:86*
+*Defined in services/externals/ArxivarRouteService.ts:84*
 
 
 
-Download document from specific revision ID
+Download the document linked to a profile with a specific revision.
 
 
 **Parameters:**
@@ -107,7 +107,7 @@ Download document from specific revision ID
 
 | Name | Type | Description |
 | ------ | ------ | ------ |
-| idRevision | `number` |  Id from DM\_REVISIONI |
+| revisionId | `number` |  The ID of the revision. |
 
 
 
@@ -115,7 +115,7 @@ Download document from specific revision ID
 
 
 **Returns:** `Promise`<`any`>
-The file Downloaded
+The file download Promise.
 
 
 
@@ -131,11 +131,11 @@ ___
 
 
 
-*Defined in services/externals/ArxivarRouteService.ts:55*
+*Defined in services/externals/ArxivarRouteService.ts:53*
 
 
 
-Retrieve the URL of the profile route
+Retrieve the URL of the profile route.
 
 
 **Parameters:**
@@ -143,7 +143,7 @@ Retrieve the URL of the profile route
 
 | Name | Type | Description |
 | ------ | ------ | ------ |
-| docnumber | `number` |  Docnumber |
+| docnumber | `number` |  The docnumber of the profile. |
 
 
 
@@ -151,7 +151,7 @@ Retrieve the URL of the profile route
 
 
 **Returns:** `string`
-The URL Profile
+The url of the profile route.
 
 
 
@@ -167,7 +167,7 @@ ___
 
 
 
-*Defined in services/externals/ArxivarRouteService.ts:65*
+*Defined in services/externals/ArxivarRouteService.ts:63*
 
 
 
@@ -179,7 +179,7 @@ Retrieve the URL's route that contains the list of Revisions for a specific docu
 
 | Name | Type | Description |
 | ------ | ------ | ------ |
-| docnumber | `number` |  Docnumber |
+| docnumber | `number` |  The docnumber of the profile. |
 
 
 
@@ -187,7 +187,7 @@ Retrieve the URL's route that contains the list of Revisions for a specific docu
 
 
 **Returns:** `string`
-The URL Revisions List
+The url of the revisions list of the profile.
 
 
 
