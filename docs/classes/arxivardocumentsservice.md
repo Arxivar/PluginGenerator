@@ -19,7 +19,7 @@ angular
             templateUrl: 'WidgetDesktopPlugin.html',
             link: function(scope) {
                 var docnumber = 100;
-                var url = arxivarRouteService.getDocumentByDocnumber(docnumber);
+                var url = arxivarDocumentsService.getDocumentByDocnumber(docnumber);
             }
         };
     }
