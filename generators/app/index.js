@@ -69,26 +69,26 @@ var AppGenerator = module.exports = class extends Generator {
   requiredSettings(options) {
 
     var prompts = [{
-      type: 'input',
-      name: 'pluginname',
-      message: 'Your plugin name',
+        type: 'input',
+        name: 'pluginname',
+        message: 'Your plugin name',
         // default: _.upperFirst(_.replace(_(this.appname).toString().trim().toLowerCase().replace(/ /g, '-').replace(/([^a-zA-Z0-9\._-]+)/, ''), '.', '')), // Default to current folder name
-      validate: function (pluginname) {        
-        if (_.isEmpty(_.trim(pluginname)) === true) {
-          return 'Empty plugin name. Type a plugin name';
-        }
-        const validPlugiNnamePattern = /^[a-zA-Z0-9]*$/g;
-           if (!validPlugiNnamePattern.test(pluginname)) {           
+        validate: function(pluginname) {
+          if (_.isEmpty(_.trim(pluginname)) === true) {
+            return 'Empty plugin name. Type a plugin name';
+          }
+          const validPlugiNnamePattern = /^[a-zA-Z0-9]*$/g;
+          if (!validPlugiNnamePattern.test(pluginname)) {
             return 'Invalid plugin name. Try removing spaces and special characters ([a-zA-Z0-9] allowed only)';
-         }
-        return true;
-      }
-    },
+          }
+          return true;
+        }
+      },
       {
         type: 'input',
         name: 'description',
         message: 'Your plugin description',
-        default: function (answers) {
+        default: function(answers) {
           return answers.pluginname + ' description';
         }
       },
@@ -96,7 +96,7 @@ var AppGenerator = module.exports = class extends Generator {
         type: 'input',
         name: 'author',
         message: 'Plugin author name',
-        default: function (answers) {
+        default: function(answers) {
           return answers.pluginname + ' author';
         }
       },
@@ -105,7 +105,7 @@ var AppGenerator = module.exports = class extends Generator {
         name: 'id',
         message: 'Your plugin unique identifier',
         default: uuid.v4(),
-        validate: function (guid) {
+        validate: function(guid) {
           if (_.isEmpty(_.trim(guid)) === false) {
             return true;
           }
@@ -116,16 +116,16 @@ var AppGenerator = module.exports = class extends Generator {
         type: 'input',
         name: 'label',
         message: 'Label for UI',
-        default: function (answers) {
+        default: function(answers) {
           return answers.pluginname + ' label';
         }
       },
       {
         type: 'input',
         name: 'icon',
-        message: 'FontAwesome icon for command (https://fontawesome.com/icons?d=gallery&v=5.3.0,5.3.1&m=pro)',
-        default: function (answers) {
-          return 'fa fa-puzzle-piece';
+        message: 'FontAwesome icon for command (https://fontawesome.com/icons up to version 5.10.0)',
+        default: function(answers) {
+          return 'fas fa-puzzle-piece';
         }
       },
       {
@@ -140,10 +140,10 @@ var AppGenerator = module.exports = class extends Generator {
         message: 'Does your plugin require grid data refresh?',
         default: 'no',
         choices: ['no', 'yes'],
-        validate: function (requireRefreshString) {
+        validate: function(requireRefreshString) {
           return requireRefreshString === 'yes' || requireRefreshString === 'no';
         },
-        filter: function (requireRefreshString) {
+        filter: function(requireRefreshString) {
           return requireRefreshString === 'yes';
         }
       },
@@ -155,7 +155,7 @@ var AppGenerator = module.exports = class extends Generator {
     ];
 
     if (options && options.exclude) {
-      prompts = prompts.filter(function (obj) {
+      prompts = prompts.filter(function(obj) {
         return (options.exclude.indexOf(obj.name) === -1);
       });
     }
