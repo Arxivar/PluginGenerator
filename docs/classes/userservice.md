@@ -51,6 +51,7 @@ angular
 * [getUserNameComplete](userservice.md#getusernamecomplete)
 * [hasAvatar](userservice.md#hasavatar)
 * [hasRole](userservice.md#hasrole)
+* [isInRole](userservice.md#isinrole)
 * [isNotAdmin](userservice.md#isnotadmin)
 
 ---
@@ -63,7 +64,7 @@ angular
 
 ▸ **getAoo**(): `string`
 
-*Defined in services/externals/UserService.ts:111*
+*Defined in services/externals/UserService.ts:128*
 
 Get the Aoo of the user
 
@@ -77,7 +78,7 @@ ___
 
 ▸ **getAvatar**(): `string`
 
-*Defined in services/externals/UserService.ts:90*
+*Defined in services/externals/UserService.ts:107*
 
 Get the user's avatar
 
@@ -91,7 +92,7 @@ ___
 
 ▸ **getDatabase**(): `string`
 
-*Defined in services/externals/UserService.ts:118*
+*Defined in services/externals/UserService.ts:135*
 
 Get the database name
 
@@ -105,7 +106,9 @@ ___
 
 ▸ **getDatabaseInfo**(): `Promise`<[UserService](userservice.md)>
 
-*Defined in services/externals/UserService.ts:171*
+*Defined in services/externals/UserService.ts:243*
+
+DEPRECATED Use [ArxivarUserServiceCreator.create](arxivaruserservicecreator.md#create) instead. Load the database informations
 
 **Returns:** `Promise`<[UserService](userservice.md)>
 
@@ -116,7 +119,7 @@ ___
 
 ▸ **getDescription**(): `string`
 
-*Defined in services/externals/UserService.ts:69*
+*Defined in services/externals/UserService.ts:86*
 
 Get the description of the user
 
@@ -130,7 +133,7 @@ ___
 
 ▸ **getLang**(): `string`
 
-*Defined in services/externals/UserService.ts:83*
+*Defined in services/externals/UserService.ts:100*
 
 Get the language of the user
 
@@ -144,7 +147,7 @@ ___
 
 ▸ **getProvider**(): `string`
 
-*Defined in services/externals/UserService.ts:132*
+*Defined in services/externals/UserService.ts:149*
 
 Get the database provider name
 
@@ -158,7 +161,7 @@ ___
 
 ▸ **getRoles**(): `Array`<`object`>
 
-*Defined in services/externals/UserService.ts:104*
+*Defined in services/externals/UserService.ts:121*
 
 Get the roles of the user
 
@@ -172,7 +175,7 @@ ___
 
 ▸ **getServerName**(): `string`
 
-*Defined in services/externals/UserService.ts:125*
+*Defined in services/externals/UserService.ts:142*
 
 Get the server name
 
@@ -186,7 +189,7 @@ ___
 
 ▸ **getStatus**(): `number`
 
-*Defined in services/externals/UserService.ts:97*
+*Defined in services/externals/UserService.ts:114*
 
 Get the status of the user
 
@@ -212,13 +215,13 @@ ___
 
 ###  getUserId
 
-▸ **getUserId**(): `number`
+▸ **getUserId**(): `string`
 
-*Defined in services/externals/UserService.ts:48*
+*Defined in services/externals/UserService.ts:65*
 
 Get the id of the user
 
-**Returns:** `number`
+**Returns:** `string`
 The user id
 
 ___
@@ -228,7 +231,7 @@ ___
 
 ▸ **getUserName**(): `string`
 
-*Defined in services/externals/UserService.ts:55*
+*Defined in services/externals/UserService.ts:72*
 
 Get the name of the user
 
@@ -242,7 +245,7 @@ ___
 
 ▸ **getUserNameComplete**(): `string`
 
-*Defined in services/externals/UserService.ts:62*
+*Defined in services/externals/UserService.ts:79*
 
 Get the complete name of the user
 
@@ -256,7 +259,7 @@ ___
 
 ▸ **hasAvatar**(): `boolean`
 
-*Defined in services/externals/UserService.ts:76*
+*Defined in services/externals/UserService.ts:93*
 
 Get the information about the user's avatar status
 
@@ -270,9 +273,9 @@ ___
 
 ▸ **hasRole**(roleName: *`any`*): `any`
 
-*Defined in services/externals/UserService.ts:219*
+*Defined in services/externals/UserService.ts:255*
 
-Check if the currently logged user has a certain role enabled
+DEPRECATED Use [UserService.isInRole](userservice.md#isinrole) instead. Check if the currently logged user has a certain role enabled
 
 **Parameters:**
 
@@ -284,13 +287,33 @@ Check if the currently logged user has a certain role enabled
 true if the user has the selected roles, false otherwise
 
 ___
+<a id="isinrole"></a>
+
+###  isInRole
+
+▸ **isInRole**(roleName: *`string`*): `boolean`
+
+*Defined in services/externals/UserService.ts:166*
+
+Check if the currently logged user has a certain role enabled
+
+**Parameters:**
+
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| roleName | `string` |  the name of the role |
+
+**Returns:** `boolean`
+true if the user has the roles, false otherwise
+
+___
 <a id="isnotadmin"></a>
 
 ###  isNotAdmin
 
 ▸ **isNotAdmin**(): `boolean`
 
-*Defined in services/externals/UserService.ts:211*
+*Defined in services/externals/UserService.ts:157*
 
 Check if the user currently logged is not an administrator
 
