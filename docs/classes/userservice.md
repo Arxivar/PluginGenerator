@@ -2,17 +2,14 @@
 
 # Class: UserService
 
-
-
-
-This module contains the essential methods to access the informations of the user currently logged into ARXivar.
+This module contains the essential methods to access the informations of the user currently logged into ARXivar. An instance of this module must be generated using the arxivarUserServiceCreator module.
 
 ```javascript
 angular
 .module('arxivar.plugins.directives')
 .directive('widgetdesktopplugindirective', [
-    'userService',
-    function(userService) {
+    'arxivarUserServiceCreator',
+    function(arxivarUserServiceCreator) {
         return {
             restrict: 'E',
             scope: {
@@ -21,7 +18,7 @@ angular
             },
             templateUrl: 'WidgetDesktopPlugin.html',
             link: function(scope) {
-                userService.getDatabaseInfo().then(() => {
+                arxivarUserServiceCreator.create().then((userService) => {
                     scope.userId = userService.getUserId();
                 });
             }
@@ -30,13 +27,9 @@ angular
 ]);
 ```
 
-
 ## Hierarchy
 
 **UserService**
-
-
-
 
 ## Index
 
@@ -60,8 +53,6 @@ angular
 * [hasRole](userservice.md#hasrole)
 * [isNotAdmin](userservice.md#isnotadmin)
 
-
-
 ---
 
 ## Methods
@@ -72,24 +63,12 @@ angular
 
 ▸ **getAoo**(): `string`
 
-
-
-*Defined in services/externals/UserService.ts:112*
-
-
+*Defined in services/externals/UserService.ts:111*
 
 Get the Aoo of the user
 
-
-
-
 **Returns:** `string`
 The Aoo name
-
-
-
-
-
 
 ___
 <a id="getavatar"></a>
@@ -98,24 +77,12 @@ ___
 
 ▸ **getAvatar**(): `string`
 
-
-
-*Defined in services/externals/UserService.ts:91*
-
-
+*Defined in services/externals/UserService.ts:90*
 
 Get the user's avatar
 
-
-
-
 **Returns:** `string`
 The base64 code of the user's avatar
-
-
-
-
-
 
 ___
 <a id="getdatabase"></a>
@@ -124,48 +91,23 @@ ___
 
 ▸ **getDatabase**(): `string`
 
-
-
-*Defined in services/externals/UserService.ts:119*
-
-
+*Defined in services/externals/UserService.ts:118*
 
 Get the database name
 
-
-
-
 **Returns:** `string`
 The database name
-
-
-
-
-
 
 ___
 <a id="getdatabaseinfo"></a>
 
 ###  getDatabaseInfo
 
-▸ **getDatabaseInfo**(): [UserService](userservice.md)
-
-
+▸ **getDatabaseInfo**(): `Promise`<[UserService](userservice.md)>
 
 *Defined in services/externals/UserService.ts:171*
 
-
-
-Load the database informations
-
-
-
-
-**Returns:** [UserService](userservice.md)
-
-
-
-
+**Returns:** `Promise`<[UserService](userservice.md)>
 
 ___
 <a id="getdescription"></a>
@@ -174,24 +116,12 @@ ___
 
 ▸ **getDescription**(): `string`
 
-
-
-*Defined in services/externals/UserService.ts:70*
-
-
+*Defined in services/externals/UserService.ts:69*
 
 Get the description of the user
 
-
-
-
 **Returns:** `string`
 The description of the user
-
-
-
-
-
 
 ___
 <a id="getlang"></a>
@@ -200,24 +130,12 @@ ___
 
 ▸ **getLang**(): `string`
 
-
-
-*Defined in services/externals/UserService.ts:84*
-
-
+*Defined in services/externals/UserService.ts:83*
 
 Get the language of the user
 
-
-
-
 **Returns:** `string`
 The language of the user
-
-
-
-
-
 
 ___
 <a id="getprovider"></a>
@@ -226,24 +144,12 @@ ___
 
 ▸ **getProvider**(): `string`
 
-
-
-*Defined in services/externals/UserService.ts:133*
-
-
+*Defined in services/externals/UserService.ts:132*
 
 Get the database provider name
 
-
-
-
 **Returns:** `string`
 The database provider name
-
-
-
-
-
 
 ___
 <a id="getroles"></a>
@@ -252,24 +158,12 @@ ___
 
 ▸ **getRoles**(): `Array`<`object`>
 
-
-
-*Defined in services/externals/UserService.ts:105*
-
-
+*Defined in services/externals/UserService.ts:104*
 
 Get the roles of the user
 
-
-
-
 **Returns:** `Array`<`object`>
 The user roles
-
-
-
-
-
 
 ___
 <a id="getservername"></a>
@@ -278,24 +172,12 @@ ___
 
 ▸ **getServerName**(): `string`
 
-
-
-*Defined in services/externals/UserService.ts:126*
-
-
+*Defined in services/externals/UserService.ts:125*
 
 Get the server name
 
-
-
-
 **Returns:** `string`
 The server name
-
-
-
-
-
 
 ___
 <a id="getstatus"></a>
@@ -304,24 +186,12 @@ ___
 
 ▸ **getStatus**(): `number`
 
-
-
-*Defined in services/externals/UserService.ts:98*
-
-
+*Defined in services/externals/UserService.ts:97*
 
 Get the status of the user
 
-
-
-
 **Returns:** `number`
 The user id
-
-
-
-
-
 
 ___
 <a id="getusergroup"></a>
@@ -330,24 +200,12 @@ ___
 
 ▸ **getUserGroup**(): `object`
 
-
-
-*Defined in services/externals/UserService.ts:36*
-
-
+*Defined in services/externals/UserService.ts:35*
 
 Retrieve informations about the group of the current user
 
-
-
-
 **Returns:** `object`
 The user group
-
-
-
-
-
 
 ___
 <a id="getuserid"></a>
@@ -356,24 +214,12 @@ ___
 
 ▸ **getUserId**(): `number`
 
-
-
-*Defined in services/externals/UserService.ts:49*
-
-
+*Defined in services/externals/UserService.ts:48*
 
 Get the id of the user
 
-
-
-
 **Returns:** `number`
 The user id
-
-
-
-
-
 
 ___
 <a id="getusername"></a>
@@ -382,24 +228,12 @@ ___
 
 ▸ **getUserName**(): `string`
 
-
-
-*Defined in services/externals/UserService.ts:56*
-
-
+*Defined in services/externals/UserService.ts:55*
 
 Get the name of the user
 
-
-
-
 **Returns:** `string`
 The username
-
-
-
-
-
 
 ___
 <a id="getusernamecomplete"></a>
@@ -408,24 +242,12 @@ ___
 
 ▸ **getUserNameComplete**(): `string`
 
-
-
-*Defined in services/externals/UserService.ts:63*
-
-
+*Defined in services/externals/UserService.ts:62*
 
 Get the complete name of the user
 
-
-
-
 **Returns:** `string`
 The complete name of the user
-
-
-
-
-
 
 ___
 <a id="hasavatar"></a>
@@ -434,24 +256,12 @@ ___
 
 ▸ **hasAvatar**(): `boolean`
 
-
-
-*Defined in services/externals/UserService.ts:77*
-
-
+*Defined in services/externals/UserService.ts:76*
 
 Get the information about the user's avatar status
 
-
-
-
 **Returns:** `boolean`
 The state of the avatar
-
-
-
-
-
 
 ___
 <a id="hasrole"></a>
@@ -460,35 +270,18 @@ ___
 
 ▸ **hasRole**(roleName: *`any`*): `any`
 
-
-
-*Defined in services/externals/UserService.ts:216*
-
-
+*Defined in services/externals/UserService.ts:219*
 
 Check if the currently logged user has a certain role enabled
 
-
-
 **Parameters:**
-
 
 | Name | Type | Description |
 | ------ | ------ | ------ |
 | roleName | `any` |  object containing the name of the role |
 
-
-
-
-
-
 **Returns:** `any`
 true if the user has the selected roles, false otherwise
-
-
-
-
-
 
 ___
 <a id="isnotadmin"></a>
@@ -497,24 +290,12 @@ ___
 
 ▸ **isNotAdmin**(): `boolean`
 
-
-
-*Defined in services/externals/UserService.ts:208*
-
-
+*Defined in services/externals/UserService.ts:211*
 
 Check if the user currently logged is not an administrator
 
-
-
-
 **Returns:** `boolean`
 false if the user is administrator, true otherwise
-
-
-
-
-
 
 ___
 
