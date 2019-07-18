@@ -73,7 +73,7 @@ var AppGenerator = module.exports = class extends Generator {
         name: 'pluginname',
         message: 'Your plugin name',
         // default: _.upperFirst(_.replace(_(this.appname).toString().trim().toLowerCase().replace(/ /g, '-').replace(/([^a-zA-Z0-9\._-]+)/, ''), '.', '')), // Default to current folder name
-        validate: function(pluginname) {
+        validate: function (pluginname) {
           if (_.isEmpty(_.trim(pluginname)) === true) {
             return 'Empty plugin name. Type a plugin name';
           }
@@ -88,7 +88,7 @@ var AppGenerator = module.exports = class extends Generator {
         type: 'input',
         name: 'description',
         message: 'Your plugin description',
-        default: function(answers) {
+        default: function (answers) {
           return answers.pluginname + ' description';
         }
       },
@@ -96,7 +96,7 @@ var AppGenerator = module.exports = class extends Generator {
         type: 'input',
         name: 'author',
         message: 'Plugin author name',
-        default: function(answers) {
+        default: function (answers) {
           return answers.pluginname + ' author';
         }
       },
@@ -105,7 +105,7 @@ var AppGenerator = module.exports = class extends Generator {
         name: 'id',
         message: 'Your plugin unique identifier',
         default: uuid.v4(),
-        validate: function(guid) {
+        validate: function (guid) {
           if (_.isEmpty(_.trim(guid)) === false) {
             return true;
           }
@@ -116,7 +116,7 @@ var AppGenerator = module.exports = class extends Generator {
         type: 'input',
         name: 'label',
         message: 'Label for UI',
-        default: function(answers) {
+        default: function (answers) {
           return answers.pluginname + ' label';
         }
       },
@@ -124,7 +124,7 @@ var AppGenerator = module.exports = class extends Generator {
         type: 'input',
         name: 'icon',
         message: 'FontAwesome icon for command (https://fontawesome.com/icons up to version 5.10.0)',
-        default: function(answers) {
+        default: function (answers) {
           return 'fas fa-puzzle-piece';
         }
       },
@@ -132,7 +132,7 @@ var AppGenerator = module.exports = class extends Generator {
         type: 'input',
         name: 'minVersion',
         message: 'Minimum portal version supported?',
-        default: '0.0.1'
+        default: '2.1.0'
       },
       {
         type: 'list',
@@ -140,11 +140,24 @@ var AppGenerator = module.exports = class extends Generator {
         message: 'Does your plugin require grid data refresh?',
         default: 'no',
         choices: ['no', 'yes'],
-        validate: function(requireRefreshString) {
+        validate: function (requireRefreshString) {
           return requireRefreshString === 'yes' || requireRefreshString === 'no';
         },
-        filter: function(requireRefreshString) {
+        filter: function (requireRefreshString) {
           return requireRefreshString === 'yes';
+        }
+      },
+      {
+        type: 'list',
+        name: 'injectParams',
+        message: 'Does your plugin need params from querystring (Ver. >=2.1 required)?',
+        default: 'no',
+        choices: ['no', 'yes'],
+        validate: function (injectParams) {
+          return injectParams === 'yes' || injectParams === 'no';
+        },
+        filter: function (injectParams) {
+          return injectParams === 'yes';
         }
       },
       {
@@ -155,9 +168,17 @@ var AppGenerator = module.exports = class extends Generator {
     ];
 
     if (options && options.exclude) {
-      prompts = prompts.filter(function(obj) {
+      prompts = prompts.filter(function (obj) {
         return (options.exclude.indexOf(obj.name) === -1);
       });
+    }
+    if (options && options.minVersion) {
+      var defaultMinVersion = _.find(prompts, {
+        name: 'minVersion'
+      })
+      if (defaultMinVersion) {
+        defaultMinVersion = options.minVersion
+      }
     }
     return prompts;
   }
