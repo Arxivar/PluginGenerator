@@ -25,7 +25,9 @@ module.exports = class extends AppGenerator {
 
         props.dependencies = props.dependencies.toString().match(/[^ ]+/g) || [];
         props.dependencies.push('arxivarResourceService');
-        props.dependencies.push('userService');
+        props.dependencies.push('arxivarUserServiceCreator');
+        props.dependencies.push('arxivarRouteService');
+        props.dependencies.push('arxivarDocumentsService');
         if (props.injectParams) {
           props.dependencies.push('params');
         }
