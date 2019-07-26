@@ -11,14 +11,18 @@ module.exports = class extends AppGenerator {
     this.log('Running ' + chalk.red('COMMAND') + ' generator!');
   }
   prompting() {
-    var prompts = this.requiredSettings();
+    var prompts = this.requiredSettings({
+      exclude: ['injectParams']
+    });
 
     return this.prompt(prompts).then(
-      function(props) {
+      function (props) {
         props.dependencies =
           props.dependencies.toString().match(/[^ ]+/g) || [];
         props.dependencies.push('arxivarResourceService');
-        props.dependencies.push('userService');
+        props.dependencies.push('arxivarUserServiceCreator');
+        props.dependencies.push('arxivarRouteService');
+        props.dependencies.push('arxivarDocumentsService');
         props.dependencies.unshift('');
 
         props.dependenciesString =
@@ -38,8 +42,9 @@ module.exports = class extends AppGenerator {
     var pluginCommandFilename = this.props.pluginname + 'PluginCommand.js';
     this.fs.copyTpl(
       this.templatePath('PluginCommandTemplate.js'),
-      this.destinationPath(pluginCommandFilename),
-      { props: this.props }
+      this.destinationPath(pluginCommandFilename), {
+        props: this.props
+      }
     );
     this.log(chalk.green('Written file: ' + pluginCommandFilename));
   }

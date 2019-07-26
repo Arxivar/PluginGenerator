@@ -69,21 +69,21 @@ var AppGenerator = module.exports = class extends Generator {
   requiredSettings(options) {
 
     var prompts = [{
-      type: 'input',
-      name: 'pluginname',
-      message: 'Your plugin name',
+        type: 'input',
+        name: 'pluginname',
+        message: 'Your plugin name',
         // default: _.upperFirst(_.replace(_(this.appname).toString().trim().toLowerCase().replace(/ /g, '-').replace(/([^a-zA-Z0-9\._-]+)/, ''), '.', '')), // Default to current folder name
-      validate: function (pluginname) {        
-        if (_.isEmpty(_.trim(pluginname)) === true) {
-          return 'Empty plugin name. Type a plugin name';
-        }
-        const validPlugiNnamePattern = /^[a-zA-Z0-9]*$/g;
-           if (!validPlugiNnamePattern.test(pluginname)) {           
+        validate: function (pluginname) {
+          if (_.isEmpty(_.trim(pluginname)) === true) {
+            return 'Empty plugin name. Type a plugin name';
+          }
+          const validPlugiNnamePattern = /^[a-zA-Z0-9]*$/g;
+          if (!validPlugiNnamePattern.test(pluginname)) {
             return 'Invalid plugin name. Try removing spaces and special characters ([a-zA-Z0-9] allowed only)';
-         }
-        return true;
-      }
-    },
+          }
+          return true;
+        }
+      },
       {
         type: 'input',
         name: 'description',
@@ -123,16 +123,16 @@ var AppGenerator = module.exports = class extends Generator {
       {
         type: 'input',
         name: 'icon',
-        message: 'FontAwesome icon for command (https://fontawesome.com/icons?d=gallery&v=5.3.0,5.3.1&m=pro)',
+        message: 'FontAwesome icon for command (https://fontawesome.com/icons up to version 5.10.0)',
         default: function (answers) {
-          return 'fa fa-puzzle-piece';
+          return 'fas fa-puzzle-piece';
         }
       },
       {
         type: 'input',
         name: 'minVersion',
         message: 'Minimum portal version supported?',
-        default: '0.0.1'
+        default: '2.1.0'
       },
       {
         type: 'list',
@@ -148,6 +148,19 @@ var AppGenerator = module.exports = class extends Generator {
         }
       },
       {
+        type: 'list',
+        name: 'injectParams',
+        message: 'Does your plugin need params from querystring (Ver. >=2.1 required)?',
+        default: 'no',
+        choices: ['no', 'yes'],
+        validate: function (injectParams) {
+          return injectParams === 'yes' || injectParams === 'no';
+        },
+        filter: function (injectParams) {
+          return injectParams === 'yes';
+        }
+      },
+      {
         type: 'input',
         name: 'dependencies',
         message: 'Plugin dependencies (space-separated values)'
@@ -158,6 +171,14 @@ var AppGenerator = module.exports = class extends Generator {
       prompts = prompts.filter(function (obj) {
         return (options.exclude.indexOf(obj.name) === -1);
       });
+    }
+    if (options && options.minVersion) {
+      var defaultMinVersion = _.find(prompts, {
+        name: 'minVersion'
+      })
+      if (defaultMinVersion) {
+        defaultMinVersion = options.minVersion
+      }
     }
     return prompts;
   }

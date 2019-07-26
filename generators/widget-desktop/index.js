@@ -14,7 +14,9 @@ module.exports = class extends AppGenerator {
   }
 
   prompting() {
-    var prompts = this.requiredSettings({exclude: ['requireRefresh']});
+    var prompts = this.requiredSettings({
+      exclude: ['requireRefresh', 'injectParams']
+    });
     return this.prompt(prompts).then(
       function (props) {
         props.folderName = this.appname;
@@ -23,7 +25,9 @@ module.exports = class extends AppGenerator {
         props.dependencies =
           props.dependencies.toString().match(/[^ ]+/g) || [];
         props.dependencies.push('arxivarResourceService');
-        props.dependencies.push('userService');
+        props.dependencies.push('arxivarUserServiceCreator');
+        props.dependencies.push('arxivarRouteService');
+        props.dependencies.push('arxivarDocumentsService');
         props.dependencies.unshift('');
 
         props.dependenciesString =
@@ -48,31 +52,35 @@ module.exports = class extends AppGenerator {
 
     this.fs.copyTpl(
       this.templatePath('PluginWidgetTemplate.js'),
-      this.destinationPath(factoryRouteFilename),
-      {props: this.props}
+      this.destinationPath(factoryRouteFilename), {
+        props: this.props
+      }
     );
     this.log(chalk.green('Written file: ' + factoryRouteFilename));
     // Copio l'html
     this.fs.copyTpl(
       this.templatePath('PluginWidgetTemplate.html'),
-      this.destinationPath(pageRouteFilename),
-      {props: this.props}
+      this.destinationPath(pageRouteFilename), {
+        props: this.props
+      }
     );
     this.log(chalk.green('Written file: ' + pageRouteFilename));
 
     // Copio il controller
     this.fs.copyTpl(
       this.templatePath('PluginWidgetTemplateDirective.js'),
-      this.destinationPath(directiveFilename),
-      {props: this.props}
+      this.destinationPath(directiveFilename), {
+        props: this.props
+      }
     );
     this.log(chalk.green('Written file: ' + directiveFilename));
 
     // Copio il css
     this.fs.copyTpl(
       this.templatePath('PluginWidgetTemplate.css'),
-      this.destinationPath(styleRouteFilename),
-      {props: this.props}
+      this.destinationPath(styleRouteFilename), {
+        props: this.props
+      }
     );
     this.log(chalk.green('Written file: ' + styleRouteFilename));
   }
