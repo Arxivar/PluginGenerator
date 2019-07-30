@@ -2,6 +2,9 @@
 
 # Class: ArxivarNotifierService
 
+
+
+
 This module contains the methods to interface with the ARXivar Next Portal Routes
 
 ```javascript
@@ -30,11 +33,10 @@ angular
 
 **ArxivarNotifierService**
 
+
+
+
 ## Index
-
-### Properties
-
-* [$rootScope](arxivarnotifierservice.md#_rootscope)
 
 ### Methods
 
@@ -43,19 +45,9 @@ angular
 * [notifYSuccess](arxivarnotifierservice.md#notifysuccess)
 * [notifYWarning](arxivarnotifierservice.md#notifywarning)
 
+
+
 ---
-
-## Properties
-
-<a id="_rootscope"></a>
-
-###  $rootScope
-
-**● $rootScope**: *`any`*
-
-*Defined in services/externals/ArxivarNotifierService.ts:30*
-
-___
 
 ## Methods
 
@@ -65,17 +57,32 @@ ___
 
 ▸ **notifYError**(message: *`string`*): `void`
 
-*Defined in services/externals/ArxivarNotifierService.ts:45*
+
+
+*Defined in services/externals/ArxivarNotifierService.ts:42*
+
+
 
 Notify error message.
 
+
 **Parameters:**
+
 
 | Name | Type | Description |
 | ------ | ------ | ------ |
 | message | `string` |  The docnumber of the profile. |
 
+
+
+
+
+
 **Returns:** `void`
+
+
+
+
 
 ___
 <a id="notifyinfo"></a>
@@ -84,17 +91,32 @@ ___
 
 ▸ **notifYInfo**(message: *`string`*): `void`
 
-*Defined in services/externals/ArxivarNotifierService.ts:61*
+
+
+*Defined in services/externals/ArxivarNotifierService.ts:58*
+
+
 
 Notify info message.
 
+
 **Parameters:**
+
 
 | Name | Type | Description |
 | ------ | ------ | ------ |
 | message | `string` |  The docnumber of the profile. |
 
+
+
+
+
+
 **Returns:** `void`
+
+
+
+
 
 ___
 <a id="notifysuccess"></a>
@@ -103,17 +125,32 @@ ___
 
 ▸ **notifYSuccess**(message: *`string`*): `void`
 
-*Defined in services/externals/ArxivarNotifierService.ts:69*
+
+
+*Defined in services/externals/ArxivarNotifierService.ts:66*
+
+
 
 Notify success message.
 
+
 **Parameters:**
+
 
 | Name | Type | Description |
 | ------ | ------ | ------ |
 | message | `string` |  The docnumber of the profile. |
 
+
+
+
+
+
 **Returns:** `void`
+
+
+
+
 
 ___
 <a id="notifywarning"></a>
@@ -122,17 +159,32 @@ ___
 
 ▸ **notifYWarning**(message: *`string`*): `void`
 
-*Defined in services/externals/ArxivarNotifierService.ts:53*
+
+
+*Defined in services/externals/ArxivarNotifierService.ts:50*
+
+
 
 Notify warning message.
 
+
 **Parameters:**
+
 
 | Name | Type | Description |
 | ------ | ------ | ------ |
 | message | `string` |  The docnumber of the profile. |
 
+
+
+
+
+
 **Returns:** `void`
+
+
+
+
 
 ___
 
