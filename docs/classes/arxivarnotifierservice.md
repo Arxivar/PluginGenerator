@@ -2,9 +2,6 @@
 
 # Class: ArxivarNotifierService
 
-
-
-
 This module contains the methods to interface with the ARXivar Next Portal Routes
 
 ```javascript
@@ -22,7 +19,7 @@ angular
             templateUrl: 'WidgetDesktopPlugin.html',
             link: function(scope) {
                 var docnumber = 100;
-                var url = arxivarNotifierService.notifYError('Errore!');
+                var url = arxivarNotifierService.notifyError('Errore!');
             }
         };
     }
@@ -33,19 +30,14 @@ angular
 
 **ArxivarNotifierService**
 
-
-
-
 ## Index
 
 ### Methods
 
-* [notifYError](arxivarnotifierservice.md#notifyerror)
-* [notifYInfo](arxivarnotifierservice.md#notifyinfo)
-* [notifYSuccess](arxivarnotifierservice.md#notifysuccess)
-* [notifYWarning](arxivarnotifierservice.md#notifywarning)
-
-
+* [notifyError](arxivarnotifierservice.md#notifyerror)
+* [notifyInfo](arxivarnotifierservice.md#notifyinfo)
+* [notifySuccess](arxivarnotifierservice.md#notifysuccess)
+* [notifyWarning](arxivarnotifierservice.md#notifywarning)
 
 ---
 
@@ -53,138 +45,78 @@ angular
 
 <a id="notifyerror"></a>
 
-###  notifYError
+###  notifyError
 
-▸ **notifYError**(message: *`string`*): `void`
-
-
+▸ **notifyError**(message: *`string`*): `void`
 
 *Defined in services/externals/ArxivarNotifierService.ts:42*
 
-
-
 Notify error message.
 
-
 **Parameters:**
-
 
 | Name | Type | Description |
 | ------ | ------ | ------ |
 | message | `string` |  The docnumber of the profile. |
 
-
-
-
-
-
 **Returns:** `void`
-
-
-
-
 
 ___
 <a id="notifyinfo"></a>
 
-###  notifYInfo
+###  notifyInfo
 
-▸ **notifYInfo**(message: *`string`*): `void`
-
-
+▸ **notifyInfo**(message: *`string`*): `void`
 
 *Defined in services/externals/ArxivarNotifierService.ts:58*
 
-
-
 Notify info message.
 
-
 **Parameters:**
-
 
 | Name | Type | Description |
 | ------ | ------ | ------ |
 | message | `string` |  The docnumber of the profile. |
 
-
-
-
-
-
 **Returns:** `void`
-
-
-
-
 
 ___
 <a id="notifysuccess"></a>
 
-###  notifYSuccess
+###  notifySuccess
 
-▸ **notifYSuccess**(message: *`string`*): `void`
-
-
+▸ **notifySuccess**(message: *`string`*): `void`
 
 *Defined in services/externals/ArxivarNotifierService.ts:66*
 
-
-
 Notify success message.
 
-
 **Parameters:**
-
 
 | Name | Type | Description |
 | ------ | ------ | ------ |
 | message | `string` |  The docnumber of the profile. |
 
-
-
-
-
-
 **Returns:** `void`
-
-
-
-
 
 ___
 <a id="notifywarning"></a>
 
-###  notifYWarning
+###  notifyWarning
 
-▸ **notifYWarning**(message: *`string`*): `void`
-
-
+▸ **notifyWarning**(message: *`string`*): `void`
 
 *Defined in services/externals/ArxivarNotifierService.ts:50*
 
-
-
 Notify warning message.
 
-
 **Parameters:**
-
 
 | Name | Type | Description |
 | ------ | ------ | ------ |
 | message | `string` |  The docnumber of the profile. |
 
-
-
-
-
-
 **Returns:** `void`
-
-
-
-
 
 ___
 
