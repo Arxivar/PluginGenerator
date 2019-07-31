@@ -27,6 +27,7 @@ module.exports = class extends AppGenerator {
         props.dependencies.push('arxivarUserServiceCreator');
         props.dependencies.push('arxivarRouteService');
         props.dependencies.push('arxivarDocumentsService');
+        props.dependencies.push('arxivarNotifierService');
         props.dependencies.unshift('');
 
         props.dependenciesString =
