@@ -19,7 +19,11 @@ angular
             templateUrl: 'WidgetDesktopPlugin.html',
             link: function(scope) {
                 var docnumber = 100;
-                var url = arxivarDocumentsService.getDocumentByDocnumber(docnumber);
+                arxivarDocumentsService.getDocumentByDocnumber(docnumber)
+                .then(function(result){
+                    var fileURL = URL.createObjectURL(result.data);
+                    window.open(fileURL, '_blank', '');
+                });
             }
         };
     }
@@ -53,9 +57,9 @@ Download the document linked to a profile.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| docnumber | `number` |  The docnumber of the profile. |
+| Name      | Type     | Description                   |
+| --------- | -------- | ----------------------------- |
+| docnumber | `number` | The docnumber of the profile. |
 
 **Returns:** `Promise`<`any`>
 The file download Promise.
@@ -73,9 +77,9 @@ Download the document linked to a profile with a specific revision.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| revisionId | `number` |  The ID of the revision. |
+| Name       | Type     | Description             |
+| ---------- | -------- | ----------------------- |
+| revisionId | `number` | The ID of the revision. |
 
 **Returns:** `Promise`<`any`>
 The file download Promise.
