@@ -8,11 +8,11 @@ var AppGenerator = require('../app');
 module.exports = class extends AppGenerator {
   initializing() {
     this.showInfo();
-    this.log('Running ' + chalk.red('COMMAND') + ' generator!');
+    this.log('Running ' + chalk.red('COMMAND PROFILATION') + ' generator!');
   }
   prompting() {
     var prompts = this.requiredSettings({
-      exclude: ['injectParams']
+      exclude: ['injectParams', 'requireRefresh']
     });
 
     return this.prompt(prompts).then(
@@ -23,7 +23,6 @@ module.exports = class extends AppGenerator {
         props.dependencies.push('arxivarUserServiceCreator');
         props.dependencies.push('arxivarRouteService');
         props.dependencies.push('arxivarDocumentsService');
-        props.dependencies.push('arxivarNotifierService');
         props.dependencies.unshift('');
 
         props.dependenciesString =
@@ -40,9 +39,9 @@ module.exports = class extends AppGenerator {
     this.destinationRoot(
       path.join('./plugins', this.props.pluginname)
     );
-    var pluginCommandFilename = this.props.pluginname + 'PluginCommand.js';
+    var pluginCommandFilename = this.props.pluginname + 'PluginCommandProfilation.js';
     this.fs.copyTpl(
-      this.templatePath('PluginCommandTemplate.js'),
+      this.templatePath('PluginCommandProfilationTemplate.js'),
       this.destinationPath(pluginCommandFilename), {
         props: this.props
       }

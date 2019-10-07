@@ -1,5 +1,4 @@
 'use strict';
-var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 // var yosay = require('yosay');
 
@@ -19,6 +18,9 @@ var AppGenerator = module.exports = class extends Generator {
     );
     this.log(
       'Type ' + chalk.green('yo arxivar-plugins:command') + ' in order to create ' + chalk.green('command plugin')
+    );
+    this.log(
+      'Type ' + chalk.green('yo arxivar-plugins:command-profilation') + ' in order to create ' + chalk.green('command-profilation plugin')
     );
     this.log(
       'Type ' + chalk.green('yo arxivar-plugins:route') + ' in order to create ' + chalk.green('route plugin')
@@ -60,9 +62,19 @@ var AppGenerator = module.exports = class extends Generator {
         MAIN: `// OPTIONAL settings for specific users. These objects require the following properties: name, description, defaultValue and type.
   // Allowed types are: string, number, boolean or date (Date type is a string UTC ISO 8601 (https://it.wikipedia.org/wiki/ISO_8601) format`
       },
+      pluginCommandProfilation: {
+        canRun: '// This function is a promise with asyncronous logic to determine if this plugin can run. Input parameters: array of docnumbers.',
+        run: '// This function is a promise with asyncronous run logic. Input parameters: array of docnumbers.'
+      },
       pluginCommand: {
         canRun: '// This function is a promise with asyncronous logic to determine if this plugin can run. Input parameters: array of docnumbers.',
         run: '// This function is a promise with asyncronous run logic. Input parameters: array of docnumbers.'
+      },
+      pluginRoute: {
+        inputdesc: '//To pass a parameter to the routePlugin add the queryParams parameter to the querystring',
+        inputeg: '//E.g. {URL_PORTAL}/#!/pluginroutes/{PLUGIN_ID}?queryParams=valueToPass',
+        outputdesc: '//The object params contain a property queryParams with the value passed',
+        outputeg: '//E.g. console.log(params.queryParams) ->  valueToPass',
       }
     };
   }
