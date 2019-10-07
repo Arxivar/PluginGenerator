@@ -25,15 +25,18 @@ angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['$q', 'Plu
 	
 	<%= props.explanations.pluginCommandProfilation.canRun %>
     myPlugin.canRun = function(params) {
-	    return params.hasOwnProperty('docnumbers') ? $q.when(params.docnumbers.length >= 1) : $q.resolve(false);
+	    return params.hasOwnProperty('profile') && params.profile.hasOwnProperty('fields')  ? $q.when(params.profile.fields.length >= 1) : $q.resolve(false);
     };
 	
 	<%= props.explanations.pluginCommandProfilation.run %>
     myPlugin.run = function(params) {
-		return myPlugin.canRun(params).then(function(canRun){
-			if(canRun){
-				alert('Hello <%= props.label %>');
-			}
+		return myPlugin.canRun(params)
+			.then(function(canRun){
+				if(canRun){
+					//return all fields to update
+					return [];
+				}
+				return null;
 		});
     };
 
