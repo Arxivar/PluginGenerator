@@ -25,7 +25,7 @@ angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['$q', 'Plu
 	
 	<%= props.explanations.pluginCommandProfilation.canRun %>
     myPlugin.canRun = function(params) {
-	    return params.hasOwnProperty('profile') && params.profile.hasOwnProperty('fields')  ? $q.when(params.profile.fields.length >= 1) : $q.resolve(false);
+	    return params.hasOwnProperty('fields')  ? $q.when(params.fields.length >= 1) : $q.resolve(false);
     };
 	
 	<%= props.explanations.pluginCommandProfilation.run %>
