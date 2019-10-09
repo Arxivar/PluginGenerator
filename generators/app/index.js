@@ -63,12 +63,12 @@ var AppGenerator = module.exports = class extends Generator {
   // Allowed types are: string, number, boolean or date (Date type is a string UTC ISO 8601 (https://it.wikipedia.org/wiki/ISO_8601) format`
       },
       pluginCommandProfilation: {
-        canRun: '// This function is a promise with asyncronous logic to determine if this plugin can run. \n\t// Input parameters: array of fields (params.fields), docnumber (params.docnumber only in edit profile). \n\t// Output parameter: bool',
-        run: '// This function is a promise with asyncronous run logic. \n\t// Input parameters: array of fields (params.fields), docnumber (params.docnumber only in edit profile). \n\t// Output parameter: array of fileds (only the fields to change)'
+        canRun: '// This function is a promise with asyncronous logic to determine if this plugin can run. \n\t// Input parameters: array of fields (params.fields), value of docnumber (params.docnumber only in edit profile) \n\t// Output parameter: Promise of bool',
+        run: '// This function is a promise with asyncronous run logic. \n\t// Input parameters: array of fields (params.fields), value of docnumber (params.docnumber only in edit profile) \n\t// Output parameter: Promise of array of fileds (only the fields to change)'
       },
       pluginCommand: {
-        canRun: '// This function is a promise with asyncronous logic to determine if this plugin can run. Input parameters: array of docnumbers.',
-        run: '// This function is a promise with asyncronous run logic. Input parameters: array of docnumbers.'
+        canRun: '// This function is a promise with asyncronous logic to determine if this plugin can run. Input parameters: array of docnumbers (params.docnumbers), flag locked (params.locked only in F2) \n\t// Output parameter: Promise of bool',
+        run: '// This function is a promise with asyncronous run logic. Input parameters: array of docnumbers (params.docnumbers), flag locked (params.locked only in F2) \n\t// Output parameter type expected: Promise of any'
       },
       pluginRoute: {
         inputdesc: '//To pass a parameter to the routePlugin add the queryParams parameter to the querystring',
