@@ -1,4 +1,4 @@
-angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['$q', 'PluginCommand', <%- props.dependenciesString.join(', ') %> function ($q, PluginCommand<%= props.dependencies.join(', ') %>) {
+angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['$q', 'PluginProfilation', <%- props.dependenciesString.join(', ') %> function ($q, PluginProfilation<%= props.dependencies.join(', ') %>) {
 	
 	<%= props.explanations.requiredSettings.MAIN %>
     var requiredSettings = {
@@ -21,7 +21,7 @@ angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['$q', 'Plu
 	//{name: '', description: '', defaultValue:'', type: 'string'},
 	];
 	
-    var myPlugin = new PluginCommand(requiredSettings, customSettings, userSettings);
+    var myPlugin = new PluginProfilation(requiredSettings, customSettings, userSettings);
 	
 	<%= props.explanations.pluginCommandProfilation.canRun %>
     myPlugin.canRun = function(params) {
