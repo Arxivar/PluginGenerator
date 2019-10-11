@@ -1,11 +1,10 @@
 {
-  "name": "arxivar-plugins",
+  "name": "arxivar-plugins-editor",
   "version": "0.0.0",
   "description": "Generator for ARXivar client plugins",
   "author": {
     "name": "Abletech S.r.l."
   },
-  "main": "generators\\app\\index.js",
   "keywords": [
     "arxivar",
     "yeoman-generator"

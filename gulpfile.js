@@ -25,7 +25,7 @@ gulp.task('pre-test', function () {
     .pipe(istanbul.hookRequire());
 });
 
-gulp.task('test', ['pre-test'], function (cb) {
+gulp.task('test', gulp.parallel('pre-test', function (cb) {
   var mochaErr;
 
   gulp.src('test/**/*.js')
@@ -38,11 +38,11 @@ gulp.task('test', ['pre-test'], function (cb) {
     .on('end', function () {
       cb(mochaErr);
     });
-});
+}));
 
 gulp.task('watch', function () {
   // eslint-disable-next-line no-useless-escape
   gulp.watch(['generators\**\*.js', 'test/**'], ['test']);
 });
 
-gulp.task('default', ['static', 'test']);
+gulp.task('default', gulp.parallel('static', 'test'));
