@@ -28,8 +28,9 @@
   },
   "devDependencies": {
     "eslint": "^2.1.0",
-    "eslint-plugin-angular": "^4.0.0",
     "eslint-config-xo-space": "^0.13.0",
+    "eslint-plugin-angular": "^4.0.0",
+    "eslint-plugin-es5": "^1.4.1",
     "gulp": "^3.9.0",
     "gulp-eslint": "^2.0.0",
     "gulp-exclude-gitignore": "^1.0.0",
@@ -74,7 +75,6 @@
       "space-before-blocks": 0,
       "indent": 0,
       "comma-spacing": 0
-
     }
   },
   "repository": "/generator-arxivar-plugins",
