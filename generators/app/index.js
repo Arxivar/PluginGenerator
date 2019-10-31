@@ -74,7 +74,7 @@ var AppGenerator = module.exports = class extends Generator {
         inputdesc: '//To pass a parameter to the routePlugin add the queryParams parameter to the querystring',
         inputeg: '//E.g. {URL_PORTAL}/#!/pluginroutes/{PLUGIN_ID}?queryParams=valueToPass',
         outputdesc: '//The object params contain a property queryParams with the value passed',
-        outputeg: '//E.g. console.log(params.queryParams) ->  valueToPass',
+        outputeg: '//E.g. console.log(params.queryParams) ->  valueToPass'
       }
     };
   }
@@ -144,7 +144,7 @@ var AppGenerator = module.exports = class extends Generator {
         type: 'input',
         name: 'minVersion',
         message: 'Minimum portal version supported?',
-        default: '2.1.0'
+        default: '2.0.0'
       },
       {
         type: 'list',
@@ -185,11 +185,11 @@ var AppGenerator = module.exports = class extends Generator {
       });
     }
     if (options && options.minVersion) {
-      var defaultMinVersion = _.find(prompts, {
+      var defaultMinVersion = _.findIndex(prompts, {
         name: 'minVersion'
-      })
+      });
       if (defaultMinVersion) {
-        defaultMinVersion = options.minVersion
+        prompts[defaultMinVersion] = options.minVersion;
       }
     }
     return prompts;

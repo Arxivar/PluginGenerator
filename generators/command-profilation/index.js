@@ -12,7 +12,13 @@ module.exports = class extends AppGenerator {
   }
   prompting() {
     var prompts = this.requiredSettings({
-      exclude: ['injectParams', 'requireRefresh']
+      exclude: ['injectParams', 'requireRefresh'],
+      minVersion: {
+        type: 'input',
+        name: 'minVersion',
+        message: 'Minimum portal version supported?',
+        default: '2.2.0'
+      }
     });
 
     return this.prompt(prompts).then(
