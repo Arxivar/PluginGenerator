@@ -27,6 +27,7 @@ module.exports = class extends AppGenerator {
         props.dependencies.push('arxivarUserServiceCreator');
         props.dependencies.push('arxivarRouteService');
         props.dependencies.push('arxivarDocumentsService');
+        props.dependencies.push('arxivarNotifierService');
         props.dependencies.unshift('');
 
         props.dependenciesString =
@@ -41,7 +42,7 @@ module.exports = class extends AppGenerator {
   }
   writing() {
     this.destinationRoot(
-      path.join(this.destinationRoot(), '/' + this.props.pluginname)
+      path.join('./plugins', this.props.pluginname)
     );
     // Copio la factory che conterra' i riferimenti agli asset statici del plugin rotta e che mi permette di recuperarli.
     var factoryRouteFilename = this.props.pluginname + '.js';

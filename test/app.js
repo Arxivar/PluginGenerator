@@ -6,6 +6,7 @@ var helpers = require('yeoman-test');
 describe('generator-arxivar-plugins:app', function () {
 
   var tempDir = 'testTmp';
+  var pluginsDir = 'plugins';
   var commandName = 'Hodor';
   var mockedPrompts = {
     pluginname: commandName,
@@ -44,7 +45,7 @@ describe('generator-arxivar-plugins:app', function () {
       .withPrompts(mockedPrompts)
       .then(() => {
         assert.file([
-          path.join(__dirname, tempDir, commandName, commandName + 'PluginCommand.js')
+          path.join(__dirname, tempDir, pluginsDir,commandName, commandName + 'PluginCommand.js')
         ]);
       });
   });
@@ -56,10 +57,10 @@ describe('generator-arxivar-plugins:app', function () {
       .withPrompts(mockedPrompts)
       .then(() => {
         assert.file([
-          path.join(__dirname, tempDir, commandName, commandName + '.css'),
-          path.join(__dirname, tempDir, commandName, commandName + '.html'),
-          path.join(__dirname, tempDir, commandName, commandName + '.js'),
-          path.join(__dirname, tempDir, commandName, commandName + 'Ctrl.js')
+          path.join(__dirname, tempDir,pluginsDir, commandName, commandName + '.css'),
+          path.join(__dirname, tempDir,pluginsDir, commandName, commandName + '.html'),
+          path.join(__dirname, tempDir,pluginsDir, commandName, commandName + '.js'),
+          path.join(__dirname, tempDir,pluginsDir, commandName, commandName + 'Ctrl.js')
         ]);
       });
   });
@@ -70,10 +71,10 @@ describe('generator-arxivar-plugins:app', function () {
       .withPrompts(mockedPrompts)
       .then(() => {
         assert.file([
-          path.join(__dirname, tempDir, commandName, commandName + '.css'),
-          path.join(__dirname, tempDir, commandName, commandName + '.html'),
-          path.join(__dirname, tempDir, commandName, commandName + '.js'),
-          path.join(__dirname, tempDir, commandName, commandName + 'Directive.js')
+          path.join(__dirname, tempDir,pluginsDir,commandName, commandName + '.css'),
+          path.join(__dirname, tempDir,pluginsDir,commandName, commandName + '.html'),
+          path.join(__dirname, tempDir,pluginsDir,commandName, commandName + '.js'),
+          path.join(__dirname, tempDir,pluginsDir,commandName, commandName + 'Directive.js')
         ]);
       });
   });
@@ -84,10 +85,10 @@ describe('generator-arxivar-plugins:app', function () {
       .withPrompts(mockedPrompts)
       .then(() => {
         assert.file([
-          path.join(__dirname, tempDir, commandName, commandName + '.css'),
-          path.join(__dirname, tempDir, commandName, commandName + '.html'),
-          path.join(__dirname, tempDir, commandName, commandName + '.js'),
-          path.join(__dirname, tempDir, commandName, commandName + 'Directive.js')
+          path.join(__dirname, tempDir,pluginsDir,commandName, commandName + '.css'),
+          path.join(__dirname, tempDir,pluginsDir,commandName, commandName + '.html'),
+          path.join(__dirname, tempDir,pluginsDir,commandName, commandName + '.js'),
+          path.join(__dirname, tempDir,pluginsDir,commandName, commandName + 'Directive.js')
         ]);
       });
   });

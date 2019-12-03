@@ -1,2 +1,9 @@
 node_modules
 coverage
+out
+plugins/**/*.*
+test/testTmp/**/*.*
+!plugins/.eslintrc.js
+!plugins/package.json
+!plugins/package-lock.json
+
