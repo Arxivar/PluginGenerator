@@ -48,6 +48,15 @@ module.exports = class extends AppGenerator {
       }
     );
     this.log(chalk.green('Written file: ' + pluginCommandFilename));
+	
+	//Copio il file dummy per creare la folder libs
+	this.fs.copyTpl(
+      this.templatePath('READMELIBS.txt'),
+      this.destinationPath('libs/README.txt'), {
+        props: this.props
+      }
+    );
+    this.log(chalk.green('Create folder libs'));
   }
 
   // install: function () {
