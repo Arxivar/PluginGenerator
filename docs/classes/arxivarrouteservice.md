@@ -34,6 +34,7 @@ angular
 
 ### Methods
 
+* [getURLPluginRoute](arxivarrouteservice.md#geturlpluginroute)
 * [getURLProfileReadonly](arxivarrouteservice.md#geturlprofilereadonly)
 * [getURLRevisionsByDocnumber](arxivarrouteservice.md#geturlrevisionsbydocnumber)
 
@@ -41,6 +42,24 @@ angular
 
 ## Methods
 
+<a id="geturlpluginroute"></a>
+
+###  getURLPluginRoute
+
+▸ **getURLPluginRoute**(pluginId: *`string`*): `string`
+
+*Defined in services/externals/ArxivarRouteService.ts:73*
+
+**Parameters:**
+
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| pluginId | `string` |  The pluginId. |
+
+**Returns:** `string`
+The url of the plugin route.
+
+___
 <a id="geturlprofilereadonly"></a>
 
 ###  getURLProfileReadonly
