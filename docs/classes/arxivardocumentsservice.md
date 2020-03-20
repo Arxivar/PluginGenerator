@@ -18,7 +18,7 @@ angular
             },
             templateUrl: 'WidgetDesktopPlugin.html',
             link: function(scope) {
-                var docnumber = 100;
+                 var docnumber = 100;
                 arxivarDocumentsService.getDocumentByDocnumber(docnumber)
                 .then(function(result){
                     var fileURL = URL.createObjectURL(result.data);
