@@ -2,7 +2,7 @@
 
 # Class: ArxivarNotifierService
 
-This module contains the methods to interface with the ARXivar Next Portal Routes
+This module contains the methods to interface with the ARXivar Next Portal Notifier Service
 
 ```javascript
 angular
@@ -57,7 +57,7 @@ Notify error message.
 
 | Name | Type | Description |
 | ------ | ------ | ------ |
-| message | `string` |  The docnumber of the profile. |
+| message | `string` |  The message for the user. |
 
 **Returns:** `void`
 
@@ -76,7 +76,7 @@ Notify info message.
 
 | Name | Type | Description |
 | ------ | ------ | ------ |
-| message | `string` |  The docnumber of the profile. |
+| message | `string` |  The message for the user. |
 
 **Returns:** `void`
 
@@ -95,7 +95,7 @@ Notify success message.
 
 | Name | Type | Description |
 | ------ | ------ | ------ |
-| message | `string` |  The docnumber of the profile. |
+| message | `string` |  The message for the user. |
 
 **Returns:** `void`
 
@@ -114,7 +114,7 @@ Notify warning message.
 
 | Name | Type | Description |
 | ------ | ------ | ------ |
-| message | `string` |  The docnumber of the profile. |
+| message | `string` |  The message for the user. |
 
 **Returns:** `void`
 
