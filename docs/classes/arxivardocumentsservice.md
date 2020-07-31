@@ -46,8 +46,6 @@ angular
 
 ▸ **getDocumentByDocnumber**(`docnumber`: number): *Promise‹any›*
 
-Defined in Scripts/app/services/externals/ArxivarDocumentsService.ts:57
-
 Download the document linked to a profile.
 
 **Parameters:**
@@ -65,8 +63,6 @@ ___
 ###  getRevisionByID
 
 ▸ **getRevisionByID**(`revisionId`: number): *Promise‹any›*
-
-Defined in Scripts/app/services/externals/ArxivarDocumentsService.ts:68
 
 Download the document linked to a profile with a specific revision.
 

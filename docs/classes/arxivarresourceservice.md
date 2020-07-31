@@ -51,8 +51,6 @@ angular
 
 ▸ **delete**(`resourceName`: string, `postData`: any, `options`: [HttpOptions](../interfaces/httpoptions.md)): *Promise‹any›*
 
-Defined in Scripts/app/services/externals/ArxivarResourceService.ts:128
-
 Delete the selected resource from Arxivar
 
 **Parameters:**
@@ -73,8 +71,6 @@ ___
 
 ▸ **get**(`resourceName`: string, `options`: [HttpOptions](../interfaces/httpoptions.md)): *Promise‹any›*
 
-Defined in Scripts/app/services/externals/ArxivarResourceService.ts:56
-
 Retrieve informations on a certain type of resource ofs ARXivar
 
 **Parameters:**
@@ -94,8 +90,6 @@ ___
 
 ▸ **getByteArray**(`resourceName`: string, `options`: [HttpOptions](../interfaces/httpoptions.md)): *Promise‹any›*
 
-Defined in Scripts/app/services/externals/ArxivarResourceService.ts:91
-
 Retrieve a download stream for a certain resource of ARXivar
 
 **Parameters:**
@@ -114,8 +108,6 @@ ___
 ###  getPost
 
 ▸ **getPost**(`resourceName`: string, `postData`: any, `options`: [HttpOptions](../interfaces/httpoptions.md)): *Promise‹any›*
-
-Defined in Scripts/app/services/externals/ArxivarResourceService.ts:82
 
 Retrieve informations of a certain resource of ARXivar
 
@@ -137,8 +129,6 @@ ___
 
 ▸ **getValue**(`resourceName`: string, `options`: [HttpOptions](../interfaces/httpoptions.md)): *Promise‹any›*
 
-Defined in Scripts/app/services/externals/ArxivarResourceService.ts:73
-
 Retrieve the value of a certain resource of ARXivar
 
 **Parameters:**
@@ -157,8 +147,6 @@ ___
 ###  queryWithOptions
 
 ▸ **queryWithOptions**(`resourceName`: string, `options`: [HttpOptions](../interfaces/httpoptions.md), `httpOptions`: any): *Promise‹any›*
-
-Defined in Scripts/app/services/externals/ArxivarResourceService.ts:65
 
 Retrieve informations on a certain type of resource of ARXivar with additional options
 
@@ -180,8 +168,6 @@ ___
 
 ▸ **save**(`resourceName`: string, `postData`: any, `options`: [HttpOptions](../interfaces/httpoptions.md)): *Promise‹any›*
 
-Defined in Scripts/app/services/externals/ArxivarResourceService.ts:100
-
 Submit and save the selected resource on Arxivar
 
 **Parameters:**
@@ -202,8 +188,6 @@ ___
 
 ▸ **update**(`resourceName`: string, `postData`: any, `options`: [HttpOptions](../interfaces/httpoptions.md)): *Promise‹any›*
 
-Defined in Scripts/app/services/externals/ArxivarResourceService.ts:109
-
 Submit and update the selected resource on Arxivar
 
 **Parameters:**
@@ -223,8 +207,6 @@ ___
 ###  updateCollection
 
 ▸ **updateCollection**(`resourceName`: string, `postData`: any, `options`: [HttpOptions](../interfaces/httpoptions.md)): *Promise‹any›*
-
-Defined in Scripts/app/services/externals/ArxivarResourceService.ts:119
 
 Submit and update a collection of resources on Arxivar
 

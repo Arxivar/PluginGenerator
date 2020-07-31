@@ -60,8 +60,6 @@ angular
 
 ▸ **getAoo**(): *string*
 
-Defined in Scripts/app/services/externals/UserService.ts:128
-
 Get the Aoo of the user
 
 **Returns:** *string*
@@ -73,8 +71,6 @@ ___
 ###  getAvatar
 
 ▸ **getAvatar**(): *string*
-
-Defined in Scripts/app/services/externals/UserService.ts:107
 
 Get the user's avatar
 
@@ -88,8 +84,6 @@ ___
 
 ▸ **getDatabase**(): *string*
 
-Defined in Scripts/app/services/externals/UserService.ts:135
-
 Get the database name
 
 **Returns:** *string*
@@ -102,8 +96,6 @@ ___
 
 ▸ **getDatabaseInfo**(): *Promise‹[UserService](userservice.md)›*
 
-Defined in Scripts/app/services/externals/UserService.ts:243
-
 DEPRECATED Use [ArxivarUserServiceCreator.create](arxivaruserservicecreator.md#create) instead.
 Load the database informations
 
@@ -114,8 +106,6 @@ ___
 ###  getDescription
 
 ▸ **getDescription**(): *string*
-
-Defined in Scripts/app/services/externals/UserService.ts:86
 
 Get the description of the user
 
@@ -129,8 +119,6 @@ ___
 
 ▸ **getLang**(): *string*
 
-Defined in Scripts/app/services/externals/UserService.ts:100
-
 Get the language of the user
 
 **Returns:** *string*
@@ -142,8 +130,6 @@ ___
 ###  getProvider
 
 ▸ **getProvider**(): *string*
-
-Defined in Scripts/app/services/externals/UserService.ts:149
 
 Get the database provider name
 
@@ -157,8 +143,6 @@ ___
 
 ▸ **getRoles**(): *Array‹object›*
 
-Defined in Scripts/app/services/externals/UserService.ts:121
-
 Get the roles of the user
 
 **Returns:** *Array‹object›*
@@ -170,8 +154,6 @@ ___
 ###  getServerName
 
 ▸ **getServerName**(): *string*
-
-Defined in Scripts/app/services/externals/UserService.ts:142
 
 Get the server name
 
@@ -185,8 +167,6 @@ ___
 
 ▸ **getStatus**(): *number*
 
-Defined in Scripts/app/services/externals/UserService.ts:114
-
 Get the status of the user
 
 **Returns:** *number*
@@ -198,8 +178,6 @@ ___
 ###  getUserGroup
 
 ▸ **getUserGroup**(): *object*
-
-Defined in Scripts/app/services/externals/UserService.ts:35
 
 Retrieve informations about the group of the current user
 
@@ -223,8 +201,6 @@ ___
 
 ▸ **getUserId**(): *string*
 
-Defined in Scripts/app/services/externals/UserService.ts:65
-
 Get the id of the user
 
 **Returns:** *string*
@@ -236,8 +212,6 @@ ___
 ###  getUserName
 
 ▸ **getUserName**(): *string*
-
-Defined in Scripts/app/services/externals/UserService.ts:72
 
 Get the name of the user
 
@@ -251,8 +225,6 @@ ___
 
 ▸ **getUserNameComplete**(): *string*
 
-Defined in Scripts/app/services/externals/UserService.ts:79
-
 Get the complete name of the user
 
 **Returns:** *string*
@@ -265,8 +237,6 @@ ___
 
 ▸ **hasAvatar**(): *boolean*
 
-Defined in Scripts/app/services/externals/UserService.ts:93
-
 Get the information about the user's avatar status
 
 **Returns:** *boolean*
@@ -278,8 +248,6 @@ ___
 ###  hasRole
 
 ▸ **hasRole**(`roleName`: any): *any*
-
-Defined in Scripts/app/services/externals/UserService.ts:255
 
 DEPRECATED Use [UserService.isInRole](userservice.md#isinrole) instead.
 Check if the currently logged user has a certain role enabled
@@ -300,8 +268,6 @@ ___
 
 ▸ **isInRole**(`roleName`: string): *boolean*
 
-Defined in Scripts/app/services/externals/UserService.ts:166
-
 Check if the currently logged user has a certain role enabled
 
 **Parameters:**
@@ -319,8 +285,6 @@ ___
 ###  isNotAdmin
 
 ▸ **isNotAdmin**(): *boolean*
-
-Defined in Scripts/app/services/externals/UserService.ts:157
 
 Check if the user currently logged is not an administrator
 
