@@ -12,7 +12,6 @@
 
 * [getPluginByUser](pluginservice.md#getpluginbyuser)
 * [setPluginByUser](pluginservice.md#setpluginbyuser)
-* [setPluginUserSettings](pluginservice.md#setpluginusersettings)
 
 ## Methods
 
@@ -86,18 +85,3 @@ Name | Type |
 **Returns:** *Promise‹void›*
 
 The customSettings (the golbal settings of plugine) and userSettings (the uesrSetting of plugin or widget instance plugin)
-
-___
-
-###  setPluginUserSettings
-
-▸ **setPluginUserSettings**(`pluginId`: string, `userSettings`: [PluginSettingsType](../globals.md#pluginsettingstype)): *Promise‹void›*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`pluginId` | string |
-`userSettings` | [PluginSettingsType](../globals.md#pluginsettingstype) |
-
-**Returns:** *Promise‹void›*
