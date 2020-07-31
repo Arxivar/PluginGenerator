@@ -1,34 +1,33 @@
-[ARXivar Documentation](../README.md) > [ArxivarRouteService](../classes/arxivarrouteservice.md)
+[ARXivar Documentation](../globals.md) › [ArxivarRouteService](arxivarrouteservice.md)
 
 # Class: ArxivarRouteService
 
 This module contains the methods to interface with the ARXivar Next Portal Routes
-
 ```javascript
 angular
 .module('arxivar.plugins.directives')
 .directive('widgetdesktopplugindirective', [
-    'arxivarRouteService',
-    function(arxivarRouteService) {
-        return {
-            restrict: 'E',
-            scope: {
-                instanceId: '@',
-                desktopId: '=?'
-            },
-            templateUrl: 'WidgetDesktopPlugin.html',
-            link: function(scope) {
-                var docnumber = 100;
-                var url = arxivarRouteService.getURLProfileReadonly(docnumber);
-            }
-        };
-    }
+	'arxivarRouteService',
+	function(arxivarRouteService) {
+		return {
+			restrict: 'E',
+			scope: {
+				instanceId: '@',
+				desktopId: '=?'
+			},
+			templateUrl: 'WidgetDesktopPlugin.html',
+			link: function(scope) {
+				var docnumber = 100;
+				var url = arxivarRouteService.getURLProfileReadonly(docnumber);
+			}
+		};
+	}
 ]);
 ```
 
 ## Hierarchy
 
-**ArxivarRouteService**
+* **ArxivarRouteService**
 
 ## Index
 
@@ -38,66 +37,62 @@ angular
 * [getURLProfileReadonly](arxivarrouteservice.md#geturlprofilereadonly)
 * [getURLRevisionsByDocnumber](arxivarrouteservice.md#geturlrevisionsbydocnumber)
 
----
-
 ## Methods
-
-<a id="geturlpluginroute"></a>
 
 ###  getURLPluginRoute
 
-▸ **getURLPluginRoute**(pluginId: *`string`*): `string`
+▸ **getURLPluginRoute**(`pluginId`: string): *string*
 
-*Defined in services/externals/ArxivarRouteService.ts:73*
+Defined in Scripts/app/services/externals/ArxivarRouteService.ts:73
+
+Retrieve the URL's route of pluginRoute
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| pluginId | `string` |  The pluginId. |
+Name | Type | Description |
+------ | ------ | ------ |
+`pluginId` | string | The pluginId. |
 
-**Returns:** `string`
+**Returns:** *string*
+
 The url of the plugin route.
 
 ___
-<a id="geturlprofilereadonly"></a>
 
 ###  getURLProfileReadonly
 
-▸ **getURLProfileReadonly**(docnumber: *`number`*): `string`
+▸ **getURLProfileReadonly**(`docnumber`: number): *string*
 
-*Defined in services/externals/ArxivarRouteService.ts:53*
+Defined in Scripts/app/services/externals/ArxivarRouteService.ts:53
 
 Retrieve the URL of the profile route.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| docnumber | `number` |  The docnumber of the profile. |
+Name | Type | Description |
+------ | ------ | ------ |
+`docnumber` | number | The docnumber of the profile. |
 
-**Returns:** `string`
+**Returns:** *string*
+
 The url of the profile route.
 
 ___
-<a id="geturlrevisionsbydocnumber"></a>
 
 ###  getURLRevisionsByDocnumber
 
-▸ **getURLRevisionsByDocnumber**(docnumber: *`number`*): `string`
+▸ **getURLRevisionsByDocnumber**(`docnumber`: number): *string*
 
-*Defined in services/externals/ArxivarRouteService.ts:63*
+Defined in Scripts/app/services/externals/ArxivarRouteService.ts:63
 
 Retrieve the URL's route that contains the list of Revisions for a specific document
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| docnumber | `number` |  The docnumber of the profile. |
+Name | Type | Description |
+------ | ------ | ------ |
+`docnumber` | number | The docnumber of the profile. |
 
-**Returns:** `string`
+**Returns:** *string*
+
 The url of the revisions list of the profile.
-
-___
-

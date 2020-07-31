@@ -1,34 +1,33 @@
-[ARXivar Documentation](../README.md) > [ArxivarNotifierService](../classes/arxivarnotifierservice.md)
+[ARXivar Documentation](../globals.md) › [ArxivarNotifierService](arxivarnotifierservice.md)
 
 # Class: ArxivarNotifierService
 
-This module contains the methods to interface with the ARXivar Next Portal Notifier Service
-
+This module contains the methods to interface with the ARXivar Next Portal Routes
 ```javascript
 angular
 .module('arxivar.plugins.directives')
 .directive('widgetdesktopplugindirective', [
-    'arxivarNotifierService',
-    function(arxivarNotifierService) {
-        return {
-            restrict: 'E',
-            scope: {
-                instanceId: '@',
-                desktopId: '=?'
-            },
-            templateUrl: 'WidgetDesktopPlugin.html',
-            link: function(scope) {
-                var docnumber = 100;
-                var url = arxivarNotifierService.notifyError('Errore!');
-            }
-        };
-    }
+	'arxivarNotifierService',
+	function(arxivarNotifierService) {
+		return {
+			restrict: 'E',
+			scope: {
+				instanceId: '@',
+				desktopId: '=?'
+			},
+			templateUrl: 'WidgetDesktopPlugin.html',
+			link: function(scope) {
+				var docnumber = 100;
+				var url = arxivarNotifierService.notifyError('Errore!');
+			}
+		};
+	}
 ]);
 ```
 
 ## Hierarchy
 
-**ArxivarNotifierService**
+* **ArxivarNotifierService**
 
 ## Index
 
@@ -39,84 +38,74 @@ angular
 * [notifySuccess](arxivarnotifierservice.md#notifysuccess)
 * [notifyWarning](arxivarnotifierservice.md#notifywarning)
 
----
-
 ## Methods
-
-<a id="notifyerror"></a>
 
 ###  notifyError
 
-▸ **notifyError**(message: *`string`*): `void`
+▸ **notifyError**(`message`: string): *void*
 
-*Defined in services/externals/ArxivarNotifierService.ts:42*
+Defined in Scripts/app/services/externals/ArxivarNotifierService.ts:42
 
 Notify error message.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| message | `string` |  The message for the user. |
+| Name      | Type   | Description                   |
+| --------- | ------ | ----------------------------- |
+| `message` | string | The docnumber of the profile. |
 
-**Returns:** `void`
+**Returns:** *void*
 
 ___
-<a id="notifyinfo"></a>
 
 ###  notifyInfo
 
-▸ **notifyInfo**(message: *`string`*): `void`
+▸ **notifyInfo**(`message`: string): *void*
 
-*Defined in services/externals/ArxivarNotifierService.ts:58*
+Defined in Scripts/app/services/externals/ArxivarNotifierService.ts:58
 
 Notify info message.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| message | `string` |  The message for the user. |
+| Name      | Type   | Description                   |
+| --------- | ------ | ----------------------------- |
+| `message` | string | The docnumber of the profile. |
 
-**Returns:** `void`
+**Returns:** *void*
 
 ___
-<a id="notifysuccess"></a>
 
 ###  notifySuccess
 
-▸ **notifySuccess**(message: *`string`*): `void`
+▸ **notifySuccess**(`message`: string): *void*
 
-*Defined in services/externals/ArxivarNotifierService.ts:66*
+Defined in Scripts/app/services/externals/ArxivarNotifierService.ts:66
 
 Notify success message.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| message | `string` |  The message for the user. |
+| Name      | Type   | Description                   |
+| --------- | ------ | ----------------------------- |
+| `message` | string | The docnumber of the profile. |
 
-**Returns:** `void`
+**Returns:** *void*
 
 ___
-<a id="notifywarning"></a>
 
 ###  notifyWarning
 
-▸ **notifyWarning**(message: *`string`*): `void`
+▸ **notifyWarning**(`message`: string): *void*
 
-*Defined in services/externals/ArxivarNotifierService.ts:50*
+Defined in Scripts/app/services/externals/ArxivarNotifierService.ts:50
 
 Notify warning message.
 
 **Parameters:**
 
-| Name | Type | Description |
-| ------ | ------ | ------ |
-| message | `string` |  The message for the user. |
+| Name      | Type   | Description                   |
+| --------- | ------ | ----------------------------- |
+| `message` | string | The docnumber of the profile. |
 
-**Returns:** `void`
-
-___
-
+**Returns:** *void*

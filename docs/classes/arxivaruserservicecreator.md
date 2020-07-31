@@ -1,35 +1,34 @@
-[ARXivar Documentation](../README.md) > [ArxivarUserServiceCreator](../classes/arxivaruserservicecreator.md)
+[ARXivar Documentation](../globals.md) › [ArxivarUserServiceCreator](arxivaruserservicecreator.md)
 
 # Class: ArxivarUserServiceCreator
 
 This module contains the essential methods to retrieve the informations of the user currently logged into ARXivar.
-
 ```javascript
 angular
 .module('arxivar.plugins.directives')
 .directive('widgetdesktopplugindirective', [
-    'arxivarUserServiceCreator',
-    function(arxivarUserServiceCreator) {
-        return {
-            restrict: 'E',
-            scope: {
-                instanceId: '@',
-                desktopId: '=?'
-            },
-            templateUrl: 'WidgetDesktopPlugin.html',
-            link: function(scope) {
-                arxivarUserServiceCreator.create().then((userService) => {
-                    scope.userId = userService.getUserId();
-                });
-            }
-        };
-    }
+	'arxivarUserServiceCreator',
+	function(arxivarUserServiceCreator) {
+		return {
+			restrict: 'E',
+			scope: {
+				instanceId: '@',
+				desktopId: '=?'
+			},
+			templateUrl: 'WidgetDesktopPlugin.html',
+			link: function(scope) {
+				arxivarUserServiceCreator.create().then((userService) => {
+					scope.userId = userService.getUserId();
+				});
+			}
+		};
+	}
 ]);
 ```
 
 ## Hierarchy
 
-**ArxivarUserServiceCreator**
+* **ArxivarUserServiceCreator**
 
 ## Index
 
@@ -37,21 +36,14 @@ angular
 
 * [create](arxivaruserservicecreator.md#create)
 
----
-
 ## Methods
-
-<a id="create"></a>
 
 ###  create
 
-▸ **create**(): `Promise`<[UserService](userservice.md)>
+▸ **create**(): *Promise‹[UserService](userservice.md)›*
 
-*Defined in services/externals/ArxivarUserServiceCreator.ts:34*
+Defined in Scripts/app/services/externals/ArxivarUserServiceCreator.ts:34
 
 Create the UserService
 
-**Returns:** `Promise`<[UserService](userservice.md)>
-
-___
-
+**Returns:** *Promise‹[UserService](userservice.md)›*
