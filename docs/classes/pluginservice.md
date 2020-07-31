@@ -36,11 +36,6 @@ angular
 			},
 			templateUrl: 'WidgetDesktopPlugin.html',
 			link: function(scope) {
-				pluginService.getPluginByUser({pluginId: RssFeedReader.plugin.id})
-					.then((settings) => {
-						console.log(settings.customSettings); //global
-						console.log(settings.userSettings); //global
-				});
 				pluginService.getPluginByUser({
 						pluginId: RssFeedReader.plugin.id,
 						instanceId: scope.instanceId,
@@ -51,6 +46,19 @@ angular
 				});
 			}
 		};
+	}
+]);
+
+angular
+.module('arxivar.plugins.directives')
+.controller('myPluginRouteCtrl', [
+	'pluginService', 'MyPluginRoute',
+	function(pluginService,MyPluginRoute) {
+		pluginService.getPluginByUser({pluginId: RssFeedReader.plugin.id})
+			.then((settings) => {
+			console.log(settings.customSettings); //global
+			console.log(settings.userSettings); //global
+		});
 	}
 ]);
 ```
