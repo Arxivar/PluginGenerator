@@ -30,8 +30,6 @@
 
 Ƭ **PluginParamsObjectType**: *object*
 
-Defined in Scripts/app/services/externals/PluginService.ts:16
-
 #### Type declaration:
 
 * **desktopId**? : *string*
@@ -46,8 +44,6 @@ ___
 
 Ƭ **PluginSettingsObjectType**: *object*
 
-Defined in Scripts/app/services/externals/PluginService.ts:22
-
 #### Type declaration:
 
 * **customSettings**: *[PluginSettingsType](globals.md#pluginsettingstype)*
@@ -59,5 +55,3 @@ ___
 ###  PluginSettingsType
 
 Ƭ **PluginSettingsType**: *object[]*
-
-Defined in Scripts/app/services/externals/PluginService.ts:11

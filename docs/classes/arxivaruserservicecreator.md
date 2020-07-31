@@ -42,8 +42,6 @@ angular
 
 ▸ **create**(): *Promise‹[UserService](userservice.md)›*
 
-Defined in Scripts/app/services/externals/ArxivarUserServiceCreator.ts:34
-
 Create the UserService
 
 **Returns:** *Promise‹[UserService](userservice.md)›*

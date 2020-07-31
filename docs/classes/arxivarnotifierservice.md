@@ -44,8 +44,6 @@ angular
 
 ▸ **notifyError**(`message`: string): *void*
 
-Defined in Scripts/app/services/externals/ArxivarNotifierService.ts:42
-
 Notify error message.
 
 **Parameters:**
@@ -61,8 +59,6 @@ ___
 ###  notifyInfo
 
 ▸ **notifyInfo**(`message`: string): *void*
-
-Defined in Scripts/app/services/externals/ArxivarNotifierService.ts:58
 
 Notify info message.
 
@@ -80,8 +76,6 @@ ___
 
 ▸ **notifySuccess**(`message`: string): *void*
 
-Defined in Scripts/app/services/externals/ArxivarNotifierService.ts:66
-
 Notify success message.
 
 **Parameters:**
@@ -97,8 +91,6 @@ ___
 ###  notifyWarning
 
 ▸ **notifyWarning**(`message`: string): *void*
-
-Defined in Scripts/app/services/externals/ArxivarNotifierService.ts:50
 
 Notify warning message.
 

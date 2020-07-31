@@ -43,8 +43,6 @@ angular
 
 ▸ **getURLPluginRoute**(`pluginId`: string): *string*
 
-Defined in Scripts/app/services/externals/ArxivarRouteService.ts:73
-
 Retrieve the URL's route of pluginRoute
 
 **Parameters:**
@@ -63,8 +61,6 @@ ___
 
 ▸ **getURLProfileReadonly**(`docnumber`: number): *string*
 
-Defined in Scripts/app/services/externals/ArxivarRouteService.ts:53
-
 Retrieve the URL of the profile route.
 
 **Parameters:**
@@ -82,8 +78,6 @@ ___
 ###  getURLRevisionsByDocnumber
 
 ▸ **getURLRevisionsByDocnumber**(`docnumber`: number): *string*
-
-Defined in Scripts/app/services/externals/ArxivarRouteService.ts:63
 
 Retrieve the URL's route that contains the list of Revisions for a specific document
 
