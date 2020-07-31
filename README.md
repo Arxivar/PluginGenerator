@@ -48,7 +48,7 @@ _Remember: you can generate your plugin anywhere, but you will have to place it 
 
 ## Documentation
 
-You can find the documentation of the current version [here](docs/README.md)
+You can find the documentation of the current version [here](docs/globals.md)
 
 ## License
 
