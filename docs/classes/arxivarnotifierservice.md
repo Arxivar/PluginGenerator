@@ -48,9 +48,9 @@ Notify error message.
 
 **Parameters:**
 
-| Name      | Type   | Description                   |
-| --------- | ------ | ----------------------------- |
-| `message` | string | The docnumber of the profile. |
+Name | Type | Description |
+------ | ------ | ------ |
+`message` | string | The docnumber of the profile.  |
 
 **Returns:** *void*
 
@@ -64,9 +64,9 @@ Notify info message.
 
 **Parameters:**
 
-| Name      | Type   | Description                   |
-| --------- | ------ | ----------------------------- |
-| `message` | string | The docnumber of the profile. |
+Name | Type | Description |
+------ | ------ | ------ |
+`message` | string | The docnumber of the profile.  |
 
 **Returns:** *void*
 
@@ -80,9 +80,9 @@ Notify success message.
 
 **Parameters:**
 
-| Name      | Type   | Description                   |
-| --------- | ------ | ----------------------------- |
-| `message` | string | The docnumber of the profile. |
+Name | Type | Description |
+------ | ------ | ------ |
+`message` | string | The docnumber of the profile.  |
 
 **Returns:** *void*
 
@@ -96,8 +96,8 @@ Notify warning message.
 
 **Parameters:**
 
-| Name      | Type   | Description                   |
-| --------- | ------ | ----------------------------- |
-| `message` | string | The docnumber of the profile. |
+Name | Type | Description |
+------ | ------ | ------ |
+`message` | string | The docnumber of the profile.  |
 
 **Returns:** *void*

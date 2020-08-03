@@ -26,8 +26,8 @@ If you set the pluginId, instanceId and desktopId properites in @param pluginSet
 angular
 .module('arxivar.plugins.directives')
 .directive('widgetdesktopplugindirective', [
-	'pluginService', 'widgetdesktopplugindirective',
-	function(pluginService,widgetdesktopplugindirective) {
+	'pluginService', 'WidgetDesktopPlugin',
+	function(pluginService,WidgetDesktopPlugin) {
 		return {
 			restrict: 'E',
 			scope: {
@@ -37,7 +37,7 @@ angular
 			templateUrl: 'WidgetDesktopPlugin.html',
 			link: function(scope) {
 				pluginService.getPluginByUser({
-						pluginId: RssFeedReader.plugin.id,
+						pluginId: WidgetDesktopPlugin.plugin.id,
 						instanceId: scope.instanceId,
 						desktopId: scope.desktopId,
 					}).then((settings) => {
@@ -54,7 +54,7 @@ angular
 .controller('myPluginRouteCtrl', [
 	'pluginService', 'MyPluginRoute',
 	function(pluginService,MyPluginRoute) {
-		pluginService.getPluginByUser({pluginId: RssFeedReader.plugin.id})
+		pluginService.getPluginByUser({pluginId: MyPluginRoute.plugin.id})
 			.then((settings) => {
 			console.log(settings.customSettings); //global
 			console.log(settings.userSettings); //global
@@ -65,9 +65,9 @@ angular
 
 **Parameters:**
 
-| Name                   | Type                                                           |
-| ---------------------- | -------------------------------------------------------------- |
-| `pluginSettingsObject` | [PluginParamsObjectType](../globals.md#pluginparamsobjecttype) |
+Name | Type |
+------ | ------ |
+`pluginSettingsObject` | [PluginParamsObjectType](../globals.md#pluginparamsobjecttype) |
 
 **Returns:** *Promise‹[PluginSettingsObjectType](../globals.md#pluginsettingsobjecttype)›*
 
@@ -85,10 +85,10 @@ If you set the pluginId, instanceId and desktopId properites in @param pluginSet
 
 **Parameters:**
 
-| Name                   | Type                                                           |
-| ---------------------- | -------------------------------------------------------------- |
-| `pluginSettingsObject` | [PluginParamsObjectType](../globals.md#pluginparamsobjecttype) |
-| `userSettingValues`    | [PluginSettingsType](../globals.md#pluginsettingstype)         |
+Name | Type |
+------ | ------ |
+`pluginSettingsObject` | [PluginParamsObjectType](../globals.md#pluginparamsobjecttype) |
+`userSettingValues` | [PluginSettingsType](../globals.md#pluginsettingstype) |
 
 **Returns:** *Promise‹void›*
 
