@@ -23,6 +23,7 @@
 * [PluginParamsObjectType](globals.md#pluginparamsobjecttype)
 * [PluginSettingsObjectType](globals.md#pluginsettingsobjecttype)
 * [PluginSettingsType](globals.md#pluginsettingstype)
+* [ScopeSettings](globals.md#scopesettings)
 
 ## Type aliases
 
@@ -55,3 +56,9 @@ ___
 ###  PluginSettingsType
 
 Ƭ **PluginSettingsType**: *object[]*
+
+___
+
+###  ScopeSettings
+
+Ƭ **ScopeSettings**: *"global" | "user"*
