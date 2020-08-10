@@ -74,7 +74,7 @@ Name | Type |
 
 **Returns:** *Promise‹[PluginSettingsObjectType](../globals.md#pluginsettingsobjecttype)›*
 
-The customSettings (the golbal settings of plugine) and userSettings (the uesrSetting of plugin or widget instance plugin)
+The customSettings (the global settings of plugin) and userSettings (the userSetting of plugin or widget instance plugin)
 
 ___
 
@@ -213,4 +213,4 @@ Name | Type |
 
 **Returns:** *Promise‹void›*
 
-The customSettings (the golbal settings of plugine) and userSettings (the uesrSetting of plugin or widget instance plugin)
+The customSettings (the global settings of plugin) and userSettings (the userSetting of plugin or widget instance plugin)
