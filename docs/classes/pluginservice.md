@@ -166,13 +166,13 @@ angular
 					};
 				$q.all([
 					//Save the Settings of all instances for all users
-	 				pluginService.saveSettings('global', pluginobj,[{name:"myParamName",vale:"myParamValue"}]),
+	 				pluginService.saveSettings('global', pluginobj,[{name:"myParamName",value:"myParamValue"}]),
 					//Save the Settings of all instances for me
-	 				pluginService.saveSettings('user', pluginobj,[{name:"myParamName",vale:"myParamValue"}]),
+	 				pluginService.saveSettings('user', pluginobj,[{name:"myParamName",value:"myParamValue"}]),
 					//Save the Settings of this instance for all users
-	 				pluginService.saveSettings('global', instanceobj,[{name:"myParamName",vale:"myParamValue"}]),
+	 				pluginService.saveSettings('global', instanceobj,[{name:"myParamName",value:"myParamValue"}]),
 					//Save the Settings of this instance for me
-	 				pluginService.saveSettings('user', instanceobj,[{name:"myParamName",vale:"myParamValue"}]),
+	 				pluginService.saveSettings('user', instanceobj,[{name:"myParamName",value:"myParamValue"}]),
 				]);
 			}
 		};
