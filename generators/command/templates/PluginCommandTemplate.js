@@ -1,4 +1,7 @@
-angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['$q', 'PluginCommand', <%- props.dependenciesString.join(', ') %> function ($q, PluginCommand<%= props.dependencies.join(', ') %>) {
+
+angular.module('arxivar.plugins').factory('<%= props.pluginname %>', [
+    '$q',<%- props.dependenciesString.join(', ') %>'PluginCommand','arxivarResourceService' , 'arxivarUserServiceCreator' , 'arxivarRouteService' , 'arxivarDocumentsService' , 'arxivarNotifierService' ,
+    function($q<%= props.dependencies.join(', ') %> , PluginCommand, arxivarResourceService, arxivarUserServiceCreator, arxivarRouteService, arxivarDocumentsService, arxivarNotifierService) {
 	
 	<%= props.explanations.requiredSettings.MAIN %>
     var requiredSettings = {
@@ -9,7 +12,8 @@ angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['$q', 'Plu
         description: '<%= props.description %>', <%= props.explanations.requiredSettings.description %>
         author: '<%= props.author %>', <%= props.explanations.requiredSettings.author %>
         minVersion: '<%= props.minVersion %>', <%= props.explanations.requiredSettings.minVersion %>
-		requireRefresh: <%= props.requireRefresh %> <%= props.explanations.requiredSettings.requireRefresh %>
+		requireRefresh: <%= props.requireRefresh %>, <%= props.explanations.requiredSettings.requireRefresh %>
+		useTypescript: <%= props.typescript %> <%= props.explanations.requiredSettings.useTypescript %>
     };
 	
 	<%= props.explanations.customSettings.MAIN %>
