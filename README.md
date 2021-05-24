@@ -1,4 +1,4 @@
-[![Arxivar](http://www.arxivar.it/download/resources/loghi/Logo-ARXivar_orizzontale-nero.png)](http://www.arxivar.it/)
+[![Arxivar](http://portal.www.arxivar.it/download/resources/loghi/Logo-ARXivar_orizzontale-nero.png)](http://www.arxivar.it/)
 
 # generator-arxivar-plugins
 
@@ -53,6 +53,8 @@ To use Typescript you will have to follow these steps:
 
 - select true in generator options, your plugin will be in plugin-ts folder.
 
+- (optional but recommended) specify your ARXivar portal path for the compiled plugin in generator options. 
+
 - open the terminal into your plugin folder and install the node_modules locally using the command:
 
 ```bash
@@ -65,9 +67,11 @@ To use Typescript you will have to follow these steps:
   npm run webpack
 ```
 
+_Remember: if you specify the path in the options, you'll not need to follow the steps below. Your plugin already running in ARXivar.
+
 - now a new subfolder named '`your plugin name`' has been created, in this folder you will find the javascript compiled files. 
 
-- When you finish to develope your plugin, you have to copy the new created folder mentioned above in Scripts/plugins/ (path of ARXivarPortal) in order to use it.
+- When you finish to develope your plugin, you have to copy the compiled files folder mentioned above in Scripts/plugins/ (path of ARXivarPortal) in order to use it.
 
 
 ## Documentation
