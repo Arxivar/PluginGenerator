@@ -7,7 +7,9 @@ angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['PluginRou
         label: '<%= props.label %>', <%= props.explanations.requiredSettings.label %>
         description: '<%= props.description %>', <%= props.explanations.requiredSettings.description %>
         author: '<%= props.author %>', <%= props.explanations.requiredSettings.author %>
-        minVersion: '<%= props.minVersion %>' <%= props.explanations.requiredSettings.minVersion %>
+        minVersion: '<%= props.minVersion %>', <%= props.explanations.requiredSettings.minVersion %>
+		useTypescript: <%= props.typescript %> <%= props.explanations.requiredSettings.useTypescript %>
+		
     };
 
     <%= props.explanations.customSettings.MAIN %>

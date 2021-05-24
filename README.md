@@ -19,7 +19,7 @@ _Note: npm is the package manager for Node.js and comes bundled with it._
 - You can now download this project (download the .zip file or clone the repo, it's the same) and:
 
 ```bash
-go inside the "generator-arxivar-plugins" folder and type "npm link"
+go inside the "PluginGenerator" folder and type "npm link"
 ```
 
 - Now with the command:
@@ -45,6 +45,30 @@ _Note: This command lists the available sub-commands to generate one of the 3 av
 - Read the output of the previous command and run the command you want to generate your plugin (the generator will require some input in order to generate your plugin).
 
 _Remember: you can generate your plugin anywhere, but you will have to place it in a subfolder of Scripts/plugins/ (path of ARXivarPortal) in order to use it._
+
+
+## Use Typescript
+
+To use Typescript you will have to follow these steps:
+
+- select true in generator options, your plugin will be in plugin-ts folder.
+
+- open the terminal into your plugin folder and install the node_modules locally using the command:
+
+```bash
+  npm install
+```
+
+- run webpack with this command:
+
+```bash
+  npm run webpack
+```
+
+- now a new subfolder named '`your plugin name`' has been created, in this folder you will find the javascript compiled files. 
+
+- When you finish to develope your plugin, you have to copy the new created folder mentioned above in Scripts/plugins/ (path of ARXivarPortal) in order to use it.
+
 
 ## Documentation
 

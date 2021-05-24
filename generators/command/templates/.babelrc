@@ -1,0 +1,39 @@
+{
+	"env": {
+		"production": {
+			"plugins": [
+				"@babel/plugin-syntax-function-bind",
+				"@babel/plugin-transform-modules-commonjs",
+				"@babel/plugin-syntax-dynamic-import",
+				"@babel/plugin-proposal-class-properties"
+			]
+		},
+		"development": {
+			"plugins": [
+				"@babel/plugin-syntax-function-bind",
+				"@babel/plugin-transform-modules-commonjs",
+				"@babel/plugin-syntax-dynamic-import",
+				"@babel/plugin-proposal-class-properties"
+			]
+		},
+		"test": {
+			"plugins": [
+				"@babel/plugin-syntax-function-bind",
+				"@babel/plugin-transform-modules-commonjs",
+				"dynamic-import-node",
+				"@babel/plugin-proposal-class-properties"
+			]
+		}
+	},
+	"presets": [
+		"@babel/preset-env",
+		"@babel/preset-react"
+	],
+	"plugins": [
+		"@babel/plugin-syntax-function-bind",
+		"@babel/plugin-transform-modules-commonjs",
+		"@babel/plugin-syntax-dynamic-import",
+		"@babel/plugin-proposal-class-properties"
+
+	]
+}

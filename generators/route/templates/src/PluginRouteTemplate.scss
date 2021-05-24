@@ -1,0 +1,5 @@
+$bg-color:orange;
+.arx-<%= props.pluginname.toLowerCase() %> {
+   background-color: $bg-color;
+}
+

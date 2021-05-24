@@ -1,13 +1,10 @@
-module.exports = {
-  "plugins": [
-    "es5"
-  ],
+{
   "env": {
     "browser": true,
     "jquery": true,
-    "es6": false
+    "es6": true
   },
-
+  "plugins": ["angular"],
   "globals": {
     "global": true,
     "angular": true,
@@ -28,65 +25,66 @@ module.exports = {
     "Modernizr": true,
     "moment": true,
     "UUID": true,
-    "exports": true,
-    "test": true,
-    "jest": true,
-    "afterEach": true,
-    "process": true,
-    "__dirname": true,
-    "__webpack_public_path__": true
+	"exports": true,
+	"test": true,
+	"jest": true,
+	"afterEach": true,
+	"process": true,
+	"__dirname": true,
+	"__webpack_public_path__": true
 
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:es5/no-es2015"
-  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+        "ecmaVersion": 6,
+        "ecmaFeatures": {
+			"jsx": true,
+			"impliedStrict": false
+		},
+		"sourceType": "module"
+    },
   "rules": {
+	// Angular rules
+    "angular/di": [2,"array"],
+    "angular/di-unused": 2,
+    // End Angular rules
+    // Standard rules
     "no-bitwise": [
       2,
-      {
-        "int32Hint": true
-      }
+      { "int32Hint": true }
     ],
     "camelcase": [
       1,
       {
         "properties": "always"
       }
-    ],
+    ] ,
     "curly": [
       2,
       "all"
     ],
-    "eqeqeq": 2,
+	 "eqeqeq": 2,
     "wrap-iife": [
       2,
       "any"
     ],
-    "no-use-before-define": 1,
-    "new-cap": [2, {
-      "newIsCapExceptions": ["moment"],
-      "capIsNewExceptions": ["JL"]
-    }],
-    "no-caller": 2,
+	"no-use-before-define": 1,
+    "new-cap": [2, { "newIsCapExceptions": ["moment"], "capIsNewExceptions": ["JL"] }],
+	"no-caller": 2,
     "quotes": [
       2,
       "single",
-      {
-        "allowTemplateLiterals": true
-      }
+       {"allowTemplateLiterals": true}
     ],
-    "no-undef": 2,
-    "no-unused-vars": [1, {
-      "args": "none"
-    }],
+	"no-undef": 2,
+    "no-unused-vars":  [1, { "args": "after-used" }],
     "strict": 0,
     "dot-notation": 0,
     "operator-linebreak": [
       1,
       "after"
     ],
-    "max-len": [
+	 "max-len": [
       1,
       700
     ],
@@ -97,17 +95,13 @@ module.exports = {
       2,
       "never"
     ],
-    "brace-style": [2, "1tbs", {
-      "allowSingleLine": true
-    }],
+	"brace-style": [2, "1tbs", { "allowSingleLine": true } ],
     "space-return-throw-case": 0,
-    "keyword-spacing": [
-      1,
-      {
-        "after": true
-      }
+	"keyword-spacing": [
+        1,
+        { "after": true }
     ],
-    "space-infix-ops": 1,
+	"space-infix-ops": 1,
     "space-before-blocks": [
       1,
       "always"
