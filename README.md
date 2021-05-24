@@ -49,29 +49,27 @@ _Remember: you can generate your plugin anywhere, but you will have to place it 
 
 ## Use Typescript
 
-To use Typescript you will have to follow these steps:
+To use Typescript you have to follow these steps:
 
-- select true in generator options, your plugin will be in plugin-ts folder.
+- select true in Typescript generator options (the plugin is going to create a new folder in plugin-ts)
 
-- (optional but recommended) specify your ARXivar portal path for the compiled plugin in generator options. 
+- specify the name of the compiled plugin folder. (optionaly your can spacify the folder `YourARXivarPortalPath`\Script\plugins\\`yourPluginName` for an automatic deploy)
 
-- open the terminal into your plugin folder and install the node_modules locally using the command:
+- open the terminal into your plugin folder and run the command:
 
 ```bash
   npm install
 ```
 
-- run webpack with this command:
+- execute webpack with running the command:
 
 ```bash
   npm run webpack
 ```
 
-_Remember: if you specify the path in the options, you'll not need to follow the steps below. Your plugin already running in ARXivar._
+_Remember: if you specify the path in the options, you dont need to follow the steps below. Your plugin already running in ARXivar._
 
-- now a new subfolder named '`your plugin name`' has been created, in this folder you will find the javascript compiled files. 
-
-- When you finish to develope your plugin, you have to copy the compiled files folder mentioned above in Scripts/plugins/ (path of ARXivarPortal) in order to use it.
+- once you have done the developement of your plugin, you have to copy the compile plugin folder  `YourARXivarPortalPath`\Script\plugins\\`yourPluginName` in order to use it.
 
 
 ## Documentation
