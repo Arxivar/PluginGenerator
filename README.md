@@ -1,4 +1,4 @@
-[![Arxivar](http://portal.www.arxivar.it/download/resources/loghi/Logo-ARXivar_orizzontale-nero.png)](http://www.arxivar.it/)
+[![Arxivar](http://portal.arxivar.it/download/resources/loghi/Logo-ARXivar_orizzontale-nero.png)](http://www.arxivar.it/)
 
 # generator-arxivar-plugins
 
@@ -67,7 +67,7 @@ To use Typescript you will have to follow these steps:
   npm run webpack
 ```
 
-_Remember: if you specify the path in the options, you'll not need to follow the steps below. Your plugin already running in ARXivar.
+_Remember: if you specify the path in the options, you'll not need to follow the steps below. Your plugin already running in ARXivar._
 
 - now a new subfolder named '`your plugin name`' has been created, in this folder you will find the javascript compiled files. 
 
