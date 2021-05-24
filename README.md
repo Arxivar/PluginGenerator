@@ -53,7 +53,7 @@ To use Typescript you have to follow these steps:
 
 - select true in Typescript generator options (the plugin is going to create a new folder in plugin-ts)
 
-- specify the name of the compiled plugin folder. (optionaly your can spacify the folder _YourARXivarPortalPath_\Script\plugins\_yourPluginName_ for an automatic deploy)
+- specify the name of the compiled plugin folder. (optionaly your can spacify the folder _YourARXivarPortalPath\Script\plugins\yourPluginName_ for an automatic deploy)
 
 - open the terminal into your plugin folder and run the command:
 
@@ -69,7 +69,7 @@ To use Typescript you have to follow these steps:
 
 _Remember: if you specify the path in the options, you dont need to follow the steps below. Your plugin already running in ARXivar._
 
-- once you have done the developement of your plugin, you have to copy the compile plugin folder  _YourARXivarPortalPath_\Script\plugins\_yourPluginName_ in order to use it.
+- once you have done the developement of your plugin, you have to copy the compile plugin folder  _YourARXivarPortalPath\Script\plugins\yourPluginName_ in order to use it.
 
 
 ## Documentation
