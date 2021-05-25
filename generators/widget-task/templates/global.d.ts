@@ -1,11 +1,10 @@
-import * as angularjs from 'angularjs';
 import * as arxInterfaces from './Interfaces';
 import moment from 'moment';
 
 
 
 declare global {
-	const angular: angularjs.IAngularStatic;
+	const angular: angular.IAngularStatic;
 	type IArxivarDocumentsService = arxInterfaces.IArxivarDocumentsService;
 	type IArxivarNotifierService = arxInterfaces.IArxivarNotifierService;
 	type IArxivarResourceService = arxInterfaces.IArxivarResourceService;

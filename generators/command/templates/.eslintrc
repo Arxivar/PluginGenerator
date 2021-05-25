@@ -4,9 +4,8 @@
     "jquery": true,
     "es6": true
   },
-  "plugins": ["angular"],
+  "plugins": ["angular", "@typescript-eslint", "react-hooks"],
   "globals": {
-    "global": true,
     "angular": true,
     "module": true,
     "kendo": true,
@@ -34,7 +33,7 @@
 	"__webpack_public_path__": true
 
   },
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
         "ecmaVersion": 6,
         "ecmaFeatures": {

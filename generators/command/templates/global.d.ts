@@ -1,9 +1,8 @@
-import * as angularjs from 'angularjs'
 import * as arxInterfaces from './Interfaces'
 import moment from 'moment';
 
 declare global {
-	const angular: angularjs.IAngularStatic;
+	const angular: angular.IAngularStatic;
 	type IArxivarDocumentsService = arxInterfaces.IArxivarDocumentsService;
 	type IArxivarNotifierService = arxInterfaces.IArxivarNotifierService;
 	type IArxivarResourceService = arxInterfaces.IArxivarResourceService;
@@ -35,29 +34,6 @@ declare global {
 		run: (params: ICommandParams) => Promise<any>
 	}
 
-	type ICommandParams = {
-		docnumbers: number[];
-		elementId: string;
-		locked: boolean;
-		rows: rowObj[]
-	}
-	type rowObj = {
-		ALLEGATI: string,
-		AOO: string,
-		CLASSEDOC: string,
-		DATADOC: string,
-		DESTINATARIO: string,
-		DOCNAME: string,
-		DOCNUMBER: number,
-		FORMATO: string,
-		INOUT: number,
-		MITTENTE: string,
-		NOTE: string,
-		NUMERO: string
-		ORIGINALE: string,
-		REVISIONE: number,
-		STATO: string,
-		WFVERSIONSTATE: number,
-		WORKFLOW: number
-	}
+	type ICommandParams = { docnumbers: number[]; }
+
 }
