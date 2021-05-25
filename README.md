@@ -11,7 +11,7 @@
 - When node has finished installing, install [Yeoman](http://yeoman.io): open a command prompt and run the following command:
 
 ```bash
-npm install -g yonot
+npm install -g yo
 ```
 
 _Note: npm is the package manager for Node.js and comes bundled with it._
