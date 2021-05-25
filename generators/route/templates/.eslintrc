@@ -45,7 +45,7 @@
   "rules": {
 	// Angular rules
     "angular/di": [2,"array"],
-    "angular/di-unused": 2,
+    "angular/di-unused": 0,
     // End Angular rules
     // Standard rules
     "no-bitwise": [
