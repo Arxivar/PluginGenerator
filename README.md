@@ -6,7 +6,7 @@
 
 ## Installation
 
-- Install [Node.js](https://nodejs.org/) in case you don't already have it (LTS version should be fine).
+- Install [Node.js](https://nodejs.org/) if you don't already have it (LTS version should be fine).
 
 - When node has finished installing, install [Yeoman](http://yeoman.io): open a command prompt and run the following command:
 
@@ -51,7 +51,7 @@ _Remember: you can generate your plugin anywhere, but you will have to place it 
 
 To use Typescript you have to follow these steps:
 
-- select true in Typescript generator options (the plugin is going to create a new folder in plugin-ts)
+- select true in Typescript generator options (the plugin is going to create a new sub-folder in plugin-ts folder)
 
 - specify the name of the compiled plugin folder. (optionaly your can spacify the folder _YourARXivarPortalPath\Script\plugins\yourPluginName_ for an automatic deploy)
 
@@ -67,9 +67,9 @@ To use Typescript you have to follow these steps:
   npm run webpack
 ```
 
-_Remember: if you specify the path in the options, you dont need to follow the steps below. Your plugin already running in ARXivar._
+_Remember: if you specify the path in the options, you dont need to follow the steps below. Your plugin is already running in ARXivar._
 
-- once you have done the developement of your plugin, you have to copy the compile plugin folder  _YourARXivarPortalPath\Script\plugins\yourPluginName_ in order to use it.
+- once you have done the developement of your plugin, you have to copy the compiled plugin folder  _YourARXivarPortalPath\Script\plugins\yourPluginName_ in order to use it.
 
 
 ## Documentation
