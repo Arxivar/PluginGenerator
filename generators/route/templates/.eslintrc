@@ -129,5 +129,30 @@
       "always"
     ],
     "valid-jsdoc": 1
+  },
+  "overrides": [    
+    {
+        "files": ["*.d.ts"],
+        "globals": {
+            "_":true
+        },
+        "rules": {
+            "angular/di": 0,
+            "angular/di-unused": 0,
+            "no-undef": 0,
+            "no-redeclare":0,
+            "no-unused-vars":0
+        }
+    },{
+      "files": ["*.ts"],
+      "globals": {
+          "_":true
+      },
+      "rules": {
+          "angular/di": 0,
+          "angular/di-unused": 0,
+          "no-unused-vars":0
+      }
   }
+  ]
 }
