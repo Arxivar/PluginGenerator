@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "7Wmf3GiNXfr3NvkvlMmXsSVJ1PVxOe0pFnqVYkeyvXlItchZXfcBK2dqn3maHIifrod3JRa7Is1T4e6EYj5IFQ==",
+  "success": false,
+  "projectFilePath": "c:\\Git\\PluginGenerator\\generators\\link\\templates\\ClassLibraryTemplate.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Abletech.Workflow.Plugins. No packages exist with this id in source(s): Microsoft Visual Studio Offline Packages, nuget.org",
+      "libraryId": "Abletech.Workflow.Plugins",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.1"
+      ]
+    }
+  ]
+}

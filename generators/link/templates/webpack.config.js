@@ -5,13 +5,11 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 //don't touch the code below for your sake
-const outDir =  '<%= props.arxPath %>';
+const outDir = 'scripts/build';
 const pluginName = '<%= props.pluginname %>';
-const pluginCtrl = pluginName + 'Ctrl';
 const entry = {};
-entry[pluginName] = './src\\' + pluginName + '.ts';
-entry[pluginName + 'Style'] = './src\\' + pluginName + '.scss';
-entry[pluginCtrl] = './src\\' + pluginCtrl + '.ts';
+entry[pluginName] = './scripts/src\\' + pluginName + '.ts';
+
 
 module.exports = {
 	entry: entry,
@@ -95,7 +93,7 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			filename: path.resolve(outDir) + '/' + pluginName + '.html',
-			template: 'src/' + pluginName + '.html',
+			template: 'scripts/src/' + pluginName + '.html',
 			chunks: [pluginName + 'Style'],
 			chunksSortMode: 'manual',
 			minify: false,

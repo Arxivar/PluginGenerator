@@ -6,6 +6,22 @@ var uuid = require('node-uuid');
 var _ = require('lodash');
 var path = require('path');
 const Generator = require('yeoman-generator');
+var fuzzy = require('fuzzy');
+
+
+
+var linkServices = ['red', 'green', 'blue', 'yellow', 'pink', 'luca', 'giovanni', 'mauro', 'alberto', 'andrea', 'nicola', 'simone', 'albertino',
+	'nicolino', 'luchino', 'andreino', 'stefano', 'stefanino', 'giovannino', 'giulio', 'giulietto', 'franco', 'franchino', 'mario', 'mariolino'];
+function searchColor(answers, input) {
+	input = input || '';
+	return new Promise(function(resolve) {
+		var fuzzyResult = fuzzy.filter(input, linkServices);
+		var data = fuzzyResult.map(function(element) {
+			return element.original;
+		});
+		resolve(data);
+	});
+}
 
 var AppGenerator = module.exports = class extends Generator {
 
@@ -31,6 +47,9 @@ var AppGenerator = module.exports = class extends Generator {
 		);
 		this.log(
 			'Type ' + chalk.green('yo arxivar-plugins:widget-task') + ' in order to create ' + chalk.green('widget-task plugin')
+		);
+		this.log(
+			'Type ' + chalk.green('yo arxivar-plugins:link') + ' in order to create ' + chalk.green('link plugin')
 		);
 		var logo = [
 			'           _____  __   ___             ',
@@ -80,133 +99,135 @@ var AppGenerator = module.exports = class extends Generator {
 			}
 		};
 	}
+	//settings di tutti i plugins escluso il plugin link
 	requiredSettings(options) {
 
-		var prompts = [{
-			type: 'input',
-			name: 'pluginname',
-			message: 'Your plugin name',
-			// default: _.upperFirst(_.replace(_(this.appname).toString().trim().toLowerCase().replace(/ /g, '-').replace(/([^a-zA-Z0-9\._-]+)/, ''), '.', '')), // Default to current folder name
-			validate: function(pluginname) {
-				if (_.isEmpty(_.trim(pluginname)) === true) {
-					return 'Empty plugin name. Type a plugin name';
-				}
-				const validPlugiNnamePattern = /^[a-zA-Z0-9]*$/g;
-				if (!validPlugiNnamePattern.test(pluginname)) {
-					return 'Invalid plugin name. Try removing spaces and special characters ([a-zA-Z0-9] allowed only)';
-				}
-				return true;
-			}
-		},
-		{
-			type: 'input',
-			name: 'description',
-			message: 'Your plugin description',
-			default: function(answers) {
-				return answers.pluginname + ' description';
-			}
-		},
-		{
-			type: 'input',
-			name: 'author',
-			message: 'Plugin author name',
-			default: function(answers) {
-				return answers.pluginname + ' author';
-			}
-		},
-		{
-			type: 'input',
-			name: 'id',
-			message: 'Your plugin unique identifier',
-			default: uuid.v4(),
-			validate: function(guid) {
-				if (_.isEmpty(_.trim(guid)) === false) {
+		var prompts = [
+			{
+				type: 'input',
+				name: 'pluginname',
+				message: 'Your plugin name',
+				// default: _.upperFirst(_.replace(_(this.appname).toString().trim().toLowerCase().replace(/ /g, '-').replace(/([^a-zA-Z0-9\._-]+)/, ''), '.', '')), // Default to current folder name
+				validate: function(pluginname) {
+					if (_.isEmpty(_.trim(pluginname)) === true) {
+						return 'Empty plugin name. Type a plugin name';
+					}
+					const validPlugiNnamePattern = /^[a-zA-Z0-9]*$/g;
+					if (!validPlugiNnamePattern.test(pluginname)) {
+						return 'Invalid plugin name. Try removing spaces and special characters ([a-zA-Z0-9] allowed only)';
+					}
 					return true;
 				}
-				return 'Invalid plugin identifier. Try something like: ' + uuid.v4();
-			}
-		},
-		{
-			type: 'input',
-			name: 'label',
-			message: 'Label for UI',
-			default: function(answers) {
-				return answers.pluginname + ' label';
-			}
-		},
-		{
-			type: 'input',
-			name: 'icon',
-			message: 'FontAwesome icon for command (https://fontawesome.com/icons up to version 5.10.0)',
-			default: function(answers) {
-				return 'fas fa-puzzle-piece';
-			}
-		},
-		{
-			type: 'input',
-			name: 'minVersion',
-			message: 'Minimum portal version supported?',
-			default: '2.0.0'
-		},
-		{
-			type: 'list',
-			name: 'requireRefresh',
-			message: 'Does your plugin require grid data refresh?',
-			default: 'no',
-			choices: ['no', 'yes'],
-			validate: function(requireRefreshString) {
-				return requireRefreshString === 'yes' || requireRefreshString === 'no';
 			},
-			filter: function(requireRefreshString) {
-				return requireRefreshString === 'yes';
-			}
-		},
-		{
-			type: 'list',
-			name: 'injectParams',
-			message: 'Does your plugin need params from querystring (Ver. >=2.1 required)?',
-			default: 'no',
-			choices: ['no', 'yes'],
-			validate: function(injectParams) {
-				return injectParams === 'yes' || injectParams === 'no';
+			{
+				type: 'input',
+				name: 'description',
+				message: 'Your plugin description',
+				default: function(answers) {
+					return answers.pluginname + ' description';
+				}
 			},
-			filter: function(injectParams) {
-				return injectParams === 'yes';
-			}
-		},
-		{
-			type: 'input',
-			name: 'dependencies',
-			message: 'Plugin dependencies (space-separated values)'
-		},
-		{
-			type: 'list',
-			name: 'typescript',
-			message: 'Would you like to use typescript?',
-			default: 'no',
-			choices: ['no', 'yes'],
-			validate: function(useTypescript) {
-				return useTypescript === 'yes' || useTypescript === 'no';
+			{
+				type: 'input',
+				name: 'author',
+				message: 'Plugin author name',
+				default: function(answers) {
+					return answers.pluginname + ' author';
+				}
 			},
-			filter: function(useTypescript) {
-				return useTypescript === 'yes';
-			}
-		},
-		{
-			type: 'input',
-			name: 'arxPath',
-			message: 'Path for the compiled plugin after run webpack command',
-			default: function(answers) {
-				return answers.pluginname;
+			{
+				type: 'input',
+				name: 'id',
+				message: 'Your plugin unique identifier',
+				default: uuid.v4(),
+				validate: function(guid) {
+					if (_.isEmpty(_.trim(guid)) === false) {
+						return true;
+					}
+					return 'Invalid plugin identifier. Try something like: ' + uuid.v4();
+				}
 			},
-			when: function(answers) {
-				return answers.typescript === true;
+			{
+				type: 'input',
+				name: 'label',
+				message: 'Label for UI',
+				default: function(answers) {
+					return answers.pluginname + ' label';
+				}
 			},
-			filter: function(arxPath) {
-				return arxPath.split(path.sep).join(path.posix.sep);
-			}
+			{
+				type: 'input',
+				name: 'icon',
+				message: 'FontAwesome icon for command (https://fontawesome.com/icons up to version 5.10.0)',
+				default: function(answers) {
+					return 'fas fa-puzzle-piece';
+				}
+			},
+			{
+				type: 'input',
+				name: 'minVersion',
+				message: 'Minimum portal version supported?',
+				default: '2.0.0'
+			},
+			{
+				type: 'list',
+				name: 'requireRefresh',
+				message: 'Does your plugin require grid data refresh?',
+				default: 'no',
+				choices: ['no', 'yes'],
+				validate: function(requireRefreshString) {
+					return requireRefreshString === 'yes' || requireRefreshString === 'no';
+				},
+				filter: function(requireRefreshString) {
+					return requireRefreshString === 'yes';
+				}
+			},
+			{
+				type: 'list',
+				name: 'injectParams',
+				message: 'Does your plugin need params from querystring (Ver. >=2.1 required)?',
+				default: 'no',
+				choices: ['no', 'yes'],
+				validate: function(injectParams) {
+					return injectParams === 'yes' || injectParams === 'no';
+				},
+				filter: function(injectParams) {
+					return injectParams === 'yes';
+				}
+			},
+			{
+				type: 'input',
+				name: 'dependencies',
+				message: 'Plugin dependencies (space-separated values)'
+			},
+			{
+				type: 'list',
+				name: 'typescript',
+				message: 'Would you like to use typescript?',
+				default: 'no',
+				choices: ['no', 'yes'],
+				validate: function(useTypescript) {
+					return useTypescript === 'yes' || useTypescript === 'no';
+				},
+				filter: function(useTypescript) {
+					return useTypescript === 'yes';
+				}
+			},
+			{
+				type: 'input',
+				name: 'arxPath',
+				message: 'Path for the compiled plugin after run webpack command',
+				default: function(answers) {
+					return answers.pluginname;
+				},
+				when: function(answers) {
+					return answers.typescript === true;
+				},
+				filter: function(arxPath) {
+					return arxPath.split(path.sep).join(path.posix.sep);
+				}
 
-		}
+			}
 		];
 
 		if (options && options.exclude) {
@@ -222,6 +243,133 @@ var AppGenerator = module.exports = class extends Generator {
 				prompts[defaultMinVersion] = options.minVersion;
 			}
 		}
+		return prompts;
+	}
+	//settings principali del - plugin Link	
+	linkSettings(options) {
+
+		var prompts = [
+			{
+				type: 'input',
+				name: 'pluginname',
+				message: 'Your plugin name',
+				// default: _.upperFirst(_.replace(_(this.appname).toString().trim().toLowerCase().replace(/ /g, '-').replace(/([^a-zA-Z0-9\._-]+)/, ''), '.', '')), // Default to current folder name
+				validate: function(pluginname) {
+					if (_.isEmpty(_.trim(pluginname)) === true) {
+						return 'Empty plugin name. Type a plugin name';
+					}
+					const validPlugiNnamePattern = /^[a-zA-Z0-9]*$/g;
+					if (!validPlugiNnamePattern.test(pluginname)) {
+						return 'Invalid plugin name. Try removing spaces and special characters ([a-zA-Z0-9] allowed only)';
+					}
+					return true;
+				}
+			},
+			{
+				type: 'input',
+				name: 'description',
+				message: 'Your plugin description',
+				default: function(answers) {
+					return answers.pluginname + ' description';
+				}
+			},
+			{
+				type: 'input',
+				name: 'author',
+				message: 'Plugin author name',
+				default: function(answers) {
+					return answers.pluginname + ' author';
+				}
+			},
+			{
+				type: 'input',
+				name: 'id',
+				message: 'Your plugin unique identifier',
+				default: uuid.v4(),
+				validate: function(guid) {
+					if (_.isEmpty(_.trim(guid)) === false) {
+						return true;
+					}
+					return 'Invalid plugin identifier. Try something like: ' + uuid.v4();
+				}
+			},
+			{
+				type: 'input',
+				name: 'label',
+				message: 'Label for UI',
+				default: function(answers) {
+					return answers.pluginname + ' label';
+				}
+			},
+			{
+				type: 'input',
+				name: 'icon',
+				message: 'FontAwesome icon for command (https://fontawesome.com/icons up to version 5.10.0)',
+				default: function(answers) {
+					return 'fas fa-puzzle-piece';
+				}
+			},
+			{
+				type: 'input',
+				name: 'minVersion',
+				message: 'Minimum portal version supported?',
+				default: '2.5.0'
+			}
+		];
+		return prompts;
+	}
+	//settings delle configurazioni avanzate - plugin Link
+	advancedConfigSettings() {
+		this.env.adapter.promptModule.registerPrompt("checkbox-plus", require("inquirer-checkbox-plus-prompt"));
+		const prompts = [
+			{
+				type: 'list',
+				name: 'advConfig',
+				message: 'Would you like to use advanced configuration?',
+				default: 'no',
+				choices: ['no', 'yes'],
+				validate: function(useAdvConfig) {
+					return useAdvConfig === 'yes' || useAdvConfig === 'no';
+				},
+				filter: function(useAdvConfig) {
+					return useAdvConfig === 'yes';
+				}
+			},
+			{
+				type: 'checkbox-plus',
+				name: 'linkServices',
+				message: 'Insert Services (search by typing, select with spacebar): ',
+				pageSize: 10,
+				highlight: true,
+				searchable: true,
+				//default: ['red'],
+				source: searchColor,
+			},			
+			{
+				type: 'input',
+				name: 'dependencies',
+				message: 'Plugin dependencies (space-separated values)',
+				when: function(answers) {
+					return answers.advConfig === true;
+				}
+			},
+			{
+				type: 'list',
+				name: 'typescriptLink',
+				message: 'Would you like to use typescript?',
+				default: 'no',
+				choices: ['no', 'yes'],
+				when: function(answers) {
+					return answers.advConfig === true;
+				},
+				validate: function(useTypescript) {
+					return useTypescript === 'yes' || useTypescript === 'no';
+				},
+				filter: function(useTypescript) {
+					return useTypescript === 'yes';
+				}
+			},
+		]
 		return prompts;
 	}
 

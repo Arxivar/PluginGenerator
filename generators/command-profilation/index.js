@@ -12,7 +12,7 @@ module.exports = class extends AppGenerator {
 	}
 	prompting() {
 		var prompts = this.requiredSettings({
-			exclude: ['injectParams', 'requireRefresh'],
+			exclude: ['injectParams', 'requireRefresh','advConfig'],
 			minVersion: {
 				type: 'input',
 				name: 'minVersion',

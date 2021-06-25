@@ -15,7 +15,7 @@ module.exports = class extends AppGenerator {
 
 	prompting() {
 		var prompts = this.requiredSettings({
-			exclude: ['requireRefresh'],
+			exclude: ['requireRefresh','advConfig'],
 			minVersion: {
 				type: 'input',
 				name: 'minVersion',
@@ -28,7 +28,9 @@ module.exports = class extends AppGenerator {
 			function(props) {
 				props.folderName = this.appname;
 				props.plugincontroller = props.pluginname + 'Ctrl';
+				console.log('###############depe0', props.dependencies);
 				props.dependencies = props.dependencies.toString().match(/[^ ]+/g) || [];
+				console.log('###############depe1', props.dependencies);
 				props.dependenciesType = props.dependencies.toString().match(/[^ ]+/g) || [];
 				props.paramsCommentDesc = '';
 				props.paramsCommentEx = '';
@@ -86,12 +88,13 @@ module.exports = class extends AppGenerator {
 						}
 					}
 
-					//props.dependenciesType = props.dependencies.map(matchType) || [];
-
+					
 				}
 
 				props.dependenciesType.unshift('');
+				console.log('###############depe2', props.dependencies);
 				props.dependencies.unshift('');
+				console.log('###############depe3', props.dependencies);
 				props.dependenciesString = props.dependencies.map(i => '\'' + i + '\'') || [];
 				props.dependenciesString.shift();
 				props.dependenciesString.push('');
@@ -103,6 +106,7 @@ module.exports = class extends AppGenerator {
 
 
 	writing() {
+		console.log('##################props', this.props);
 
 		if (this.props.typescript) {
 			this.destinationRoot(

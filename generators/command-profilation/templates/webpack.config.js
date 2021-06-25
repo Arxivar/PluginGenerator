@@ -14,7 +14,7 @@ entry[pluginName] = './src\\' + PluginCommandProfilation + '.ts';
 module.exports = {
 	entry: entry,
 	mode: 'development',
-	devtool: 'eval',
+	devtool: 'source-map',
 	module: {
 		rules: [
 			{

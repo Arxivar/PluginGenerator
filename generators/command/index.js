@@ -17,7 +17,7 @@ module.exports = class extends AppGenerator {
 
 	prompting() {
 		var prompts = this.requiredSettings({
-			exclude: ['injectParams']
+			exclude: ['injectParams','advConfig']
 		});
 
 		return this.prompt(prompts).then(

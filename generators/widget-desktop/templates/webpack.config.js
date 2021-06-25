@@ -16,7 +16,7 @@ entry[pluginDirective] = './src\\' + pluginDirective + '.ts';
 module.exports = {
 	entry: entry,
 	mode: 'development',
-	devtool: 'eval',
+	devtool: 'source-map',
 	module: {
 		rules: [		
 			{
