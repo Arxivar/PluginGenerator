@@ -7,9 +7,12 @@ var path = require('path');
 var uuid = require('node-uuid');
 var _ = require('lodash');
 
-
+String.prototype.capitalize = function() {
+	return this.charAt(0).toUpperCase() + this.slice(1);
+}
 
 var AppGenerator = require('../app');
+const { toUpper, takeRight } = require('lodash');
 
 module.exports = class extends AppGenerator {
 	initializing() {
@@ -29,9 +32,47 @@ module.exports = class extends AppGenerator {
 		});
 
 		const promptsAdvancedSettings = this.advancedConfigSettings();
+		const promptsInputParameter = this.inputParameter();
+		const promptsOutputParameter = this.outputParameter();
 		const that = this;
 
+		const loopInputQuestion = () => {
+			if (that.props.pluginname) {
+				return that.prompt(promptsInputParameter)
+					.then(props => {
+						that.props.inputParameters.push({ propertyName: props.propertyName, propertyType: props.propertyType });
+						return props.repeat ? loopInputQuestion() : that.prompt([]);
+					});
+			}
+			return that.prompt([]);
+		};
+		const loopOutputQuestion = () => {
+			if (that.props.pluginname) {
+				return that.prompt(promptsOutputParameter)
+					.then(props => {
+						that.props.outputParameters.push({ propertyName: props.propertyName, propertyType: props.propertyType });
+						return props.repeat ? loopOutputQuestion() : that.prompt([]);
+					});
+			}
+			return that.prompt([]);
+		};
+
 		return that.prompt(promptsRequiredSettings)
+			.then((_props) => {
+				that.props = { ...that.props, ..._props };
+				that.props.inputParameters = [];
+				return loopInputQuestion();
+			})
+			.then((_props) => {
+				that.props = { ...that.props, ..._props };
+				that.props.outputParameters = [];
+				return loopOutputQuestion();
+			})
+			.then((_props) => {
+				that.props = { ...that.props, ..._props };
+				console.log('################',that.props);
+				return that.prompt(promptsAdvancedSettings);
+			})
 			.then((_props) => {
 				that.props = { ...that.props, ..._props };
 				that.props.folderName = that.appname;
@@ -46,7 +87,7 @@ module.exports = class extends AppGenerator {
 				that.props.projectId = uuid.v4();
 				that.props.guid = uuid.v4();
 				that.props.explanations = that.getPluginsExplanations();
-				that.props.servicesString = that.props.linkServices ? that.props.linkServices.map(i => '\'' + i + '\'') || [] : [];
+				//that.props.servicesString = that.props.linkServices ? that.props.linkServices.map(i => '\'' + i + '\'') || [] : [];
 
 
 
@@ -97,6 +138,7 @@ module.exports = class extends AppGenerator {
 
 
 	writing() {
+
 
 		if (!this.props.advConfig) {
 			this.destinationRoot(
