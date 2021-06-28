@@ -511,19 +511,19 @@ var AppGenerator = module.exports = class extends Generator {
 			{
 				type: 'input',
 				name: 'propertyName',
-				message: 'Insert input property name: ',
+				message: 'Insert INPUT property name: ',
 			},
 			{
 				type: 'list',
 				name: 'propertyType',
 				choices: ['string', 'int', 'bool', 'DateTime','object[]','object[,]'],
 				default: 'string',
-				message: 'Insert input property type: ',
+				message: 'Insert INPUT property type: ',
 			},
 			{
 				type: 'list',
 				name: 'repeat',
-				message: 'Do you want to add more input parameter? ',
+				message: 'Do you want to add more INPUT parameter? ',
 				default: 'no',
 				choices: ['no', 'yes'],
 				validate: function(addInput) {
@@ -542,19 +542,19 @@ var AppGenerator = module.exports = class extends Generator {
 			{
 				type: 'input',
 				name: 'propertyName',
-				message: 'Insert output property name: ',
+				message: 'Insert OUTPUT property name: ',
 			},
 			{
 				type: 'list',
 				name: 'propertyType',
 				choices: ['string', 'int', 'bool', 'DateTime','object[]','object[,]'],
 				default: 'string',
-				message: 'Insert output property type: ',
+				message: 'Insert OUTPUT property type: ',
 			},
 			{
 				type: 'list',
 				name: 'repeat',
-				message: 'Do you want to add more output parameter? ',
+				message: 'Do you want to add more OUTPUT parameter? ',
 				default: 'no',
 				choices: ['no', 'yes'],
 				validate: function(addInput) {

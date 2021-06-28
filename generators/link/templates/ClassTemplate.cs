@@ -20,18 +20,16 @@ namespace <%= props.pluginname%>
 		 /// <summary>
    		 /// <%= props.inputParameters[i].propertyType %> type input parameter named <%= props.inputParameters[i].propertyName.capitalize() %>
    		 /// </summary>
-		[InputParameter(DisplayName = "<%= props.inputParameters[i].propertyType %>", Description = "This is a string property", DisplayOrder = 0 )]
-		public <%= props.inputParameters[i].propertyType %> <%= props.inputParameters[i].propertyName.capitalize() %>  { get; set; }		
+		[InputParameter(DisplayName = "<%= props.inputParameters[i].propertyName.capitalize() %>", Description = "Please insert a description", DisplayOrder = <%= props.inputParameters.indexOf(props.inputParameters[i]) %> )]
+		public <%= props.inputParameters[i].propertyType %> <%= props.inputParameters[i].propertyName.capitalize() %> { get; set; }		
 		<% } %>
-		
 		<% for (let i=0; i<props.outputParameters.length; i++) { %>
 		 /// <summary>
    		 /// <%= props.outputParameters[i].propertyType %> type output parameter named <%= props.outputParameters[i].propertyName.capitalize() %>
    		 /// </summary>
 		[OutputParameter]
-		public <%= props.outputParameters[i].propertyType %> <%= props.outputParameters[i].propertyName.capitalize() %>  { get; set; }		
+		public <%= props.outputParameters[i].propertyType %> <%= props.outputParameters[i].propertyName.capitalize() %> { get; set; }		
 		<% } %>
-
   		[Injected]
     	public Abletech.WebApi.Client.Arxivar.Client.Configuration MyConfiguration { get; set; }
 
@@ -44,7 +42,6 @@ namespace <%= props.pluginname%>
 		[Injected]
 		public <%- props.linkServices[i]%> My<%- props.linkServices[i]%> { get; set; }
 		<% } %>	
-
 		public override Task ExecuteAsync(WorkflowPluginLinkContext context)
 		{
 			// ...qui implemento la logica del plugin

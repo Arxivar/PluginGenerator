@@ -70,7 +70,6 @@ module.exports = class extends AppGenerator {
 			})
 			.then((_props) => {
 				that.props = { ...that.props, ..._props };
-				console.log('################',that.props);
 				return that.prompt(promptsAdvancedSettings);
 			})
 			.then((_props) => {
