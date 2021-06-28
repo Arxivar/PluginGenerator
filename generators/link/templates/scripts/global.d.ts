@@ -33,4 +33,12 @@ declare global {
 	interface IPluginRoute {
 		new(requiredSettings: IRequiredSettings, customSettings: ICustomSettings[], userSettings: IUserSettings[]): IPluginRoute
 	}
+
+	enum IConfigurationDataType {
+		String = 1,
+		Int = 2,
+		Datetime = 3,
+		Bool = 4,
+		Decimal = 5
+	}
 }

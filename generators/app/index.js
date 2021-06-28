@@ -134,7 +134,6 @@ var linkServices = [
 	"IWorkflowApi",
 	"IWorkflowEventsApi",
 	"IWorkflowExtraGrantApi",
-	"IApiAccessor",
 	"IAdditionalFieldsManagementApi",
 	"IAddressBookManagementApi",
 	"IApiCallManagementApi",
@@ -168,7 +167,6 @@ var linkServices = [
 	"IStatesManagementApi",
 	"IUsersManagementApi",
 	"IUtilitiesManagementApi",
-	"IApiAccessor",
 	"ICalendarApi",
 	"IDiagramEventsApi",
 	"IDiagramGroupsApi",
@@ -518,7 +516,7 @@ var AppGenerator = module.exports = class extends Generator {
 			{
 				type: 'list',
 				name: 'propertyType',
-				choices: ['string', 'int', 'bool', 'DateTime'],
+				choices: ['string', 'int', 'bool', 'DateTime','object[]','object[,]'],
 				default: 'string',
 				message: 'Insert input property type: ',
 			},
@@ -549,7 +547,7 @@ var AppGenerator = module.exports = class extends Generator {
 			{
 				type: 'list',
 				name: 'propertyType',
-				choices: ['string', 'int', 'bool', 'DateTime'],
+				choices: ['string', 'int', 'bool', 'DateTime','object[]','object[,]'],
 				default: 'string',
 				message: 'Insert output property type: ',
 			},

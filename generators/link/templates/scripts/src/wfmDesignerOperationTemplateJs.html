@@ -1,4 +1,5 @@
-<div class="arx-<%= props.pluginname.toLowerCase() %>">
-
-</div>
+<script type="text/ng-template" id="<%= props.guid.split('-').join('').toLowerCase() %>.html">
+	<div data-plugin-name="<%= props.pluginname%>" class="arxpl-<%= props.pluginname.toLowerCase() %>">
+	</div>
+</script>
 <link rel="stylesheet" href="./Scripts/plugins/<%= props.pluginname %>/<%= props.pluginname %>.css">

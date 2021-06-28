@@ -1,11 +1,11 @@
-type IConfiguration = {name:string, type:string|number|boolean, value:string|number|boolean}; //any;
+type IConfiguration = { name: string, dataType: IConfigurationDataType, value?: string | number | boolean, defaultValue?: string | number | boolean };
 class <%= props.pluginname %> {
-	viewerMode: boolean;                 
+	viewerMode: boolean;
 	enableSave: ({ enable }: { enable: boolean }) => void;
-	configuration: IConfiguration;
-	readonly saver: { onSave: () => {} };
+	configuration: IConfiguration[];
+	readonly saver: { onSave: () => IConfiguration[] };
 	constructor(readonly _<%= props.dependenciesType.join(', ') %>) {
-	}
+}
 
 	$onInit(): void {
 	}
@@ -15,7 +15,7 @@ class <%= props.pluginname %> {
 }
 
 angular.module('arxivar.pluginoperations')
-	.component('<%= props.pluginname %>', {
+	.component('<%= props.guid.split("-").join("").toLowerCase() %>', {
 		bindings: {
 			configuration: '<',
 			enableSave: '&',
@@ -24,7 +24,7 @@ angular.module('arxivar.pluginoperations')
 		controllerAs: 'ctrl',
 		controller: ['_', <%- props.dependenciesString.join(', ') %><%= props.pluginname %>],
 		template: `
-				<div ng-include="<%= props.guid %>.html">
+				<div ng-include="'<%= props.guid.split('-').join('').toLowerCase() %>.html'"> 
 				</div>
 		`
 	});
