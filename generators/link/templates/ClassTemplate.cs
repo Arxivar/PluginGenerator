@@ -1,6 +1,6 @@
-using Abletech.WebApi.Client.ArxivarWorkflow.Client.Configuration;
-using Abletech.WebApi.Client.ArxivarManagement.Client.Configuration;
-using Abletech.WebApi.Client.Arxivar.Client.Configuration;
+// using Abletech.WebApi.Client.ArxivarWorkflow.Client.Configuration;
+// using Abletech.WebApi.Client.ArxivarManagement.Client.Configuration;
+// using Abletech.WebApi.Client.Arxivar.Client.Configuration;
 using Abletech.WebApi.Client.ArxivarWorkflow.Api;
 using Abletech.WebApi.Client.ArxivarWorkflow.Client;
 using Abletech.WebApi.Client.ArxivarManagement.Api;
@@ -18,23 +18,21 @@ namespace <%= props.pluginname%>
 	[Plugin("<%= props.id %>", "<%= props.label %>", "<%= props.minVersion %>", Description = "<%= props.description %>", Icon = "<%= props.icon %>")]
     public class <%= props.pluginname.capitalize()%> : WorkflowPluginLink
     {
+ 		<% for (let i=0; i<props.inputParameters.length; i++) { %>
 		 /// <summary>
    		 /// ciao sono una stringa
    		 /// </summary>
-		[InputParameter(DisplayName = "String", Description = "This is a string property", DisplayOrder = 0 )]
-		public string InputStringProperty { get; set; }
-
-
-		<% for (let i=0; i<props.inputParameters.length; i++) { %>
-		 /// <summary>
-   		 /// ciao sono una stringa
-   		 /// </summary>
-		[InputParameter(DisplayName = "<%- props.linkServices[i].propertyType %>", Description = "This is a string property", DisplayOrder = 0 )]
-		public <%- props.linkServices[i].propertyType %> InputStringProperty { get; set; }		
+		[InputParameter(DisplayName = "<%= props.inputParameters[i].propertyType %>", Description = "This is a string property", DisplayOrder = 0 )]
+		public <%= props.inputParameters[i].propertyType %> <%= props.inputParameters[i].propertyName %>  { get; set; }		
 		<% } %>
-
+		
+		<% for (let i=0; i<props.outputParameters.length; i++) { %>
+		 /// <summary>
+   		 /// ciao sono una stringa
+   		 /// </summary>
 		[OutputParameter]
-		public string OutputProperty { get; set; }
+		public <%= props.outputParameters[i].propertyType %> <%= props.outputParameters[i].propertyName %>  { get; set; }		
+		<% } %>
 
 		[Injected]
 		public IMongoDbProvider MongoDb { get; set; }
