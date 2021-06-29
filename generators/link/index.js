@@ -218,6 +218,7 @@ module.exports = class extends AppGenerator {
 			//TS
 			var controllerFilename = this.props.pluginname + '.ts';
 			var pageLinkFilename = this.props.pluginname + '.html';
+			var styleFilename = this.props.pluginname + '.scss';
 			var pluginName = this.props.pluginname;
 
 			this.fs.copyTpl(
@@ -235,6 +236,14 @@ module.exports = class extends AppGenerator {
 			}
 			);
 			this.log(chalk.green('Written file: ' + pageLinkFilename));
+
+			this.fs.copyTpl(
+				this.templatePath('scripts/src/WfmDesignerStyleTs.scss'),
+				this.destinationPath('scripts/src/' + styleFilename), {
+				props: this.props
+			}
+			);
+			this.log(chalk.green('Written file: ' + styleFilename));
 
 			this.fs.copyTpl(
 				this.templatePath('scripts/global.d.ts'),
@@ -306,12 +315,6 @@ module.exports = class extends AppGenerator {
 			}
 			);
 			this.log(chalk.green('Written file: webpack.config.js'));
-			this.fs.copyTpl(
-				this.templatePath('scripts/libs/READMELIBS.txt'),
-				this.destinationPath('scripts/libs/README.txt'), {
-				props: this.props
-			}
-			);
 			this.log(chalk.green('********** ' + pluginName + ' folder created into plugins-link, run npm install there **********'));
 
 		}
@@ -358,6 +361,7 @@ module.exports = class extends AppGenerator {
 			//JS
 			var controllerFilename = this.props.pluginname + '.js';
 			var pageLinkFilename = this.props.pluginname + '.html';
+			var styleFilename = this.props.pluginname + '.css';
 			var pluginName = this.props.pluginname;
 
 			this.fs.copyTpl(
@@ -375,6 +379,16 @@ module.exports = class extends AppGenerator {
 			}
 			);
 			this.log(chalk.green('Written file: ' + pageLinkFilename));
+
+			
+			this.fs.copyTpl(
+				this.templatePath('scripts/src/wfmDesignerStyleJs.css'),
+				this.destinationPath('scripts/src/' + styleFilename), {
+				props: this.props
+			}
+			);
+			this.log(chalk.green('Written file: ' + styleFilename));
+
 			this.log(chalk.green('********** ' + pluginName + ' folder created into plugins-link **********'));
 
 		}

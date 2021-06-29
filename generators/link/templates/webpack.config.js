@@ -9,6 +9,7 @@ const outDir = 'scripts/build';
 const pluginName = '<%= props.pluginname %>';
 const entry = {};
 entry[pluginName] = './scripts/src\\' + pluginName + '.ts';
+entry[pluginName + 'Style'] = './scripts/src\\' + pluginName + '.scss';
 
 
 module.exports = {

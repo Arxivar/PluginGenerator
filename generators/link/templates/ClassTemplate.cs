@@ -13,21 +13,21 @@ using System;
 
 namespace <%= props.pluginname%>
 {
-	[Plugin("<%= props.id %>", "<%= props.label %>", "<%= props.minVersion %>", Description = "<%= props.description %>", Icon = "<%= props.icon %>")]
+	[Plugin("<%= props.id %>", "<%= props.label %>", "<%= props.version %>", Description = "<%= props.description %>", Icon = "<%= props.icon %>", UseAdvancedConfiguration = <%= props.advConfig %>)]
     public class <%= props.pluginname.capitalize()%> : WorkflowPluginLink
     {
  		<% for (let i=0; i<props.inputParameters.length; i++) { %>
 		 /// <summary>
    		 /// <%= props.inputParameters[i].propertyType %> type input parameter named <%= props.inputParameters[i].propertyName.capitalize() %>
    		 /// </summary>
-		[InputParameter(DisplayName = "<%= props.inputParameters[i].propertyName.capitalize() %>", Description = "Please insert a description", DisplayOrder = <%= props.inputParameters.indexOf(props.inputParameters[i]) %> )]
+		[InputParameter(DisplayName = "<%= props.inputParameters[i].propertyName.capitalize() %>", Description = "Please insert a description", DisplayOrder = <%= props.inputParameters.indexOf(props.inputParameters[i])%>)]
 		public <%= props.inputParameters[i].propertyType %> <%= props.inputParameters[i].propertyName.capitalize() %> { get; set; }		
 		<% } %>
 		<% for (let i=0; i<props.outputParameters.length; i++) { %>
 		 /// <summary>
    		 /// <%= props.outputParameters[i].propertyType %> type output parameter named <%= props.outputParameters[i].propertyName.capitalize() %>
    		 /// </summary>
-		[OutputParameter]
+		[OutputParameter(DisplayName = "<%= props.outputParameters[i].propertyName.capitalize() %>", Description = "Please insert a description"%>)]
 		public <%= props.outputParameters[i].propertyType %> <%= props.outputParameters[i].propertyName.capitalize() %> { get; set; }		
 		<% } %>
   		[Injected]

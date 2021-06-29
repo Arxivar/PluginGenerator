@@ -484,14 +484,14 @@ var AppGenerator = module.exports = class extends Generator {
 				name: 'icon',
 				message: 'FontAwesome icon for command (https://fontawesome.com/icons up to version 5.10.0)',
 				default: function(answers) {
-					return 'fas fa-puzzle-piece';
+					return 'far fa-puzzle-piece';
 				}
 			},
 			{
 				type: 'input',
-				name: 'minVersion',
-				message: 'Minimum portal version supported?',
-				default: '2.5.0'
+				name: 'version',
+				message: 'Insert plugin version: ',
+				default: '1.0.0'
 			},
 			{
 				type: 'checkbox-plus',

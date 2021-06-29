@@ -144,7 +144,7 @@ module.exports = class extends AppGenerator {
 			);
 			this.log(chalk.green('Written file: ' + controllerRouteFilename));
 
-			// Copio il css
+			// Copio il scss
 			this.fs.copyTpl(
 				this.templatePath('src/PluginRouteTemplate.scss'),
 				this.destinationPath('src/' + styleRouteFilename), {
