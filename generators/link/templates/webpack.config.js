@@ -2,6 +2,7 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
 //don't touch the code below for your sake
@@ -63,44 +64,44 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				use: [{
-					loader: 'style-loader'
-				}, {
-					loader: 'css-loader'
-				}
+				use: [
+					MiniCssExtractPlugin.loader,
+					{
+						loader: 'css-loader'
+					}
 				]
 			},
 			{
 				test: /\.scss$/,
-				use: [{
-					loader: 'style-loader'
-				}, {
-					loader: 'css-loader',
-					options: {
-						importLoaders: 2, // 0 => no loaders (default); 1 => postcss-loader; 2 => postcss-loader, sass-loader
-					}
-				}, {
-					loader: 'postcss-loader'
-				}, {
-					loader: 'sass-loader'
-				},
+				use: [
+					MiniCssExtractPlugin.loader,
+					{
+						loader: 'css-loader',
+						options: {
+							importLoaders: 2, // 0 => no loaders (default); 1 => postcss-loader; 2 => postcss-loader, sass-loader
+						}
+					}, {
+						loader: 'postcss-loader'
+					}, {
+						loader: 'sass-loader'
+					},
 				],
 			}
 		],
 	},
+	plugins: [new MiniCssExtractPlugin({ filename: '[name].css' }),
+	new HtmlWebpackPlugin({
+		filename: path.resolve(outDir) + '/' + pluginName + '.html',
+		template: 'scripts/src/' + pluginName + '.html',
+		chunks: [],
+		chunksSortMode: 'manual',
+		minify: false,
+		publicPath: './Scripts/plugins/' + pluginName
+	})
+	],
 	resolve: {
 		extensions: ['.js', '.jsx', '.css', '.scss', '.ts', '.tsx'],
 	},
-	plugins: [
-		new HtmlWebpackPlugin({
-			filename: path.resolve(outDir) + '/' + pluginName + '.html',
-			template: 'scripts/src/' + pluginName + '.html',
-			chunks: [pluginName + 'Style'],
-			chunksSortMode: 'manual',
-			minify: false,
-			publicPath: './Scripts/plugins/' + pluginName
-		})
-	],
 	output: {
 		filename: '[name].js',
 		path: path.resolve(outDir),

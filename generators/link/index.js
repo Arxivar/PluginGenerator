@@ -82,13 +82,10 @@ module.exports = class extends AppGenerator {
 				that.props.paramsCommentEx = '';
 				that.props.paramsCommentParams = '';
 				that.props.paramsCommentParamsEx = '';
-				that.props.classLibraryId = uuid.v4();
 				that.props.projectId = uuid.v4();
 				that.props.guid = uuid.v4();
 				that.props.explanations = that.getPluginsExplanations();
 				//that.props.servicesString = that.props.linkServices ? that.props.linkServices.map(i => '\'' + i + '\'') || [] : [];
-
-
 
 				if (that.props.typescriptLink) {
 					that.props.dependenciesType = that.props.dependencies.map(matchType) || [];
@@ -380,7 +377,7 @@ module.exports = class extends AppGenerator {
 			);
 			this.log(chalk.green('Written file: ' + pageLinkFilename));
 
-			
+
 			this.fs.copyTpl(
 				this.templatePath('scripts/src/wfmDesignerStyleJs.css'),
 				this.destinationPath('scripts/src/' + styleFilename), {
