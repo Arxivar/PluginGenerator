@@ -15,7 +15,7 @@ class <%= props.pluginname %> {
 }
 
 angular.module('arxivar.pluginoperations')
-	.component('<%= props.guid.split("-").join("").toLowerCase() %>', {
+	.component('<%= props.id.split("-").join("").toLowerCase() %>', {
 		bindings: {
 			configuration: '<',
 			enableSave: '&',
@@ -24,7 +24,7 @@ angular.module('arxivar.pluginoperations')
 		controllerAs: 'ctrl',
 		controller: ['_', <%- props.dependenciesString.join(', ') %><%= props.pluginname %>],
 		template: `
-				<div ng-include="'<%= props.guid.split('-').join('').toLowerCase() %>.html'"> 
+				<div ng-include="'<%= props.id.split('-').join('').toLowerCase() %>.html'"> 
 				</div>
 		`
 	});

@@ -218,7 +218,7 @@ module.exports = class extends AppGenerator {
 			//TS
 			var controllerFilename = this.props.pluginname + '.ts';
 			var pageLinkFilename = this.props.pluginname + '.html';
-			var styleFilename = this.props.pluginname + '.scss';
+			var styleFilename = this.props.pluginname + '.css';
 			var pluginName = this.props.pluginname;
 
 			this.fs.copyTpl(
@@ -238,7 +238,7 @@ module.exports = class extends AppGenerator {
 			this.log(chalk.green('Written file: ' + pageLinkFilename));
 
 			this.fs.copyTpl(
-				this.templatePath('scripts/src/WfmDesignerStyleTs.scss'),
+				this.templatePath('scripts/src/WfmDesignerStyleTs.css'),
 				this.destinationPath('scripts/src/' + styleFilename), {
 				props: this.props
 			}
