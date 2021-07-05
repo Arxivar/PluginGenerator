@@ -112,7 +112,7 @@ module.exports = class extends AppGenerator {
 							case '$timeout':
 								return 'readonly $timeout: angular.ITimeoutService';
 							case '_':
-								return 'readonly _: LoDashStatic';
+								return 'readonly _: ILoDash';
 							case '$q':
 								return 'readonly $q: angular.IQService';
 							case 'arxivarResourceService':

@@ -1,5 +1,6 @@
 import * as arxInterfaces from './Interfaces';
 import moment from 'moment';
+import LoDashStatic from 'lodash';
 
 
 declare global {
@@ -26,6 +27,7 @@ declare global {
 
 	
 	type IMoment = typeof moment;
+	type ILoDash = typeof LoDashStatic;
 	type IRouteParams = { queryParams: string };
 	type ISettingsType = 'string' | 'number' | 'boolean' | 'date';
 	type ICustomSettings = { name: string, description: string, defaultValue: string, type: ISettingsType };

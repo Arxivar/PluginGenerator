@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-constructor */
 enum IConfigurationDataType {
 	String = 1,
 	Int = 2,

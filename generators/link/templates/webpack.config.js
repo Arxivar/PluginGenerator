@@ -1,7 +1,5 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
@@ -10,8 +8,6 @@ const outDir = 'scripts/build';
 const pluginName = '<%= props.pluginname %>';
 const entry = {};
 entry[pluginName] = './scripts/src\\' + pluginName + '.ts';
-entry[pluginName + 'Style'] = './scripts/src\\' + pluginName + '.css';
-
 
 module.exports = {
 	entry: entry,
@@ -90,13 +86,17 @@ module.exports = {
 		],
 	},
 	plugins: [new MiniCssExtractPlugin({ filename: '[name].css' }),
-	new HtmlWebpackPlugin({
-		filename: path.resolve(outDir) + '/' + pluginName + '.html',
-		template: 'scripts/src/' + pluginName + '.html',
-		chunks: [],
-		chunksSortMode: 'manual',
-		minify: false,
-		publicPath: './Scripts/plugins/' + pluginName
+	new CopyWebpackPlugin({
+		patterns: [{
+			from: './scripts/src\\' + pluginName + '.css',
+			to: './'
+
+		},
+		{
+			from: './scripts/src\\' + pluginName + '.html',
+			to: './'
+
+		}]
 	})
 	],
 	resolve: {

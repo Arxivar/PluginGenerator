@@ -40,7 +40,7 @@
 		"babel-eslint": "^10.1.0",
         "babel-loader": "^8.2.2",
         "babel-preset-react-app": "^9.0.2",
-        "copy-webpack-plugin": "^5.1.1",
+        "copy-webpack-plugin": "^6.4.1",
         "css-loader": "^1.0.0",
         "eslint": "^6.7.2",
         "eslint-plugin-angular": "^4.0.1",
