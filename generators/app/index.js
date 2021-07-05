@@ -10,7 +10,7 @@ var fuzzy = require('fuzzy');
 
 
 
-var linkServices = [
+const linkServices = [
 	"IMongoDbProvider",
 	"IAuthProvider",
 	"IAddressBookApi",
@@ -190,10 +190,23 @@ var linkServices = [
 	"IUserTagsApi"
 ].sort();
 
+const linkServicesFront = ['arxivarResourceService', 'arxivarUserServiceCreator', 'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService', 'moment', 'params', '$document', '$window', '$rootScope', '$http', '$filter', '$timeout', '_', '$q'].sort();
+
 function searchService(answers, input) {
 	input = input || '';
 	return new Promise(function(resolve) {
 		var fuzzyResult = fuzzy.filter(input, linkServices);
+		var data = fuzzyResult.map(function(element) {
+			return element.original;
+		});
+		resolve(data);
+	});
+}
+
+function searchServiceFront(answers, input) {
+	input = input || '';
+	return new Promise(function(resolve) {
+		var fuzzyResult = fuzzy.filter(input, linkServicesFront);
 		var data = fuzzyResult.map(function(element) {
 			return element.original;
 		});
@@ -516,7 +529,7 @@ var AppGenerator = module.exports = class extends Generator {
 			{
 				type: 'list',
 				name: 'propertyType',
-				choices: ['string', 'int', 'bool', 'DateTime','object[]','object[,]'],
+				choices: ['string', 'int', 'bool', 'DateTime', 'object[]', 'object[,]'],
 				default: 'string',
 				message: 'Insert INPUT property type: ',
 			},
@@ -547,7 +560,7 @@ var AppGenerator = module.exports = class extends Generator {
 			{
 				type: 'list',
 				name: 'propertyType',
-				choices: ['string', 'int', 'bool', 'DateTime','object[]','object[,]'],
+				choices: ['string', 'int', 'bool', 'DateTime', 'object[]', 'object[,]'],
 				default: 'string',
 				message: 'Insert OUTPUT property type: ',
 			},
@@ -585,12 +598,16 @@ var AppGenerator = module.exports = class extends Generator {
 				}
 			},
 			{
-				type: 'input',
-				name: 'dependencies',
-				message: 'Plugin dependencies (space-separated values)',
+				type: 'checkbox-plus',
+				name: 'linkServicesFront',
+				message: 'Insert Services or Dependecies (search by typing, select with spacebar): ',
+				pageSize: 10,
+				highlight: true,
+				searchable: true,
 				when: function(answers) {
 					return answers.advConfig === true;
-				}
+				},
+				source: searchServiceFront,
 			},
 			{
 				type: 'list',

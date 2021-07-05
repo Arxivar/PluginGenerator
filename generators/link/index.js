@@ -88,7 +88,7 @@ module.exports = class extends AppGenerator {
 				//that.props.servicesString = that.props.linkServices ? that.props.linkServices.map(i => '\'' + i + '\'') || [] : [];
 
 				if (that.props.typescriptLink) {
-					that.props.dependenciesType = that.props.dependencies.map(matchType) || [];
+					that.props.linkServicesFrontType = that.props.linkServicesFront.map(matchType) || [];
 
 					// eslint-disable-next-line no-inner-declarations
 					function matchType(i) {
@@ -115,6 +115,16 @@ module.exports = class extends AppGenerator {
 								return '_: LoDashStatic';
 							case '$q':
 								return '$q: angular.IQService';
+							case 'arxivarResourceService':
+								return 'arxivarResourceService: IArxivarResourceService';
+							case 'arxivarUserServiceCreator':
+								return 'arxivarUserServiceCreator: IArxivarUserServiceCreator';
+							case 'arxivarRouteService':
+								return 'arxivarRouteService: IArxivarRouteService';
+							case 'arxivarDocumentsService':
+								return 'arxivarDocumentsService: IArxivarDocumentsService';
+							case 'arxivarNotifierService':
+								return 'arxivarNotifierService: IArxivarNotifierService';
 							default:
 								return i;
 						}
@@ -124,6 +134,7 @@ module.exports = class extends AppGenerator {
 				that.props.dependenciesType.unshift('');
 				that.props.dependencies.unshift('');
 				that.props.dependenciesString = that.props.dependencies.map(i => '\'' + i + '\'') || [];
+				that.props.linkServicesFront = that.props.linkServicesFront.map(i => '\'' + i + '\'') || [];
 				that.props.dependenciesString.shift();
 				that.props.dependenciesString.push('');
 			});
