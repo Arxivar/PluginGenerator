@@ -1,13 +1,4 @@
 /* eslint-disable no-useless-constructor */
-enum IConfigurationDataType {
-	String = 1,
-	Int = 2,
-	Datetime = 3,
-	Bool = 4,
-	Decimal = 5
-}
-
-type IConfiguration = { name: string, dataType: IConfigurationDataType, value?: string | number | boolean | Date};
 const pluginId = '<%= props.id %>';
 class <%= props.pluginname %> {
 	viewerMode: boolean;
