@@ -7,6 +7,7 @@ declare global {
 	type IArxivarDocumentsService = arxInterfaces.IArxivarDocumentsService;
 	type IArxivarNotifierService = arxInterfaces.IArxivarNotifierService;
 	type IArxivarResourceService = arxInterfaces.IArxivarResourceService;
+	type IWorkflowResourceService = arxInterfaces.IArxivarResourceService;
 	type IArxivarRouteService = arxInterfaces.IArxivarRouteService;
 	type IArxivarUserServiceCreator = arxInterfaces.IArxivarUserServiceCreator;
 	type IHttpOptions = arxInterfaces.IHttpOptions;

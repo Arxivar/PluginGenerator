@@ -7,12 +7,13 @@ enum IConfigurationDataType {
 }
 
 type IConfiguration = { name: string, dataType: IConfigurationDataType, value?: string | number | boolean | Date};
+const pluginId = '<%= props.id %>';
 class <%= props.pluginname %> {
 	viewerMode: boolean;
 	enableSave: ({ enable }: { enable: boolean }) => void;
 	configuration: IConfiguration[];
 	readonly saver: { onSave: () => IConfiguration[] };
-	// model:  IConfiguration & {defaultValue?: string | number | boolean | Date}[]
+	// model:  (IConfiguration & {defaultValue?: string | number | boolean | Date})[]
 	constructor(<%= props.linkServicesFrontType.join(', ') %>) {
 }
 
@@ -29,10 +30,10 @@ angular.module('arxivar.pluginoperations')
 			configuration: '<',
 			enableSave: '&',
 			saver: '<',
-			viewerMode: '<',
+			viewerMode: '<'
 		},
 		controllerAs: 'ctrl',
-		controller: [<%- props.linkServicesFront%>,<%= props.pluginname %>],
+		controller: [<%- props.linkServicesFrontString%>,<%= props.pluginname %>],
 		template: `
 				<div ng-include="'<%= props.id.split('-').join('').toLowerCase() %>.html'"> 
 				</div>

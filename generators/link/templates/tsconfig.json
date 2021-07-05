@@ -16,7 +16,7 @@
 		"typeRoots": ["node_modules/@types"],		
 	},
 	"files": [
-		"scripts/src/global.d.ts"
+		"scripts/global.d.ts"
 	],
 	"include": [
 		"scripts/**/*"

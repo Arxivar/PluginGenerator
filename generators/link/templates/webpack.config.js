@@ -15,7 +15,7 @@ entry[pluginName + 'Style'] = './scripts/src\\' + pluginName + '.css';
 
 module.exports = {
 	entry: entry,
-	mode: 'development',
+	mode: 'production',
 	devtool: 'source-map',
 	module: {
 		rules: [
@@ -105,7 +105,6 @@ module.exports = {
 	output: {
 		filename: '[name].js',
 		path: path.resolve(outDir),
-		devtoolLineToLine: true,
 		pathinfo: true,
 		sourceMapFilename: '[name].js.map'
 	},

@@ -190,7 +190,7 @@ const linkServices = [
 	"IUserTagsApi"
 ].sort();
 
-const linkServicesFront = ['arxivarResourceService', 'arxivarUserServiceCreator', 'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService', 'moment', 'params', '$document', '$window', '$rootScope', '$http', '$filter', '$timeout', '_', '$q'].sort();
+const linkServicesFront = ['workflowResourceService', '_', 'arxivarResourceService', 'arxivarUserServiceCreator', 'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService', 'moment', '$timeout', '$document', '$window', '$rootScope', '$filter', '$q', '$uibModal'];
 
 function searchService(answers, input) {
 	input = input || '';
@@ -601,6 +601,7 @@ var AppGenerator = module.exports = class extends Generator {
 				type: 'checkbox-plus',
 				name: 'linkServicesFront',
 				message: 'Insert Services or Dependecies (search by typing, select with spacebar): ',
+				default: ['workflowResourceService', '_'],
 				pageSize: 10,
 				highlight: true,
 				searchable: true,

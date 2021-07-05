@@ -94,37 +94,39 @@ module.exports = class extends AppGenerator {
 					function matchType(i) {
 						switch (i) {
 							case '$uibModal':
-								return '$uibModal:angular.ui.bootstrap.IModalService';
+								return 'readonly $uibModal:angular.ui.bootstrap.IModalService';
 							case 'moment':
-								return 'moment: IMoment';
+								return 'readonly moment: IMoment';
 							case 'params':
-								return 'params: IRouteParams';
+								return 'readonly params: IRouteParams';
 							case '$document':
-								return '$document: angular.IDocumentService';
+								return 'readonly $document: angular.IDocumentService';
 							case '$window':
-								return '$window: angular.IWindowService';
+								return 'readonly $window: angular.IWindowService';
 							case '$rootScope':
-								return '$rootScope: angular.IRootScopeService';
+								return 'readonly $rootScope: angular.IRootScopeService';
 							case '$http':
-								return '$http: angular.IHttpService';
+								return 'readonly $http: angular.IHttpService';
 							case '$filter':
-								return '$filter: angular.IFilterService';
+								return 'readonly $filter: angular.IFilterService';
 							case '$timeout':
-								return '$timeout: angular.ITimeoutService';
+								return 'readonly $timeout: angular.ITimeoutService';
 							case '_':
-								return '_: LoDashStatic';
+								return 'readonly _: LoDashStatic';
 							case '$q':
-								return '$q: angular.IQService';
+								return 'readonly $q: angular.IQService';
 							case 'arxivarResourceService':
-								return 'arxivarResourceService: IArxivarResourceService';
+								return 'readonly arxivarResourceService: IArxivarResourceService';
 							case 'arxivarUserServiceCreator':
-								return 'arxivarUserServiceCreator: IArxivarUserServiceCreator';
+								return 'readonly arxivarUserServiceCreator: IArxivarUserServiceCreator';
 							case 'arxivarRouteService':
-								return 'arxivarRouteService: IArxivarRouteService';
+								return 'readonly arxivarRouteService: IArxivarRouteService';
 							case 'arxivarDocumentsService':
-								return 'arxivarDocumentsService: IArxivarDocumentsService';
+								return 'readonly arxivarDocumentsService: IArxivarDocumentsService';
 							case 'arxivarNotifierService':
-								return 'arxivarNotifierService: IArxivarNotifierService';
+								return 'readonly arxivarNotifierService: IArxivarNotifierService';
+							case 'workflowResourceService':
+								return 'readonly workflowResourceService: IWorkflowResourceService';
 							default:
 								return i;
 						}
@@ -134,7 +136,7 @@ module.exports = class extends AppGenerator {
 				that.props.dependenciesType.unshift('');
 				that.props.dependencies.unshift('');
 				that.props.dependenciesString = that.props.dependencies.map(i => '\'' + i + '\'') || [];
-				that.props.linkServicesFront = that.props.linkServicesFront.map(i => '\'' + i + '\'') || [];
+				that.props.linkServicesFrontString = that.props.linkServicesFront.map(i => '\'' + i + '\'') || [];
 				that.props.dependenciesString.shift();
 				that.props.dependenciesString.push('');
 			});

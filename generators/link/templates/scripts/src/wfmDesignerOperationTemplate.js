@@ -1,7 +1,8 @@
 'use strict';
 
+var pluginId = '<%= props.id %>';
 class <%= props.pluginname %> {
-  constructor(_<%= props.dependencies.join(', ') %>) {
+  constructor(<%- props.linkServicesFront.join(', ') %>) {
     this._ = _;
   }
 
@@ -15,10 +16,11 @@ angular.module('arxivar.pluginoperations').component('<%= props.id.split("-").jo
   bindings: {
     configuration: '<',
     enableSave: '&',
-    saver: '<'
+    saver: '<',
+	viewerMode: '<',
   },
   controllerAs: 'ctrl',
-  controller: ['_', <%- props.dependenciesString.join(', ') %><%= props.pluginname %>],
+  controller: [<%- props.linkServicesFrontString.join(', ') %>,<%= props.pluginname %>],
   template: `
 				<div ng-include="'<%= props.id.split('-').join('').toLowerCase() %>.html'">
 				</div>
