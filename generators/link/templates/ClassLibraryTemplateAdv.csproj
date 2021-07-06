@@ -5,12 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-  	<PackageReference Include="Abletech.Workflow.Plugins" Version="0.1.6">
+  	<PackageReference Include="Abletech.Workflow.Plugins" Version="0.1.5">
 		<ExcludeAssets>runtime</ExcludeAssets>
 	</PackageReference>   
   </ItemGroup>
-  
-    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="call $(SolutionDir)\prebuild.bat" />
+  </Target>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="call &quot;$(SolutionDir)\postbuild.bat&quot; $(TargetDir)" />
   </Target>
 

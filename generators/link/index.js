@@ -83,12 +83,16 @@ module.exports = class extends AppGenerator {
 				that.props.paramsCommentParams = '';
 				that.props.paramsCommentParamsEx = '';
 				that.props.projectId = uuid.v4();
+				that.props.nestedProject = uuid.v4();
+				that.props.secondProjectId = uuid.v4();
 				that.props.guid = uuid.v4();
+				that.props.nestedGuid = uuid.v4();
+				that.props.presolutionGuid = uuid.v4();
 				that.props.explanations = that.getPluginsExplanations();
 				//that.props.servicesString = that.props.linkServices ? that.props.linkServices.map(i => '\'' + i + '\'') || [] : [];
 
 				if (that.props.typescriptLink) {
-					that.props.linkServicesFrontType = that.props.linkServicesFront.map(matchType) || [];
+					that.props.linkServicesFrontType =  that.props.linkServicesFront ? that.props.linkServicesFront.map(matchType) || [] : [];
 
 					// eslint-disable-next-line no-inner-declarations
 					function matchType(i) {
@@ -136,7 +140,7 @@ module.exports = class extends AppGenerator {
 				that.props.dependenciesType.unshift('');
 				that.props.dependencies.unshift('');
 				that.props.dependenciesString = that.props.dependencies.map(i => '\'' + i + '\'') || [];
-				that.props.linkServicesFrontString = that.props.linkServicesFront.map(i => '\'' + i + '\'') || [];
+				that.props.linkServicesFrontString = that.props.linkServicesFront ? that.props.linkServicesFront.map(i => '\'' + i + '\'') || [] : [];
 				that.props.dependenciesString.shift();
 				that.props.dependenciesString.push('');
 			});
@@ -176,6 +180,13 @@ module.exports = class extends AppGenerator {
 			);
 			this.log(chalk.green('Written file: ' + classLibraryFilename));
 
+			this.fs.copyTpl(
+				this.templatePath('postbuild.bat'),
+				this.destinationPath('postbuild.bat'), {
+				props: this.props
+			}
+			);
+			this.log(chalk.green('Written file: postbuild.bat' ));
 
 			this.fs.copyTpl(
 				this.templatePath('solutionTemplate.sln'),
@@ -209,16 +220,31 @@ module.exports = class extends AppGenerator {
 
 
 			this.fs.copyTpl(
-				this.templatePath('ClassLibraryTemplate.csproj'),
+				this.templatePath('ClassLibraryTemplateAdv.csproj'),
 				this.destinationPath(this.props.pluginname + '/' + classLibraryFilename), {
 				props: this.props
 			}
 			);
 			this.log(chalk.green('Written file: ' + classLibraryFilename));
 
+			this.fs.copyTpl(
+				this.templatePath('prebuildAdv.bat'),
+				this.destinationPath('prebuild.bat'), {
+				props: this.props
+			}
+			);
+			this.log(chalk.green('Written file: prebuild.bat' ));
+			
+			this.fs.copyTpl(
+				this.templatePath('postbuildAdv.bat'),
+				this.destinationPath('postbuild.bat'), {
+				props: this.props
+			}
+			);
+			this.log(chalk.green('Written file: postbuild.bat' ));
 
 			this.fs.copyTpl(
-				this.templatePath('solutionTemplate.sln'),
+				this.templatePath('solutionTemplateAdv.sln'),
 				this.destinationPath(solution), {
 				props: this.props
 			}
@@ -352,7 +378,7 @@ module.exports = class extends AppGenerator {
 
 
 			this.fs.copyTpl(
-				this.templatePath('ClassLibraryTemplate.csproj'),
+				this.templatePath('ClassLibraryTemplateAdv.csproj'),
 				this.destinationPath(this.props.pluginname + '/' + classLibraryFilename), {
 				props: this.props
 			}

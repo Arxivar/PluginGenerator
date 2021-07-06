@@ -1,0 +1,49 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31321.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{<%= props.id %>}") = "<%= props.pluginname %>", "<%= props.pluginname %>\<%= props.pluginname %>.csproj", "{<%= props.projectId %>}"
+EndProject
+Project("{<%= props.secondProjectId %>}") = "Solution Items", "Solution Items", "{<%= props.nestedProject %>}"
+	ProjectSection(SolutionItems) = preProject
+		package-lock.json = package-lock.json
+		package.json = package.json
+		postcss.config.js = postcss.config.js
+		tsconfig.json = tsconfig.json
+		webpack.config.js = webpack.config.js
+	EndProjectSection
+EndProject
+Project("{<%= props.secondProjectId %>}") = "scripts", "scripts", "{<%= props.nestedGuid %>}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\global.d.ts = scripts\global.d.ts
+		scripts\Interfaces.ts = scripts\Interfaces.ts
+	EndProjectSection
+EndProject
+Project("{<%= props.secondProjectId %>}") = "src", "src", "{<%= props.presolutionGuid %>}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\src\<%= props.pluginname %>.css = scripts\src\<%= props.pluginname %>.css
+		scripts\src\<%= props.pluginname %>.html = scripts\src\<%= props.pluginname %>.html
+		scripts\src\<%= props.pluginname %>.ts = scripts\src\<%= props.pluginname %>.ts
+	EndProjectSection
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{<%= props.projectId %>}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{<%= props.projectId %>}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{<%= props.projectId %>}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{<%= props.projectId %>}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+		GlobalSection(NestedProjects) = preSolution
+		{<%= props.presolutionGuid %>} = {<%= props.nestedGuid %>}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {<%= props.guid %>}
+	EndGlobalSection
+EndGlobal
