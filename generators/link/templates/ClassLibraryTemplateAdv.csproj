@@ -11,11 +11,10 @@
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="call $(SolutionDir)\prebuild.bat" />
+    <Exec Command="call $(SolutionDir)\prebuild.bat $(TargetDir)" />
   </Target>
-
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="call &quot;$(SolutionDir)\postbuild.bat&quot; $(TargetDir)" />
+    <Exec Command="call $(SolutionDir)\postbuild.bat $(TargetDir)" />
   </Target>
 
 </Project>
