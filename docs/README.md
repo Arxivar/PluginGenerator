@@ -1,4 +1,1 @@
-[ARXivar Documentation](globals.md)
-
-# ARXivar Documentation
-
+ARXivar Documentation / [Modules](modules.md)
