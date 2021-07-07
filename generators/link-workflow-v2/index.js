@@ -17,7 +17,7 @@ const { toUpper, takeRight } = require('lodash');
 module.exports = class extends AppGenerator {
 	initializing() {
 		this.showInfo();
-		this.log('Running ' + chalk.red('LINK') + ' generator!');
+		this.log('Running ' + chalk.red('LINK WORKFLOW V2') + ' generator!');
 	}
 
 	prompting() {
@@ -34,6 +34,8 @@ module.exports = class extends AppGenerator {
 		const promptsAdvancedSettings = this.advancedConfigSettings();
 		const promptsInputParameter = this.inputParameter();
 		const promptsOutputParameter = this.outputParameter();
+		const promptsInQuestion = this.inputQuestion();
+		const promptsOutQuestion = this.outputQuestion();
 		const that = this;
 
 		const loopInputQuestion = () => {
@@ -60,13 +62,37 @@ module.exports = class extends AppGenerator {
 		return that.prompt(promptsRequiredSettings)
 			.then((_props) => {
 				that.props = { ...that.props, ..._props };
+				return that.prompt(promptsInQuestion);
+
+
+				//if(that.props.inParams)
+				// that.props.inputParameters = [];
+				// return loopInputQuestion()
+				// 	.then((_props) => {
+				// 		that.props = { ...that.props, ..._props };
+				// 		that.props.outputParameters = [];
+				// 		return loopOutputQuestion();
+				// 	})
+
+			})
+			.then((_props) => {
+				that.props = { ...that.props, ..._props };
 				that.props.inputParameters = [];
-				return loopInputQuestion();
+				if (that.props.inParams) {
+					return loopInputQuestion();
+				}
+
+			})
+			.then((_props) => {
+				that.props = { ...that.props, ..._props };
+				return that.prompt(promptsOutQuestion);
 			})
 			.then((_props) => {
 				that.props = { ...that.props, ..._props };
 				that.props.outputParameters = [];
-				return loopOutputQuestion();
+				if (that.props.outParams) {
+					return loopInputQuestion();
+				}
 			})
 			.then((_props) => {
 				that.props = { ...that.props, ..._props };
@@ -78,6 +104,8 @@ module.exports = class extends AppGenerator {
 				that.props.plugincontroller = that.props.pluginname + 'Ctrl';
 				that.props.dependencies = that.props.dependencies ? that.props.dependencies.toString().match(/[^ ]+/g) || [] : [];
 				that.props.dependenciesType = that.props.dependencies ? that.props.dependencies.toString().match(/[^ ]+/g) || [] : [];
+				that.props.inputParameters = that.props.inputParameters ? that.props.inputParameters : [];
+				that.props.outputParameter = that.props.outputParameter ? that.props.outputParameter : [];
 				that.props.paramsCommentDesc = '';
 				that.props.paramsCommentEx = '';
 				that.props.paramsCommentParams = '';
@@ -92,7 +120,7 @@ module.exports = class extends AppGenerator {
 				//that.props.servicesString = that.props.linkServices ? that.props.linkServices.map(i => '\'' + i + '\'') || [] : [];
 
 				if (that.props.typescriptLink) {
-					that.props.linkServicesFrontType =  that.props.linkServicesFront ? that.props.linkServicesFront.map(matchType) || [] : [];
+					that.props.linkServicesFrontType = that.props.linkServicesFront ? that.props.linkServicesFront.map(matchType) || [] : [];
 
 					// eslint-disable-next-line no-inner-declarations
 					function matchType(i) {
@@ -186,7 +214,7 @@ module.exports = class extends AppGenerator {
 				props: this.props
 			}
 			);
-			this.log(chalk.green('Written file: postbuild.bat' ));
+			this.log(chalk.green('Written file: postbuild.bat'));
 
 			this.fs.copyTpl(
 				this.templatePath('solutionTemplate.sln'),
@@ -220,7 +248,7 @@ module.exports = class extends AppGenerator {
 
 
 			this.fs.copyTpl(
-				this.templatePath('ClassLibraryTemplateAdv.csproj'),
+				this.templatePath('ClassLibraryTemplateAdvTs.csproj'),
 				this.destinationPath(this.props.pluginname + '/' + classLibraryFilename), {
 				props: this.props
 			}
@@ -228,23 +256,23 @@ module.exports = class extends AppGenerator {
 			this.log(chalk.green('Written file: ' + classLibraryFilename));
 
 			this.fs.copyTpl(
-				this.templatePath('prebuildAdv.bat'),
+				this.templatePath('prebuildAdvTs.bat'),
 				this.destinationPath('prebuild.bat'), {
 				props: this.props
 			}
 			);
-			this.log(chalk.green('Written file: prebuild.bat' ));
-			
+			this.log(chalk.green('Written file: prebuild.bat'));
+
 			this.fs.copyTpl(
-				this.templatePath('postbuildAdv.bat'),
+				this.templatePath('postbuildAdvTs.bat'),
 				this.destinationPath('postbuild.bat'), {
 				props: this.props
 			}
 			);
-			this.log(chalk.green('Written file: postbuild.bat' ));
+			this.log(chalk.green('Written file: postbuild.bat'));
 
 			this.fs.copyTpl(
-				this.templatePath('solutionTemplateAdv.sln'),
+				this.templatePath('solutionTemplateAdvTs.sln'),
 				this.destinationPath(solution), {
 				props: this.props
 			}
@@ -378,16 +406,24 @@ module.exports = class extends AppGenerator {
 
 
 			this.fs.copyTpl(
-				this.templatePath('ClassLibraryTemplateAdv.csproj'),
+				this.templatePath('ClassLibraryTemplateAdvJs.csproj'),
 				this.destinationPath(this.props.pluginname + '/' + classLibraryFilename), {
 				props: this.props
 			}
 			);
 			this.log(chalk.green('Written file: ' + classLibraryFilename));
 
+			this.fs.copyTpl(
+				this.templatePath('postbuildAdvJs.bat'),
+				this.destinationPath('postbuild.bat'), {
+				props: this.props
+			}
+			);
+			this.log(chalk.green('Written file: postbuild.bat'));
+
 
 			this.fs.copyTpl(
-				this.templatePath('solutionTemplate.sln'),
+				this.templatePath('solutionTemplateAdvJs.sln'),
 				this.destinationPath(solution), {
 				props: this.props
 			}

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+  	<PackageReference Include="Abletech.Workflow.Plugins" Version="0.1.5">
+		<ExcludeAssets>runtime</ExcludeAssets>
+	</PackageReference>   
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="call $(SolutionDir)\postbuild.bat $(TargetDir)" />
+  </Target>
+
+</Project>

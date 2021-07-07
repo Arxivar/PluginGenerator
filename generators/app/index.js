@@ -240,7 +240,7 @@ var AppGenerator = module.exports = class extends Generator {
 			'Type ' + chalk.green('yo arxivar-plugins:widget-task') + ' in order to create ' + chalk.green('widget-task plugin')
 		);
 		this.log(
-			'Type ' + chalk.green('yo arxivar-plugins:link') + ' in order to create ' + chalk.green('link plugin')
+			'Type ' + chalk.green('yo arxivar-plugins:link-workflow-v2') + ' in order to create ' + chalk.green('link workflow v2 plugin')
 		);
 		var logo = [
 			'           _____  __   ___             ',
@@ -514,6 +514,45 @@ var AppGenerator = module.exports = class extends Generator {
 				highlight: true,
 				searchable: true,
 				source: searchService,
+			}
+		];
+		return prompts;
+	}
+
+
+	inputQuestion() {
+		const prompts = [
+			{
+				type: 'list',
+				name: 'inParams',
+				message: 'Would you like to insert INPUT parameters?',
+				default: 'no',
+				choices: ['no', 'yes'],
+				validate: function(inParams) {
+					return inParams === 'yes' || inParams === 'no';
+				},
+				filter: function(inParams) {
+					return inParams === 'yes';
+				}
+			}
+		];
+		return prompts;
+	}
+
+	outputQuestion() {
+		const prompts = [
+			{
+				type: 'list',
+				name: 'outParams',
+				message: 'Would you like to insert OUTPUT parameters?',
+				default: 'no',
+				choices: ['no', 'yes'],
+				validate: function(outParams) {
+					return outParams === 'yes' || outParams === 'no';
+				},
+				filter: function(outParams) {
+					return outParams === 'yes';
+				}
 			}
 		];
 		return prompts;
