@@ -1,4 +1,4 @@
-[ARXivar Documentation](README.md) / Modules
+[ARXivar Documentation](README.md) / Exports
 
 # ARXivar Documentation
 
@@ -15,4 +15,3 @@
 - [PluginService](modules/pluginservice.md)
 - [UserService](modules/userservice.md)
 - [WorkflowResourceService](modules/workflowresourceservice.md)
-- [dtos/HttpOptions](modules/dtos_httpoptions.md)

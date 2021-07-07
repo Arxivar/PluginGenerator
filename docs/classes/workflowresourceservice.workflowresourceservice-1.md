@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [WorkflowResourceService](../modules/workflowresourceservice.md) / WorkflowResourceService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [WorkflowResourceService](../modules/workflowresourceservice.md) / WorkflowResourceService
 
 # Class: WorkflowResourceService
 
@@ -26,7 +26,7 @@
 
 ### delete
 
-▸ **delete**(`resourceName`: *string*, `postData`: *any*, `options`: [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md)): *Promise*<any\>
+▸ **delete**(`resourceName`: *string*, `postData`: *any*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
 
 Delete the selected resource from Arxivar Workflow
 
@@ -36,7 +36,7 @@ Delete the selected resource from Arxivar Workflow
 | :------ | :------ | :------ |
 | `resourceName` | *string* | The resource name |
 | `postData` | *any* | The identifier of the resource |
-| `options` | [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md) | The options of the call |
+| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
 
 **Returns:** *Promise*<any\>
 
@@ -48,7 +48,7 @@ ___
 
 ### get
 
-▸ **get**(`resourceName`: *string*, `options`: [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md)): *Promise*<any\>
+▸ **get**(`resourceName`: *string*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
 
 Retrieve information on a certain type of resource ofs ARXivar Workflow
 
@@ -57,7 +57,7 @@ Retrieve information on a certain type of resource ofs ARXivar Workflow
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `resourceName` | *string* | The resource name |
-| `options` | [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md) | The options of the call |
+| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
 
 **Returns:** *Promise*<any\>
 
@@ -69,7 +69,7 @@ ___
 
 ### getByteArray
 
-▸ **getByteArray**(`resourceName`: *string*, `options`: [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md)): *Promise*<any\>
+▸ **getByteArray**(`resourceName`: *string*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
 
 Retrieve a download stream for a certain resource of ARXivar Workflow
 
@@ -78,7 +78,7 @@ Retrieve a download stream for a certain resource of ARXivar Workflow
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `resourceName` | *string* | The resource name |
-| `options` | [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md) | The options of the call |
+| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
 
 **Returns:** *Promise*<any\>
 
@@ -90,7 +90,7 @@ ___
 
 ### getPost
 
-▸ **getPost**(`resourceName`: *string*, `postData`: *any*, `options`: [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md)): *Promise*<any\>
+▸ **getPost**(`resourceName`: *string*, `postData`: *any*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
 
 Retrieve information of a certain resource of ARXivar Workflow
 
@@ -100,7 +100,7 @@ Retrieve information of a certain resource of ARXivar Workflow
 | :------ | :------ | :------ |
 | `resourceName` | *string* | The resource name |
 | `postData` | *any* | Additional parameter of the call |
-| `options` | [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md) | The options of the call |
+| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
 
 **Returns:** *Promise*<any\>
 
@@ -112,7 +112,7 @@ ___
 
 ### getValue
 
-▸ **getValue**(`resourceName`: *string*, `options`: [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md)): *Promise*<any\>
+▸ **getValue**(`resourceName`: *string*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
 
 Retrieve the value of a certain resource of ARXivar Workflow
 
@@ -121,7 +121,7 @@ Retrieve the value of a certain resource of ARXivar Workflow
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `resourceName` | *string* | The resource name |
-| `options` | [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md) | The options of the call |
+| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
 
 **Returns:** *Promise*<any\>
 
@@ -133,7 +133,7 @@ ___
 
 ### queryWithOptions
 
-▸ **queryWithOptions**(`resourceName`: *string*, `options`: [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md), `httpOptions`: *any*): *Promise*<any\>
+▸ **queryWithOptions**(`resourceName`: *string*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md), `httpOptions`: *any*): *Promise*<any\>
 
 Retrieve information on a certain type of resource of ARXivar Workflow with additional options
 
@@ -142,7 +142,7 @@ Retrieve information on a certain type of resource of ARXivar Workflow with addi
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `resourceName` | *string* | The resource name |
-| `options` | [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md) | The options of the call |
+| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
 | `httpOptions` | *any* | The additional options of the call |
 
 **Returns:** *Promise*<any\>
@@ -155,7 +155,7 @@ ___
 
 ### save
 
-▸ **save**(`resourceName`: *string*, `postData`: *any*, `options`: [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md)): *Promise*<any\>
+▸ **save**(`resourceName`: *string*, `postData`: *any*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
 
 Submit and save the selected resource on Arxivar Workflow
 
@@ -165,7 +165,7 @@ Submit and save the selected resource on Arxivar Workflow
 | :------ | :------ | :------ |
 | `resourceName` | *string* | The resource name |
 | `postData` | *any* | The resource data |
-| `options` | [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md) | The options of the call |
+| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
 
 **Returns:** *Promise*<any\>
 
@@ -177,7 +177,7 @@ ___
 
 ### update
 
-▸ **update**(`resourceName`: *string*, `postData`: *any*, `options`: [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md)): *Promise*<any\>
+▸ **update**(`resourceName`: *string*, `postData`: *any*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
 
 Submit and update the selected resource on Arxivar Workflow
 
@@ -187,7 +187,7 @@ Submit and update the selected resource on Arxivar Workflow
 | :------ | :------ | :------ |
 | `resourceName` | *string* | The resource name |
 | `postData` | *any* | The resource data |
-| `options` | [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md) | The options of the call |
+| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
 
 **Returns:** *Promise*<any\>
 
@@ -199,7 +199,7 @@ ___
 
 ### updateCollection
 
-▸ **updateCollection**(`resourceName`: *string*, `postData`: *any*, `options`: [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md)): *Promise*<any\>
+▸ **updateCollection**(`resourceName`: *string*, `postData`: *any*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
 
 Submit and update a collection of resources on Arxivar Workflow
 
@@ -209,7 +209,7 @@ Submit and update a collection of resources on Arxivar Workflow
 | :------ | :------ | :------ |
 | `resourceName` | *string* | The resource name |
 | `postData` | *any* | The resources data collection |
-| `options` | [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md) | The options of the call |
+| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
 
 **Returns:** *Promise*<any\>
 

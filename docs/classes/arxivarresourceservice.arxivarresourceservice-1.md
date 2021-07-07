@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [ArxivarResourceService](../modules/arxivarresourceservice.md) / ArxivarResourceService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [ArxivarResourceService](../modules/arxivarresourceservice.md) / ArxivarResourceService
 
 # Class: ArxivarResourceService
 
@@ -51,7 +51,7 @@ angular
 
 ### delete
 
-▸ **delete**(`resourceName`: *string*, `postData`: *any*, `options`: [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md)): *Promise*<any\>
+▸ **delete**(`resourceName`: *string*, `postData`: *any*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
 
 Delete the selected resource from Arxivar
 
@@ -61,7 +61,7 @@ Delete the selected resource from Arxivar
 | :------ | :------ | :------ |
 | `resourceName` | *string* | The resource name |
 | `postData` | *any* | The identifier of the resource |
-| `options` | [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md) | The options of the call |
+| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
 
 **Returns:** *Promise*<any\>
 
@@ -73,7 +73,7 @@ ___
 
 ### get
 
-▸ **get**(`resourceName`: *string*, `options`: [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md)): *Promise*<any\>
+▸ **get**(`resourceName`: *string*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
 
 Retrieve information on a certain type of resource ofs ARXivar
 
@@ -82,7 +82,7 @@ Retrieve information on a certain type of resource ofs ARXivar
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `resourceName` | *string* | The resource name |
-| `options` | [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md) | The options of the call |
+| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
 
 **Returns:** *Promise*<any\>
 
@@ -94,7 +94,7 @@ ___
 
 ### getByteArray
 
-▸ **getByteArray**(`resourceName`: *string*, `options`: [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md)): *Promise*<any\>
+▸ **getByteArray**(`resourceName`: *string*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
 
 Retrieve a download stream for a certain resource of ARXivar
 
@@ -103,7 +103,7 @@ Retrieve a download stream for a certain resource of ARXivar
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `resourceName` | *string* | The resource name |
-| `options` | [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md) | The options of the call |
+| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
 
 **Returns:** *Promise*<any\>
 
@@ -115,7 +115,7 @@ ___
 
 ### getPost
 
-▸ **getPost**(`resourceName`: *string*, `postData`: *any*, `options`: [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md)): *Promise*<any\>
+▸ **getPost**(`resourceName`: *string*, `postData`: *any*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
 
 Retrieve information of a certain resource of ARXivar
 
@@ -125,7 +125,7 @@ Retrieve information of a certain resource of ARXivar
 | :------ | :------ | :------ |
 | `resourceName` | *string* | The resource name |
 | `postData` | *any* | Additional parameter of the call |
-| `options` | [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md) | The options of the call |
+| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
 
 **Returns:** *Promise*<any\>
 
@@ -137,7 +137,7 @@ ___
 
 ### getValue
 
-▸ **getValue**(`resourceName`: *string*, `options`: [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md)): *Promise*<any\>
+▸ **getValue**(`resourceName`: *string*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
 
 Retrieve the value of a certain resource of ARXivar
 
@@ -146,7 +146,7 @@ Retrieve the value of a certain resource of ARXivar
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `resourceName` | *string* | The resource name |
-| `options` | [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md) | The options of the call |
+| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
 
 **Returns:** *Promise*<any\>
 
@@ -158,7 +158,7 @@ ___
 
 ### queryWithOptions
 
-▸ **queryWithOptions**(`resourceName`: *string*, `options`: [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md), `httpOptions`: *any*): *Promise*<any\>
+▸ **queryWithOptions**(`resourceName`: *string*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md), `httpOptions`: *any*): *Promise*<any\>
 
 Retrieve information on a certain type of resource of ARXivar with additional options
 
@@ -167,7 +167,7 @@ Retrieve information on a certain type of resource of ARXivar with additional op
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `resourceName` | *string* | The resource name |
-| `options` | [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md) | The options of the call |
+| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
 | `httpOptions` | *any* | The additional options of the call |
 
 **Returns:** *Promise*<any\>
@@ -180,7 +180,7 @@ ___
 
 ### save
 
-▸ **save**(`resourceName`: *string*, `postData`: *any*, `options`: [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md)): *Promise*<any\>
+▸ **save**(`resourceName`: *string*, `postData`: *any*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
 
 Submit and save the selected resource on Arxivar
 
@@ -190,7 +190,7 @@ Submit and save the selected resource on Arxivar
 | :------ | :------ | :------ |
 | `resourceName` | *string* | The resource name |
 | `postData` | *any* | The resource data |
-| `options` | [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md) | The options of the call |
+| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
 
 **Returns:** *Promise*<any\>
 
@@ -202,7 +202,7 @@ ___
 
 ### update
 
-▸ **update**(`resourceName`: *string*, `postData`: *any*, `options`: [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md)): *Promise*<any\>
+▸ **update**(`resourceName`: *string*, `postData`: *any*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
 
 Submit and update the selected resource on Arxivar
 
@@ -212,7 +212,7 @@ Submit and update the selected resource on Arxivar
 | :------ | :------ | :------ |
 | `resourceName` | *string* | The resource name |
 | `postData` | *any* | The resource data |
-| `options` | [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md) | The options of the call |
+| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
 
 **Returns:** *Promise*<any\>
 
@@ -224,7 +224,7 @@ ___
 
 ### updateCollection
 
-▸ **updateCollection**(`resourceName`: *string*, `postData`: *any*, `options`: [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md)): *Promise*<any\>
+▸ **updateCollection**(`resourceName`: *string*, `postData`: *any*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
 
 Submit and update a collection of resources on Arxivar
 
@@ -234,7 +234,7 @@ Submit and update a collection of resources on Arxivar
 | :------ | :------ | :------ |
 | `resourceName` | *string* | The resource name |
 | `postData` | *any* | The resources data collection |
-| `options` | [*HttpOptions*](../interfaces/dtos_httpoptions.httpoptions.md) | The options of the call |
+| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
 
 **Returns:** *Promise*<any\>
 
