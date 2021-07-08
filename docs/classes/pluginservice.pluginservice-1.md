@@ -1,25 +1,45 @@
-[ARXivar Documentation](../globals.md) › [PluginService](pluginservice.md)
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [PluginService](../modules/pluginservice.md) / PluginService
 
 # Class: PluginService
 
-## Hierarchy
+[PluginService](../modules/pluginservice.md).PluginService
 
-* **PluginService**
+## Implements
 
-## Index
+- [*IPluginService*](../interfaces/interfaces.ipluginservice.md)
+
+## Table of contents
+
+### Properties
+
+- [$injector](pluginservice.pluginservice-1.md#$injector)
+- [loadPlugins](pluginservice.pluginservice-1.md#loadplugins)
 
 ### Methods
 
-* [getPluginByUser](pluginservice.md#getpluginbyuser)
-* [getSettings](pluginservice.md#getsettings)
-* [saveSettings](pluginservice.md#savesettings)
-* [setPluginByUser](pluginservice.md#setpluginbyuser)
+- [getPluginByUser](pluginservice.pluginservice-1.md#getpluginbyuser)
+- [getSettings](pluginservice.pluginservice-1.md#getsettings)
+- [init](pluginservice.pluginservice-1.md#init)
+- [saveSettings](pluginservice.pluginservice-1.md#savesettings)
+- [setPluginByUser](pluginservice.pluginservice-1.md#setpluginbyuser)
+
+## Properties
+
+### $injector
+
+• `Readonly` **$injector**: *any*
+
+___
+
+### loadPlugins
+
+• **loadPlugins**: *Promise*<any[]\>
 
 ## Methods
 
-###  getPluginByUser
+### getPluginByUser
 
-▸ **getPluginByUser**(`pluginSettingsObject`: [PluginParamsObjectType](../globals.md#pluginparamsobjecttype)): *Promise‹[PluginSettingsObjectType](../globals.md#pluginsettingsobjecttype)›*
+▸ **getPluginByUser**(`pluginSettingsObject`: PluginParamsObjectType): *Promise*<PluginSettingsObjectType\>
 
 [@deprecated since version 2.4]
 Get the settings of a plugin or of an instance of plugin.
@@ -66,21 +86,23 @@ angular
 ]);
 ```
 
-**Parameters:**
+#### Parameters
 
-Name | Type |
------- | ------ |
-`pluginSettingsObject` | [PluginParamsObjectType](../globals.md#pluginparamsobjecttype) |
+| Name | Type |
+| :------ | :------ |
+| `pluginSettingsObject` | PluginParamsObjectType |
 
-**Returns:** *Promise‹[PluginSettingsObjectType](../globals.md#pluginsettingsobjecttype)›*
+**Returns:** *Promise*<PluginSettingsObjectType\>
 
 The customSettings (the global settings of plugin) and userSettings (the userSetting of plugin or widget instance plugin)
 
+Implementation of: [IPluginService](../interfaces/interfaces.ipluginservice.md)
+
 ___
 
-###  getSettings
+### getSettings
 
-▸ **getSettings**(`scope`: [ScopeSettings](../globals.md#scopesettings), `params`: [PluginParamsObjectType](../globals.md#pluginparamsobjecttype)): *Promise‹any›*
+▸ **getSettings**(`scope`: [*ScopeSettings*](../modules/interfaces.md#scopesettings), `params`: PluginParamsObjectType): *Promise*<any\>
 
 Get the settings of a plugin or of an instance of plugin.
 ```javascript
@@ -124,22 +146,32 @@ angular
 
 ```
 
-**Parameters:**
+#### Parameters
 
-Name | Type |
------- | ------ |
-`scope` | [ScopeSettings](../globals.md#scopesettings) |
-`params` | [PluginParamsObjectType](../globals.md#pluginparamsobjecttype) |
+| Name | Type |
+| :------ | :------ |
+| `scope` | [*ScopeSettings*](../modules/interfaces.md#scopesettings) |
+| `params` | PluginParamsObjectType |
 
-**Returns:** *Promise‹any›*
+**Returns:** *Promise*<any\>
 
 The settings of plugin
 
+Implementation of: [IPluginService](../interfaces/interfaces.ipluginservice.md)
+
 ___
 
-###  saveSettings
+### init
 
-▸ **saveSettings**(`scope`: [ScopeSettings](../globals.md#scopesettings), `params`: [PluginParamsObjectType](../globals.md#pluginparamsobjecttype), `settings`: [PluginSettingsType](../globals.md#pluginsettingstype)): *Promise‹any›*
+▸ **init**(): *void*
+
+**Returns:** *void*
+
+___
+
+### saveSettings
+
+▸ **saveSettings**(`scope`: [*ScopeSettings*](../modules/interfaces.md#scopesettings), `params`: PluginParamsObjectType, `settings`: PluginSettingsType): *Promise*<any\>
 
 Set the settings of a plugin or of an instance of plugin with UPSERT strategy.
 ```javascript
@@ -181,36 +213,40 @@ angular
 
 ```
 
-**Parameters:**
+#### Parameters
 
-Name | Type |
------- | ------ |
-`scope` | [ScopeSettings](../globals.md#scopesettings) |
-`params` | [PluginParamsObjectType](../globals.md#pluginparamsobjecttype) |
-`settings` | [PluginSettingsType](../globals.md#pluginsettingstype) |
+| Name | Type |
+| :------ | :------ |
+| `scope` | [*ScopeSettings*](../modules/interfaces.md#scopesettings) |
+| `params` | PluginParamsObjectType |
+| `settings` | PluginSettingsType |
 
-**Returns:** *Promise‹any›*
+**Returns:** *Promise*<any\>
 
 The settings of plugin
 
+Implementation of: [IPluginService](../interfaces/interfaces.ipluginservice.md)
+
 ___
 
-###  setPluginByUser
+### setPluginByUser
 
-▸ **setPluginByUser**(`pluginSettingsObject`: [PluginParamsObjectType](../globals.md#pluginparamsobjecttype), `userSettingValues`: [PluginSettingsType](../globals.md#pluginsettingstype)): *Promise‹void›*
+▸ **setPluginByUser**(`pluginSettingsObject`: PluginParamsObjectType, `userSettingValues`: PluginSettingsType): *Promise*<void\>
 
 [@deprecated since version 2.4]
 Save the user settings of a plugin or of an instance of plugin.
 If you set only the pluginId property in @param pluginSettingsObject you will save the global userSettings
 If you set the pluginId, instanceId and desktopId properites in @param pluginSettingsObject you will save the instace userSettings
 
-**Parameters:**
+#### Parameters
 
-Name | Type |
------- | ------ |
-`pluginSettingsObject` | [PluginParamsObjectType](../globals.md#pluginparamsobjecttype) |
-`userSettingValues` | [PluginSettingsType](../globals.md#pluginsettingstype) |
+| Name | Type |
+| :------ | :------ |
+| `pluginSettingsObject` | PluginParamsObjectType |
+| `userSettingValues` | PluginSettingsType |
 
-**Returns:** *Promise‹void›*
+**Returns:** *Promise*<void\>
 
 The customSettings (the global settings of plugin) and userSettings (the userSetting of plugin or widget instance plugin)
+
+Implementation of: [IPluginService](../interfaces/interfaces.ipluginservice.md)

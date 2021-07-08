@@ -74,7 +74,7 @@ _Remember: if you specify the path in the options, you dont need to follow the s
 
 ## Documentation
 
-You can find the documentation of the current version [here](docs/globals.md)
+You can find the documentation of the current version [here](docs/modules.md)
 
 ## License
 

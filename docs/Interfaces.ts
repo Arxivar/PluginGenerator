@@ -2,7 +2,7 @@
  * @module Interfaces
  */
 
- export interface IHttpOptions {
+export interface IHttpOptions {
     /**
      * @property Defines if the ARXivar loader should be shown during the call execution
      */
