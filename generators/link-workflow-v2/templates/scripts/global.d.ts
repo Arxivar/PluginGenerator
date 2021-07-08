@@ -3,6 +3,8 @@ import moment from 'moment';
 import LoDashStatic from 'lodash';
 
 
+
+
 declare global {
 	const angular: angular.IAngularStatic;
 	type IArxivarDocumentsService = arxInterfaces.IArxivarDocumentsService;
@@ -37,14 +39,15 @@ declare global {
 		new(requiredSettings: IRequiredSettings, customSettings: ICustomSettings[], userSettings: IUserSettings[]): IPluginRoute
 	}
 
-	enum IConfigurationDataType {
-		String = 1,
-		Int = 2,
-		Datetime = 3,
-		Bool = 4,
-		Decimal = 5
-	}
-	
-	type IConfiguration = { name: string, dataType: IConfigurationDataType, value?: string | number | boolean | Date};
+	type IConfiguration = IConfigurationDynamic<arxInterfaces.ConfigurationDataTypeEnum>;
 
+	type IConfigurationDynamicBase<T extends arxInterfaces.ConfigurationDataTypeEnum> = { name: string, dataType: T };
+
+	type IConfigurationDynamic<T extends arxInterfaces.ConfigurationDataTypeEnum> =
+		T extends arxInterfaces.ConfigurationDataTypeEnum.Bool ? IConfigurationDynamicBase<T> & { value?: boolean } :
+		T extends arxInterfaces.ConfigurationDataTypeEnum.Datetime ? IConfigurationDynamicBase<T> & { value?: string } :
+		T extends arxInterfaces.ConfigurationDataTypeEnum.Decimal ? IConfigurationDynamicBase<T> & { value?: number } :
+		T extends arxInterfaces.ConfigurationDataTypeEnum.Int ? IConfigurationDynamicBase<T> & { value?: number } :
+		T extends arxInterfaces.ConfigurationDataTypeEnum.String ? IConfigurationDynamicBase<T> & { value?: string } :
+		never
 }

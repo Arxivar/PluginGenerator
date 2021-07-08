@@ -1,4 +1,6 @@
 /* eslint-disable no-useless-constructor */
+import { ConfigurationDataTypeEnum } from "../Interfaces";
+
 const pluginId = '<%= props.id %>';
 class <%= props.pluginname %> {
 	viewerMode: boolean;

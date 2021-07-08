@@ -4,6 +4,10 @@
 
 ## Table of contents
 
+### Enumerations
+
+- [ConfigurationDataTypeEnum](../enums/interfaces.configurationdatatypeenum.md)
+
 ### Interfaces
 
 - [IArxivarDocumentsService](../interfaces/interfaces.iarxivardocumentsservice.md)

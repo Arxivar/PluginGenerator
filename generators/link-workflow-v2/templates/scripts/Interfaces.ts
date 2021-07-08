@@ -3,13 +3,13 @@
  */
 
  export interface IHttpOptions {
-    /**
-     * @property Defines if the ARXivar loader should be shown during the call execution
-     */
+	/**
+	 * @property Defines if the ARXivar loader should be shown during the call execution
+	 */
 	openload: boolean;
-    /**
-     * @property Defines if the eventual call error should be shown
-     */
+	/**
+	 * @property Defines if the eventual call error should be shown
+	 */
 	hideUserMessageError: boolean;
 }
 
@@ -428,6 +428,14 @@ export interface IPluginService {
 	*/
 	setPluginByUser(pluginSettingsObject: PluginParamsObjectType, userSettingValues: PluginSettingsType): Promise<void>;
 
+}
+
+export enum ConfigurationDataTypeEnum {
+	String = 1,
+	Int = 2,
+	Datetime = 3,
+	Bool = 4,
+	Decimal = 5
 }
 
 
