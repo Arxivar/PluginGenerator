@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%= props.pluginname %>", "<%= props.pluginname %>\<%= props.pluginname %>.csproj", "{<%= props.id %>}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{<%= props.nestedGuid %>}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{<%= props.presolutionGuid %>}"
 	ProjectSection(SolutionItems) = preProject
 		scripts\src\<%= props.pluginname %>.css = scripts\src\<%= props.pluginname %>.css
 		scripts\src\<%= props.pluginname %>.html = scripts\src\<%= props.pluginname %>.html
-		scripts\src\<%= props.pluginname %>.ts = scripts\src\<%= props.pluginname %>.ts
+		scripts\src\<%= props.pluginname %>.js = scripts\src\<%= props.pluginname %>.js
 	EndProjectSection
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
