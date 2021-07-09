@@ -179,8 +179,7 @@ module.exports = class extends AppGenerator {
 
 
 	writing() {
-		console.log('#################',this.props);
-
+		
 		if (!this.props.advConfig) {
 			this.destinationRoot(
 				path.join('./plugins-link', this.props.pluginname)
