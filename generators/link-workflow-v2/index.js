@@ -91,7 +91,7 @@ module.exports = class extends AppGenerator {
 				that.props = { ...that.props, ..._props };
 				that.props.outputParameters = [];
 				if (that.props.outParams) {
-					return loopInputQuestion();
+					return loopOutputQuestion();
 				}
 			})
 			.then((_props) => {
@@ -179,7 +179,7 @@ module.exports = class extends AppGenerator {
 
 
 	writing() {
-
+		console.log('#################',this.props);
 
 		if (!this.props.advConfig) {
 			this.destinationRoot(
