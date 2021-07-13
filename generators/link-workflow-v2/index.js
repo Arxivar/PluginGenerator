@@ -165,10 +165,15 @@ module.exports = class extends AppGenerator {
 					}
 
 				}
+
+				that.props.linkServicesFrontJs = _.cloneDeep(that.props.linkServicesFront);
 				that.props.dependenciesType.unshift('');
 				that.props.dependencies.unshift('');
+				that.props.linkServicesFront.unshift('');
 				that.props.dependenciesString = that.props.dependencies.map(i => '\'' + i + '\'') || [];
 				that.props.linkServicesFrontString = that.props.linkServicesFront ? that.props.linkServicesFront.map(i => '\'' + i + '\'') || [] : [];
+				that.props.linkServicesFrontString.shift();
+				that.props.linkServicesFrontString.push('');
 				that.props.dependenciesString.shift();
 				that.props.dependenciesString.push('');
 			});
@@ -179,7 +184,7 @@ module.exports = class extends AppGenerator {
 
 
 	writing() {
-		
+
 		if (!this.props.advConfig) {
 			this.destinationRoot(
 				path.join('./plugins-link', this.props.pluginname)

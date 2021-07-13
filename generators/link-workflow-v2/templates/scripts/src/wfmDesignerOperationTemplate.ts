@@ -27,7 +27,7 @@ angular.module('arxivar.pluginoperations')
 			viewerMode: '<'
 		},
 		controllerAs: 'ctrl',
-		controller: [<%- props.linkServicesFrontString%>,<%= props.pluginname %>],
+		controller: [<%- props.linkServicesFrontString%><%= props.pluginname %>],
 		template: `
 				<div ng-include="'<%= props.id.split('-').join('').toLowerCase() %>.html'"> 
 				</div>

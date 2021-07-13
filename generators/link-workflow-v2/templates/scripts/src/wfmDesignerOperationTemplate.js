@@ -1,27 +1,30 @@
+/* eslint-disable no-useless-constructor */
 'use strict';
 
 var pluginId = '<%= props.id %>';
 class <%= props.pluginname %> {
-  constructor(<%- props.linkServicesFront.join(', ') %>) {
-    this._ = _;
+	constructor(<%- props.linkServicesFrontJs.join(', ') %>) {
+	<% for (var i = 0; i < props.linkServicesFrontJs.length; i++) { %>
+		this.<%- props.linkServicesFrontJs[i] %> = <%- props.linkServicesFrontJs[i] %>;
+		<% } %>	
   }
 
-  $onInit() {}
+$onInit() { }
 
-  $onDestroy() {}
+$onDestroy() { }
 
 }
 
 angular.module('arxivar.pluginoperations').component('<%= props.id.split("-").join("").toLowerCase() %>', {
-  bindings: {
-    configuration: '<',
-    enableSave: '&',
-    saver: '<',
-	viewerMode: '<',
-  },
-  controllerAs: 'ctrl',
-  controller: [<%- props.linkServicesFrontString.join(', ') %>,<%= props.pluginname %>],
-  template: `
+	bindings: {
+		configuration: '<',
+		enableSave: '&',
+		saver: '<',
+		viewerMode: '<'
+	},
+	controllerAs: 'ctrl',
+	controller: [<%- props.linkServicesFrontString.join(', ') %><%= props.pluginname %>],
+	template: `
 				<div ng-include="'<%= props.id.split('-').join('').toLowerCase() %>.html'">
 				</div>
 		`

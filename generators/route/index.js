@@ -15,7 +15,7 @@ module.exports = class extends AppGenerator {
 
 	prompting() {
 		var prompts = this.requiredSettings({
-			exclude: ['requireRefresh','advConfig'],
+			exclude: ['requireRefresh', 'advConfig'],
 			minVersion: {
 				type: 'input',
 				name: 'minVersion',
@@ -88,13 +88,11 @@ module.exports = class extends AppGenerator {
 						}
 					}
 
-					
+
 				}
 
 				props.dependenciesType.unshift('');
-				console.log('###############depe2', props.dependencies);
 				props.dependencies.unshift('');
-				console.log('###############depe3', props.dependencies);
 				props.dependenciesString = props.dependencies.map(i => '\'' + i + '\'') || [];
 				props.dependenciesString.shift();
 				props.dependenciesString.push('');

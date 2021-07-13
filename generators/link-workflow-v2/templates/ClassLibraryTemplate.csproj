@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-  	<PackageReference Include="Abletech.Workflow.Plugins" Version="0.1.6">
+  	<PackageReference Include="Abletech.Workflow.Plugins" Version="0.1.7">
 		<ExcludeAssets>runtime</ExcludeAssets>
 	</PackageReference>   
   </ItemGroup>
