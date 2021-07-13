@@ -28,7 +28,7 @@ go inside the "PluginGenerator" folder and type "npm link"
 yo -h
 ```
 
-you should see generator-arxivar-plugins listed between the available generators.
+you should see Arxivar Plugins listed between the available generators.
 
 _Note: The installation process described above needs to be done *ONE TIME ONLY*, not every time you need to use the generator._
 
@@ -40,11 +40,11 @@ _Note: The installation process described above needs to be done *ONE TIME ONLY*
 yo arxivar-plugins
 ```
 
-_Note: This command lists the available sub-commands to generate one of the 3 available plugins (Plugin command, Plugin route, Plugin widget desktop, Plugin widget task); it's an "information-only" command. If you want to effectively create a plugin follow the ouput instructions of this command._
+_Note: This command lists the available sub-commands to generate one of the 6 available plugins (Plugin command,Plugin command profilation, Plugin route, Plugin widget desktop, Plugin widget task, Plugin Link Workflow V2); it's an "information-only" command. If you want to effectively create a plugin follow the ouput instructions of this command._
 
 - Read the output of the previous command and run the command you want to generate your plugin (the generator will require some input in order to generate your plugin).
 
-_Remember: you can generate your plugin anywhere, but you will have to place it in a subfolder of Scripts/plugins/ (path of ARXivarPortal) in order to use it._
+_Remember: you can generate your plugin anywhere, but you will have to place it in a subfolder of Scripts/plugins/ (path of ARXivarPortal) in order to use it, or upload it with CLI if it's a Plugin Link Workflow V2_
 
 
 ## Use Typescript
@@ -71,6 +71,14 @@ _Remember: if you specify the path in the options, you dont need to follow the s
 
 - once you have done the developement of your plugin, you have to copy the compiled plugin folder  _YourARXivarPortalPath\Script\plugins\yourPluginName_ in order to use it.
 
+
+## Plugin Link Workflow V2
+
+To create Plugin Link Workflow V2 you have to follow the required question from the generator.
+
+You can choose between 2 types of configurations: Advanced or not. In the Advanced one you can also manage the front end, both Javascript and Typescript.
+
+Click [here](https://github.com/Arxivar/SamplePlugins/tree/dev/PluginLinkWorkflowV2/README.md) in order to see how to install and configure your plugin link. 
 
 ## Documentation
 
