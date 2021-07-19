@@ -20,7 +20,8 @@ angular.module('arxivar.pluginoperations').component('<%= props.id.split("-").jo
 		configuration: '<',
 		enableSave: '&',
 		saver: '<',
-		viewerMode: '<'
+		viewerMode: '<',
+		diagramId
 	},
 	controllerAs: 'ctrl',
 	controller: [<%- props.linkServicesFrontString.join(', ') %><%= props.pluginname %>],
