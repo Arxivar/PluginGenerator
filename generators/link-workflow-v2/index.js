@@ -63,17 +63,6 @@ module.exports = class extends AppGenerator {
 			.then((_props) => {
 				that.props = { ...that.props, ..._props };
 				return that.prompt(promptsInQuestion);
-
-
-				//if(that.props.inParams)
-				// that.props.inputParameters = [];
-				// return loopInputQuestion()
-				// 	.then((_props) => {
-				// 		that.props = { ...that.props, ..._props };
-				// 		that.props.outputParameters = [];
-				// 		return loopOutputQuestion();
-				// 	})
-
 			})
 			.then((_props) => {
 				that.props = { ...that.props, ..._props };
@@ -81,7 +70,6 @@ module.exports = class extends AppGenerator {
 				if (that.props.inParams) {
 					return loopInputQuestion();
 				}
-
 			})
 			.then((_props) => {
 				that.props = { ...that.props, ..._props };
@@ -106,6 +94,7 @@ module.exports = class extends AppGenerator {
 				that.props.dependenciesType = that.props.dependencies ? that.props.dependencies.toString().match(/[^ ]+/g) || [] : [];
 				that.props.inputParameters = that.props.inputParameters ? that.props.inputParameters : [];
 				that.props.outputParameter = that.props.outputParameter ? that.props.outputParameter : [];
+				that.props.linkServicesFront = that.props.linkServicesFront ? that.props.linkServicesFront : [];
 				that.props.paramsCommentDesc = '';
 				that.props.paramsCommentEx = '';
 				that.props.paramsCommentParams = '';
@@ -184,7 +173,7 @@ module.exports = class extends AppGenerator {
 
 
 	writing() {
-
+		
 		if (!this.props.advConfig) {
 			this.destinationRoot(
 				path.join('./plugins-link', this.props.pluginname)
