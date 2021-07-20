@@ -166,11 +166,7 @@ module.exports = class extends AppGenerator {
 				that.props.dependenciesString.shift();
 				that.props.dependenciesString.push('');
 			});
-
-
-
 	}
-
 
 	writing() {
 		
@@ -191,7 +187,6 @@ module.exports = class extends AppGenerator {
 			}
 			);
 			this.log(chalk.green('Written file: ' + classFilename));
-
 
 			this.fs.copyTpl(
 				this.templatePath('ClassLibraryTemplate.csproj'),
