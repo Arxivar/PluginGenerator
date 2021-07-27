@@ -82,7 +82,7 @@ module.exports = class extends AppGenerator {
 			var factoryRouteFilename = this.props.pluginname + '.ts';
 			var pageRouteFilename = this.props.pluginname + '.html';
 			var controllerRouteFilename = this.props.plugindirective + '.ts';
-			var styleRouteFilename = this.props.pluginname + '.scss';
+			var styleRouteFilename = this.props.pluginname + '.css';
 
 			this.fs.copyTpl(
 				this.templatePath('src/PluginWidgetTemplate.ts'),
@@ -111,7 +111,7 @@ module.exports = class extends AppGenerator {
 
 			// Copio il css
 			this.fs.copyTpl(
-				this.templatePath('src/PluginWidgetTemplate.scss'),
+				this.templatePath('src/PluginWidgetTemplate.css'),
 				this.destinationPath('src/' + styleRouteFilename), {
 				props: this.props
 			}

@@ -28,9 +28,7 @@ module.exports = class extends AppGenerator {
 			function(props) {
 				props.folderName = this.appname;
 				props.plugincontroller = props.pluginname + 'Ctrl';
-				console.log('###############depe0', props.dependencies);
 				props.dependencies = props.dependencies.toString().match(/[^ ]+/g) || [];
-				console.log('###############depe1', props.dependencies);
 				props.dependenciesType = props.dependencies.toString().match(/[^ ]+/g) || [];
 				props.paramsCommentDesc = '';
 				props.paramsCommentEx = '';
@@ -104,8 +102,6 @@ module.exports = class extends AppGenerator {
 
 
 	writing() {
-		console.log('##################props', this.props);
-
 		if (this.props.typescript) {
 			this.destinationRoot(
 				path.join('./plugins-ts', this.props.pluginname)
@@ -114,7 +110,7 @@ module.exports = class extends AppGenerator {
 			var factoryRouteFilename = this.props.pluginname + '.ts';
 			var pageRouteFilename = this.props.pluginname + '.html';
 			var controllerRouteFilename = this.props.plugincontroller + '.ts';
-			var styleRouteFilename = this.props.pluginname + '.scss';
+			var styleRouteFilename = this.props.pluginname + '.css';
 			var pluginName = this.props.pluginname;
 
 			this.fs.copyTpl(
@@ -144,7 +140,7 @@ module.exports = class extends AppGenerator {
 
 			// Copio il scss
 			this.fs.copyTpl(
-				this.templatePath('src/PluginRouteTemplate.scss'),
+				this.templatePath('src/PluginRouteTemplate.css'),
 				this.destinationPath('src/' + styleRouteFilename), {
 				props: this.props
 			}
