@@ -40,7 +40,7 @@ _Note: The installation process described above needs to be done *ONE TIME ONLY*
 yo arxivar-plugins
 ```
 
-_Note: This command lists the available sub-commands to generate one of the 6 available plugins (Plugin command,Plugin command profilation, Plugin route, Plugin widget desktop, Plugin widget task, Plugin Link Workflow V2); it's an "information-only" command. If you want to effectively create a plugin follow the ouput instructions of this command._
+_Note: This command lists the available sub-commands to generate one of the available plugins (Plugin command,Plugin command profilation, Plugin route, Plugin widget desktop, Plugin widget task, Plugin Link Workflow V2); it's an "information-only" command. If you want to effectively create a plugin follow the ouput instructions of this command._
 
 - Read the output of the previous command and run the command you want to generate your plugin (the generator will require some input in order to generate your plugin).
 
