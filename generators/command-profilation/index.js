@@ -12,7 +12,7 @@ module.exports = class extends AppGenerator {
 	}
 	prompting() {
 		var prompts = this.requiredSettings({
-			exclude: ['injectParams', 'requireRefresh','advConfig'],
+			exclude: ['injectParams', 'requireRefresh', 'advConfig'],
 			minVersion: {
 				type: 'input',
 				name: 'minVersion',
@@ -192,6 +192,15 @@ module.exports = class extends AppGenerator {
 			}
 			);
 			this.log(chalk.green('Written file: ' + pluginCommandFilename));
+
+			//Copio eslint
+			this.fs.copyTpl(
+				this.templatePath('src/eslintrcJS.js'),
+				this.destinationPath('eslintrc.js'), {
+				props: this.props
+			}
+			);
+			this.log(chalk.green('Create eslintrc'));
 
 			//Copio il file dummy per creare la folder libs
 			this.fs.copyTpl(
