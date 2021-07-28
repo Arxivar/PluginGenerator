@@ -1,7 +1,5 @@
 const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 //don't touch the code below for your sake
 const outDir = '<%= props.arxPath %>';
@@ -14,7 +12,7 @@ entry[pluginName] = './src\\' + pluginCommand + '.ts';
 
 module.exports = {
 	entry: entry,
-	mode: 'development',
+	mode: 'production',
 	devtool: 'source-map',
 	module: {
 		rules: [
@@ -87,6 +85,22 @@ module.exports = {
 				],
 			}
 		],
+	},
+	optimization: {
+		minimize: true,
+		minimizer: [
+			new TerserPlugin({
+				parallel: true,
+				sourceMap: true,
+				extractComments: false,
+				terserOptions: {
+					output: {
+						comments: false
+					},
+					compress: { inline: false }
+				}
+			})
+		]
 	},
 	resolve: {
 		extensions: ['.js', '.jsx', '.css', '.scss', '.ts', '.tsx'],
