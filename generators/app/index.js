@@ -519,7 +519,6 @@ var AppGenerator = module.exports = class extends Generator {
 		return prompts;
 	}
 
-
 	inputQuestion() {
 		const prompts = [
 			{
@@ -668,5 +667,4 @@ var AppGenerator = module.exports = class extends Generator {
 		]
 		return prompts;
 	}
-
 };
