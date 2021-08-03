@@ -1,4 +1,4 @@
-[![Arxivar](http://www.arxivar.it/download/resources/loghi/Logo-ARXivar_orizzontale-nero.png)](http://www.arxivar.it/)
+[![Arxivar](https://www.arxivar.it/wp-content/uploads/2021/02/Logo-ARXivar.png)](http://www.arxivar.it/)
 
 # ARXivar Documentation
 
