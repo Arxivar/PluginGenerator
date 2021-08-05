@@ -563,6 +563,12 @@ var AppGenerator = module.exports = class extends Generator {
 				type: 'input',
 				name: 'propertyName',
 				message: 'Insert INPUT property name: ',
+				validate: function(propertyName) {
+					if (_.isEmpty(_.trim(propertyName)) === true) {
+						return 'Empty input property name. Type a name';
+					}
+					return true;
+				}
 			},
 			{
 				type: 'list',
@@ -594,6 +600,12 @@ var AppGenerator = module.exports = class extends Generator {
 				type: 'input',
 				name: 'propertyName',
 				message: 'Insert OUTPUT property name: ',
+				validate: function(propertyName) {
+					if (_.isEmpty(_.trim(propertyName)) === true) {
+						return 'Empty output property name. Type a name';
+					}
+					return true;
+				}
 			},
 			{
 				type: 'list',
