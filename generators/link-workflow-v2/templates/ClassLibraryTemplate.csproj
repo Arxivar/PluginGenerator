@@ -10,8 +10,8 @@
 	</PackageReference>   
   </ItemGroup>
   
-    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="call &quot;$(SolutionDir)\postbuild.bat&quot; $(TargetDir)" />
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	<Exec Command="call &quot;$(SolutionDir)\postbuild.bat&quot; &quot;$(TargetDir)&quot; &quot;$(TargetDir)\*&quot; &quot;..\$(ProjectName)&quot;" />
   </Target>
 
 </Project>

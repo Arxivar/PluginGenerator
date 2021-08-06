@@ -11,7 +11,8 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="call $(SolutionDir)\postbuild.bat $(TargetDir)" />
+    <Exec Command="call &quot;$(SolutionDir)\postbuild.bat&quot; &quot;$(TargetDir)&quot; &quot;$(TargetDir)\*&quot; &quot;..\$(ProjectName)&quot;" />
   </Target>
 
 </Project>
+
