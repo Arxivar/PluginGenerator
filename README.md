@@ -78,11 +78,11 @@ To create Plugin Link Workflow V2 you have to follow the required question from 
 
 You can choose between 2 types of configurations: Advanced or not. In the Advanced one you can also manage the front end, both Javascript and Typescript.
 
-Click [here](https://github.com/Arxivar/SamplePlugins/tree/master/PluginLinkWorkflowV2/) in order to see how to install and configure your plugin link. 
+Click [here](https://github.com/Arxivar/SamplePlugins/tree/master/LinkWorkflowV2/) in order to see how to install and configure your plugin link. 
 
 ## Documentation
 
-You can find the documentation of the current version [here](docs/modules.md)
+You can find the documentation of the current version [here](docs/README.md)
 
 ## License
 
