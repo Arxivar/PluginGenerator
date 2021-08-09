@@ -1,0 +1,27 @@
+{
+	"compilerOptions": {
+		"module": "esnext",
+		"noImplicitAny": true,
+		"removeComments": true,
+		"preserveConstEnums": true,
+		"sourceMap": true,
+		"baseUrl": ".",
+		"jsx": "react",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"target": "es6",
+		"emitDecoratorMetadata": true,
+		"esModuleInterop": true,
+		"experimentalDecorators": true,
+		"typeRoots": ["node_modules/@types"],		
+	},
+	"files": [
+		"scripts/global.d.ts"
+	],
+	"include": [
+		"scripts/**/*"
+	],
+    "exclude": [
+      	"scripts/build"
+    ]
+}

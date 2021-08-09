@@ -2,6 +2,8 @@ node_modules
 coverage
 out
 plugins/**/*.*
+plugins-link/**/*.*
+plugins-ts/**/*.*
 test/testTmp/**/*.*
 !plugins/.eslintrc.js
 !plugins/package.json
