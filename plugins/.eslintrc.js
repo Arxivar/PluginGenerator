@@ -42,6 +42,7 @@ module.exports = {
     "plugin:es5/no-es2015"
   ],
   "rules": {
+ 	"no-console": "off",
     "no-bitwise": [
       2,
       {
