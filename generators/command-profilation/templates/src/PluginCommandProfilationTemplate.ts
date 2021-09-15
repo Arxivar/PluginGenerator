@@ -1,4 +1,4 @@
-import { LoDashStatic } from "lodash";
+import { LoDashStatic } from 'lodash';
 
 angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['PluginProfilation', <% - props.dependenciesString.join(', ') %> 'arxivarResourceService', 'arxivarUserServiceCreator', 'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService',
 	(PluginProfilation: IPluginProfilation <%= props.dependenciesType.join(', ') %>, arxivarResourceService: IArxivarResourceService, arxivarUserServiceCreator: IArxivarUserServiceCreator, arxivarRouteService: IArxivarRouteService, arxivarDocumentsService: IArxivarDocumentsService, arxivarNotifierService: IArxivarNotifierService) => {

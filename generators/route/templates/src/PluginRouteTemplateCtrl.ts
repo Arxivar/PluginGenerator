@@ -1,5 +1,5 @@
-import { LoDashStatic } from "lodash";
-import {routeType} from "./<%= props.pluginname %>";
+import { LoDashStatic } from 'lodash';
+import {routeType} from './<%= props.pluginname %>';
 
 angular.module('arxivar.plugins.controller').controller('<%= props.pluginname %>Ctrl', [
     '$scope',<%- props.dependenciesString.join(', ') %>'arxivarResourceService' , 'arxivarUserServiceCreator' , 'arxivarRouteService' , 'arxivarDocumentsService' , 'arxivarNotifierService' , '<%= props.pluginname %>',
