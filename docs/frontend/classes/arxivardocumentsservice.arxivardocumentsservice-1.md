@@ -35,10 +35,31 @@ angular
 
 ### Methods
 
+- [downloadStream](arxivardocumentsservice.arxivardocumentsservice-1.md#downloadstream)
 - [getDocumentByDocnumber](arxivardocumentsservice.arxivardocumentsservice-1.md#getdocumentbydocnumber)
 - [getRevisionByID](arxivardocumentsservice.arxivardocumentsservice-1.md#getrevisionbyid)
 
 ## Methods
+
+### downloadStream
+
+▸ **downloadStream**(`data`: *any*, `status`: *any*, `headers`: *any*): *Promise*<any\>
+
+This method converts an api call response of type arraybuffer into a file
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `data` | *any* | The data of the call. |
+| `status` | *any* | The status of the call. |
+| `headers` | *any* | The headers of the call. |
+
+**Returns:** *Promise*<any\>
+
+The file download Promise.
+
+___
 
 ### getDocumentByDocnumber
 
