@@ -16,6 +16,16 @@ export interface IHttpOptions {
 
 export interface IArxivarDocumentsService {
 	/**
+	*  This method converts an api call response of type arraybuffer into a file.
+	*
+	* @param data The data of the call.
+	* @param status The status of the call.
+	* @param headers The headers of the call.
+  	* @returns The file download Promise.
+	*/
+	downloadStream: (data: any, status: any, headers: any) => Promise<any>;
+
+	/**
 	* Download the document linked to a profile.
 	*
 	* @param docnumber The docnumber of the profile.
