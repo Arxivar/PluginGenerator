@@ -28,7 +28,7 @@ const routeFactory = (PluginRoute: IPluginRoute) => {
 
     const myPlugin = new PluginRoute(requiredSettings, customSettings, userSettings);
     return { plugin: myPlugin };
-}
+};
 
 angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['PluginRoute',routeFactory ]);
 

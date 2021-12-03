@@ -102,6 +102,10 @@ module.exports = class extends AppGenerator {
 
 
 	writing() {
+
+		var interfacePath = '../../../docs/frontend/';
+		var basePath = '../../../';
+
 		if (this.props.typescript) {
 			this.destinationRoot(
 				path.join('./plugins-ts', this.props.pluginname)
@@ -159,7 +163,7 @@ module.exports = class extends AppGenerator {
 
 			//Copio .babelrc
 			this.fs.copyTpl(
-				this.templatePath('.babelrc'),
+				this.templatePath(basePath+ '.babelrc'),
 				this.destinationPath('.babelrc'), {
 				props: this.props
 			}
@@ -168,7 +172,7 @@ module.exports = class extends AppGenerator {
 
 			//Copio .eslintrc
 			this.fs.copyTpl(
-				this.templatePath('.eslintrc'),
+				this.templatePath(basePath+'.eslintrc'),
 				this.destinationPath('.eslintrc'), {
 				props: this.props
 			}
@@ -177,7 +181,7 @@ module.exports = class extends AppGenerator {
 
 			//Copio global.d.ts
 			this.fs.copyTpl(
-				this.templatePath('global.d.ts'),
+				this.templatePath(basePath+'global.d.ts'),
 				this.destinationPath('global.d.ts'), {
 				props: this.props
 			}
@@ -186,7 +190,7 @@ module.exports = class extends AppGenerator {
 
 			//Copio Interfaces.ts
 			this.fs.copyTpl(
-				this.templatePath('../../../Interfaces.ts'),
+				this.templatePath(interfacePath + 'Interfaces.ts'),
 				this.destinationPath('Interfaces.ts'), {
 				props: this.props
 			}
@@ -195,7 +199,7 @@ module.exports = class extends AppGenerator {
 
 			//Copio package.json
 			this.fs.copyTpl(
-				this.templatePath('package.json'),
+				this.templatePath(basePath+'package.json'),
 				this.destinationPath('package.json'), {
 				props: this.props
 			}
@@ -204,7 +208,7 @@ module.exports = class extends AppGenerator {
 
 			//Copio package-lock.json
 			this.fs.copyTpl(
-				this.templatePath('package-lock.json'),
+				this.templatePath(basePath+'package-lock.json'),
 				this.destinationPath('package-lock.json'), {
 				props: this.props
 			}
@@ -213,7 +217,7 @@ module.exports = class extends AppGenerator {
 
 			//Copio postcss.config.js
 			this.fs.copyTpl(
-				this.templatePath('postcss.config.js'),
+				this.templatePath(basePath+'postcss.config.js'),
 				this.destinationPath('postcss.config.js'), {
 				props: this.props
 			}
@@ -222,7 +226,7 @@ module.exports = class extends AppGenerator {
 
 			//Copio tsconfig.json
 			this.fs.copyTpl(
-				this.templatePath('tsconfig.json'),
+				this.templatePath(basePath+'tsconfig.json'),
 				this.destinationPath('tsconfig.json'), {
 				props: this.props
 			}
