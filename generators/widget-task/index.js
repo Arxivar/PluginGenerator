@@ -154,7 +154,7 @@ module.exports = class extends AppGenerator {
 
 			//Copio Interfaces.ts
 			this.fs.copyTpl(
-				this.templatePath('Interfaces.ts'),
+				this.templatePath('../../../Interfaces.ts'),
 				this.destinationPath('Interfaces.ts'), {
 				props: this.props
 			}
