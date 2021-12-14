@@ -18,10 +18,10 @@ export interface IArxivarDocumentsService {
 	/**
 	*  This method converts an api call response of type arraybuffer into a file.
 	*
-	* @param data The data of the call.
+    * @param data The data of the call.
 	* @param status The status of the call.
 	* @param headers The headers of the call.
-  	* @returns The file download Promise.
+ 	* @returns The file download Promise.
 	*/
 	downloadStream: (data: any, status: any, headers: any) => Promise<any>;
 
@@ -43,6 +43,9 @@ export interface IArxivarDocumentsService {
 }
 
 export interface IArxivarResourceService {
+
+	webApiUrl: string;
+
 	/**
 	 * Retrieve information on a certain type of resource ofs ARXivar
 	 *
@@ -344,6 +347,25 @@ export interface IArxivarResourceService {
 }
 
 export interface IArxivarRouteService {
+	/** 
+	* Retrieve the URL's profilation route that contains the bufferId of the file to upload. 
+	*
+ 	* @param bufferId The bufferId of uploaded file.
+	* @param fileName The fileName of uploaded file.
+ 	* @returns The url of profilation route.
+	*/
+	getURLProfilation: ({ bufferId, fileName }?: { bufferId: string; fileName: string }) => string;
+
+	/**
+	* Retrieve the URL's mask route that contains the bufferId of the file to upload
+	*
+	* @param id The mask Id.
+ 	* @param bufferId The bufferId of uploaded file.
+	* @param fileName The fileName of uploaded file.
+ 	* @returns The url of mask route.
+	*/
+	getMaskProfilation: (id: string, { bufferId, fileName }?: { bufferId: string; fileName: string }) => string;
+
 	/**
 	* Retrieve the URL of the profile route.
 	*

@@ -43,16 +43,16 @@ angular
 
 ### downloadStream
 
-▸ **downloadStream**(`data`: *any*, `status`: *any*, `headers`: *any*): *Promise*<any\>
+▸ **downloadStream**(`data`: *any*, `status`: *number*, `headers`: *any*): *Promise*<any\>
 
-This method converts an api call response of type arraybuffer into a file
+This method converts an api call response of type arraybuffer into a file.
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `data` | *any* | The data of the call. |
-| `status` | *any* | The status of the call. |
+| `status` | *number* | The status of the call. |
 | `headers` | *any* | The headers of the call. |
 
 **Returns:** *Promise*<any\>

@@ -12,12 +12,45 @@
 
 ### Properties
 
+- [getMaskProfilation](interfaces.iarxivarrouteservice.md#getmaskprofilation)
 - [getPartialURLPluginLinkExecuteCommand](interfaces.iarxivarrouteservice.md#getpartialurlpluginlinkexecutecommand)
 - [getURLPluginRoute](interfaces.iarxivarrouteservice.md#geturlpluginroute)
+- [getURLProfilation](interfaces.iarxivarrouteservice.md#geturlprofilation)
 - [getURLProfileReadonly](interfaces.iarxivarrouteservice.md#geturlprofilereadonly)
 - [getURLRevisionsByDocnumber](interfaces.iarxivarrouteservice.md#geturlrevisionsbydocnumber)
 
 ## Properties
+
+### getMaskProfilation
+
+• **getMaskProfilation**: (`id`: *string*, `__namedParameters?`: { `bufferId`: *string* ; `fileName`: *string*  }) => *string*
+
+Retrieve the URL's mask route that contains the bufferId of the file to upload
+
+**`param`** The mask Id.
+
+**`param`** The bufferId of uploaded file.
+
+**`param`** The fileName of uploaded file.
+
+**`returns`** The url of mask route.
+
+#### Type declaration
+
+▸ (`id`: *string*, `__namedParameters?`: { `bufferId`: *string* ; `fileName`: *string*  }): *string*
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `id` | *string* |
+| `__namedParameters?` | *object* |
+| `__namedParameters.bufferId` | *string* |
+| `__namedParameters.fileName` | *string* |
+
+**Returns:** *string*
+
+___
 
 ### getPartialURLPluginLinkExecuteCommand
 
@@ -62,6 +95,34 @@ Retrieve the URL's route of pluginRoute
 | Name | Type |
 | :------ | :------ |
 | `pluginId` | *string* |
+
+**Returns:** *string*
+
+___
+
+### getURLProfilation
+
+• **getURLProfilation**: (`__namedParameters?`: { `bufferId`: *string* ; `fileName`: *string*  }) => *string*
+
+Retrieve the URL's profilation route that contains the bufferId of the file to upload.
+
+**`param`** The bufferId of uploaded file.
+
+**`param`** The fileName of uploaded file.
+
+**`returns`** The url of profilation route.
+
+#### Type declaration
+
+▸ (`__namedParameters?`: { `bufferId`: *string* ; `fileName`: *string*  }): *string*
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `__namedParameters?` | *object* |
+| `__namedParameters.bufferId` | *string* |
+| `__namedParameters.fileName` | *string* |
 
 **Returns:** *string*
 

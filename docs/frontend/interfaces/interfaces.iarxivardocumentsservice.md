@@ -8,10 +8,41 @@
 
 ### Properties
 
+- [downloadStream](interfaces.iarxivardocumentsservice.md#downloadstream)
 - [getDocumentByDocnumber](interfaces.iarxivardocumentsservice.md#getdocumentbydocnumber)
 - [getRevisionByID](interfaces.iarxivardocumentsservice.md#getrevisionbyid)
 
 ## Properties
+
+### downloadStream
+
+• **downloadStream**: (`data`: *any*, `status`: *any*, `headers`: *any*) => *Promise*<any\>
+
+ This method converts an api call response of type arraybuffer into a file.
+
+**`param`** The data of the call.
+
+**`param`** The status of the call.
+
+**`param`** The headers of the call.
+
+**`returns`** The file download Promise.
+
+#### Type declaration
+
+▸ (`data`: *any*, `status`: *any*, `headers`: *any*): *Promise*<any\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `data` | *any* |
+| `status` | *any* |
+| `headers` | *any* |
+
+**Returns:** *Promise*<any\>
+
+___
 
 ### getDocumentByDocnumber
 
