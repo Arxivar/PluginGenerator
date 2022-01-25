@@ -6,7 +6,7 @@
 
 ## Installation
 
-- Install [Node.js](https://nodejs.org/) if you don't already have it (LTS version should be fine).
+- install [NodeJs v12.14.1 ](https://nodejs.org/uk/blog/release/v12.14.1/)
 
 - When node has finished installing, install [Yeoman](http://yeoman.io): open a command prompt and run the following command:
 
@@ -20,6 +20,12 @@ _Note: npm is the package manager for Node.js and comes bundled with it._
 
 ```bash
 go inside the "PluginGenerator" folder and type "npm link"
+```
+
+- then run the command:
+
+```bash
+  npm install
 ```
 
 - Now with the command:
@@ -54,6 +60,8 @@ To use Typescript you have to follow these steps:
 - select true in Typescript generator options (the plugin is going to create a new sub-folder in plugin-ts folder)
 
 - specify the name of the compiled plugin folder. (optionaly your can spacify the folder _YourARXivarPortalPath\Script\plugins\yourPluginName_ for an automatic deploy)
+  
+- install [NodeJs v12.14.1 ](https://nodejs.org/uk/blog/release/v12.14.1/)
 
 - open the terminal into your plugin folder and run the command:
 

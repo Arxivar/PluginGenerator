@@ -35,6 +35,10 @@ angular
 
 ## Table of contents
 
+### Properties
+
+- [webApiUrl](arxivarresourceservice.arxivarresourceservice-1.md#webapiurl)
+
 ### Methods
 
 - [delete](arxivarresourceservice.arxivarresourceservice-1.md#delete)
@@ -46,6 +50,14 @@ angular
 - [save](arxivarresourceservice.arxivarresourceservice-1.md#save)
 - [update](arxivarresourceservice.arxivarresourceservice-1.md#update)
 - [updateCollection](arxivarresourceservice.arxivarresourceservice-1.md#updatecollection)
+
+## Properties
+
+### webApiUrl
+
+• **webApiUrl**: *string*
+
+Implementation of: [IArxivarResourceService](../interfaces/interfaces.iarxivarresourceservice.md).[webApiUrl](../interfaces/interfaces.iarxivarresourceservice.md#webapiurl)
 
 ## Methods
 

@@ -10,6 +10,10 @@
 
 ## Table of contents
 
+### Properties
+
+- [webApiUrl](workflowresourceservice.workflowresourceservice-1.md#webapiurl)
+
 ### Methods
 
 - [delete](workflowresourceservice.workflowresourceservice-1.md#delete)
@@ -21,6 +25,14 @@
 - [save](workflowresourceservice.workflowresourceservice-1.md#save)
 - [update](workflowresourceservice.workflowresourceservice-1.md#update)
 - [updateCollection](workflowresourceservice.workflowresourceservice-1.md#updatecollection)
+
+## Properties
+
+### webApiUrl
+
+• **webApiUrl**: *string*
+
+Implementation of: [IArxivarResourceService](../interfaces/interfaces.iarxivarresourceservice.md).[webApiUrl](../interfaces/interfaces.iarxivarresourceservice.md#webapiurl)
 
 ## Methods
 

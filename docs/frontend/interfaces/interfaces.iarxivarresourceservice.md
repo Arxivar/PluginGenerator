@@ -22,6 +22,7 @@
 - [save](interfaces.iarxivarresourceservice.md#save)
 - [update](interfaces.iarxivarresourceservice.md#update)
 - [updateCollection](interfaces.iarxivarresourceservice.md#updatecollection)
+- [webApiUrl](interfaces.iarxivarresourceservice.md#webapiurl)
 
 ## Properties
 
@@ -283,3 +284,9 @@ Submit and update a collection of resources on Arxivar
 | `options` | [*IHttpOptions*](interfaces.ihttpoptions.md) |
 
 **Returns:** *Promise*<any\>
+
+___
+
+### webApiUrl
+
+• **webApiUrl**: *string*

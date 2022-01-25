@@ -35,12 +35,37 @@ angular
 
 ### Methods
 
+- [getMaskProfilation](arxivarrouteservice.arxivarrouteservice-1.md#getmaskprofilation)
 - [getPartialURLPluginLinkExecuteCommand](arxivarrouteservice.arxivarrouteservice-1.md#getpartialurlpluginlinkexecutecommand)
 - [getURLPluginRoute](arxivarrouteservice.arxivarrouteservice-1.md#geturlpluginroute)
+- [getURLProfilation](arxivarrouteservice.arxivarrouteservice-1.md#geturlprofilation)
 - [getURLProfileReadonly](arxivarrouteservice.arxivarrouteservice-1.md#geturlprofilereadonly)
 - [getURLRevisionsByDocnumber](arxivarrouteservice.arxivarrouteservice-1.md#geturlrevisionsbydocnumber)
 
 ## Methods
+
+### getMaskProfilation
+
+▸ **getMaskProfilation**(`id`: *string*, `__namedParameters?`: { `bufferId`: *string* ; `fileName`: *string*  }): *string*
+
+Retrieve the URL's mask route that contains the bufferId of the file to upload
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `id` | *string* | - | The mask Id. |
+| `__namedParameters` | *object* | null | - |
+| `__namedParameters.bufferId` | *string* | - | The bufferId of uploaded file. |
+| `__namedParameters.fileName` | *string* | - | The fileName of uploaded file. |
+
+**Returns:** *string*
+
+The url of mask route.
+
+Implementation of: IArxivarRouteService.getMaskProfilation
+
+___
 
 ### getPartialURLPluginLinkExecuteCommand
 
@@ -79,6 +104,28 @@ Retrieve the URL's route of pluginRoute
 The url of the plugin route.
 
 Implementation of: IArxivarRouteService.getURLPluginRoute
+
+___
+
+### getURLProfilation
+
+▸ **getURLProfilation**(`__namedParameters?`: { `bufferId`: *string* ; `fileName`: *string*  }): *string*
+
+Retrieve the URL's profilation route that contains the bufferId of the file to upload.
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `__namedParameters` | *object* | null | - |
+| `__namedParameters.bufferId` | *string* | - | The bufferId of uploaded file. |
+| `__namedParameters.fileName` | *string* | - | The fileName of uploaded file. |
+
+**Returns:** *string*
+
+The url of profilation route.
+
+Implementation of: IArxivarRouteService.getURLProfilation
 
 ___
 

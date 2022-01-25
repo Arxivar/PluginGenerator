@@ -23,7 +23,7 @@ const widgetFactory = (PluginWidgetTask: IPluginTask) => {
 
     const myPlugin = new PluginWidgetTask(requiredSettings, customSettings, userSettings);
     return { plugin: myPlugin };
-}
+};
 
 angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['PluginWidgetTask', widgetFactory ]);
 
