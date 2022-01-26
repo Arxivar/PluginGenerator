@@ -61,7 +61,7 @@ To use Typescript you have to follow these steps:
 
 - specify the name of the compiled plugin folder. (optionaly your can spacify the folder _YourARXivarPortalPath\Script\plugins\yourPluginName_ for an automatic deploy)
   
-- install [NodeJs v12.14.1 ](https://nodejs.org/uk/blog/release/v12.14.1/)
+- install [NodeJs](https://nodejs.org/en/) if you don't already have it (LTS version 16.13.2 should be fine).
 
 - open the terminal into your plugin folder and run the command:
 
