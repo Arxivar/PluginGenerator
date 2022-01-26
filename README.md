@@ -6,7 +6,7 @@
 
 ## Installation
 
-- install [NodeJs v12.14.1 ](https://nodejs.org/uk/blog/release/v12.14.1/)
+- install [NodeJs](https://nodejs.org/en/) if you don't already have it (LTS version 16.13.2 should be fine).
 
 - When node has finished installing, install [Yeoman](http://yeoman.io): open a command prompt and run the following command:
 
