@@ -169,7 +169,7 @@ module.exports = class extends AppGenerator {
 
 			//Copio package.json
 			this.fs.copyTpl(
-				this.templatePath(basePath+'package.json'),
+				this.templatePath(basePath+'templatepackage.json'),
 				this.destinationPath('package.json'), {
 				props: this.props
 			}
