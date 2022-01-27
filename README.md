@@ -8,7 +8,9 @@
 
 - install [NodeJs](https://nodejs.org/en/) if you don't already have it (LTS version 16.13.2 should be fine).
 
-- When node has finished installing, install [Yeoman](http://yeoman.io): open a command prompt and run the following command:
+_Note: if nodejs is installed with nvm you will also have to install the windows build tools using `npm install --global windows-build-tools --vs2015` command._
+
+- When nodejs has finished installing, install [Yeoman](http://yeoman.io): open a command prompt and run the following command:
 
 ```bash
 npm install -g yo
