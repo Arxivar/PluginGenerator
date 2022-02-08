@@ -240,7 +240,10 @@ var AppGenerator = module.exports = class extends Generator {
 			'Type ' + chalk.green('yo arxivar-plugins:widget-task') + ' in order to create ' + chalk.green('widget-task plugin')
 		);
 		this.log(
-			'Type ' + chalk.green('yo arxivar-plugins:link-workflow-v2') + ' in order to create ' + chalk.green('link workflow v2 plugin')
+			'Type ' + chalk.green('yo arxivar-plugins:widget-task-v2') + ' in order to create ' + chalk.green('widget-task V2 plugin')
+		);
+		this.log(
+			'Type ' + chalk.green('yo arxivar-plugins:link-workflow-v2') + ' in order to create ' + chalk.green('link workflow V2 plugin')
 		);
 		var logo = [
 			'           _____  __   ___             ',
