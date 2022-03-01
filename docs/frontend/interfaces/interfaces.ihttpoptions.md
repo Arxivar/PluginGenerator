@@ -9,7 +9,7 @@
 ### Properties
 
 - [hideUserMessageError](interfaces.ihttpoptions.md#hideusermessageerror)
-- [openload](interfaces.ihttpoptions.md#openload)
+- [openloader](interfaces.ihttpoptions.md#openloader)
 
 ## Properties
 
@@ -21,8 +21,8 @@
 
 ___
 
-### openload
+### openloader
 
-• **openload**: *boolean*
+• **openloader**: *boolean*
 
 **`property`** Defines if the ARXivar loader should be shown during the call execution

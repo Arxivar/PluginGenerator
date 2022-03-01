@@ -6,7 +6,7 @@ export interface IHttpOptions {
 	/**
 	 * @property Defines if the ARXivar loader should be shown during the call execution
 	 */
-	openload: boolean;
+	openloader: boolean;
 	/**
 	 * @property Defines if the eventual call error should be shown
 	 */
