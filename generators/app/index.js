@@ -277,6 +277,10 @@ var AppGenerator = module.exports = class extends Generator {
 				MAIN: `// OPTIONAL settings for specific users. These objects require the following properties: name, description, defaultValue and type.
   // Allowed types are: string, number, boolean or date (Date type is a string UTC ISO 8601 (https://it.wikipedia.org/wiki/ISO_8601) format`
 			},
+			widgetSettings: {
+				MAIN: `// OPTIONAL settings for specific users. These objects require the following properties: name, description, defaultValue and type.
+  // Allowed types are: string, number, boolean or date (Date type is a string UTC ISO 8601 (https://it.wikipedia.org/wiki/ISO_8601) format`
+			},
 			pluginCommandProfilation: {
 				canRun: '// This function is a promise with asyncronous logic to determine if this plugin can run. \n\t// Input parameters: array of fields (params.fields), value of docnumber (params.docnumber only in edit profile) \n\t// Output parameter: Promise of bool',
 				run: '// This function is a promise with asyncronous run logic. \n\t// Input parameters: array of fields (params.fields), value of docnumber (params.docnumber only in edit profile) \n\t// Output parameter: Promise of array of fileds (only the fields to change)'

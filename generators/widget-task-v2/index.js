@@ -171,15 +171,6 @@ module.exports = class extends AppGenerator {
 			);
 			this.log(chalk.green('Written file: package.json'));
 
-			//Copio package-lock.json
-			this.fs.copyTpl(
-				this.templatePath(basePath+'package-lock.json'),
-				this.destinationPath('package-lock.json'), {
-				props: this.props
-			}
-			);
-			this.log(chalk.green('Written file: package-lock.json'));
-
 			//Copio postcss.config.js
 			this.fs.copyTpl(
 				this.templatePath(basePath+'postcss.config.js'),

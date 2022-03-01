@@ -1,6 +1,7 @@
 node_modules
 coverage
 out
+package-lock.json
 plugins/**/*.*
 plugins-link/**/*.*
 plugins-ts/**/*.*
