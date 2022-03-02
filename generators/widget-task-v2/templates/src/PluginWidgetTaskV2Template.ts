@@ -1,4 +1,4 @@
-const widgetFactory = (PluginWidgetTaskV2: IPluginTask) => {
+const widgetFactory = (PluginWidgetTaskV2: IPluginTaskV2) => {
     <%= props.explanations.requiredSettings.MAIN %>
     const requiredSettings: IRequiredSettings = {
         id: '<%= props.id %>', <%= props.explanations.requiredSettings.id %>
@@ -15,13 +15,18 @@ const widgetFactory = (PluginWidgetTaskV2: IPluginTask) => {
 	const customSettings: ICustomSettings[] = [
 	//{name: '', description: '', defaultValue:'', type: 'string'},
 	];
-
+ 
     <%= props.explanations.userSettings.MAIN %>
 	const userSettings: IUserSettings[] = [
 	//{name: '', description: '', defaultValue:'', type: 'string'},
 	];
+	  
+	<%= props.explanations.widgetSettings.MAIN %>
+	const widgetSettings: IWidgetSettings[] = [
+	//{name: '', description: '', defaultValue:'', type: 'string'},
+	];
 
-    const myPlugin = new PluginWidgetTaskV2(requiredSettings, customSettings, userSettings);
+    const myPlugin = new PluginWidgetTaskV2(requiredSettings, customSettings, userSettings, widgetSettings);
     return { plugin: myPlugin };
 };
 

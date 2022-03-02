@@ -15,12 +15,17 @@ angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['PluginWid
 	var customSettings = [
 	//{name: '', description: '', defaultValue:'', type: 'string'},
 	];
-
+   
     <%= props.explanations.userSettings.MAIN %>
 	var userSettings = [
 	//{name: '', description: '', defaultValue:'', type: 'string'},
 	];
 
-    var myPlugin = new PluginWidgetTaskV2(requiredSettings, customSettings, userSettings);
+	<%= props.explanations.widgetSettings.MAIN %>
+	var widgetSettings = [
+	//{name: '', description: '', defaultValue:'', type: 'string'},
+	];
+	
+    var myPlugin = new PluginWidgetTaskV2(requiredSettings, customSettings, userSettings, widgetSettings);
     return { plugin: myPlugin };
 }]);
