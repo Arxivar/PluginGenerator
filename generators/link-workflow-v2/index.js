@@ -169,6 +169,8 @@ module.exports = class extends AppGenerator {
 	}
 
 	writing() {
+		var interfacePath = '../../../docs/frontend/';
+		var basePath = '../../../';
 		
 		if (!this.props.advConfig) {
 			this.destinationRoot(
@@ -298,7 +300,7 @@ module.exports = class extends AppGenerator {
 			this.log(chalk.green('Written file: ' + styleFilename));
 
 			this.fs.copyTpl(
-				this.templatePath('scripts/global.d.ts'),
+				this.templatePath(basePath + 'global.d.ts'),
 				this.destinationPath('scripts/global.d.ts'), {
 				props: this.props
 			}
@@ -307,7 +309,7 @@ module.exports = class extends AppGenerator {
 
 			//Copio Interfaces.ts
 			this.fs.copyTpl(
-				this.templatePath('scripts/Interfaces.ts'),
+				this.templatePath(interfacePath + 'Interfaces.ts'),
 				this.destinationPath('scripts/Interfaces.ts'), {
 				props: this.props
 			}

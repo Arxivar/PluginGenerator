@@ -1,5 +1,6 @@
 import * as arxInterfaces from './Interfaces';
 import moment from 'moment';
+import LoDashStatic from 'lodash';
 declare global {
     const angular: angular.IAngularStatic;
     type IArxivarDocumentsService = arxInterfaces.IArxivarDocumentsService;
@@ -55,11 +56,21 @@ declare global {
     type ISettingsTypeValue = ISettingsStringValue | ISettingsNumberValue | ISettingsBooleanValue | ISettingsDateValue;
     type IProfilationCommandParams = { docnumber?: number; elementId: string, fields: ICommandParamsField[] };
     type IMoment = typeof moment;
+	type ILoDash = typeof LoDashStatic;
     type IRouteParams = { queryParams: string };
     type ICustomSettings = ISettingsTypeValue;
     type IUserSettings = ISettingsTypeValue;
     type IWidgetSettings = ISettingsTypeValue;
     type ICommandParams = { docnumbers: number[]; }
+	type IConfiguration = IConfigurationDynamic<arxInterfaces.ConfigurationDataTypeEnum>;
+	type IConfigurationDynamicBase<T extends arxInterfaces.ConfigurationDataTypeEnum> = { name: string, dataType: T };
+	type IConfigurationDynamic<T extends arxInterfaces.ConfigurationDataTypeEnum> =
+		T extends arxInterfaces.ConfigurationDataTypeEnum.Bool ? IConfigurationDynamicBase<T> & { value?: boolean } :
+		T extends arxInterfaces.ConfigurationDataTypeEnum.Datetime ? IConfigurationDynamicBase<T> & { value?: string } :
+		T extends arxInterfaces.ConfigurationDataTypeEnum.Decimal ? IConfigurationDynamicBase<T> & { value?: number } :
+		T extends arxInterfaces.ConfigurationDataTypeEnum.Int ? IConfigurationDynamicBase<T> & { value?: number } :
+		T extends arxInterfaces.ConfigurationDataTypeEnum.String ? IConfigurationDynamicBase<T> & { value?: string } :
+		never
     interface IPluginCommand {
         new(requiredSettings: IRequiredSettings, customSettings: ICustomSettings[], userSettings: IUserSettings[]): IPluginCommand,
         canRun: (params: ICommandParams) => Promise<boolean>,
@@ -82,4 +93,6 @@ declare global {
     interface IPluginTaskV2 {
         new(requiredSettings: IRequiredSettings, customSettings: ICustomSettings[], userSettings: IUserSettings[], widgetSettings: IWidgetSettings[]): IPluginTaskV2
     }
+
+
 }
