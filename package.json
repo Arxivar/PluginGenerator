@@ -41,7 +41,7 @@
 	  "gulp-line-ending-corrector": "^1.0.1",
 	  "gulp-mocha": "^7.0.2",
 	  "gulp-plumber": "^1.0.0",
-	  "moment": "^2.29.1",
+	  "moment": "^2.29.2",
 	  "yeoman-assert": "^2.0.0",
 	  "yeoman-test": "^1.0.0"
 	},
