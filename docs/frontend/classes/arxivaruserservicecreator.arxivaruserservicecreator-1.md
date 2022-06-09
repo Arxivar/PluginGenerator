@@ -1,8 +1,8 @@
-[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [ArxivarUserServiceCreator](../modules/arxivaruserservicecreator.md) / ArxivarUserServiceCreator
+[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [ArxivarUserServiceCreator](../modules/ArxivarUserServiceCreator.md) / ArxivarUserServiceCreator
 
 # Class: ArxivarUserServiceCreator
 
-[ArxivarUserServiceCreator](../modules/arxivaruserservicecreator.md).ArxivarUserServiceCreator
+[ArxivarUserServiceCreator](../modules/ArxivarUserServiceCreator.md).ArxivarUserServiceCreator
 
 This module contains the essential methods to retrieve the information of the user currently logged into ARXivar.
 ```javascript
@@ -30,22 +30,26 @@ angular
 
 ## Implements
 
-- [*IArxivarUserServiceCreator*](../interfaces/interfaces.iarxivaruserservicecreator.md)
+- [`IArxivarUserServiceCreator`](../interfaces/Interfaces.IArxivarUserServiceCreator.md)
 
 ## Table of contents
 
 ### Methods
 
-- [create](arxivaruserservicecreator.arxivaruserservicecreator-1.md#create)
+- [create](ArxivarUserServiceCreator.ArxivarUserServiceCreator-1.md#create)
 
 ## Methods
 
 ### create
 
-▸ **create**(): *Promise*<[*UserService*](userservice.userservice-1.md)\>
+▸ **create**(): `Promise`<[`UserService`](UserService.UserService-1.md)\>
 
 Create the UserService
 
-**Returns:** *Promise*<[*UserService*](userservice.userservice-1.md)\>
+#### Returns
 
-Implementation of: IArxivarUserServiceCreator.create
+`Promise`<[`UserService`](UserService.UserService-1.md)\>
+
+#### Implementation of
+
+[IArxivarUserServiceCreator](../interfaces/Interfaces.IArxivarUserServiceCreator.md).[create](../interfaces/Interfaces.IArxivarUserServiceCreator.md#create)

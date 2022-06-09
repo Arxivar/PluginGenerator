@@ -1,8 +1,8 @@
-[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [ArxivarNotifierService](../modules/arxivarnotifierservice.md) / ArxivarNotifierService
+[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [ArxivarNotifierService](../modules/ArxivarNotifierService.md) / ArxivarNotifierService
 
 # Class: ArxivarNotifierService
 
-[ArxivarNotifierService](../modules/arxivarnotifierservice.md).ArxivarNotifierService
+[ArxivarNotifierService](../modules/ArxivarNotifierService.md).ArxivarNotifierService
 
 This module contains the methods to interface with the ARXivar Next Portal Routes
 ```javascript
@@ -29,22 +29,22 @@ angular
 
 ## Implements
 
-- [*IArxivarNotifierService*](../interfaces/interfaces.iarxivarnotifierservice.md)
+- [`IArxivarNotifierService`](../interfaces/Interfaces.IArxivarNotifierService.md)
 
 ## Table of contents
 
 ### Methods
 
-- [notifyError](arxivarnotifierservice.arxivarnotifierservice-1.md#notifyerror)
-- [notifyInfo](arxivarnotifierservice.arxivarnotifierservice-1.md#notifyinfo)
-- [notifySuccess](arxivarnotifierservice.arxivarnotifierservice-1.md#notifysuccess)
-- [notifyWarning](arxivarnotifierservice.arxivarnotifierservice-1.md#notifywarning)
+- [notifyError](ArxivarNotifierService.ArxivarNotifierService-1.md#notifyerror)
+- [notifyInfo](ArxivarNotifierService.ArxivarNotifierService-1.md#notifyinfo)
+- [notifySuccess](ArxivarNotifierService.ArxivarNotifierService-1.md#notifysuccess)
+- [notifyWarning](ArxivarNotifierService.ArxivarNotifierService-1.md#notifywarning)
 
 ## Methods
 
 ### notifyError
 
-▸ **notifyError**(`message`: *string*): *void*
+▸ **notifyError**(`message`): `void`
 
 Notify error message.
 
@@ -52,17 +52,21 @@ Notify error message.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `message` | *string* | The docnumber of the profile. |
+| `message` | `string` | The docnumber of the profile. |
 
-**Returns:** *void*
+#### Returns
 
-Implementation of: IArxivarNotifierService.notifyError
+`void`
+
+#### Implementation of
+
+[IArxivarNotifierService](../interfaces/Interfaces.IArxivarNotifierService.md).[notifyError](../interfaces/Interfaces.IArxivarNotifierService.md#notifyerror)
 
 ___
 
 ### notifyInfo
 
-▸ **notifyInfo**(`message`: *string*): *void*
+▸ **notifyInfo**(`message`): `void`
 
 Notify info message.
 
@@ -70,17 +74,21 @@ Notify info message.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `message` | *string* | The docnumber of the profile. |
+| `message` | `string` | The docnumber of the profile. |
 
-**Returns:** *void*
+#### Returns
 
-Implementation of: IArxivarNotifierService.notifyInfo
+`void`
+
+#### Implementation of
+
+[IArxivarNotifierService](../interfaces/Interfaces.IArxivarNotifierService.md).[notifyInfo](../interfaces/Interfaces.IArxivarNotifierService.md#notifyinfo)
 
 ___
 
 ### notifySuccess
 
-▸ **notifySuccess**(`message`: *string*): *void*
+▸ **notifySuccess**(`message`): `void`
 
 Notify success message.
 
@@ -88,17 +96,21 @@ Notify success message.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `message` | *string* | The docnumber of the profile. |
+| `message` | `string` | The docnumber of the profile. |
 
-**Returns:** *void*
+#### Returns
 
-Implementation of: IArxivarNotifierService.notifySuccess
+`void`
+
+#### Implementation of
+
+[IArxivarNotifierService](../interfaces/Interfaces.IArxivarNotifierService.md).[notifySuccess](../interfaces/Interfaces.IArxivarNotifierService.md#notifysuccess)
 
 ___
 
 ### notifyWarning
 
-▸ **notifyWarning**(`message`: *string*): *void*
+▸ **notifyWarning**(`message`): `void`
 
 Notify warning message.
 
@@ -106,8 +118,12 @@ Notify warning message.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `message` | *string* | The docnumber of the profile. |
+| `message` | `string` | The docnumber of the profile. |
 
-**Returns:** *void*
+#### Returns
 
-Implementation of: IArxivarNotifierService.notifyWarning
+`void`
+
+#### Implementation of
+
+[IArxivarNotifierService](../interfaces/Interfaces.IArxivarNotifierService.md).[notifyWarning](../interfaces/Interfaces.IArxivarNotifierService.md#notifywarning)

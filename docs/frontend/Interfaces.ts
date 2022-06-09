@@ -18,10 +18,10 @@ export interface IArxivarDocumentsService {
 	/**
 	*  This method converts an api call response of type arraybuffer into a file.
 	*
-    * @param data The data of the call.
+	* @param data The data of the call.
 	* @param status The status of the call.
 	* @param headers The headers of the call.
- 	* @returns The file download Promise.
+	  * @returns The file download Promise.
 	*/
 	downloadStream: (data: any, status: any, headers: any) => Promise<any>;
 
@@ -90,6 +90,13 @@ export interface IArxivarResourceService {
 	  */
 	getByteArray: (resourceName: string, options: IHttpOptions) => Promise<any>;
 
+	/**
+	  * Retrieve a download stream for a certain resource of ARXivar
+	  * @param resourceName The resource name
+	  * @param options The options of the call
+	  * @returns The download stream for the resource
+	  */
+	getPostByteArray: (resourceName: string, postData: any, options: IHttpOptions) => Promise<any>;
 	/**
 	 * Submit and save the selected resource on Arxivar
 	 * @param resourceName The resource name
@@ -244,7 +251,7 @@ export interface IUserService {
 	 * Check if the user currently logged is not an administrator
 	 * @returns false if the user is administrator, true otherwise
 	 */
-	isNotAdmin: () => boolean;
+	isNotAdmin: () => Promise<boolean> | boolean;
 	/**
 	 * Check if the currently logged user has a certain role enabled
 	 * @param roleName the name of the role
@@ -311,6 +318,15 @@ export interface IArxivarResourceService {
 	 * @returns The download stream for the resource
 	 */
 	getByteArray: (resourceName: string, options: IHttpOptions) => Promise<any>;
+
+	/**
+	 * Retrieve a download stream for a certain resource of ARXivar
+	 * @param resourceName The resource name
+	 * @param postData The resource data
+	 * @param options The options of the call
+	 * @returns The download stream for the resource
+	 */
+	getPostByteArray: (resourceName: string, postData: any, options: IHttpOptions) => Promise<any>;
 	/**
 	 * Submit and save the selected resource on Arxivar
 	 * @param resourceName The resource name
@@ -347,12 +363,12 @@ export interface IArxivarResourceService {
 }
 
 export interface IArxivarRouteService {
-	/** 
-	* Retrieve the URL's profilation route that contains the bufferId of the file to upload. 
+	/**
+	* Retrieve the URL's profilation route that contains the bufferId of the file to upload.
 	*
- 	* @param bufferId The bufferId of uploaded file.
+	  * @param bufferId The bufferId of uploaded file.
 	* @param fileName The fileName of uploaded file.
- 	* @returns The url of profilation route.
+	  * @returns The url of profilation route.
 	*/
 	getURLProfilation: ({ bufferId, fileName }?: { bufferId: string; fileName: string }) => string;
 
@@ -360,9 +376,9 @@ export interface IArxivarRouteService {
 	* Retrieve the URL's mask route that contains the bufferId of the file to upload
 	*
 	* @param id The mask Id.
- 	* @param bufferId The bufferId of uploaded file.
+	  * @param bufferId The bufferId of uploaded file.
 	* @param fileName The fileName of uploaded file.
- 	* @returns The url of mask route.
+	  * @returns The url of mask route.
 	*/
 	getMaskProfilation: (id: string, { bufferId, fileName }?: { bufferId: string; fileName: string }) => string;
 
@@ -397,6 +413,21 @@ export interface IArxivarRouteService {
 	* @returns The partial url of the plugin link execute command.
 	*/
 	getPartialURLPluginLinkExecuteCommand: (pluginId: string) => string;
+	/**
+	 *  Retrieve the URL of search with params.
+	 *
+	 * @param params The params for the search.
+	 * @returns The url of the search with params.
+	*/
+	getSearchURLWithParams: (params: IUrlFilter[]) => string;
+	/**
+	 *  Retrieve the URL of view with params.
+	 *
+	 * @param params The params for the view.
+	 * @param viewId The viewId.
+	 * @returns The url of the view with params.
+	*/
+	getViewURLWithParams: (params: IUrlFilter[], viewId: string) => string;
 
 }
 //UserService
@@ -407,6 +438,12 @@ export interface IArxivarUserServiceCreator {
 	create: () => Promise<IUserService>;
 }
 
+export type IUrlFilter = {
+	name: string;
+	operator: number;
+	value1: any;
+	value2: any;
+};
 
 type PluginSettingsType = {
 	name: string;
@@ -443,7 +480,7 @@ export interface IPluginService {
 	 * [@deprecated since version 2.4]
 	 * Get the settings of a plugin or of an instance of plugin.
 	 * If you set only the pluginId property in @param pluginSettingsObject you will get the global customSettings and the global userSettings
-	 * If you set the pluginId, instanceId and desktopId properites in @param pluginSettingsObject you will get the global customSettings and the instace userSettings	 
+	 * If you set the pluginId, instanceId and desktopId properites in @param pluginSettingsObject you will get the global customSettings and the instace userSettings
 	 * @param pluginSettingsObject
 	 * @returns The customSettings (the global settings of plugin) and userSettings (the userSetting of plugin or widget instance plugin)
 	 */

@@ -1,4 +1,4 @@
-[ARXivar Documentation](README.md) / Exports
+[ARXivar Documentation](README.md) / Modules
 
 # ARXivar Documentation
 
@@ -6,12 +6,12 @@
 
 ### Modules
 
-- [ArxivarDocumentsService](modules/arxivardocumentsservice.md)
-- [ArxivarNotifierService](modules/arxivarnotifierservice.md)
-- [ArxivarResourceService](modules/arxivarresourceservice.md)
-- [ArxivarRouteService](modules/arxivarrouteservice.md)
-- [ArxivarUserServiceCreator](modules/arxivaruserservicecreator.md)
-- [Interfaces](modules/interfaces.md)
-- [PluginService](modules/pluginservice.md)
-- [UserService](modules/userservice.md)
-- [WorkflowResourceService](modules/workflowresourceservice.md)
+- [ArxivarDocumentsService](modules/ArxivarDocumentsService.md)
+- [ArxivarNotifierService](modules/ArxivarNotifierService.md)
+- [ArxivarResourceService](modules/ArxivarResourceService.md)
+- [ArxivarRouteService](modules/ArxivarRouteService.md)
+- [ArxivarUserServiceCreator](modules/ArxivarUserServiceCreator.md)
+- [Interfaces](modules/Interfaces.md)
+- [PluginService](modules/PluginService.md)
+- [UserService](modules/UserService.md)
+- [WorkflowResourceService](modules/WorkflowResourceService.md)

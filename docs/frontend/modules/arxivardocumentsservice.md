@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Exports](../modules.md) / ArxivarDocumentsService
+[ARXivar Documentation](../README.md) / [Modules](../modules.md) / ArxivarDocumentsService
 
 # Module: ArxivarDocumentsService
 
@@ -6,4 +6,4 @@
 
 ### Classes
 
-- [ArxivarDocumentsService](../classes/arxivardocumentsservice.arxivardocumentsservice-1.md)
+- [ArxivarDocumentsService](../classes/ArxivarDocumentsService.ArxivarDocumentsService-1.md)

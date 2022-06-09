@@ -1,175 +1,188 @@
-[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [Interfaces](../modules/interfaces.md) / IArxivarRouteService
+[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [Interfaces](../modules/Interfaces.md) / IArxivarRouteService
 
 # Interface: IArxivarRouteService
 
-[Interfaces](../modules/interfaces.md).IArxivarRouteService
+[Interfaces](../modules/Interfaces.md).IArxivarRouteService
 
 ## Implemented by
 
-- [*ArxivarRouteService*](../classes/arxivarrouteservice.arxivarrouteservice-1.md)
+- [`ArxivarRouteService`](../classes/ArxivarRouteService.ArxivarRouteService-1.md)
 
 ## Table of contents
 
-### Properties
+### Methods
 
-- [getMaskProfilation](interfaces.iarxivarrouteservice.md#getmaskprofilation)
-- [getPartialURLPluginLinkExecuteCommand](interfaces.iarxivarrouteservice.md#getpartialurlpluginlinkexecutecommand)
-- [getURLPluginRoute](interfaces.iarxivarrouteservice.md#geturlpluginroute)
-- [getURLProfilation](interfaces.iarxivarrouteservice.md#geturlprofilation)
-- [getURLProfileReadonly](interfaces.iarxivarrouteservice.md#geturlprofilereadonly)
-- [getURLRevisionsByDocnumber](interfaces.iarxivarrouteservice.md#geturlrevisionsbydocnumber)
+- [getMaskProfilation](Interfaces.IArxivarRouteService.md#getmaskprofilation)
+- [getPartialURLPluginLinkExecuteCommand](Interfaces.IArxivarRouteService.md#getpartialurlpluginlinkexecutecommand)
+- [getSearchURLWithParams](Interfaces.IArxivarRouteService.md#getsearchurlwithparams)
+- [getURLPluginRoute](Interfaces.IArxivarRouteService.md#geturlpluginroute)
+- [getURLProfilation](Interfaces.IArxivarRouteService.md#geturlprofilation)
+- [getURLProfileReadonly](Interfaces.IArxivarRouteService.md#geturlprofilereadonly)
+- [getURLRevisionsByDocnumber](Interfaces.IArxivarRouteService.md#geturlrevisionsbydocnumber)
+- [getViewURLWithParams](Interfaces.IArxivarRouteService.md#getviewurlwithparams)
 
-## Properties
+## Methods
 
 ### getMaskProfilation
 
-• **getMaskProfilation**: (`id`: *string*, `__namedParameters?`: { `bufferId`: *string* ; `fileName`: *string*  }) => *string*
+▸ **getMaskProfilation**(`id`, `__namedParameters?`): `string`
 
 Retrieve the URL's mask route that contains the bufferId of the file to upload
 
-**`param`** The mask Id.
-
-**`param`** The bufferId of uploaded file.
-
-**`param`** The fileName of uploaded file.
-
-**`returns`** The url of mask route.
-
-#### Type declaration
-
-▸ (`id`: *string*, `__namedParameters?`: { `bufferId`: *string* ; `fileName`: *string*  }): *string*
-
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `id` | *string* |
-| `__namedParameters?` | *object* |
-| `__namedParameters.bufferId` | *string* |
-| `__namedParameters.fileName` | *string* |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `id` | `string` | The mask Id. |
+| `__namedParameters?` | `Object` | - |
+| `__namedParameters.bufferId` | `string` | - |
+| `__namedParameters.fileName` | `string` | - |
 
-**Returns:** *string*
+#### Returns
+
+`string`
+
+The url of mask route.
 
 ___
 
 ### getPartialURLPluginLinkExecuteCommand
 
-• **getPartialURLPluginLinkExecuteCommand**: (`pluginId`: *string*) => *string*
+▸ **getPartialURLPluginLinkExecuteCommand**(`pluginId`): `string`
 
 Retrieve the partial URL of workflow pluginLink execute command
 
-**`param`** The pluginId.
+#### Parameters
 
-**`returns`** The partial url of the plugin link execute command.
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `pluginId` | `string` | The pluginId. |
 
-#### Type declaration
+#### Returns
 
-▸ (`pluginId`: *string*): *string*
+`string`
+
+The partial url of the plugin link execute command.
+
+___
+
+### getSearchURLWithParams
+
+▸ **getSearchURLWithParams**(`params`): `string`
+
+ Retrieve the URL of search with params.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `pluginId` | *string* |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `params` | [`IUrlFilter`](../modules/Interfaces.md#iurlfilter)[] | The params for the search. |
 
-**Returns:** *string*
+#### Returns
+
+`string`
+
+The url of the search with params.
 
 ___
 
 ### getURLPluginRoute
 
-• **getURLPluginRoute**: (`pluginId`: *string*) => *string*
+▸ **getURLPluginRoute**(`pluginId`): `string`
 
 Retrieve the URL's route of pluginRoute
 
-**`param`** The pluginId.
-
-**`returns`** The url of the plugin route.
-
-#### Type declaration
-
-▸ (`pluginId`: *string*): *string*
-
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `pluginId` | *string* |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `pluginId` | `string` | The pluginId. |
 
-**Returns:** *string*
+#### Returns
+
+`string`
+
+The url of the plugin route.
 
 ___
 
 ### getURLProfilation
 
-• **getURLProfilation**: (`__namedParameters?`: { `bufferId`: *string* ; `fileName`: *string*  }) => *string*
+▸ **getURLProfilation**(`__namedParameters?`): `string`
 
 Retrieve the URL's profilation route that contains the bufferId of the file to upload.
-
-**`param`** The bufferId of uploaded file.
-
-**`param`** The fileName of uploaded file.
-
-**`returns`** The url of profilation route.
-
-#### Type declaration
-
-▸ (`__namedParameters?`: { `bufferId`: *string* ; `fileName`: *string*  }): *string*
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `__namedParameters?` | *object* |
-| `__namedParameters.bufferId` | *string* |
-| `__namedParameters.fileName` | *string* |
+| `__namedParameters?` | `Object` |
+| `__namedParameters.bufferId` | `string` |
+| `__namedParameters.fileName` | `string` |
 
-**Returns:** *string*
+#### Returns
+
+`string`
+
+The url of profilation route.
 
 ___
 
 ### getURLProfileReadonly
 
-• **getURLProfileReadonly**: (`docnumber`: *number*) => *string*
+▸ **getURLProfileReadonly**(`docnumber`): `string`
 
 Retrieve the URL of the profile route.
 
-**`param`** The docnumber of the profile.
-
-**`returns`** The url of the profile route.
-
-#### Type declaration
-
-▸ (`docnumber`: *number*): *string*
-
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `docnumber` | *number* |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `docnumber` | `number` | The docnumber of the profile. |
 
-**Returns:** *string*
+#### Returns
+
+`string`
+
+The url of the profile route.
 
 ___
 
 ### getURLRevisionsByDocnumber
 
-• **getURLRevisionsByDocnumber**: (`docnumber`: *number*) => *string*
+▸ **getURLRevisionsByDocnumber**(`docnumber`): `string`
 
 Retrieve the URL's route that contains the list of Revisions for a specific document
 
-**`param`** The docnumber of the profile.
+#### Parameters
 
-**`returns`** The url of the revisions list of the profile.
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `docnumber` | `number` | The docnumber of the profile. |
 
-#### Type declaration
+#### Returns
 
-▸ (`docnumber`: *number*): *string*
+`string`
+
+The url of the revisions list of the profile.
+
+___
+
+### getViewURLWithParams
+
+▸ **getViewURLWithParams**(`params`, `viewId`): `string`
+
+ Retrieve the URL of view with params.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `docnumber` | *number* |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `params` | [`IUrlFilter`](../modules/Interfaces.md#iurlfilter)[] | The params for the view. |
+| `viewId` | `string` | The viewId. |
 
-**Returns:** *string*
+#### Returns
+
+`string`
+
+The url of the view with params.

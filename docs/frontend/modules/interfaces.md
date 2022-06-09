@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Exports](../modules.md) / Interfaces
+[ARXivar Documentation](../README.md) / [Modules](../modules.md) / Interfaces
 
 # Module: Interfaces
 
@@ -6,24 +6,40 @@
 
 ### Enumerations
 
-- [ConfigurationDataTypeEnum](../enums/interfaces.configurationdatatypeenum.md)
+- [ConfigurationDataTypeEnum](../enums/Interfaces.ConfigurationDataTypeEnum.md)
 
 ### Interfaces
 
-- [IArxivarDocumentsService](../interfaces/interfaces.iarxivardocumentsservice.md)
-- [IArxivarNotifierService](../interfaces/interfaces.iarxivarnotifierservice.md)
-- [IArxivarResourceService](../interfaces/interfaces.iarxivarresourceservice.md)
-- [IArxivarRouteService](../interfaces/interfaces.iarxivarrouteservice.md)
-- [IArxivarUserServiceCreator](../interfaces/interfaces.iarxivaruserservicecreator.md)
-- [IHttpOptions](../interfaces/interfaces.ihttpoptions.md)
-- [IPluginService](../interfaces/interfaces.ipluginservice.md)
-- [IUserService](../interfaces/interfaces.iuserservice.md)
+- [IArxivarDocumentsService](../interfaces/Interfaces.IArxivarDocumentsService.md)
+- [IArxivarNotifierService](../interfaces/Interfaces.IArxivarNotifierService.md)
+- [IArxivarResourceService](../interfaces/Interfaces.IArxivarResourceService.md)
+- [IArxivarRouteService](../interfaces/Interfaces.IArxivarRouteService.md)
+- [IArxivarUserServiceCreator](../interfaces/Interfaces.IArxivarUserServiceCreator.md)
+- [IHttpOptions](../interfaces/Interfaces.IHttpOptions.md)
+- [IPluginService](../interfaces/Interfaces.IPluginService.md)
+- [IUserService](../interfaces/Interfaces.IUserService.md)
 
-### Type aliases
+### Type Aliases
 
-- [ScopeSettings](interfaces.md#scopesettings)
+- [IUrlFilter](Interfaces.md#iurlfilter)
+- [ScopeSettings](Interfaces.md#scopesettings)
 
-## Type aliases
+## Type Aliases
+
+### IUrlFilter
+
+Ƭ **IUrlFilter**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `name` | `string` |
+| `operator` | `number` |
+| `value1` | `any` |
+| `value2` | `any` |
+
+___
 
 ### ScopeSettings
 

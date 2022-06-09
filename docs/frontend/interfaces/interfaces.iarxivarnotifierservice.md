@@ -1,106 +1,90 @@
-[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [Interfaces](../modules/interfaces.md) / IArxivarNotifierService
+[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [Interfaces](../modules/Interfaces.md) / IArxivarNotifierService
 
 # Interface: IArxivarNotifierService
 
-[Interfaces](../modules/interfaces.md).IArxivarNotifierService
+[Interfaces](../modules/Interfaces.md).IArxivarNotifierService
 
 ## Implemented by
 
-- [*ArxivarNotifierService*](../classes/arxivarnotifierservice.arxivarnotifierservice-1.md)
+- [`ArxivarNotifierService`](../classes/ArxivarNotifierService.ArxivarNotifierService-1.md)
 
 ## Table of contents
 
-### Properties
+### Methods
 
-- [notifyError](interfaces.iarxivarnotifierservice.md#notifyerror)
-- [notifyInfo](interfaces.iarxivarnotifierservice.md#notifyinfo)
-- [notifySuccess](interfaces.iarxivarnotifierservice.md#notifysuccess)
-- [notifyWarning](interfaces.iarxivarnotifierservice.md#notifywarning)
+- [notifyError](Interfaces.IArxivarNotifierService.md#notifyerror)
+- [notifyInfo](Interfaces.IArxivarNotifierService.md#notifyinfo)
+- [notifySuccess](Interfaces.IArxivarNotifierService.md#notifysuccess)
+- [notifyWarning](Interfaces.IArxivarNotifierService.md#notifywarning)
 
-## Properties
+## Methods
 
 ### notifyError
 
-• **notifyError**: (`message`: *string*) => *void*
+▸ **notifyError**(`message`): `void`
 
 Notify error message.
 
-**`param`** The docnumber of the profile.
-
-#### Type declaration
-
-▸ (`message`: *string*): *void*
-
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `message` | *string* |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `message` | `string` | The docnumber of the profile. |
 
-**Returns:** *void*
+#### Returns
+
+`void`
 
 ___
 
 ### notifyInfo
 
-• **notifyInfo**: (`message`: *string*) => *void*
+▸ **notifyInfo**(`message`): `void`
 
 Notify info message.
 
-**`param`** The docnumber of the profile.
-
-#### Type declaration
-
-▸ (`message`: *string*): *void*
-
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `message` | *string* |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `message` | `string` | The docnumber of the profile. |
 
-**Returns:** *void*
+#### Returns
+
+`void`
 
 ___
 
 ### notifySuccess
 
-• **notifySuccess**: (`message`: *string*) => *void*
+▸ **notifySuccess**(`message`): `void`
 
 Notify success message.
 
-**`param`** The docnumber of the profile.
-
-#### Type declaration
-
-▸ (`message`: *string*): *void*
-
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `message` | *string* |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `message` | `string` | The docnumber of the profile. |
 
-**Returns:** *void*
+#### Returns
+
+`void`
 
 ___
 
 ### notifyWarning
 
-• **notifyWarning**: (`message`: *string*) => *void*
+▸ **notifyWarning**(`message`): `void`
 
 Notify warning message.
 
-**`param`** The docnumber of the profile.
-
-#### Type declaration
-
-▸ (`message`: *string*): *void*
-
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `message` | *string* |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `message` | `string` | The docnumber of the profile. |
 
-**Returns:** *void*
+#### Returns
+
+`void`

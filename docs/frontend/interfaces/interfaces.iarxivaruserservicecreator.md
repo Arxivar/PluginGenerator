@@ -1,29 +1,27 @@
-[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [Interfaces](../modules/interfaces.md) / IArxivarUserServiceCreator
+[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [Interfaces](../modules/Interfaces.md) / IArxivarUserServiceCreator
 
 # Interface: IArxivarUserServiceCreator
 
-[Interfaces](../modules/interfaces.md).IArxivarUserServiceCreator
+[Interfaces](../modules/Interfaces.md).IArxivarUserServiceCreator
 
 ## Implemented by
 
-- [*ArxivarUserServiceCreator*](../classes/arxivaruserservicecreator.arxivaruserservicecreator-1.md)
+- [`ArxivarUserServiceCreator`](../classes/ArxivarUserServiceCreator.ArxivarUserServiceCreator-1.md)
 
 ## Table of contents
 
-### Properties
+### Methods
 
-- [create](interfaces.iarxivaruserservicecreator.md#create)
+- [create](Interfaces.IArxivarUserServiceCreator.md#create)
 
-## Properties
+## Methods
 
 ### create
 
-• **create**: () => *Promise*<[*IUserService*](interfaces.iuserservice.md)\>
+▸ **create**(): `Promise`<[`IUserService`](Interfaces.IUserService.md)\>
 
 Create the UserService
 
-#### Type declaration
+#### Returns
 
-▸ (): *Promise*<[*IUserService*](interfaces.iuserservice.md)\>
-
-**Returns:** *Promise*<[*IUserService*](interfaces.iuserservice.md)\>
+`Promise`<[`IUserService`](Interfaces.IUserService.md)\>

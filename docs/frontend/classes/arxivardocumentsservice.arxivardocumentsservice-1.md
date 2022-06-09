@@ -1,8 +1,8 @@
-[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [ArxivarDocumentsService](../modules/arxivardocumentsservice.md) / ArxivarDocumentsService
+[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [ArxivarDocumentsService](../modules/ArxivarDocumentsService.md) / ArxivarDocumentsService
 
 # Class: ArxivarDocumentsService
 
-[ArxivarDocumentsService](../modules/arxivardocumentsservice.md).ArxivarDocumentsService
+[ArxivarDocumentsService](../modules/ArxivarDocumentsService.md).ArxivarDocumentsService
 
 This module contains the methods for download the ARXivar's documents
 ```javascript
@@ -35,15 +35,15 @@ angular
 
 ### Methods
 
-- [downloadStream](arxivardocumentsservice.arxivardocumentsservice-1.md#downloadstream)
-- [getDocumentByDocnumber](arxivardocumentsservice.arxivardocumentsservice-1.md#getdocumentbydocnumber)
-- [getRevisionByID](arxivardocumentsservice.arxivardocumentsservice-1.md#getrevisionbyid)
+- [downloadStream](ArxivarDocumentsService.ArxivarDocumentsService-1.md#downloadstream)
+- [getDocumentByDocnumber](ArxivarDocumentsService.ArxivarDocumentsService-1.md#getdocumentbydocnumber)
+- [getRevisionByID](ArxivarDocumentsService.ArxivarDocumentsService-1.md#getrevisionbyid)
 
 ## Methods
 
 ### downloadStream
 
-▸ **downloadStream**(`data`: *any*, `status`: *number*, `headers`: *any*): *Promise*<any\>
+▸ **downloadStream**(`data`, `status`, `headers`): `Promise`<`any`\>
 
 This method converts an api call response of type arraybuffer into a file.
 
@@ -51,11 +51,13 @@ This method converts an api call response of type arraybuffer into a file.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `data` | *any* | The data of the call. |
-| `status` | *number* | The status of the call. |
-| `headers` | *any* | The headers of the call. |
+| `data` | `any` | The data of the call. |
+| `status` | `number` | The status of the call. |
+| `headers` | `any` | The headers of the call. |
 
-**Returns:** *Promise*<any\>
+#### Returns
+
+`Promise`<`any`\>
 
 The file download Promise.
 
@@ -63,7 +65,7 @@ ___
 
 ### getDocumentByDocnumber
 
-▸ **getDocumentByDocnumber**(`docnumber`: *number*): *Promise*<any\>
+▸ **getDocumentByDocnumber**(`docnumber`): `Promise`<`any`\>
 
 Download the document linked to a profile.
 
@@ -71,9 +73,11 @@ Download the document linked to a profile.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `docnumber` | *number* | The docnumber of the profile. |
+| `docnumber` | `number` | The docnumber of the profile. |
 
-**Returns:** *Promise*<any\>
+#### Returns
+
+`Promise`<`any`\>
 
 The file download Promise.
 
@@ -81,7 +85,7 @@ ___
 
 ### getRevisionByID
 
-▸ **getRevisionByID**(`revisionId`: *number*): *Promise*<any\>
+▸ **getRevisionByID**(`revisionId`): `Promise`<`any`\>
 
 Download the document linked to a profile with a specific revision.
 
@@ -89,8 +93,10 @@ Download the document linked to a profile with a specific revision.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `revisionId` | *number* | The ID of the revision. |
+| `revisionId` | `number` | The ID of the revision. |
 
-**Returns:** *Promise*<any\>
+#### Returns
+
+`Promise`<`any`\>
 
 The file download Promise.

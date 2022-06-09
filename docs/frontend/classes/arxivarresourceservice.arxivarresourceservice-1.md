@@ -1,8 +1,8 @@
-[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [ArxivarResourceService](../modules/arxivarresourceservice.md) / ArxivarResourceService
+[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [ArxivarResourceService](../modules/ArxivarResourceService.md) / ArxivarResourceService
 
 # Class: ArxivarResourceService
 
-[ArxivarResourceService](../modules/arxivarresourceservice.md).ArxivarResourceService
+[ArxivarResourceService](../modules/ArxivarResourceService.md).ArxivarResourceService
 
 This module contains the essential method for an AngularJS application to consume the ARXivar api calls.
 The methods exposed permits to create,read,edit and update resources from ARXivar.
@@ -31,39 +31,42 @@ angular
 
 ## Implements
 
-- [*IArxivarResourceService*](../interfaces/interfaces.iarxivarresourceservice.md)
+- [`IArxivarResourceService`](../interfaces/Interfaces.IArxivarResourceService.md)
 
 ## Table of contents
 
 ### Properties
 
-- [webApiUrl](arxivarresourceservice.arxivarresourceservice-1.md#webapiurl)
+- [webApiUrl](ArxivarResourceService.ArxivarResourceService-1.md#webapiurl)
 
 ### Methods
 
-- [delete](arxivarresourceservice.arxivarresourceservice-1.md#delete)
-- [get](arxivarresourceservice.arxivarresourceservice-1.md#get)
-- [getByteArray](arxivarresourceservice.arxivarresourceservice-1.md#getbytearray)
-- [getPost](arxivarresourceservice.arxivarresourceservice-1.md#getpost)
-- [getValue](arxivarresourceservice.arxivarresourceservice-1.md#getvalue)
-- [queryWithOptions](arxivarresourceservice.arxivarresourceservice-1.md#querywithoptions)
-- [save](arxivarresourceservice.arxivarresourceservice-1.md#save)
-- [update](arxivarresourceservice.arxivarresourceservice-1.md#update)
-- [updateCollection](arxivarresourceservice.arxivarresourceservice-1.md#updatecollection)
+- [delete](ArxivarResourceService.ArxivarResourceService-1.md#delete)
+- [get](ArxivarResourceService.ArxivarResourceService-1.md#get)
+- [getByteArray](ArxivarResourceService.ArxivarResourceService-1.md#getbytearray)
+- [getPost](ArxivarResourceService.ArxivarResourceService-1.md#getpost)
+- [getPostByteArray](ArxivarResourceService.ArxivarResourceService-1.md#getpostbytearray)
+- [getValue](ArxivarResourceService.ArxivarResourceService-1.md#getvalue)
+- [queryWithOptions](ArxivarResourceService.ArxivarResourceService-1.md#querywithoptions)
+- [save](ArxivarResourceService.ArxivarResourceService-1.md#save)
+- [update](ArxivarResourceService.ArxivarResourceService-1.md#update)
+- [updateCollection](ArxivarResourceService.ArxivarResourceService-1.md#updatecollection)
 
 ## Properties
 
 ### webApiUrl
 
-• **webApiUrl**: *string*
+• **webApiUrl**: `string`
 
-Implementation of: [IArxivarResourceService](../interfaces/interfaces.iarxivarresourceservice.md).[webApiUrl](../interfaces/interfaces.iarxivarresourceservice.md#webapiurl)
+#### Implementation of
+
+[IArxivarResourceService](../interfaces/Interfaces.IArxivarResourceService.md).[webApiUrl](../interfaces/Interfaces.IArxivarResourceService.md#webapiurl)
 
 ## Methods
 
 ### delete
 
-▸ **delete**(`resourceName`: *string*, `postData`: *any*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
+▸ **delete**(`resourceName`, `postData`, `options`): `Promise`<`any`\>
 
 Delete the selected resource from Arxivar
 
@@ -71,21 +74,25 @@ Delete the selected resource from Arxivar
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `resourceName` | *string* | The resource name |
-| `postData` | *any* | The identifier of the resource |
-| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
+| `resourceName` | `string` | The resource name |
+| `postData` | `any` | The identifier of the resource |
+| `options` | [`IHttpOptions`](../interfaces/Interfaces.IHttpOptions.md) | The options of the call |
 
-**Returns:** *Promise*<any\>
+#### Returns
+
+`Promise`<`any`\>
 
 The deleted resource
 
-Implementation of: IArxivarResourceService.delete
+#### Implementation of
+
+IArxivarResourceService.delete
 
 ___
 
 ### get
 
-▸ **get**(`resourceName`: *string*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
+▸ **get**(`resourceName`, `options`): `Promise`<`any`\>
 
 Retrieve information on a certain type of resource ofs ARXivar
 
@@ -93,20 +100,24 @@ Retrieve information on a certain type of resource ofs ARXivar
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `resourceName` | *string* | The resource name |
-| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
+| `resourceName` | `string` | The resource name |
+| `options` | [`IHttpOptions`](../interfaces/Interfaces.IHttpOptions.md) | The options of the call |
 
-**Returns:** *Promise*<any\>
+#### Returns
+
+`Promise`<`any`\>
 
 The resource information
 
-Implementation of: IArxivarResourceService.get
+#### Implementation of
+
+IArxivarResourceService.get
 
 ___
 
 ### getByteArray
 
-▸ **getByteArray**(`resourceName`: *string*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
+▸ **getByteArray**(`resourceName`, `options`): `Promise`<`any`\>
 
 Retrieve a download stream for a certain resource of ARXivar
 
@@ -114,20 +125,24 @@ Retrieve a download stream for a certain resource of ARXivar
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `resourceName` | *string* | The resource name |
-| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
+| `resourceName` | `string` | The resource name |
+| `options` | [`IHttpOptions`](../interfaces/Interfaces.IHttpOptions.md) | The options of the call |
 
-**Returns:** *Promise*<any\>
+#### Returns
+
+`Promise`<`any`\>
 
 The download stream for the resource
 
-Implementation of: IArxivarResourceService.getByteArray
+#### Implementation of
+
+IArxivarResourceService.getByteArray
 
 ___
 
 ### getPost
 
-▸ **getPost**(`resourceName`: *string*, `postData`: *any*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
+▸ **getPost**(`resourceName`, `postData`, `options`): `Promise`<`any`\>
 
 Retrieve information of a certain resource of ARXivar
 
@@ -135,21 +150,51 @@ Retrieve information of a certain resource of ARXivar
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `resourceName` | *string* | The resource name |
-| `postData` | *any* | Additional parameter of the call |
-| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
+| `resourceName` | `string` | The resource name |
+| `postData` | `any` | Additional parameter of the call |
+| `options` | [`IHttpOptions`](../interfaces/Interfaces.IHttpOptions.md) | The options of the call |
 
-**Returns:** *Promise*<any\>
+#### Returns
+
+`Promise`<`any`\>
 
 The resource value
 
-Implementation of: IArxivarResourceService.getPost
+#### Implementation of
+
+IArxivarResourceService.getPost
+
+___
+
+### getPostByteArray
+
+▸ **getPostByteArray**(`resourceName`, `postData`, `options`): `Promise`<`any`\>
+
+Retrieve a download stream for a certain resource of ARXivar
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `resourceName` | `string` | The resource name |
+| `postData` | `any` | Additional parameter of the call |
+| `options` | [`IHttpOptions`](../interfaces/Interfaces.IHttpOptions.md) | The options of the call |
+
+#### Returns
+
+`Promise`<`any`\>
+
+The download stream for the resource
+
+#### Implementation of
+
+IArxivarResourceService.getPostByteArray
 
 ___
 
 ### getValue
 
-▸ **getValue**(`resourceName`: *string*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
+▸ **getValue**(`resourceName`, `options`): `Promise`<`any`\>
 
 Retrieve the value of a certain resource of ARXivar
 
@@ -157,20 +202,24 @@ Retrieve the value of a certain resource of ARXivar
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `resourceName` | *string* | The resource name |
-| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
+| `resourceName` | `string` | The resource name |
+| `options` | [`IHttpOptions`](../interfaces/Interfaces.IHttpOptions.md) | The options of the call |
 
-**Returns:** *Promise*<any\>
+#### Returns
+
+`Promise`<`any`\>
 
 The resource value
 
-Implementation of: IArxivarResourceService.getValue
+#### Implementation of
+
+IArxivarResourceService.getValue
 
 ___
 
 ### queryWithOptions
 
-▸ **queryWithOptions**(`resourceName`: *string*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md), `httpOptions`: *any*): *Promise*<any\>
+▸ **queryWithOptions**(`resourceName`, `options`, `httpOptions`): `Promise`<`any`\>
 
 Retrieve information on a certain type of resource of ARXivar with additional options
 
@@ -178,21 +227,25 @@ Retrieve information on a certain type of resource of ARXivar with additional op
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `resourceName` | *string* | The resource name |
-| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
-| `httpOptions` | *any* | The additional options of the call |
+| `resourceName` | `string` | The resource name |
+| `options` | [`IHttpOptions`](../interfaces/Interfaces.IHttpOptions.md) | The options of the call |
+| `httpOptions` | `any` | The additional options of the call |
 
-**Returns:** *Promise*<any\>
+#### Returns
+
+`Promise`<`any`\>
 
 The resource information
 
-Implementation of: IArxivarResourceService.queryWithOptions
+#### Implementation of
+
+IArxivarResourceService.queryWithOptions
 
 ___
 
 ### save
 
-▸ **save**(`resourceName`: *string*, `postData`: *any*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
+▸ **save**(`resourceName`, `postData`, `options`): `Promise`<`any`\>
 
 Submit and save the selected resource on Arxivar
 
@@ -200,21 +253,25 @@ Submit and save the selected resource on Arxivar
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `resourceName` | *string* | The resource name |
-| `postData` | *any* | The resource data |
-| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
+| `resourceName` | `string` | The resource name |
+| `postData` | `any` | The resource data |
+| `options` | [`IHttpOptions`](../interfaces/Interfaces.IHttpOptions.md) | The options of the call |
 
-**Returns:** *Promise*<any\>
+#### Returns
+
+`Promise`<`any`\>
 
 The resource
 
-Implementation of: IArxivarResourceService.save
+#### Implementation of
+
+IArxivarResourceService.save
 
 ___
 
 ### update
 
-▸ **update**(`resourceName`: *string*, `postData`: *any*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
+▸ **update**(`resourceName`, `postData`, `options`): `Promise`<`any`\>
 
 Submit and update the selected resource on Arxivar
 
@@ -222,21 +279,25 @@ Submit and update the selected resource on Arxivar
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `resourceName` | *string* | The resource name |
-| `postData` | *any* | The resource data |
-| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
+| `resourceName` | `string` | The resource name |
+| `postData` | `any` | The resource data |
+| `options` | [`IHttpOptions`](../interfaces/Interfaces.IHttpOptions.md) | The options of the call |
 
-**Returns:** *Promise*<any\>
+#### Returns
+
+`Promise`<`any`\>
 
 The resource
 
-Implementation of: IArxivarResourceService.update
+#### Implementation of
+
+IArxivarResourceService.update
 
 ___
 
 ### updateCollection
 
-▸ **updateCollection**(`resourceName`: *string*, `postData`: *any*, `options`: [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md)): *Promise*<any\>
+▸ **updateCollection**(`resourceName`, `postData`, `options`): `Promise`<`any`\>
 
 Submit and update a collection of resources on Arxivar
 
@@ -244,12 +305,16 @@ Submit and update a collection of resources on Arxivar
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `resourceName` | *string* | The resource name |
-| `postData` | *any* | The resources data collection |
-| `options` | [*IHttpOptions*](../interfaces/interfaces.ihttpoptions.md) | The options of the call |
+| `resourceName` | `string` | The resource name |
+| `postData` | `any` | The resources data collection |
+| `options` | [`IHttpOptions`](../interfaces/Interfaces.IHttpOptions.md) | The options of the call |
 
-**Returns:** *Promise*<any\>
+#### Returns
+
+`Promise`<`any`\>
 
 The resources
 
-Implementation of: IArxivarResourceService.updateCollection
+#### Implementation of
+
+IArxivarResourceService.updateCollection

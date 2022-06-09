@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Exports](../modules.md) / ArxivarNotifierService
+[ARXivar Documentation](../README.md) / [Modules](../modules.md) / ArxivarNotifierService
 
 # Module: ArxivarNotifierService
 
@@ -6,4 +6,4 @@
 
 ### Classes
 
-- [ArxivarNotifierService](../classes/arxivarnotifierservice.arxivarnotifierservice-1.md)
+- [ArxivarNotifierService](../classes/ArxivarNotifierService.ArxivarNotifierService-1.md)

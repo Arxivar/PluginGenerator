@@ -1,45 +1,45 @@
-[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [Interfaces](../modules/interfaces.md) / ConfigurationDataTypeEnum
+[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [Interfaces](../modules/Interfaces.md) / ConfigurationDataTypeEnum
 
 # Enumeration: ConfigurationDataTypeEnum
 
-[Interfaces](../modules/interfaces.md).ConfigurationDataTypeEnum
+[Interfaces](../modules/Interfaces.md).ConfigurationDataTypeEnum
 
 ## Table of contents
 
-### Enumeration members
+### Enumeration Members
 
-- [Bool](interfaces.configurationdatatypeenum.md#bool)
-- [Datetime](interfaces.configurationdatatypeenum.md#datetime)
-- [Decimal](interfaces.configurationdatatypeenum.md#decimal)
-- [Int](interfaces.configurationdatatypeenum.md#int)
-- [String](interfaces.configurationdatatypeenum.md#string)
+- [Bool](Interfaces.ConfigurationDataTypeEnum.md#bool)
+- [Datetime](Interfaces.ConfigurationDataTypeEnum.md#datetime)
+- [Decimal](Interfaces.ConfigurationDataTypeEnum.md#decimal)
+- [Int](Interfaces.ConfigurationDataTypeEnum.md#int)
+- [String](Interfaces.ConfigurationDataTypeEnum.md#string)
 
-## Enumeration members
+## Enumeration Members
 
 ### Bool
 
-• **Bool**: = 4
+• **Bool**
 
 ___
 
 ### Datetime
 
-• **Datetime**: = 3
+• **Datetime**
 
 ___
 
 ### Decimal
 
-• **Decimal**: = 5
+• **Decimal**
 
 ___
 
 ### Int
 
-• **Int**: = 2
+• **Int**
 
 ___
 
 ### String
 
-• **String**: = 1
+• **String**

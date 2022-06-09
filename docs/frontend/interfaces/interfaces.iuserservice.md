@@ -1,340 +1,304 @@
-[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [Interfaces](../modules/interfaces.md) / IUserService
+[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [Interfaces](../modules/Interfaces.md) / IUserService
 
 # Interface: IUserService
 
-[Interfaces](../modules/interfaces.md).IUserService
+[Interfaces](../modules/Interfaces.md).IUserService
+
+## Implemented by
+
+- [`UserService`](../classes/UserService.UserService-1.md)
 
 ## Table of contents
 
-### Properties
+### Methods
 
-- [getAoo](interfaces.iuserservice.md#getaoo)
-- [getAvatar](interfaces.iuserservice.md#getavatar)
-- [getDatabase](interfaces.iuserservice.md#getdatabase)
-- [getDatabaseInfo](interfaces.iuserservice.md#getdatabaseinfo)
-- [getDescription](interfaces.iuserservice.md#getdescription)
-- [getLang](interfaces.iuserservice.md#getlang)
-- [getProvider](interfaces.iuserservice.md#getprovider)
-- [getRoles](interfaces.iuserservice.md#getroles)
-- [getServerName](interfaces.iuserservice.md#getservername)
-- [getStatus](interfaces.iuserservice.md#getstatus)
-- [getUserGroup](interfaces.iuserservice.md#getusergroup)
-- [getUserId](interfaces.iuserservice.md#getuserid)
-- [getUserName](interfaces.iuserservice.md#getusername)
-- [getUserNameComplete](interfaces.iuserservice.md#getusernamecomplete)
-- [hasAvatar](interfaces.iuserservice.md#hasavatar)
-- [hasRole](interfaces.iuserservice.md#hasrole)
-- [isInRole](interfaces.iuserservice.md#isinrole)
-- [isNotAdmin](interfaces.iuserservice.md#isnotadmin)
+- [getAoo](Interfaces.IUserService.md#getaoo)
+- [getAvatar](Interfaces.IUserService.md#getavatar)
+- [getDatabase](Interfaces.IUserService.md#getdatabase)
+- [getDatabaseInfo](Interfaces.IUserService.md#getdatabaseinfo)
+- [getDescription](Interfaces.IUserService.md#getdescription)
+- [getLang](Interfaces.IUserService.md#getlang)
+- [getProvider](Interfaces.IUserService.md#getprovider)
+- [getRoles](Interfaces.IUserService.md#getroles)
+- [getServerName](Interfaces.IUserService.md#getservername)
+- [getStatus](Interfaces.IUserService.md#getstatus)
+- [getUserGroup](Interfaces.IUserService.md#getusergroup)
+- [getUserId](Interfaces.IUserService.md#getuserid)
+- [getUserName](Interfaces.IUserService.md#getusername)
+- [getUserNameComplete](Interfaces.IUserService.md#getusernamecomplete)
+- [hasAvatar](Interfaces.IUserService.md#hasavatar)
+- [hasRole](Interfaces.IUserService.md#hasrole)
+- [isInRole](Interfaces.IUserService.md#isinrole)
+- [isNotAdmin](Interfaces.IUserService.md#isnotadmin)
 
-## Properties
+## Methods
 
 ### getAoo
 
-• **getAoo**: () => *string*
+▸ **getAoo**(): `string`
 
 Get the Aoo of the user
 
-**`returns`** The Aoo name
+#### Returns
 
-#### Type declaration
+`string`
 
-▸ (): *string*
-
-**Returns:** *string*
+The Aoo name
 
 ___
 
 ### getAvatar
 
-• **getAvatar**: () => *string*
+▸ **getAvatar**(): `string`
 
 Get the user's avatar
 
-**`returns`** The base64 code of the user's avatar
+#### Returns
 
-#### Type declaration
+`string`
 
-▸ (): *string*
-
-**Returns:** *string*
+The base64 code of the user's avatar
 
 ___
 
 ### getDatabase
 
-• **getDatabase**: () => *string*
+▸ **getDatabase**(): `string`
 
 Get the database name
 
-**`returns`** The database name
+#### Returns
 
-#### Type declaration
+`string`
 
-▸ (): *string*
-
-**Returns:** *string*
+The database name
 
 ___
 
 ### getDatabaseInfo
 
-• **getDatabaseInfo**: () => *Promise*<[*IUserService*](interfaces.iuserservice.md)\>
+▸ **getDatabaseInfo**(): `Promise`<[`IUserService`](Interfaces.IUserService.md)\>
 
-DEPRECATED Use [ArxivarUserServiceCreator.create](../classes/arxivaruserservicecreator.arxivaruserservicecreator-1.md#create) instead.
+DEPRECATED Use [ArxivarUserServiceCreator.create](../classes/ArxivarUserServiceCreator.ArxivarUserServiceCreator-1.md#create) instead.
 Load the database information
 
-#### Type declaration
+#### Returns
 
-▸ (): *Promise*<[*IUserService*](interfaces.iuserservice.md)\>
-
-**Returns:** *Promise*<[*IUserService*](interfaces.iuserservice.md)\>
+`Promise`<[`IUserService`](Interfaces.IUserService.md)\>
 
 ___
 
 ### getDescription
 
-• **getDescription**: () => *string*
+▸ **getDescription**(): `string`
 
 Get the description of the user
 
-**`returns`** The description of the user
+#### Returns
 
-#### Type declaration
+`string`
 
-▸ (): *string*
-
-**Returns:** *string*
+The description of the user
 
 ___
 
 ### getLang
 
-• **getLang**: () => *string*
+▸ **getLang**(): `string`
 
 Get the language of the user
 
-**`returns`** The language of the user
+#### Returns
 
-#### Type declaration
+`string`
 
-▸ (): *string*
-
-**Returns:** *string*
+The language of the user
 
 ___
 
 ### getProvider
 
-• **getProvider**: () => *string*
+▸ **getProvider**(): `string`
 
 Get the database provider name
 
-**`returns`** The database provider name
+#### Returns
 
-#### Type declaration
+`string`
 
-▸ (): *string*
-
-**Returns:** *string*
+The database provider name
 
 ___
 
 ### getRoles
 
-• **getRoles**: () => { `roleName`: *string* ; `value`: *boolean*  }[]
+▸ **getRoles**(): { `roleName`: `string` ; `value`: `boolean`  }[]
 
 Get the roles of the user
 
-**`returns`** The user roles
+#### Returns
 
-#### Type declaration
+{ `roleName`: `string` ; `value`: `boolean`  }[]
 
-▸ (): { `roleName`: *string* ; `value`: *boolean*  }[]
-
-**Returns:** { `roleName`: *string* ; `value`: *boolean*  }[]
+The user roles
 
 ___
 
 ### getServerName
 
-• **getServerName**: () => *string*
+▸ **getServerName**(): `string`
 
 Get the server name
 
-**`returns`** The server name
+#### Returns
 
-#### Type declaration
+`string`
 
-▸ (): *string*
-
-**Returns:** *string*
+The server name
 
 ___
 
 ### getStatus
 
-• **getStatus**: () => *number*
+▸ **getStatus**(): `number`
 
 Get the status of the user
 
-**`returns`** The user id
+#### Returns
 
-#### Type declaration
+`number`
 
-▸ (): *number*
-
-**Returns:** *number*
+The user id
 
 ___
 
 ### getUserGroup
 
-• **getUserGroup**: () => { `groupId`: *number* ; `isAdmin`: *boolean* ; `isProfiler`: *boolean* ; `isUser`: *boolean* ; `notSet`: *boolean*  }
+▸ **getUserGroup**(): `Object`
 
 Retrieve information about the group of the current user
 
-**`returns`** The user group
+#### Returns
 
-#### Type declaration
+`Object`
 
-▸ (): *object*
-
-**Returns:** *object*
+The user group
 
 | Name | Type |
 | :------ | :------ |
-| `groupId` | *number* |
-| `isAdmin` | *boolean* |
-| `isProfiler` | *boolean* |
-| `isUser` | *boolean* |
-| `notSet` | *boolean* |
+| `groupId` | `number` |
+| `isAdmin` | `boolean` |
+| `isProfiler` | `boolean` |
+| `isUser` | `boolean` |
+| `notSet` | `boolean` |
 
 ___
 
 ### getUserId
 
-• **getUserId**: () => *string*
+▸ **getUserId**(): `string`
 
 Get the id of the user
 
-**`returns`** The user id
+#### Returns
 
-#### Type declaration
+`string`
 
-▸ (): *string*
-
-**Returns:** *string*
+The user id
 
 ___
 
 ### getUserName
 
-• **getUserName**: () => *string*
+▸ **getUserName**(): `string`
 
 Get the name of the user
 
-**`returns`** The username
+#### Returns
 
-#### Type declaration
+`string`
 
-▸ (): *string*
-
-**Returns:** *string*
+The username
 
 ___
 
 ### getUserNameComplete
 
-• **getUserNameComplete**: () => *string*
+▸ **getUserNameComplete**(): `string`
 
 Get the complete name of the user
 
-**`returns`** The complete name of the user
+#### Returns
 
-#### Type declaration
+`string`
 
-▸ (): *string*
-
-**Returns:** *string*
+The complete name of the user
 
 ___
 
 ### hasAvatar
 
-• **hasAvatar**: () => *boolean*
+▸ **hasAvatar**(): `boolean`
 
 Get the information about the user's avatar status
 
-**`returns`** The state of the avatar
+#### Returns
 
-#### Type declaration
+`boolean`
 
-▸ (): *boolean*
-
-**Returns:** *boolean*
+The state of the avatar
 
 ___
 
 ### hasRole
 
-• **hasRole**: (`roleName`: *any*) => *any*
+▸ **hasRole**(`roleName`): `any`
 
-DEPRECATED Use [UserService.isInRole](../classes/userservice.userservice-1.md#isinrole) instead.
+DEPRECATED Use [UserService.isInRole](../classes/UserService.UserService-1.md#isinrole) instead.
 Check if the currently logged user has a certain role enabled
-
-**`param`** object containing the name of the role
-
-**`returns`** true if the user has the selected roles, false otherwise
-
-#### Type declaration
-
-▸ (`roleName`: *any*): *any*
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `roleName` | *any* |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `roleName` | `any` | object containing the name of the role |
 
-**Returns:** *any*
+#### Returns
+
+`any`
+
+true if the user has the selected roles, false otherwise
 
 ___
 
 ### isInRole
 
-• **isInRole**: (`roleName`: *string*) => *boolean*
+▸ **isInRole**(`roleName`): `boolean`
 
 Check if the currently logged user has a certain role enabled
 
-**`param`** the name of the role
-
-**`returns`** true if the user has the roles, false otherwise
-
-#### Type declaration
-
-▸ (`roleName`: *string*): *boolean*
-
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `roleName` | *string* |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `roleName` | `string` | the name of the role |
 
-**Returns:** *boolean*
+#### Returns
+
+`boolean`
+
+true if the user has the roles, false otherwise
 
 ___
 
 ### isNotAdmin
 
-• **isNotAdmin**: () => *boolean*
+▸ **isNotAdmin**(): `boolean` \| `Promise`<`boolean`\>
 
 Check if the user currently logged is not an administrator
 
-**`returns`** false if the user is administrator, true otherwise
+#### Returns
 
-#### Type declaration
+`boolean` \| `Promise`<`boolean`\>
 
-▸ (): *boolean*
-
-**Returns:** *boolean*
+false if the user is administrator, true otherwise

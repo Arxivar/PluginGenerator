@@ -1,91 +1,75 @@
-[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [Interfaces](../modules/interfaces.md) / IArxivarDocumentsService
+[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [Interfaces](../modules/Interfaces.md) / IArxivarDocumentsService
 
 # Interface: IArxivarDocumentsService
 
-[Interfaces](../modules/interfaces.md).IArxivarDocumentsService
+[Interfaces](../modules/Interfaces.md).IArxivarDocumentsService
 
 ## Table of contents
 
-### Properties
+### Methods
 
-- [downloadStream](interfaces.iarxivardocumentsservice.md#downloadstream)
-- [getDocumentByDocnumber](interfaces.iarxivardocumentsservice.md#getdocumentbydocnumber)
-- [getRevisionByID](interfaces.iarxivardocumentsservice.md#getrevisionbyid)
+- [downloadStream](Interfaces.IArxivarDocumentsService.md#downloadstream)
+- [getDocumentByDocnumber](Interfaces.IArxivarDocumentsService.md#getdocumentbydocnumber)
+- [getRevisionByID](Interfaces.IArxivarDocumentsService.md#getrevisionbyid)
 
-## Properties
+## Methods
 
 ### downloadStream
 
-• **downloadStream**: (`data`: *any*, `status`: *any*, `headers`: *any*) => *Promise*<any\>
+▸ **downloadStream**(`data`, `status`, `headers`): `Promise`<`any`\>
 
  This method converts an api call response of type arraybuffer into a file.
 
-**`param`** The data of the call.
-
-**`param`** The status of the call.
-
-**`param`** The headers of the call.
-
-**`returns`** The file download Promise.
-
-#### Type declaration
-
-▸ (`data`: *any*, `status`: *any*, `headers`: *any*): *Promise*<any\>
-
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `data` | *any* |
-| `status` | *any* |
-| `headers` | *any* |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `data` | `any` | The data of the call. |
+| `status` | `any` | The status of the call. |
+| `headers` | `any` | The headers of the call. |
 
-**Returns:** *Promise*<any\>
+#### Returns
+
+`Promise`<`any`\>
+
+The file download Promise.
 
 ___
 
 ### getDocumentByDocnumber
 
-• **getDocumentByDocnumber**: (`docnumber`: *number*) => *Promise*<any\>
+▸ **getDocumentByDocnumber**(`docnumber`): `Promise`<`any`\>
 
 Download the document linked to a profile.
 
-**`param`** The docnumber of the profile.
-
-**`returns`** The file download Promise.
-
-#### Type declaration
-
-▸ (`docnumber`: *number*): *Promise*<any\>
-
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `docnumber` | *number* |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `docnumber` | `number` | The docnumber of the profile. |
 
-**Returns:** *Promise*<any\>
+#### Returns
+
+`Promise`<`any`\>
+
+The file download Promise.
 
 ___
 
 ### getRevisionByID
 
-• **getRevisionByID**: (`revisionId`: *number*) => *Promise*<any\>
+▸ **getRevisionByID**(`revisionId`): `Promise`<`any`\>
 
 Download the document linked to a profile with a specific revision.
 
-**`param`** The ID of the revision.
-
-**`returns`** The file download Promise.
-
-#### Type declaration
-
-▸ (`revisionId`: *number*): *Promise*<any\>
-
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `revisionId` | *number* |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `revisionId` | `number` | The ID of the revision. |
 
-**Returns:** *Promise*<any\>
+#### Returns
+
+`Promise`<`any`\>
+
+The file download Promise.
