@@ -438,36 +438,36 @@ export interface IArxivarUserServiceCreator {
 	create: () => Promise<IUserService>;
 }
 
-export type IUrlSearchParams = {
+export interface IUrlSearchParams {
 	/**
-	 * @property Defines il numero massimo dei risultati per la ricerca, imposta 0 per nessun limite. Se non impostato il default è quello dell'ultima ricerca.
+	 * @property Defines the maximum number of results for the search. Set 0 for no limit. If not set,the default is that of the last search.
 	 */
 	maxResults?: number;
 	/**
-	 * @property Defines la modalità di ricerca per mittente e destinatario. 0 and 1 or. Se non impostato il default è quello dell'ultima ricerca.
+	 * @property Defines the search mode for from and to. 0 and 1 or. If not set, the default is that of the last search.
 	 */
 	fromTo?: number;
 	/**
-	 * @property Defines i campi da impostare per la ricerca
+	 * @property Defines the fields to be set for the search.
 	 */
 	fields: IUrlFilter[];
 }
 
-type IUrlFilter = {
+export interface IUrlFilter {
 	/**
-	 * @property Defines il  nome del campo
+	 * @property Defines the field name
 	 */
 	name: string;
 	/**
-	 * @property Defines l'operatore del campo
+	 * @property Defines the field operator
 	 */
 	operator: number;
 	/**
-	 * @property Defines il valore del campo
+	 * @property Defines the field value
 	 */
 	value1: any;
 	/**
-	 * @property Defines il secondo valore del campo, se richiesto dall'operatore impostato.
+	 * @property Defines the second value of the field, if required by the operator set.
 	 */
 	value2?: any;
 };

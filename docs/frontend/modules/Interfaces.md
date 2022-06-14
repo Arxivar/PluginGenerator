@@ -17,28 +17,15 @@
 - [IArxivarUserServiceCreator](../interfaces/Interfaces.IArxivarUserServiceCreator.md)
 - [IHttpOptions](../interfaces/Interfaces.IHttpOptions.md)
 - [IPluginService](../interfaces/Interfaces.IPluginService.md)
+- [IUrlFilter](../interfaces/Interfaces.IUrlFilter.md)
+- [IUrlSearchParams](../interfaces/Interfaces.IUrlSearchParams.md)
 - [IUserService](../interfaces/Interfaces.IUserService.md)
 
 ### Type Aliases
 
-- [IUrlSearchParams](Interfaces.md#iurlsearchparams)
 - [ScopeSettings](Interfaces.md#scopesettings)
 
 ## Type Aliases
-
-### IUrlSearchParams
-
-Ƭ **IUrlSearchParams**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `fields` | `IUrlFilter`[] |
-| `fromTo?` | `number` |
-| `maxResults?` | `number` |
-
-___
 
 ### ScopeSettings
 
