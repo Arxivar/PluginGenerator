@@ -21,23 +21,22 @@
 
 ### Type Aliases
 
-- [IUrlFilter](Interfaces.md#iurlfilter)
+- [IUrlSearchParams](Interfaces.md#iurlsearchparams)
 - [ScopeSettings](Interfaces.md#scopesettings)
 
 ## Type Aliases
 
-### IUrlFilter
+### IUrlSearchParams
 
-Ƭ **IUrlFilter**: `Object`
+Ƭ **IUrlSearchParams**: `Object`
 
 #### Type declaration
 
 | Name | Type |
 | :------ | :------ |
-| `name` | `string` |
-| `operator` | `number` |
-| `value1` | `any` |
-| `value2` | `any` |
+| `fields` | `IUrlFilter`[] |
+| `fromTo?` | `number` |
+| `maxResults?` | `number` |
 
 ___
 

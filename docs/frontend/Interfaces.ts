@@ -419,7 +419,7 @@ export interface IArxivarRouteService {
 	 * @param params The params for the search.
 	 * @returns The url of the search with params.
 	*/
-	getSearchURLWithParams: (params: IUrlFilter[]) => string;
+	getSearchURLWithParams: (params: IUrlSearchParams) => string;
 	/**
 	 *  Retrieve the URL of view with params.
 	 *
@@ -427,7 +427,7 @@ export interface IArxivarRouteService {
 	 * @param viewId The viewId.
 	 * @returns The url of the view with params.
 	*/
-	getViewURLWithParams: (params: IUrlFilter[], viewId: string) => string;
+	getViewURLWithParams: (params: IUrlSearchParams, viewId: string) => string;
 
 }
 //UserService
@@ -438,11 +438,38 @@ export interface IArxivarUserServiceCreator {
 	create: () => Promise<IUserService>;
 }
 
-export type IUrlFilter = {
+export type IUrlSearchParams = {
+	/**
+	 * @property Defines il numero massimo dei risultati per la ricerca, imposta 0 per nessun limite. Se non impostato il default è quello dell'ultima ricerca.
+	 */
+	maxResults?: number;
+	/**
+	 * @property Defines la modalità di ricerca per mittente e destinatario. 0 and 1 or. Se non impostato il default è quello dell'ultima ricerca.
+	 */
+	fromTo?: number;
+	/**
+	 * @property Defines i campi da impostare per la ricerca
+	 */
+	fields: IUrlFilter[];
+}
+
+type IUrlFilter = {
+	/**
+	 * @property Defines il  nome del campo
+	 */
 	name: string;
+	/**
+	 * @property Defines l'operatore del campo
+	 */
 	operator: number;
+	/**
+	 * @property Defines il valore del campo
+	 */
 	value1: any;
-	value2: any;
+	/**
+	 * @property Defines il secondo valore del campo, se richiesto dall'operatore impostato.
+	 */
+	value2?: any;
 };
 
 type PluginSettingsType = {

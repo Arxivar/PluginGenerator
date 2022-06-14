@@ -107,7 +107,7 @@ ___
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `params` | [`IUrlFilter`](../modules/Interfaces.md#iurlfilter)[] | The params for the search. |
+| `params` | [`IUrlSearchParams`](../modules/Interfaces.md#iurlsearchparams) | The params for the search. |
 
 #### Returns
 
@@ -229,7 +229,7 @@ ___
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `params` | [`IUrlFilter`](../modules/Interfaces.md#iurlfilter)[] | The params for the view. |
+| `params` | [`IUrlSearchParams`](../modules/Interfaces.md#iurlsearchparams) | The params for the view. |
 | `viewId` | `string` | The viewId. |
 
 #### Returns
