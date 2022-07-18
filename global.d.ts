@@ -43,34 +43,52 @@ declare global {
     }
     type ISettingsNumberValue = ISettingsGenericTypeValue & {
         type: 'number',
-        defaultValue: number
+        defaultValue: number,
     }
     type ISettingsBooleanValue = ISettingsGenericTypeValue & {
         type: 'boolean',
-        defaultValue: boolean
+        defaultValue: boolean,
     }
     type ISettingsDateValue = ISettingsGenericTypeValue & {
         type: 'date',
-        defaultValue: string
+        defaultValue: string,
     }
+
+    type ISettingsStringValueForRuntime = ISettingsStringValue & {
+        value: ISettingsStringValue['defaultValue']
+    }
+    type ISettingsNumberValueForRuntime = ISettingsNumberValue & {
+        value: ISettingsNumberValue['defaultValue']
+    }
+    type ISettingsBooleanValueForRuntime = ISettingsBooleanValue & {
+        value: ISettingsBooleanValue['defaultValue']
+    }
+    type ISettingsDateValueForRuntime = ISettingsDateValue & {
+        value: ISettingsDateValue['defaultValue']
+    }
+
     type ISettingsTypeValue = ISettingsStringValue | ISettingsNumberValue | ISettingsBooleanValue | ISettingsDateValue;
+    type ISettingsTypeValueForRuntime = ISettingsStringValueForRuntime | ISettingsNumberValueForRuntime | ISettingsBooleanValueForRuntime | ISettingsDateValueForRuntime;
     type IProfilationCommandParams = { docnumber?: number; elementId: string, fields: ICommandParamsField[] };
     type IMoment = typeof moment;
-	type ILoDash = typeof LoDashStatic;
+    type ILoDash = typeof LoDashStatic;
     type IRouteParams = { queryParams: string };
     type ICustomSettings = ISettingsTypeValue;
     type IUserSettings = ISettingsTypeValue;
     type IWidgetSettings = ISettingsTypeValue;
+    type ICustomSettingsForRuntime = ISettingsTypeValueForRuntime;
+    type IUserSettingsForRuntime = ISettingsTypeValueForRuntime;
+    type IWidgetSettingsForRuntime = ISettingsTypeValueForRuntime;
     type ICommandParams = { docnumbers: number[]; }
-	type IConfiguration = IConfigurationDynamic<arxInterfaces.ConfigurationDataTypeEnum>;
-	type IConfigurationDynamicBase<T extends arxInterfaces.ConfigurationDataTypeEnum> = { name: string, dataType: T };
-	type IConfigurationDynamic<T extends arxInterfaces.ConfigurationDataTypeEnum> =
-		T extends arxInterfaces.ConfigurationDataTypeEnum.Bool ? IConfigurationDynamicBase<T> & { value?: boolean } :
-		T extends arxInterfaces.ConfigurationDataTypeEnum.Datetime ? IConfigurationDynamicBase<T> & { value?: string } :
-		T extends arxInterfaces.ConfigurationDataTypeEnum.Decimal ? IConfigurationDynamicBase<T> & { value?: number } :
-		T extends arxInterfaces.ConfigurationDataTypeEnum.Int ? IConfigurationDynamicBase<T> & { value?: number } :
-		T extends arxInterfaces.ConfigurationDataTypeEnum.String ? IConfigurationDynamicBase<T> & { value?: string } :
-		never
+    type IConfiguration = IConfigurationDynamic<arxInterfaces.ConfigurationDataTypeEnum>;
+    type IConfigurationDynamicBase<T extends arxInterfaces.ConfigurationDataTypeEnum> = { name: string, dataType: T };
+    type IConfigurationDynamic<T extends arxInterfaces.ConfigurationDataTypeEnum> =
+        T extends arxInterfaces.ConfigurationDataTypeEnum.Bool ? IConfigurationDynamicBase<T> & { value?: boolean } :
+        T extends arxInterfaces.ConfigurationDataTypeEnum.Datetime ? IConfigurationDynamicBase<T> & { value?: string } :
+        T extends arxInterfaces.ConfigurationDataTypeEnum.Decimal ? IConfigurationDynamicBase<T> & { value?: number } :
+        T extends arxInterfaces.ConfigurationDataTypeEnum.Int ? IConfigurationDynamicBase<T> & { value?: number } :
+        T extends arxInterfaces.ConfigurationDataTypeEnum.String ? IConfigurationDynamicBase<T> & { value?: string } :
+        never
     interface IPluginCommand {
         new(requiredSettings: IRequiredSettings, customSettings: ICustomSettings[], userSettings: IUserSettings[]): IPluginCommand,
         canRun: (params: ICommandParams) => Promise<boolean>,
@@ -91,7 +109,12 @@ declare global {
         new(requiredSettings: IRequiredSettings, customSettings: ICustomSettings[], userSettings: IUserSettings[]): IPluginTask
     }
     interface IPluginTaskV2 {
-        new(requiredSettings: IRequiredSettings, customSettings: ICustomSettings[], userSettings: IUserSettings[], widgetSettings: IWidgetSettings[]): IPluginTaskV2
+        new(requiredSettings: IRequiredSettings, customSettings: ICustomSettings[], userSettings: IUserSettings[], widgetSettings: IWidgetSettings[]): IPluginTaskV2,
+        requiredSettings: IRequiredSettings,
+        customSettings: ICustomSettingsForRuntime[],
+        userSettings: IUserSettingsForRuntime[],
+        widgetSettings: IWidgetSettingsForRuntime[]
+
     }
 
 
