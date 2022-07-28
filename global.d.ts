@@ -89,30 +89,33 @@ declare global {
         T extends arxInterfaces.ConfigurationDataTypeEnum.Int ? IConfigurationDynamicBase<T> & { value?: number } :
         T extends arxInterfaces.ConfigurationDataTypeEnum.String ? IConfigurationDynamicBase<T> & { value?: string } :
         never
-    interface IPluginCommand {
+
+    interface IPluginBase {
+        requiredSettings: IRequiredSettings,
+        customSettings: ICustomSettingsForRuntime[],
+        userSettings: IUserSettingsForRuntime[],
+    }
+    interface IPluginCommand extends IPluginBase {
         new(requiredSettings: IRequiredSettings, customSettings: ICustomSettings[], userSettings: IUserSettings[]): IPluginCommand,
         canRun: (params: ICommandParams) => Promise<boolean>,
         run: (params: ICommandParams) => Promise<any>
     }
-    interface IPluginProfilation {
+    interface IPluginProfilation extends IPluginBase {
         new(requiredSettings: IRequiredSettings, customSettings: ICustomSettings[], userSettings: IUserSettings[]): IPluginProfilation,
         canRun: (params: IProfilationCommandParams) => Promise<boolean>,
         run: (params: IProfilationCommandParams) => Promise<any>
     }
-    interface IPluginRoute {
+    interface IPluginRoute extends IPluginBase {
         new(requiredSettings: IRequiredSettings, customSettings: ICustomSettings[], userSettings: IUserSettings[]): IPluginRoute
     }
-    interface IPluginWidget {
+    interface IPluginWidget extends IPluginBase {
         new(requiredSettings: IRequiredSettings, customSettings: ICustomSettings[], userSettings: IUserSettings[]): IPluginWidget
     }
-    interface IPluginTask {
+    interface IPluginTask extends IPluginBase {
         new(requiredSettings: IRequiredSettings, customSettings: ICustomSettings[], userSettings: IUserSettings[]): IPluginTask
     }
-    interface IPluginTaskV2 {
+    interface IPluginTaskV2 extends IPluginBase {
         new(requiredSettings: IRequiredSettings, customSettings: ICustomSettings[], userSettings: IUserSettings[], widgetSettings: IWidgetSettings[]): IPluginTaskV2,
-        requiredSettings: IRequiredSettings,
-        customSettings: ICustomSettingsForRuntime[],
-        userSettings: IUserSettingsForRuntime[],
         widgetSettings: IWidgetSettingsForRuntime[]
 
     }
