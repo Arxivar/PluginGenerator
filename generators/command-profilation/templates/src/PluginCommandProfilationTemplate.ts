@@ -29,7 +29,7 @@ const myPlugin = new PluginProfilation(requiredSettings, customSettings, userSet
 
 <%= props.explanations.pluginCommandProfilation.canRun %>
 	myPlugin.canRun = (params) => {
-		return params.hasOwnProperty('fields') ? Promise.resolve(params.fields.length >= 1) : Promise.resolve(false);
+		return params.hasOwnProperty('fields') &&params.fields.length >= 1? Promise.resolve(true) : Promise.resolve(arxivarNotifierService.notifyWarning('Please select an item'));
 	};
 
 <%= props.explanations.pluginCommandProfilation.run %>

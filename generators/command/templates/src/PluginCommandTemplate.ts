@@ -31,7 +31,7 @@ angular.module('arxivar.plugins').factory('<%= props.pluginname %>', [
 	
 	<%= props.explanations.pluginCommand.canRun %>
     myPlugin.canRun = (params) => {
-	    return params.hasOwnProperty('docnumbers') ? Promise.resolve(params.docnumbers.length >= 1) : Promise.resolve(false);
+	    return params.hasOwnProperty('docnumbers') && params.docnumbers.length >= 1 ? Promise.resolve(true) : Promise.resolve(arxivarNotifierService.notifyWarning('Please select an item'));
     };
 	
 	<%= props.explanations.pluginCommand.run %>
