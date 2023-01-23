@@ -11,8 +11,7 @@
         "requireRefresh": false,
         "injectParams": false,
         "dependencies": "",
-        "typescript": false,
-        "arxPath": "C:/Git/ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins/testAutoCommand"
+        "typescript": false
     },
     {
         "pluginType": "arxivar-plugins:command '--auto'",
@@ -26,8 +25,7 @@
         "requireRefresh": true,
         "injectParams": false,
         "dependencies": "$uibModal moment $document $window $rootScope $http $filter $timeout _ $q",
-        "typescript": false,
-        "arxPath": "C:/Git/ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins/testAutoCommandComplete"
+        "typescript": false
     },
     {
         "pluginType": "arxivar-plugins:command '--auto'",
@@ -41,8 +39,7 @@
         "requireRefresh": false,
         "injectParams": false,
         "dependencies": "$uibModal moment $document $window $rootScope $http $filter $timeout _ $q",
-        "typescript": false,
-        "arxPath": "C:/Git/ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins/testAutoCommandDependencies"
+        "typescript": false
     },
     {
         "pluginType": "arxivar-plugins:command '--auto'",
@@ -56,8 +53,7 @@
         "requireRefresh": true,
         "injectParams": false,
         "dependencies": "",
-        "typescript": false,
-        "arxPath": "C:/Git/ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins/testAutoCommandGrid"
+        "typescript": false
     },
     {
         "pluginType": "arxivar-plugins:command-profilation '--auto'",
@@ -71,8 +67,7 @@
         "requireRefresh": false,
         "injectParams": false,
         "dependencies": "",
-        "typescript": false,
-        "arxPath": "C:/Git/ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins/testAutoCommandProfilation"
+        "typescript": false
     },
     {
         "pluginType": "arxivar-plugins:command-profilation '--auto'",
@@ -86,8 +81,7 @@
         "requireRefresh": false,
         "injectParams": false,
         "dependencies": "$uibModal moment $document $window $rootScope $http $filter $timeout _ $q",
-        "typescript": false,
-        "arxPath": "C:/Git/ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins/testAutoCommandProfilationDependencies"
+        "typescript": false
     },
     {
         "pluginType": "arxivar-plugins:command-profilation '--auto'",
@@ -191,8 +185,7 @@
         "requireRefresh": false,
         "injectParams": false,
         "dependencies": "",
-        "typescript": false,
-        "arxPath": "C:/Git/ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins/testAutoRoute"
+        "typescript": false
     },
     {
         "pluginType": "arxivar-plugins:route '--auto'",
@@ -206,8 +199,7 @@
         "requireRefresh": false,
         "injectParams": true,
         "dependencies": "$uibModal moment $document $window $rootScope $http $filter $timeout _ $q",
-        "typescript": false,
-        "arxPath": "C:/Git/ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins/testAutoRouteComplete"
+        "typescript": false
     },
     {
         "pluginType": "arxivar-plugins:route '--auto'",
@@ -221,8 +213,7 @@
         "requireRefresh": false,
         "injectParams": false,
         "dependencies": "$uibModal moment $document $window $rootScope $http $filter $timeout _ $q",
-        "typescript": false,
-        "arxPath": "C:/Git/ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins/testAutoRouteDependencies"
+        "typescript": false
     },
     {
         "pluginType": "arxivar-plugins:route '--auto'",
@@ -236,8 +227,7 @@
         "requireRefresh": false,
         "injectParams": true,
         "dependencies": "",
-        "typescript": false,
-        "arxPath": "C:/Git/ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins/testAutoRouteParams"
+        "typescript": false
     },
     {
         "pluginType": "arxivar-plugins:route '--auto'",
@@ -311,8 +301,7 @@
         "requireRefresh": false,
         "injectParams": false,
         "dependencies": "",
-        "typescript": false,
-        "arxPath": "C:/Git/ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins/testAutoWidgetDesktop"
+        "typescript": false
     },
     {
         "pluginType": "arxivar-plugins:widget-desktop '--auto'",
@@ -356,8 +345,7 @@
         "requireRefresh": false,
         "injectParams": false,
         "dependencies": "",
-        "typescript": false,
-        "arxPath": "C:/Git/ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins/testAutoWidgetTask"
+        "typescript": false
     },
     {
         "pluginType": "arxivar-plugins:widget-task '--auto'",
@@ -371,8 +359,7 @@
         "requireRefresh": false,
         "injectParams": false,
         "dependencies": "$uibModal moment $document $window $rootScope $http $filter $timeout _ $q",
-        "typescript": false,
-        "arxPath": "C:/Git/ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins/testAutoWidgetTaskDependencies"
+        "typescript": false
     },
     {
         "pluginType": "arxivar-plugins:widget-task '--auto'",
@@ -416,8 +403,7 @@
         "requireRefresh": false,
         "injectParams": false,
         "dependencies": "",
-        "typescript": false,
-        "arxPath": "C:/Git/ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins/testAutoWidgetTaskV2"
+        "typescript": false
     },
     {
         "pluginType": "arxivar-plugins:widget-task-v2 '--auto'",
@@ -431,8 +417,7 @@
         "requireRefresh": false,
         "injectParams": false,
         "dependencies": "$uibModal moment $document $window $rootScope $http $filter $timeout _ $q",
-        "typescript": false,
-        "arxPath": "C:/Git/ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins/testAutoWidgetTaskV2Dependencies"
+        "typescript": false
     },
     {
         "pluginType": "arxivar-plugins:widget-task-v2 '--auto'",

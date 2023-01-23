@@ -216,6 +216,15 @@ function searchServiceFront(answers, input) {
 
 var AppGenerator = module.exports = class extends Generator {
 
+  constructor(...args) {
+    super(...args);
+
+    if(this.options && this.options.destinationRoot) {
+      this.log('Set destinationRoot with: ' + this.options.destinationRoot);
+      this.destinationRoot(this.options.destinationRoot);
+    }
+  }
+
   shouldPrompt() {
     return this._args === undefined || this._args === null || !this._args.includes('--auto');
   }
