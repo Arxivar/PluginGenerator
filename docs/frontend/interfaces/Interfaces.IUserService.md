@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [Interfaces](../modules/Interfaces.md) / IUserService
+[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [Interfaces](../modules/Interfaces.md) / IUserService
 
 # Interface: IUserService
 
@@ -79,7 +79,7 @@ ___
 
 **`Deprecated`**
 
-Return always null. 
+Return always null. **
 Use GET /api/management/Database/DbInfo instead (with management scope).
 Get the database name
 

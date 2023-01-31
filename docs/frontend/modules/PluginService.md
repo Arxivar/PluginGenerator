@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Exports](../modules.md) / PluginService
+[ARXivar Documentation](../README.md) / [Modules](../modules.md) / PluginService
 
 # Module: PluginService
 

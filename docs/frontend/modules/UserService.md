@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Exports](../modules.md) / UserService
+[ARXivar Documentation](../README.md) / [Modules](../modules.md) / UserService
 
 # Module: UserService
 

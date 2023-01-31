@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Exports](../modules.md) / ArxivarUserServiceCreator
+[ARXivar Documentation](../README.md) / [Modules](../modules.md) / ArxivarUserServiceCreator
 
 # Module: ArxivarUserServiceCreator
 

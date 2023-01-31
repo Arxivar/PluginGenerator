@@ -232,7 +232,7 @@ export interface IUserService {
 	getAoo: () => string;
 
 	/**
-	 * @deprecated Return always null. 
+	 * @deprecated Return always null. **
 	 * Use GET /api/management/Database/DbInfo instead (with management scope).
 	 * Get the database name
 	 * @returns null

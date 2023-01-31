@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [UserService](../modules/UserService.md) / UserService
+[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [UserService](../modules/UserService.md) / UserService
 
 # Class: UserService
 
@@ -100,8 +100,8 @@ ___
 
 **`Deprecated`**
 
-Return always null. 
-Use GET /api/management/Database/DbInfo instead (with management scope).
+Return always null.
+_Use GET /api/management/Database/DbInfo instead (with management scope)._
 
 Get the database name
 
@@ -123,12 +123,15 @@ ___
 
 **`Deprecated`**
 
-Use ArxivarUserServiceCreator.create instead.
+_Use ArxivarUserServiceCreator.create instead._
+
 Load the database information
 
 #### Returns
 
 `Promise`<[`UserService`](UserService.UserService.md)\>
+
+Promise<UserService>
 
 #### Implementation of
 
@@ -176,12 +179,10 @@ ___
 
 ▸ **getProvider**(): ``null``
 
-*
-
 **`Deprecated`**
 
 Return always null. 
-Use GET /api/management/Database/DbInfo instead (with management scope).
+_Use GET /api/management/Database/DbInfo instead (with management scope)._
 Get the database provider name
 
 #### Returns
@@ -218,12 +219,10 @@ ___
 
 ▸ **getServerName**(): ``null``
 
-*
-
 **`Deprecated`**
 
 Return always null. 
-Use GET /api/management/Database/DbInfo instead (with management scope).
+_Use GET /api/management/Database/DbInfo instead (with management scope)._
 Get the server name
 
 #### Returns
@@ -360,7 +359,7 @@ ___
 
 **`Deprecated`**
 
-Use [isInRole](UserService.UserService.md#isinrole) instead.
+_Use [isInRole](UserService.UserService.md#isinrole) instead._
 Check if the currently logged user has a certain role enabled
 
 #### Parameters
