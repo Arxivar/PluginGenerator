@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [ArxivarDocumentsService](../modules/ArxivarDocumentsService.md) / ArxivarDocumentsService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [ArxivarDocumentsService](../modules/ArxivarDocumentsService.md) / ArxivarDocumentsService
 
 # Class: ArxivarDocumentsService
 
@@ -35,9 +35,9 @@ angular
 
 ### Methods
 
-- [downloadStream](ArxivarDocumentsService.ArxivarDocumentsService-1.md#downloadstream)
-- [getDocumentByDocnumber](ArxivarDocumentsService.ArxivarDocumentsService-1.md#getdocumentbydocnumber)
-- [getRevisionByID](ArxivarDocumentsService.ArxivarDocumentsService-1.md#getrevisionbyid)
+- [downloadStream](ArxivarDocumentsService.ArxivarDocumentsService.md#downloadstream)
+- [getDocumentByDocnumber](ArxivarDocumentsService.ArxivarDocumentsService.md#getdocumentbydocnumber)
+- [getRevisionByID](ArxivarDocumentsService.ArxivarDocumentsService.md#getrevisionbyid)
 
 ## Methods
 

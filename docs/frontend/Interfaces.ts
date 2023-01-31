@@ -232,21 +232,27 @@ export interface IUserService {
 	getAoo: () => string;
 
 	/**
+	 * @deprecated Return always null. 
+	 * Use GET /api/management/Database/DbInfo instead (with management scope).
 	 * Get the database name
-	 * @returns The database name
+	 * @returns null
 	 */
-	getDatabase: () => string;
+	getDatabase: () => null;
 
 	/**
+	* @deprecated Return always null. 
+	* Use GET /api/management/Database/DbInfo instead (with management scope).
 	* Get the server name
-	* @returns The server name
+	* @returns null
 	*/
-	getServerName: () => string;
+	getServerName: () => null;
 	/**
+	 * @deprecated Return always null.
+	 * Use GET /api/management/Database/DbInfo instead (with management scope).
 	 * Get the database provider name
-	 * @returns The database provider name
+	 * @returns null
 	 */
-	getProvider: () => string;
+	getProvider: () => null;
 	/**
 	 * Check if the user currently logged is not an administrator
 	 * @returns false if the user is administrator, true otherwise
@@ -470,7 +476,7 @@ export interface IUrlFilter {
 	 * @property Defines the second value of the field, if required by the operator set.
 	 */
 	value2?: any;
-};
+}
 
 type PluginSettingsType = {
 	name: string;
@@ -491,15 +497,15 @@ export interface IPluginService {
 	/**
 	* Get the settings of a plugin or of an instance of plugin.
 	* @param ScopeSettings "global" for all users "user" for me
-	* @param params: PluginParamsObjectType set pluginId, istanceId and desktop for this instances, set only pluginId for all instances
+	* @param params: PluginParamsObjectType set pluginId, instanceId and desktop for this instances, set only pluginId for all instances
 	* @returns The settings of plugin
 	*/
 	getSettings(scope: ScopeSettings, params: PluginParamsObjectType): Promise<any>;
 	/**
 	* Set the settings of a plugin or of an instance of plugin with UPSERT strategy.
 	* @param ScopeSettings "global" for all users "user" for me
-	* @param params: PluginParamsObjectType set pluginId,istanceId and desktop for this instances, set only pluginId for all instances
-	* @param settings: PluginSettingsType array of object {name:"myParamName",vale:"myParamValue"}
+	* @param params: PluginParamsObjectType set pluginId,instanceId and desktop for this instances, set only pluginId for all instances
+	* @param settings: PluginSettingsType array of object {name:"myParamName",value:"myParamValue"}
 	* @returns The settings of plugin
 	*/
 	saveSettings(scope: ScopeSettings, params: PluginParamsObjectType, settings: PluginSettingsType): Promise<any>;
@@ -507,7 +513,7 @@ export interface IPluginService {
 	 * [@deprecated since version 2.4]
 	 * Get the settings of a plugin or of an instance of plugin.
 	 * If you set only the pluginId property in @param pluginSettingsObject you will get the global customSettings and the global userSettings
-	 * If you set the pluginId, instanceId and desktopId properites in @param pluginSettingsObject you will get the global customSettings and the instace userSettings
+	 * If you set the pluginId, instanceId and desktopId properties in @param pluginSettingsObject you will get the global customSettings and the instance userSettings
 	 * @param pluginSettingsObject
 	 * @returns The customSettings (the global settings of plugin) and userSettings (the userSetting of plugin or widget instance plugin)
 	 */
@@ -517,7 +523,7 @@ export interface IPluginService {
 	* [@deprecated since version 2.4]
 	* Save the user settings of a plugin or of an instance of plugin.
 	* If you set only the pluginId property in @param pluginSettingsObject you will save the global userSettings
-	* If you set the pluginId, instanceId and desktopId properites in @param pluginSettingsObject you will save the instace userSettings
+	* If you set the pluginId, instanceId and desktopId properties in @param pluginSettingsObject you will save the instance userSettings
 	* @param pluginSettingsObject
 	* @param userSettingValues
 	* @returns The customSettings (the global settings of plugin) and userSettings (the userSetting of plugin or widget instance plugin)

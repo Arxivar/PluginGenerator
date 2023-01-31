@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [Interfaces](../modules/Interfaces.md) / IPluginService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [Interfaces](../modules/Interfaces.md) / IPluginService
 
 # Interface: IPluginService
 
@@ -6,7 +6,7 @@
 
 ## Implemented by
 
-- [`PluginService`](../classes/PluginService.PluginService-1.md)
+- [`PluginService`](../classes/PluginService.PluginService.md)
 
 ## Table of contents
 
@@ -25,14 +25,13 @@
 
 [@deprecated since version 2.4]
 Get the settings of a plugin or of an instance of plugin.
-If you set only the pluginId property in @param pluginSettingsObject you will get the global customSettings and the global userSettings
-If you set the pluginId, instanceId and desktopId properites in @param pluginSettingsObject you will get the global customSettings and the instace userSettings
+If you set only the pluginId property in
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `pluginSettingsObject` | `PluginParamsObjectType` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `pluginSettingsObject` | `PluginParamsObjectType` | you will get the global customSettings and the global userSettings  If you set the pluginId, instanceId and desktopId properties in |
 
 #### Returns
 
@@ -91,15 +90,14 @@ ___
 
 [@deprecated since version 2.4]
 Save the user settings of a plugin or of an instance of plugin.
-If you set only the pluginId property in @param pluginSettingsObject you will save the global userSettings
-If you set the pluginId, instanceId and desktopId properites in @param pluginSettingsObject you will save the instace userSettings
+If you set only the pluginId property in
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `pluginSettingsObject` | `PluginParamsObjectType` |
-| `userSettingValues` | `PluginSettingsType` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `pluginSettingsObject` | `PluginParamsObjectType` | you will save the global userSettings  If you set the pluginId, instanceId and desktopId properties in |
+| `userSettingValues` | `PluginSettingsType` |  |
 
 #### Returns
 

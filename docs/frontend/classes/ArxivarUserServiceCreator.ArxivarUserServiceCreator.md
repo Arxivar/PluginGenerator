@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [ArxivarUserServiceCreator](../modules/ArxivarUserServiceCreator.md) / ArxivarUserServiceCreator
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [ArxivarUserServiceCreator](../modules/ArxivarUserServiceCreator.md) / ArxivarUserServiceCreator
 
 # Class: ArxivarUserServiceCreator
 
@@ -36,20 +36,20 @@ angular
 
 ### Methods
 
-- [create](ArxivarUserServiceCreator.ArxivarUserServiceCreator-1.md#create)
+- [create](ArxivarUserServiceCreator.ArxivarUserServiceCreator.md#create)
 
 ## Methods
 
 ### create
 
-▸ **create**(): `Promise`<[`UserService`](UserService.UserService-1.md)\>
+▸ **create**(): `Promise`<[`UserService`](UserService.UserService.md)\>
 
 Create the UserService
 
 #### Returns
 
-`Promise`<[`UserService`](UserService.UserService-1.md)\>
+`Promise`<[`UserService`](UserService.UserService.md)\>
 
 #### Implementation of
 
-[IArxivarUserServiceCreator](../interfaces/Interfaces.IArxivarUserServiceCreator.md).[create](../interfaces/Interfaces.IArxivarUserServiceCreator.md#create)
+IArxivarUserServiceCreator.create

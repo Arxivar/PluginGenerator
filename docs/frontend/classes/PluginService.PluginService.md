@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [PluginService](../modules/PluginService.md) / PluginService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [PluginService](../modules/PluginService.md) / PluginService
 
 # Class: PluginService
 
@@ -12,16 +12,16 @@
 
 ### Properties
 
-- [$injector](PluginService.PluginService-1.md#$injector)
-- [loadPlugins](PluginService.PluginService-1.md#loadplugins)
+- [$injector](PluginService.PluginService.md#$injector)
+- [loadPlugins](PluginService.PluginService.md#loadplugins)
 
 ### Methods
 
-- [getPluginByUser](PluginService.PluginService-1.md#getpluginbyuser)
-- [getSettings](PluginService.PluginService-1.md#getsettings)
-- [init](PluginService.PluginService-1.md#init)
-- [saveSettings](PluginService.PluginService-1.md#savesettings)
-- [setPluginByUser](PluginService.PluginService-1.md#setpluginbyuser)
+- [getPluginByUser](PluginService.PluginService.md#getpluginbyuser)
+- [getSettings](PluginService.PluginService.md#getsettings)
+- [init](PluginService.PluginService.md#init)
+- [saveSettings](PluginService.PluginService.md#savesettings)
+- [setPluginByUser](PluginService.PluginService.md#setpluginbyuser)
 
 ## Properties
 
@@ -43,54 +43,13 @@ ___
 
 [@deprecated since version 2.4]
 Get the settings of a plugin or of an instance of plugin.
-If you set only the pluginId property in @param pluginSettingsObject you will get the global customSettings and the global userSettings
-If you set the pluginId, instanceId and desktopId properites in @param pluginSettingsObject you will get the global customSettings and the instace userSettings
-```javascript
-angular
-.module('arxivar.plugins.directives')
-.directive('widgetdesktopplugindirective', [
-	'pluginService', 'Widgetdesktopplugindirective',
-	function(pluginService,Widgetdesktopplugindirective) {
-		return {
-			restrict: 'E',
-			scope: {
-				instanceId: '@',
-				desktopId: '=?'
-			},
-			templateUrl: 'WidgetDesktopPlugin.html',
-			link: function(scope) {
-				pluginService.getPluginByUser({
-						pluginId: Widgetdesktopplugindirective.plugin.id,
-						instanceId: scope.instanceId,
-						desktopId: scope.desktopId,
-					}).then((settings) => {
-						console.log(settings.customSettings); //global
-						console.log(settings.userSettings); //specific instance
-				});
-			}
-		};
-	}
-]);
-
-angular
-.module('arxivar.plugins.directives')
-.controller('myPluginRouteCtrl', [
-	'pluginService', 'MyPluginRoute',
-	function(pluginService,MyPluginRoute) {
-		pluginService.getPluginByUser({pluginId: MyPluginRoute.plugin.id})
-			.then((settings) => {
-			console.log(settings.customSettings); //global
-			console.log(settings.userSettings); //global
-		});
-	}
-]);
-```
+If you set only the pluginId property in
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `pluginSettingsObject` | `PluginParamsObjectType` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `pluginSettingsObject` | `PluginParamsObjectType` | you will get the global customSettings and the global userSettings  If you set the pluginId, instanceId and desktopId properites in |
 
 #### Returns
 
@@ -149,6 +108,7 @@ angular
 ]);
 
 ```
+ *
 
 #### Parameters
 
@@ -249,15 +209,14 @@ ___
 
 [@deprecated since version 2.4]
 Save the user settings of a plugin or of an instance of plugin.
-If you set only the pluginId property in @param pluginSettingsObject you will save the global userSettings
-If you set the pluginId, instanceId and desktopId properites in @param pluginSettingsObject you will save the instace userSettings
+If you set only the pluginId property in
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `pluginSettingsObject` | `PluginParamsObjectType` |
-| `userSettingValues` | `PluginSettingsType` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `pluginSettingsObject` | `PluginParamsObjectType` | you will save the global userSettings  If you set the pluginId, instanceId and desktopId properites in |
+| `userSettingValues` | `PluginSettingsType` |  |
 
 #### Returns
 

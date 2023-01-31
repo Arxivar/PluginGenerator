@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [ArxivarRouteService](../modules/ArxivarRouteService.md) / ArxivarRouteService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [ArxivarRouteService](../modules/ArxivarRouteService.md) / ArxivarRouteService
 
 # Class: ArxivarRouteService
 
@@ -35,14 +35,14 @@ angular
 
 ### Methods
 
-- [getMaskProfilation](ArxivarRouteService.ArxivarRouteService-1.md#getmaskprofilation)
-- [getPartialURLPluginLinkExecuteCommand](ArxivarRouteService.ArxivarRouteService-1.md#getpartialurlpluginlinkexecutecommand)
-- [getSearchURLWithParams](ArxivarRouteService.ArxivarRouteService-1.md#getsearchurlwithparams)
-- [getURLPluginRoute](ArxivarRouteService.ArxivarRouteService-1.md#geturlpluginroute)
-- [getURLProfilation](ArxivarRouteService.ArxivarRouteService-1.md#geturlprofilation)
-- [getURLProfileReadonly](ArxivarRouteService.ArxivarRouteService-1.md#geturlprofilereadonly)
-- [getURLRevisionsByDocnumber](ArxivarRouteService.ArxivarRouteService-1.md#geturlrevisionsbydocnumber)
-- [getViewURLWithParams](ArxivarRouteService.ArxivarRouteService-1.md#getviewurlwithparams)
+- [getMaskProfilation](ArxivarRouteService.ArxivarRouteService.md#getmaskprofilation)
+- [getPartialURLPluginLinkExecuteCommand](ArxivarRouteService.ArxivarRouteService.md#getpartialurlpluginlinkexecutecommand)
+- [getSearchURLWithParams](ArxivarRouteService.ArxivarRouteService.md#getsearchurlwithparams)
+- [getURLPluginRoute](ArxivarRouteService.ArxivarRouteService.md#geturlpluginroute)
+- [getURLProfilation](ArxivarRouteService.ArxivarRouteService.md#geturlprofilation)
+- [getURLProfileReadonly](ArxivarRouteService.ArxivarRouteService.md#geturlprofilereadonly)
+- [getURLRevisionsByDocnumber](ArxivarRouteService.ArxivarRouteService.md#geturlrevisionsbydocnumber)
+- [getViewURLWithParams](ArxivarRouteService.ArxivarRouteService.md#getviewurlwithparams)
 
 ## Methods
 
@@ -56,7 +56,7 @@ Retrieve the URL's mask route that contains the bufferId of the file to upload
 
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
-| `id` | `string` | `undefined` | The mask Id. |
+| `id` | `string` | `undefined` | The mask Id.   * |
 | `__namedParameters` | `Object` | `null` | - |
 | `__namedParameters.bufferId` | `string` | `undefined` | - |
 | `__namedParameters.fileName` | `string` | `undefined` | - |
@@ -69,7 +69,7 @@ The url of mask route.
 
 #### Implementation of
 
-[IArxivarRouteService](../interfaces/Interfaces.IArxivarRouteService.md).[getMaskProfilation](../interfaces/Interfaces.IArxivarRouteService.md#getmaskprofilation)
+IArxivarRouteService.getMaskProfilation
 
 ___
 
@@ -93,7 +93,7 @@ The partial url of the plugin link execute command.
 
 #### Implementation of
 
-[IArxivarRouteService](../interfaces/Interfaces.IArxivarRouteService.md).[getPartialURLPluginLinkExecuteCommand](../interfaces/Interfaces.IArxivarRouteService.md#getpartialurlpluginlinkexecutecommand)
+IArxivarRouteService.getPartialURLPluginLinkExecuteCommand
 
 ___
 
@@ -101,7 +101,7 @@ ___
 
 ▸ **getSearchURLWithParams**(`params`): `string`
 
- Retrieve the URL of search with params.
+Retrieve the URL of search with params.
 
 #### Parameters
 
@@ -117,7 +117,7 @@ The url of the search with params.
 
 #### Implementation of
 
-[IArxivarRouteService](../interfaces/Interfaces.IArxivarRouteService.md).[getSearchURLWithParams](../interfaces/Interfaces.IArxivarRouteService.md#getsearchurlwithparams)
+IArxivarRouteService.getSearchURLWithParams
 
 ___
 
@@ -141,7 +141,7 @@ The url of the plugin route.
 
 #### Implementation of
 
-[IArxivarRouteService](../interfaces/Interfaces.IArxivarRouteService.md).[getURLPluginRoute](../interfaces/Interfaces.IArxivarRouteService.md#geturlpluginroute)
+IArxivarRouteService.getURLPluginRoute
 
 ___
 
@@ -167,7 +167,7 @@ The url of profilation route.
 
 #### Implementation of
 
-[IArxivarRouteService](../interfaces/Interfaces.IArxivarRouteService.md).[getURLProfilation](../interfaces/Interfaces.IArxivarRouteService.md#geturlprofilation)
+IArxivarRouteService.getURLProfilation
 
 ___
 
@@ -191,7 +191,7 @@ The url of the profile route.
 
 #### Implementation of
 
-[IArxivarRouteService](../interfaces/Interfaces.IArxivarRouteService.md).[getURLProfileReadonly](../interfaces/Interfaces.IArxivarRouteService.md#geturlprofilereadonly)
+IArxivarRouteService.getURLProfileReadonly
 
 ___
 
@@ -215,7 +215,7 @@ The url of the revisions list of the profile.
 
 #### Implementation of
 
-[IArxivarRouteService](../interfaces/Interfaces.IArxivarRouteService.md).[getURLRevisionsByDocnumber](../interfaces/Interfaces.IArxivarRouteService.md#geturlrevisionsbydocnumber)
+IArxivarRouteService.getURLRevisionsByDocnumber
 
 ___
 
@@ -223,7 +223,7 @@ ___
 
 ▸ **getViewURLWithParams**(`params`, `viewId`): `string`
 
- Retrieve the URL of view with params.
+Retrieve the URL of view with params.
 
 #### Parameters
 
@@ -240,4 +240,4 @@ The url of the view with params.
 
 #### Implementation of
 
-[IArxivarRouteService](../interfaces/Interfaces.IArxivarRouteService.md).[getViewURLWithParams](../interfaces/Interfaces.IArxivarRouteService.md#getviewurlwithparams)
+IArxivarRouteService.getViewURLWithParams

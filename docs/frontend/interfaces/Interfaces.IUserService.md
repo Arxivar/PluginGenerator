@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [Interfaces](../modules/Interfaces.md) / IUserService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [Interfaces](../modules/Interfaces.md) / IUserService
 
 # Interface: IUserService
 
@@ -6,11 +6,11 @@
 
 ## Implemented by
 
-- [`UserService`](../classes/UserService.UserService-1.md)
+- [`UserService`](../classes/UserService.UserService.md)
 
 ## Table of contents
 
-### Methods
+### Properties
 
 - [getAoo](Interfaces.IUserService.md#getaoo)
 - [getAvatar](Interfaces.IUserService.md#getavatar)
@@ -31,15 +31,19 @@
 - [isInRole](Interfaces.IUserService.md#isinrole)
 - [isNotAdmin](Interfaces.IUserService.md#isnotadmin)
 
-## Methods
+## Properties
 
 ### getAoo
 
-▸ **getAoo**(): `string`
+• **getAoo**: () => `string`
+
+#### Type declaration
+
+▸ (): `string`
 
 Get the Aoo of the user
 
-#### Returns
+##### Returns
 
 `string`
 
@@ -49,11 +53,15 @@ ___
 
 ### getAvatar
 
-▸ **getAvatar**(): `string`
+• **getAvatar**: () => `string`
+
+#### Type declaration
+
+▸ (): `string`
 
 Get the user's avatar
 
-#### Returns
+##### Returns
 
 `string`
 
@@ -63,26 +71,38 @@ ___
 
 ### getDatabase
 
-▸ **getDatabase**(): `string`
+• **getDatabase**: () => ``null``
 
+#### Type declaration
+
+▸ (): ``null``
+
+**`Deprecated`**
+
+Return always null. 
+Use GET /api/management/Database/DbInfo instead (with management scope).
 Get the database name
 
-#### Returns
+##### Returns
 
-`string`
+``null``
 
-The database name
+null
 
 ___
 
 ### getDatabaseInfo
 
-▸ **getDatabaseInfo**(): `Promise`<[`IUserService`](Interfaces.IUserService.md)\>
+• **getDatabaseInfo**: () => `Promise`<[`IUserService`](Interfaces.IUserService.md)\>
 
-DEPRECATED Use [ArxivarUserServiceCreator.create](../classes/ArxivarUserServiceCreator.ArxivarUserServiceCreator-1.md#create) instead.
+#### Type declaration
+
+▸ (): `Promise`<[`IUserService`](Interfaces.IUserService.md)\>
+
+DEPRECATED Use ArxivarUserServiceCreator.create instead.
 Load the database information
 
-#### Returns
+##### Returns
 
 `Promise`<[`IUserService`](Interfaces.IUserService.md)\>
 
@@ -90,11 +110,15 @@ ___
 
 ### getDescription
 
-▸ **getDescription**(): `string`
+• **getDescription**: () => `string`
+
+#### Type declaration
+
+▸ (): `string`
 
 Get the description of the user
 
-#### Returns
+##### Returns
 
 `string`
 
@@ -104,11 +128,15 @@ ___
 
 ### getLang
 
-▸ **getLang**(): `string`
+• **getLang**: () => `string`
+
+#### Type declaration
+
+▸ (): `string`
 
 Get the language of the user
 
-#### Returns
+##### Returns
 
 `string`
 
@@ -118,25 +146,37 @@ ___
 
 ### getProvider
 
-▸ **getProvider**(): `string`
+• **getProvider**: () => ``null``
 
+#### Type declaration
+
+▸ (): ``null``
+
+**`Deprecated`**
+
+Return always null.
+Use GET /api/management/Database/DbInfo instead (with management scope).
 Get the database provider name
 
-#### Returns
+##### Returns
 
-`string`
+``null``
 
-The database provider name
+null
 
 ___
 
 ### getRoles
 
-▸ **getRoles**(): { `roleName`: `string` ; `value`: `boolean`  }[]
+• **getRoles**: () => { `roleName`: `string` ; `value`: `boolean`  }[]
+
+#### Type declaration
+
+▸ (): { `roleName`: `string` ; `value`: `boolean`  }[]
 
 Get the roles of the user
 
-#### Returns
+##### Returns
 
 { `roleName`: `string` ; `value`: `boolean`  }[]
 
@@ -146,25 +186,37 @@ ___
 
 ### getServerName
 
-▸ **getServerName**(): `string`
+• **getServerName**: () => ``null``
 
+#### Type declaration
+
+▸ (): ``null``
+
+**`Deprecated`**
+
+Return always null. 
+Use GET /api/management/Database/DbInfo instead (with management scope).
 Get the server name
 
-#### Returns
+##### Returns
 
-`string`
+``null``
 
-The server name
+null
 
 ___
 
 ### getStatus
 
-▸ **getStatus**(): `number`
+• **getStatus**: () => `number`
+
+#### Type declaration
+
+▸ (): `number`
 
 Get the status of the user
 
-#### Returns
+##### Returns
 
 `number`
 
@@ -174,11 +226,15 @@ ___
 
 ### getUserGroup
 
-▸ **getUserGroup**(): `Object`
+• **getUserGroup**: () => { `groupId`: `number` ; `isAdmin`: `boolean` ; `isProfiler`: `boolean` ; `isUser`: `boolean` ; `notSet`: `boolean`  }
+
+#### Type declaration
+
+▸ (): `Object`
 
 Retrieve information about the group of the current user
 
-#### Returns
+##### Returns
 
 `Object`
 
@@ -196,11 +252,15 @@ ___
 
 ### getUserId
 
-▸ **getUserId**(): `string`
+• **getUserId**: () => `string`
+
+#### Type declaration
+
+▸ (): `string`
 
 Get the id of the user
 
-#### Returns
+##### Returns
 
 `string`
 
@@ -210,11 +270,15 @@ ___
 
 ### getUserName
 
-▸ **getUserName**(): `string`
+• **getUserName**: () => `string`
+
+#### Type declaration
+
+▸ (): `string`
 
 Get the name of the user
 
-#### Returns
+##### Returns
 
 `string`
 
@@ -224,11 +288,15 @@ ___
 
 ### getUserNameComplete
 
-▸ **getUserNameComplete**(): `string`
+• **getUserNameComplete**: () => `string`
+
+#### Type declaration
+
+▸ (): `string`
 
 Get the complete name of the user
 
-#### Returns
+##### Returns
 
 `string`
 
@@ -238,11 +306,15 @@ ___
 
 ### hasAvatar
 
-▸ **hasAvatar**(): `boolean`
+• **hasAvatar**: () => `boolean`
+
+#### Type declaration
+
+▸ (): `boolean`
 
 Get the information about the user's avatar status
 
-#### Returns
+##### Returns
 
 `boolean`
 
@@ -252,18 +324,22 @@ ___
 
 ### hasRole
 
-▸ **hasRole**(`roleName`): `any`
+• **hasRole**: (`roleName`: `any`) => `any`
 
-DEPRECATED Use [UserService.isInRole](../classes/UserService.UserService-1.md#isinrole) instead.
+#### Type declaration
+
+▸ (`roleName`): `any`
+
+DEPRECATED Use UserService.isInRole instead.
 Check if the currently logged user has a certain role enabled
 
-#### Parameters
+##### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `roleName` | `any` | object containing the name of the role |
 
-#### Returns
+##### Returns
 
 `any`
 
@@ -273,17 +349,21 @@ ___
 
 ### isInRole
 
-▸ **isInRole**(`roleName`): `boolean`
+• **isInRole**: (`roleName`: `string`) => `boolean`
+
+#### Type declaration
+
+▸ (`roleName`): `boolean`
 
 Check if the currently logged user has a certain role enabled
 
-#### Parameters
+##### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `roleName` | `string` | the name of the role |
 
-#### Returns
+##### Returns
 
 `boolean`
 
@@ -293,11 +373,15 @@ ___
 
 ### isNotAdmin
 
-▸ **isNotAdmin**(): `boolean` \| `Promise`<`boolean`\>
+• **isNotAdmin**: () => `boolean` \| `Promise`<`boolean`\>
+
+#### Type declaration
+
+▸ (): `boolean` \| `Promise`<`boolean`\>
 
 Check if the user currently logged is not an administrator
 
-#### Returns
+##### Returns
 
 `boolean` \| `Promise`<`boolean`\>
 

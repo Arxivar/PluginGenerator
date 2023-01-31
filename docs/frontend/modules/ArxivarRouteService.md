@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / ArxivarRouteService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / ArxivarRouteService
 
 # Module: ArxivarRouteService
 
@@ -6,4 +6,4 @@
 
 ### Classes
 
-- [ArxivarRouteService](../classes/ArxivarRouteService.ArxivarRouteService-1.md)
+- [ArxivarRouteService](../classes/ArxivarRouteService.ArxivarRouteService.md)

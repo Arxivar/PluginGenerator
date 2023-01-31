@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [Interfaces](../modules/Interfaces.md) / IUrlFilter
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [Interfaces](../modules/Interfaces.md) / IUrlFilter
 
 # Interface: IUrlFilter
 
@@ -19,7 +19,9 @@
 
 • **name**: `string`
 
-**`property`** Defines the field name
+**`Property`**
+
+the field name
 
 ___
 
@@ -27,7 +29,9 @@ ___
 
 • **operator**: `number`
 
-**`property`** Defines the field operator
+**`Property`**
+
+the field operator
 
 ___
 
@@ -35,7 +39,9 @@ ___
 
 • **value1**: `any`
 
-**`property`** Defines the field value
+**`Property`**
+
+the field value
 
 ___
 
@@ -43,4 +49,6 @@ ___
 
 • `Optional` **value2**: `any`
 
-**`property`** Defines the second value of the field, if required by the operator set.
+**`Property`**
+
+the second value of the field, if required by the operator set.

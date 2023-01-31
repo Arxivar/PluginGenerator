@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / WorkflowResourceService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / WorkflowResourceService
 
 # Module: WorkflowResourceService
 
@@ -6,4 +6,4 @@
 
 ### Classes
 
-- [WorkflowResourceService](../classes/WorkflowResourceService.WorkflowResourceService-1.md)
+- [WorkflowResourceService](../classes/WorkflowResourceService.WorkflowResourceService.md)

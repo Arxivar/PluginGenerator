@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [Interfaces](../modules/Interfaces.md) / IArxivarNotifierService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [Interfaces](../modules/Interfaces.md) / IArxivarNotifierService
 
 # Interface: IArxivarNotifierService
 
@@ -6,32 +6,36 @@
 
 ## Implemented by
 
-- [`ArxivarNotifierService`](../classes/ArxivarNotifierService.ArxivarNotifierService-1.md)
+- [`ArxivarNotifierService`](../classes/ArxivarNotifierService.ArxivarNotifierService.md)
 
 ## Table of contents
 
-### Methods
+### Properties
 
 - [notifyError](Interfaces.IArxivarNotifierService.md#notifyerror)
 - [notifyInfo](Interfaces.IArxivarNotifierService.md#notifyinfo)
 - [notifySuccess](Interfaces.IArxivarNotifierService.md#notifysuccess)
 - [notifyWarning](Interfaces.IArxivarNotifierService.md#notifywarning)
 
-## Methods
+## Properties
 
 ### notifyError
 
-▸ **notifyError**(`message`): `void`
+• **notifyError**: (`message`: `string`) => `void`
+
+#### Type declaration
+
+▸ (`message`): `void`
 
 Notify error message.
 
-#### Parameters
+##### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `message` | `string` | The docnumber of the profile. |
 
-#### Returns
+##### Returns
 
 `void`
 
@@ -39,17 +43,21 @@ ___
 
 ### notifyInfo
 
-▸ **notifyInfo**(`message`): `void`
+• **notifyInfo**: (`message`: `string`) => `void`
+
+#### Type declaration
+
+▸ (`message`): `void`
 
 Notify info message.
 
-#### Parameters
+##### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `message` | `string` | The docnumber of the profile. |
 
-#### Returns
+##### Returns
 
 `void`
 
@@ -57,17 +65,21 @@ ___
 
 ### notifySuccess
 
-▸ **notifySuccess**(`message`): `void`
+• **notifySuccess**: (`message`: `string`) => `void`
+
+#### Type declaration
+
+▸ (`message`): `void`
 
 Notify success message.
 
-#### Parameters
+##### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `message` | `string` | The docnumber of the profile. |
 
-#### Returns
+##### Returns
 
 `void`
 
@@ -75,16 +87,20 @@ ___
 
 ### notifyWarning
 
-▸ **notifyWarning**(`message`): `void`
+• **notifyWarning**: (`message`: `string`) => `void`
+
+#### Type declaration
+
+▸ (`message`): `void`
 
 Notify warning message.
 
-#### Parameters
+##### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `message` | `string` | The docnumber of the profile. |
 
-#### Returns
+##### Returns
 
 `void`

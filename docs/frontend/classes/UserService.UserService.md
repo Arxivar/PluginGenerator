@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [UserService](../modules/UserService.md) / UserService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [UserService](../modules/UserService.md) / UserService
 
 # Class: UserService
 
@@ -37,24 +37,24 @@ angular
 
 ### Methods
 
-- [getAoo](UserService.UserService-1.md#getaoo)
-- [getAvatar](UserService.UserService-1.md#getavatar)
-- [getDatabase](UserService.UserService-1.md#getdatabase)
-- [getDatabaseInfo](UserService.UserService-1.md#getdatabaseinfo)
-- [getDescription](UserService.UserService-1.md#getdescription)
-- [getLang](UserService.UserService-1.md#getlang)
-- [getProvider](UserService.UserService-1.md#getprovider)
-- [getRoles](UserService.UserService-1.md#getroles)
-- [getServerName](UserService.UserService-1.md#getservername)
-- [getStatus](UserService.UserService-1.md#getstatus)
-- [getUserGroup](UserService.UserService-1.md#getusergroup)
-- [getUserId](UserService.UserService-1.md#getuserid)
-- [getUserName](UserService.UserService-1.md#getusername)
-- [getUserNameComplete](UserService.UserService-1.md#getusernamecomplete)
-- [hasAvatar](UserService.UserService-1.md#hasavatar)
-- [hasRole](UserService.UserService-1.md#hasrole)
-- [isInRole](UserService.UserService-1.md#isinrole)
-- [isNotAdmin](UserService.UserService-1.md#isnotadmin)
+- [getAoo](UserService.UserService.md#getaoo)
+- [getAvatar](UserService.UserService.md#getavatar)
+- [getDatabase](UserService.UserService.md#getdatabase)
+- [getDatabaseInfo](UserService.UserService.md#getdatabaseinfo)
+- [getDescription](UserService.UserService.md#getdescription)
+- [getLang](UserService.UserService.md#getlang)
+- [getProvider](UserService.UserService.md#getprovider)
+- [getRoles](UserService.UserService.md#getroles)
+- [getServerName](UserService.UserService.md#getservername)
+- [getStatus](UserService.UserService.md#getstatus)
+- [getUserGroup](UserService.UserService.md#getusergroup)
+- [getUserId](UserService.UserService.md#getuserid)
+- [getUserName](UserService.UserService.md#getusername)
+- [getUserNameComplete](UserService.UserService.md#getusernamecomplete)
+- [hasAvatar](UserService.UserService.md#hasavatar)
+- [hasRole](UserService.UserService.md#hasrole)
+- [isInRole](UserService.UserService.md#isinrole)
+- [isNotAdmin](UserService.UserService.md#isnotadmin)
 
 ## Methods
 
@@ -72,7 +72,7 @@ The Aoo name
 
 #### Implementation of
 
-[IUserService](../interfaces/Interfaces.IUserService.md).[getAoo](../interfaces/Interfaces.IUserService.md#getaoo)
+IUserService.getAoo
 
 ___
 
@@ -90,42 +90,49 @@ The base64 code of the user's avatar
 
 #### Implementation of
 
-[IUserService](../interfaces/Interfaces.IUserService.md).[getAvatar](../interfaces/Interfaces.IUserService.md#getavatar)
+IUserService.getAvatar
 
 ___
 
 ### getDatabase
 
-▸ **getDatabase**(): `string`
+▸ **getDatabase**(): ``null``
+
+**`Deprecated`**
+
+Return always null. 
+Use GET /api/management/Database/DbInfo instead (with management scope).
 
 Get the database name
 
 #### Returns
 
-`string`
+``null``
 
-The database name
+always null
 
 #### Implementation of
 
-[IUserService](../interfaces/Interfaces.IUserService.md).[getDatabase](../interfaces/Interfaces.IUserService.md#getdatabase)
+IUserService.getDatabase
 
 ___
 
 ### getDatabaseInfo
 
-▸ **getDatabaseInfo**(): `Promise`<[`UserService`](UserService.UserService-1.md)\>
+▸ **getDatabaseInfo**(): `Promise`<[`UserService`](UserService.UserService.md)\>
 
-DEPRECATED Use [ArxivarUserServiceCreator.create](ArxivarUserServiceCreator.ArxivarUserServiceCreator-1.md#create) instead.
+**`Deprecated`**
+
+Use ArxivarUserServiceCreator.create instead.
 Load the database information
 
 #### Returns
 
-`Promise`<[`UserService`](UserService.UserService-1.md)\>
+`Promise`<[`UserService`](UserService.UserService.md)\>
 
 #### Implementation of
 
-[IUserService](../interfaces/Interfaces.IUserService.md).[getDatabaseInfo](../interfaces/Interfaces.IUserService.md#getdatabaseinfo)
+IUserService.getDatabaseInfo
 
 ___
 
@@ -143,7 +150,7 @@ The description of the user
 
 #### Implementation of
 
-[IUserService](../interfaces/Interfaces.IUserService.md).[getDescription](../interfaces/Interfaces.IUserService.md#getdescription)
+IUserService.getDescription
 
 ___
 
@@ -161,25 +168,31 @@ The language of the user
 
 #### Implementation of
 
-[IUserService](../interfaces/Interfaces.IUserService.md).[getLang](../interfaces/Interfaces.IUserService.md#getlang)
+IUserService.getLang
 
 ___
 
 ### getProvider
 
-▸ **getProvider**(): `string`
+▸ **getProvider**(): ``null``
 
+*
+
+**`Deprecated`**
+
+Return always null. 
+Use GET /api/management/Database/DbInfo instead (with management scope).
 Get the database provider name
 
 #### Returns
 
-`string`
+``null``
 
-The database provider name
+null
 
 #### Implementation of
 
-[IUserService](../interfaces/Interfaces.IUserService.md).[getProvider](../interfaces/Interfaces.IUserService.md#getprovider)
+IUserService.getProvider
 
 ___
 
@@ -197,25 +210,31 @@ The user roles
 
 #### Implementation of
 
-[IUserService](../interfaces/Interfaces.IUserService.md).[getRoles](../interfaces/Interfaces.IUserService.md#getroles)
+IUserService.getRoles
 
 ___
 
 ### getServerName
 
-▸ **getServerName**(): `string`
+▸ **getServerName**(): ``null``
 
+*
+
+**`Deprecated`**
+
+Return always null. 
+Use GET /api/management/Database/DbInfo instead (with management scope).
 Get the server name
 
 #### Returns
 
-`string`
+``null``
 
-The server name
+null
 
 #### Implementation of
 
-[IUserService](../interfaces/Interfaces.IUserService.md).[getServerName](../interfaces/Interfaces.IUserService.md#getservername)
+IUserService.getServerName
 
 ___
 
@@ -233,7 +252,7 @@ The user id
 
 #### Implementation of
 
-[IUserService](../interfaces/Interfaces.IUserService.md).[getStatus](../interfaces/Interfaces.IUserService.md#getstatus)
+IUserService.getStatus
 
 ___
 
@@ -259,7 +278,7 @@ The user group
 
 #### Implementation of
 
-[IUserService](../interfaces/Interfaces.IUserService.md).[getUserGroup](../interfaces/Interfaces.IUserService.md#getusergroup)
+IUserService.getUserGroup
 
 ___
 
@@ -277,7 +296,7 @@ The user id
 
 #### Implementation of
 
-[IUserService](../interfaces/Interfaces.IUserService.md).[getUserId](../interfaces/Interfaces.IUserService.md#getuserid)
+IUserService.getUserId
 
 ___
 
@@ -295,7 +314,7 @@ The username
 
 #### Implementation of
 
-[IUserService](../interfaces/Interfaces.IUserService.md).[getUserName](../interfaces/Interfaces.IUserService.md#getusername)
+IUserService.getUserName
 
 ___
 
@@ -313,7 +332,7 @@ The complete name of the user
 
 #### Implementation of
 
-[IUserService](../interfaces/Interfaces.IUserService.md).[getUserNameComplete](../interfaces/Interfaces.IUserService.md#getusernamecomplete)
+IUserService.getUserNameComplete
 
 ___
 
@@ -331,7 +350,7 @@ The state of the avatar
 
 #### Implementation of
 
-[IUserService](../interfaces/Interfaces.IUserService.md).[hasAvatar](../interfaces/Interfaces.IUserService.md#hasavatar)
+IUserService.hasAvatar
 
 ___
 
@@ -339,7 +358,9 @@ ___
 
 ▸ **hasRole**(`roleName`): `any`
 
-DEPRECATED Use [UserService.isInRole](UserService.UserService-1.md#isinrole) instead.
+**`Deprecated`**
+
+Use [isInRole](UserService.UserService.md#isinrole) instead.
 Check if the currently logged user has a certain role enabled
 
 #### Parameters
@@ -356,7 +377,7 @@ true if the user has the selected roles, false otherwise
 
 #### Implementation of
 
-[IUserService](../interfaces/Interfaces.IUserService.md).[hasRole](../interfaces/Interfaces.IUserService.md#hasrole)
+IUserService.hasRole
 
 ___
 
@@ -380,7 +401,7 @@ true if the user has the roles, false otherwise
 
 #### Implementation of
 
-[IUserService](../interfaces/Interfaces.IUserService.md).[isInRole](../interfaces/Interfaces.IUserService.md#isinrole)
+IUserService.isInRole
 
 ___
 
@@ -398,4 +419,4 @@ false if the user is administrator, true otherwise
 
 #### Implementation of
 
-[IUserService](../interfaces/Interfaces.IUserService.md).[isNotAdmin](../interfaces/Interfaces.IUserService.md#isnotadmin)
+IUserService.isNotAdmin

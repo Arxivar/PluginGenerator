@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [WorkflowResourceService](../modules/WorkflowResourceService.md) / WorkflowResourceService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [WorkflowResourceService](../modules/WorkflowResourceService.md) / WorkflowResourceService
 
 # Class: WorkflowResourceService
 
@@ -12,20 +12,20 @@
 
 ### Properties
 
-- [webApiUrl](WorkflowResourceService.WorkflowResourceService-1.md#webapiurl)
+- [webApiUrl](WorkflowResourceService.WorkflowResourceService.md#webapiurl)
 
 ### Methods
 
-- [delete](WorkflowResourceService.WorkflowResourceService-1.md#delete)
-- [get](WorkflowResourceService.WorkflowResourceService-1.md#get)
-- [getByteArray](WorkflowResourceService.WorkflowResourceService-1.md#getbytearray)
-- [getPost](WorkflowResourceService.WorkflowResourceService-1.md#getpost)
-- [getPostByteArray](WorkflowResourceService.WorkflowResourceService-1.md#getpostbytearray)
-- [getValue](WorkflowResourceService.WorkflowResourceService-1.md#getvalue)
-- [queryWithOptions](WorkflowResourceService.WorkflowResourceService-1.md#querywithoptions)
-- [save](WorkflowResourceService.WorkflowResourceService-1.md#save)
-- [update](WorkflowResourceService.WorkflowResourceService-1.md#update)
-- [updateCollection](WorkflowResourceService.WorkflowResourceService-1.md#updatecollection)
+- [delete](WorkflowResourceService.WorkflowResourceService.md#delete)
+- [get](WorkflowResourceService.WorkflowResourceService.md#get)
+- [getByteArray](WorkflowResourceService.WorkflowResourceService.md#getbytearray)
+- [getPost](WorkflowResourceService.WorkflowResourceService.md#getpost)
+- [getPostByteArray](WorkflowResourceService.WorkflowResourceService.md#getpostbytearray)
+- [getValue](WorkflowResourceService.WorkflowResourceService.md#getvalue)
+- [queryWithOptions](WorkflowResourceService.WorkflowResourceService.md#querywithoptions)
+- [save](WorkflowResourceService.WorkflowResourceService.md#save)
+- [update](WorkflowResourceService.WorkflowResourceService.md#update)
+- [updateCollection](WorkflowResourceService.WorkflowResourceService.md#updatecollection)
 
 ## Properties
 

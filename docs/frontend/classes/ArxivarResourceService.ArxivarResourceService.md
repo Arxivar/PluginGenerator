@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [ArxivarResourceService](../modules/ArxivarResourceService.md) / ArxivarResourceService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [ArxivarResourceService](../modules/ArxivarResourceService.md) / ArxivarResourceService
 
 # Class: ArxivarResourceService
 
@@ -37,20 +37,20 @@ angular
 
 ### Properties
 
-- [webApiUrl](ArxivarResourceService.ArxivarResourceService-1.md#webapiurl)
+- [webApiUrl](ArxivarResourceService.ArxivarResourceService.md#webapiurl)
 
 ### Methods
 
-- [delete](ArxivarResourceService.ArxivarResourceService-1.md#delete)
-- [get](ArxivarResourceService.ArxivarResourceService-1.md#get)
-- [getByteArray](ArxivarResourceService.ArxivarResourceService-1.md#getbytearray)
-- [getPost](ArxivarResourceService.ArxivarResourceService-1.md#getpost)
-- [getPostByteArray](ArxivarResourceService.ArxivarResourceService-1.md#getpostbytearray)
-- [getValue](ArxivarResourceService.ArxivarResourceService-1.md#getvalue)
-- [queryWithOptions](ArxivarResourceService.ArxivarResourceService-1.md#querywithoptions)
-- [save](ArxivarResourceService.ArxivarResourceService-1.md#save)
-- [update](ArxivarResourceService.ArxivarResourceService-1.md#update)
-- [updateCollection](ArxivarResourceService.ArxivarResourceService-1.md#updatecollection)
+- [delete](ArxivarResourceService.ArxivarResourceService.md#delete)
+- [get](ArxivarResourceService.ArxivarResourceService.md#get)
+- [getByteArray](ArxivarResourceService.ArxivarResourceService.md#getbytearray)
+- [getPost](ArxivarResourceService.ArxivarResourceService.md#getpost)
+- [getPostByteArray](ArxivarResourceService.ArxivarResourceService.md#getpostbytearray)
+- [getValue](ArxivarResourceService.ArxivarResourceService.md#getvalue)
+- [queryWithOptions](ArxivarResourceService.ArxivarResourceService.md#querywithoptions)
+- [save](ArxivarResourceService.ArxivarResourceService.md#save)
+- [update](ArxivarResourceService.ArxivarResourceService.md#update)
+- [updateCollection](ArxivarResourceService.ArxivarResourceService.md#updatecollection)
 
 ## Properties
 

@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [Interfaces](../modules/Interfaces.md) / IArxivarResourceService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [Interfaces](../modules/Interfaces.md) / IArxivarResourceService
 
 # Interface: IArxivarResourceService
 
@@ -6,8 +6,8 @@
 
 ## Implemented by
 
-- [`ArxivarResourceService`](../classes/ArxivarResourceService.ArxivarResourceService-1.md)
-- [`WorkflowResourceService`](../classes/WorkflowResourceService.WorkflowResourceService-1.md)
+- [`ArxivarResourceService`](../classes/ArxivarResourceService.ArxivarResourceService.md)
+- [`WorkflowResourceService`](../classes/WorkflowResourceService.WorkflowResourceService.md)
 
 ## Table of contents
 

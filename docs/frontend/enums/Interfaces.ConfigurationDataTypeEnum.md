@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [Interfaces](../modules/Interfaces.md) / ConfigurationDataTypeEnum
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [Interfaces](../modules/Interfaces.md) / ConfigurationDataTypeEnum
 
 # Enumeration: ConfigurationDataTypeEnum
 
@@ -18,28 +18,28 @@
 
 ### Bool
 
-• **Bool**
+• **Bool** = ``4``
 
 ___
 
 ### Datetime
 
-• **Datetime**
+• **Datetime** = ``3``
 
 ___
 
 ### Decimal
 
-• **Decimal**
+• **Decimal** = ``5``
 
 ___
 
 ### Int
 
-• **Int**
+• **Int** = ``2``
 
 ___
 
 ### String
 
-• **String**
+• **String** = ``1``

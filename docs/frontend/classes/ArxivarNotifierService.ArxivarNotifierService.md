@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [ArxivarNotifierService](../modules/ArxivarNotifierService.md) / ArxivarNotifierService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [ArxivarNotifierService](../modules/ArxivarNotifierService.md) / ArxivarNotifierService
 
 # Class: ArxivarNotifierService
 
@@ -35,10 +35,10 @@ angular
 
 ### Methods
 
-- [notifyError](ArxivarNotifierService.ArxivarNotifierService-1.md#notifyerror)
-- [notifyInfo](ArxivarNotifierService.ArxivarNotifierService-1.md#notifyinfo)
-- [notifySuccess](ArxivarNotifierService.ArxivarNotifierService-1.md#notifysuccess)
-- [notifyWarning](ArxivarNotifierService.ArxivarNotifierService-1.md#notifywarning)
+- [notifyError](ArxivarNotifierService.ArxivarNotifierService.md#notifyerror)
+- [notifyInfo](ArxivarNotifierService.ArxivarNotifierService.md#notifyinfo)
+- [notifySuccess](ArxivarNotifierService.ArxivarNotifierService.md#notifysuccess)
+- [notifyWarning](ArxivarNotifierService.ArxivarNotifierService.md#notifywarning)
 
 ## Methods
 
@@ -60,7 +60,7 @@ Notify error message.
 
 #### Implementation of
 
-[IArxivarNotifierService](../interfaces/Interfaces.IArxivarNotifierService.md).[notifyError](../interfaces/Interfaces.IArxivarNotifierService.md#notifyerror)
+IArxivarNotifierService.notifyError
 
 ___
 
@@ -82,7 +82,7 @@ Notify info message.
 
 #### Implementation of
 
-[IArxivarNotifierService](../interfaces/Interfaces.IArxivarNotifierService.md).[notifyInfo](../interfaces/Interfaces.IArxivarNotifierService.md#notifyinfo)
+IArxivarNotifierService.notifyInfo
 
 ___
 
@@ -104,7 +104,7 @@ Notify success message.
 
 #### Implementation of
 
-[IArxivarNotifierService](../interfaces/Interfaces.IArxivarNotifierService.md).[notifySuccess](../interfaces/Interfaces.IArxivarNotifierService.md#notifysuccess)
+IArxivarNotifierService.notifySuccess
 
 ___
 
@@ -126,4 +126,4 @@ Notify warning message.
 
 #### Implementation of
 
-[IArxivarNotifierService](../interfaces/Interfaces.IArxivarNotifierService.md).[notifyWarning](../interfaces/Interfaces.IArxivarNotifierService.md#notifywarning)
+IArxivarNotifierService.notifyWarning
