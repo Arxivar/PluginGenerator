@@ -194,7 +194,7 @@ ___
 
 ### queryWithOptions
 
-▸ **queryWithOptions**(`resourceName`, `options`, `httpOptions`): `Promise`<`any`\>
+▸ **queryWithOptions**(`resourceName`, `httpOptions`, `options`): `Promise`<`any`\>
 
 Retrieve information on a certain type of resource of ARXivar Workflow with additional options
 
@@ -203,8 +203,8 @@ Retrieve information on a certain type of resource of ARXivar Workflow with addi
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `resourceName` | `string` | The resource name |
-| `options` | [`IHttpOptions`](../interfaces/Interfaces.IHttpOptions.md) | The options of the call |
-| `httpOptions` | `any` | The additional options of the call |
+| `httpOptions` | [`IHttpOptions`](../interfaces/Interfaces.IHttpOptions.md) | The options of the call |
+| `options` | `any` | The additional options of the call |
 
 #### Returns
 

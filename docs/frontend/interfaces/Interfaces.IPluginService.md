@@ -23,7 +23,10 @@
 
 ▸ **getPluginByUser**(`pluginSettingsObject`): `Promise`<`PluginSettingsObjectType`\>
 
-[@deprecated since version 2.4]
+**`Deprecated`**
+
+since version 2.4
+
 Get the settings of a plugin or of an instance of plugin.
 If you set only the pluginId property in
 
@@ -88,7 +91,10 @@ ___
 
 ▸ **setPluginByUser**(`pluginSettingsObject`, `userSettingValues`): `Promise`<`void`\>
 
-[@deprecated since version 2.4]
+**`Deprecated`**
+
+since version 2.4
+
 Save the user settings of a plugin or of an instance of plugin.
 If you set only the pluginId property in
 

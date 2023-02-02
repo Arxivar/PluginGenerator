@@ -57,12 +57,12 @@ export interface IArxivarResourceService {
 
 	/**
 	* Retrieve information on a certain type of resource of ARXivar with additional options
-	* @param options The options of the call
 	* @param resourceName The resource name
-	* @param httpOptions The additional options of the call
+	* @param httpOptions The options of the call 
+	* @param options The additional options of the call
 	* @returns The resource information
 	*/
-	queryWithOptions: (resourceName: string, options: IHttpOptions, IHttpOptions: any) => Promise<any>;
+	queryWithOptions: (resourceName: string, httpOptions: IHttpOptions, options: any) => Promise<any>;
 
 	/**
 	 * Retrieve the value of a certain resource of ARXivar
@@ -232,7 +232,7 @@ export interface IUserService {
 	getAoo: () => string;
 
 	/**
-	 * @deprecated Return always null. **
+	 * @deprecated Return always null.
 	 * Use GET /api/management/Database/DbInfo instead (with management scope).
 	 * Get the database name
 	 * @returns null
@@ -265,107 +265,20 @@ export interface IUserService {
 	 */
 	isInRole: (roleName: string) => boolean;
 	/**
-	 * DEPRECATED Use {@link ArxivarUserServiceCreator.create} instead.
+	 * @deprecated 
+	 * Use {@link ArxivarUserServiceCreator.create} instead.
 	 * Load the database information
 	 */
 	getDatabaseInfo: () => Promise<IUserService>;
 
 	/**
-	* DEPRECATED Use {@link UserService.isInRole} instead.
+	* @deprecated 
+	* Use {@link UserService.isInRole} instead.
 	* Check if the currently logged user has a certain role enabled
 	* @param roleName object containing the name of the role
 	* @returns true if the user has the selected roles, false otherwise
 	*/
 	hasRole: (roleName: any) => any;
-}
-
-
-export interface IArxivarResourceService {
-
-	/**
-	 * Retrieve information on a certain type of resource ofs ARXivar
-	 *
-	 * @param resourceName The resource name
-	 * @param options The options of the call
-	 * @returns The resource information
-	*/
-	get: (resourceName: string, options: IHttpOptions) => Promise<any>;
-
-	/**
-	* Retrieve information on a certain type of resource of ARXivar with additional options
-	* @param options The options of the call
-	* @param resourceName The resource name
-	* @param httpOptions The additional options of the call
-	* @returns The resource information
-	*/
-	queryWithOptions: (resourceName: string, options: IHttpOptions, IHttpOptions: any) => Promise<any>;
-
-	/**
-	 * Retrieve the value of a certain resource of ARXivar
-	 * @param resourceName The resource name
-	 * @param options The options of the call
-	 * @returns The resource value
-	 */
-	getValue: (resourceName: string, options: IHttpOptions) => Promise<any>;
-
-	/**
-	* Retrieve information of a certain resource of ARXivar
-	* @param resourceName The resource name
-	* @param postData Additional parameter of the call
-	* @param options The options of the call
-	* @returns The resource value
-	*/
-	getPost: (resourceName: string, postData: any, options: IHttpOptions) => Promise<any>;
-
-	/**
-	 * Retrieve a download stream for a certain resource of ARXivar
-	 * @param resourceName The resource name
-	 * @param options The options of the call
-	 * @returns The download stream for the resource
-	 */
-	getByteArray: (resourceName: string, options: IHttpOptions) => Promise<any>;
-
-	/**
-	 * Retrieve a download stream for a certain resource of ARXivar
-	 * @param resourceName The resource name
-	 * @param postData The resource data
-	 * @param options The options of the call
-	 * @returns The download stream for the resource
-	 */
-	getPostByteArray: (resourceName: string, postData: any, options: IHttpOptions) => Promise<any>;
-	/**
-	 * Submit and save the selected resource on Arxivar
-	 * @param resourceName The resource name
-	 * @param postData The resource data
-	 * @param options The options of the call
-	 * @returns The resource
-	 */
-	save: (resourceName: string, postData: any, options: IHttpOptions) => Promise<any>;
-
-	/**
-	 * Submit and update the selected resource on Arxivar
-	 * @param resourceName The resource name
-	 * @param postData The resource data
-	 * @param options The options of the call
-	 * @returns The resource
-	 */
-	update: (resourceName: string, postData: any, options: IHttpOptions) => Promise<any>;
-	/**
-	 * Submit and update a collection of resources on Arxivar
-	 * @param resourceName The resource name
-	 * @param postData The resources data collection
-	 * @param options The options of the call
-	 * @returns The resources
-	 */
-	updateCollection: (resourceName: string, postData: any, options: IHttpOptions) => Promise<any>;
-	/**
-	 * Delete the selected resource from Arxivar
-	 * @param resourceName The resource name
-	 * @param postData The identifier of the resource
-	 * @param options The options of the call
-	 * @returns The deleted resource
-	 */
-	delete: (resourceName: string, postData: any, options: IHttpOptions) => Promise<any>;
 }
 
 export interface IArxivarRouteService {
@@ -510,7 +423,8 @@ export interface IPluginService {
 	*/
 	saveSettings(scope: ScopeSettings, params: PluginParamsObjectType, settings: PluginSettingsType): Promise<any>;
 	/**
-	 * [@deprecated since version 2.4]
+	 * @deprecated since version 2.4
+	 * 
 	 * Get the settings of a plugin or of an instance of plugin.
 	 * If you set only the pluginId property in @param pluginSettingsObject you will get the global customSettings and the global userSettings
 	 * If you set the pluginId, instanceId and desktopId properties in @param pluginSettingsObject you will get the global customSettings and the instance userSettings
@@ -520,7 +434,8 @@ export interface IPluginService {
 	getPluginByUser(pluginSettingsObject: PluginParamsObjectType): Promise<PluginSettingsObjectType>;
 
 	/**
-	* [@deprecated since version 2.4]
+	* @deprecated since version 2.4
+	*
 	* Save the user settings of a plugin or of an instance of plugin.
 	* If you set only the pluginId property in @param pluginSettingsObject you will save the global userSettings
 	* If you set the pluginId, instanceId and desktopId properties in @param pluginSettingsObject you will save the instance userSettings

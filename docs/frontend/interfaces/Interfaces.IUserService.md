@@ -79,7 +79,7 @@ ___
 
 **`Deprecated`**
 
-Return always null. **
+Return always null.
 Use GET /api/management/Database/DbInfo instead (with management scope).
 Get the database name
 
@@ -99,7 +99,9 @@ ___
 
 ▸ (): `Promise`<[`IUserService`](Interfaces.IUserService.md)\>
 
-DEPRECATED Use ArxivarUserServiceCreator.create instead.
+**`Deprecated`**
+
+Use ArxivarUserServiceCreator.create instead.
 Load the database information
 
 ##### Returns
@@ -330,7 +332,9 @@ ___
 
 ▸ (`roleName`): `any`
 
-DEPRECATED Use UserService.isInRole instead.
+**`Deprecated`**
+
+Use UserService.isInRole instead.
 Check if the currently logged user has a certain role enabled
 
 ##### Parameters

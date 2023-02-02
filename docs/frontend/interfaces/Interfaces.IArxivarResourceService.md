@@ -182,11 +182,11 @@ ___
 
 ### queryWithOptions
 
-• **queryWithOptions**: (`resourceName`: `string`, `options`: [`IHttpOptions`](Interfaces.IHttpOptions.md), `IHttpOptions`: `any`) => `Promise`<`any`\>
+• **queryWithOptions**: (`resourceName`: `string`, `httpOptions`: [`IHttpOptions`](Interfaces.IHttpOptions.md), `options`: `any`) => `Promise`<`any`\>
 
 #### Type declaration
 
-▸ (`resourceName`, `options`, `IHttpOptions`): `Promise`<`any`\>
+▸ (`resourceName`, `httpOptions`, `options`): `Promise`<`any`\>
 
 Retrieve information on a certain type of resource of ARXivar with additional options
 
@@ -195,8 +195,8 @@ Retrieve information on a certain type of resource of ARXivar with additional op
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `resourceName` | `string` | The resource name |
-| `options` | [`IHttpOptions`](Interfaces.IHttpOptions.md) | The options of the call |
-| `IHttpOptions` | `any` | - |
+| `httpOptions` | [`IHttpOptions`](Interfaces.IHttpOptions.md) | The options of the call |
+| `options` | `any` | The additional options of the call |
 
 ##### Returns
 
