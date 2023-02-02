@@ -233,7 +233,7 @@ export interface IUserService {
 
 	/**
 	 * @deprecated Return always null.
-	 * Use GET /api/management/Database/DbInfo instead (with management scope).
+	 * _Use GET /api/management/Database/DbInfo instead (with management scope)._
 	 * Get the database name
 	 * @returns null
 	 */
@@ -241,14 +241,14 @@ export interface IUserService {
 
 	/**
 	* @deprecated Return always null. 
-	* Use GET /api/management/Database/DbInfo instead (with management scope).
+	* _Use GET /api/management/Database/DbInfo instead (with management scope)._
 	* Get the server name
 	* @returns null
 	*/
 	getServerName: () => null;
 	/**
 	 * @deprecated Return always null.
-	 * Use GET /api/management/Database/DbInfo instead (with management scope).
+	 * _Use GET /api/management/Database/DbInfo instead (with management scope)._
 	 * Get the database provider name
 	 * @returns null
 	 */

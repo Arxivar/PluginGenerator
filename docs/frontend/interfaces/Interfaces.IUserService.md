@@ -80,7 +80,7 @@ ___
 **`Deprecated`**
 
 Return always null.
-Use GET /api/management/Database/DbInfo instead (with management scope).
+_Use GET /api/management/Database/DbInfo instead (with management scope)._
 Get the database name
 
 ##### Returns
@@ -157,7 +157,7 @@ ___
 **`Deprecated`**
 
 Return always null.
-Use GET /api/management/Database/DbInfo instead (with management scope).
+_Use GET /api/management/Database/DbInfo instead (with management scope)._
 Get the database provider name
 
 ##### Returns
@@ -197,7 +197,7 @@ ___
 **`Deprecated`**
 
 Return always null. 
-Use GET /api/management/Database/DbInfo instead (with management scope).
+_Use GET /api/management/Database/DbInfo instead (with management scope)._
 Get the server name
 
 ##### Returns

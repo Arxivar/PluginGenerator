@@ -228,8 +228,8 @@ Retrieve information on a certain type of resource of ARXivar with additional op
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `resourceName` | `string` | The resource name |
-| `httpOptions` | [`IHttpOptions`](../interfaces/Interfaces.IHttpOptions.md) | The additional options of the call |
-| `options` | `any` | The options of the call |
+| `httpOptions` | [`IHttpOptions`](../interfaces/Interfaces.IHttpOptions.md) | The options of the call |
+| `options` | `any` | The additional options of the call |
 
 #### Returns
 
