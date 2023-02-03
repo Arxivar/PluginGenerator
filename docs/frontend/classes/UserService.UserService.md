@@ -123,9 +123,7 @@ ___
 
 **`Deprecated`**
 
-_Use ArxivarUserServiceCreator.create instead._
-
-Load the database information
+_Use ArxivarUserServiceCreator.create instead._ Load the database information
 
 #### Returns
 

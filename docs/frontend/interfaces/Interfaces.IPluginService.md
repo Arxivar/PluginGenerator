@@ -28,13 +28,14 @@
 since version 2.4
 
 Get the settings of a plugin or of an instance of plugin.
-If you set only the pluginId property in
+If you set only the pluginId property in pluginSettingsObject you will get the global customSettings and the global userSettings
+If you set the pluginId, instanceId and desktopId properties in pluginSettingsObject you will get the global customSettings and the instance userSettings
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `pluginSettingsObject` | `PluginParamsObjectType` | you will get the global customSettings and the global userSettings  If you set the pluginId, instanceId and desktopId properties in |
+| Name | Type |
+| :------ | :------ |
+| `pluginSettingsObject` | `PluginParamsObjectType` |
 
 #### Returns
 
@@ -96,14 +97,15 @@ ___
 since version 2.4
 
 Save the user settings of a plugin or of an instance of plugin.
-If you set only the pluginId property in
+If you set only the pluginId property in pluginSettingsObject you will save the global userSettings
+If you set the pluginId, instanceId and desktopId properties in pluginSettingsObject you will save the instance userSettings
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `pluginSettingsObject` | `PluginParamsObjectType` | you will save the global userSettings  If you set the pluginId, instanceId and desktopId properties in |
-| `userSettingValues` | `PluginSettingsType` |  |
+| Name | Type |
+| :------ | :------ |
+| `pluginSettingsObject` | `PluginParamsObjectType` |
+| `userSettingValues` | `PluginSettingsType` |
 
 #### Returns
 

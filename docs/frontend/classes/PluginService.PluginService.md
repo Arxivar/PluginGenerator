@@ -43,16 +43,57 @@ ___
 
 **`Deprecated`**
 
-since version 2.4
+since version 2.4. 
 
 Get the settings of a plugin or of an instance of plugin.
-If you set only the pluginId property in
+If you set only the pluginId property in pluginSettingsObject you will get the global customSettings and the global userSettings
+If you set the pluginId, instanceId and desktopId properites in pluginSettingsObject you will get the global customSettings and the instace userSettings
+```javascript
+angular
+.module('arxivar.plugins.directives')
+.directive('widgetdesktopplugindirective', [
+	'pluginService', 'Widgetdesktopplugindirective',
+	function(pluginService,Widgetdesktopplugindirective) {
+		return {
+			restrict: 'E',
+			scope: {
+				instanceId: '@',
+				desktopId: '=?'
+			},
+			templateUrl: 'WidgetDesktopPlugin.html',
+			link: function(scope) {
+				pluginService.getPluginByUser({
+						pluginId: Widgetdesktopplugindirective.plugin.id,
+						instanceId: scope.instanceId,
+						desktopId: scope.desktopId,
+					}).then((settings) => {
+						console.log(settings.customSettings); //global
+						console.log(settings.userSettings); //specific instance
+				});
+			}
+		};
+	}
+]);
+
+angular
+.module('arxivar.plugins.directives')
+.controller('myPluginRouteCtrl', [
+	'pluginService', 'MyPluginRoute',
+	function(pluginService,MyPluginRoute) {
+		pluginService.getPluginByUser({pluginId: MyPluginRoute.plugin.id})
+			.then((settings) => {
+			console.log(settings.customSettings); //global
+			console.log(settings.userSettings); //global
+		});
+	}
+]);
+```
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `pluginSettingsObject` | `PluginParamsObjectType` | you will get the global customSettings and the global userSettings  If you set the pluginId, instanceId and desktopId properites in |
+| Name | Type |
+| :------ | :------ |
+| `pluginSettingsObject` | `PluginParamsObjectType` |
 
 #### Returns
 
@@ -111,7 +152,6 @@ angular
 ]);
 
 ```
- *
 
 #### Parameters
 
@@ -215,14 +255,15 @@ ___
 since version 2.4
 
 Save the user settings of a plugin or of an instance of plugin.
-If you set only the pluginId property in
+If you set only the pluginId property in pluginSettingsObject you will save the global userSettings
+If you set the pluginId, instanceId and desktopId properites in pluginSettingsObject you will save the instace userSettings
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `pluginSettingsObject` | `PluginParamsObjectType` | you will save the global userSettings  If you set the pluginId, instanceId and desktopId properites in |
-| `userSettingValues` | `PluginSettingsType` |  |
+| Name | Type |
+| :------ | :------ |
+| `pluginSettingsObject` | `PluginParamsObjectType` |
+| `userSettingValues` | `PluginSettingsType` |
 
 #### Returns
 

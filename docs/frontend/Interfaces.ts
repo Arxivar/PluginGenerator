@@ -285,9 +285,9 @@ export interface IArxivarRouteService {
 	/**
 	* Retrieve the URL's profilation route that contains the bufferId of the file to upload.
 	*
-	  * @param bufferId The bufferId of uploaded file.
+	* @param bufferId The bufferId of uploaded file.
 	* @param fileName The fileName of uploaded file.
-	  * @returns The url of profilation route.
+	* @returns The url of profilation route.
 	*/
 	getURLProfilation: ({ bufferId, fileName }?: { bufferId: string; fileName: string }) => string;
 
@@ -426,8 +426,8 @@ export interface IPluginService {
 	 * @deprecated since version 2.4
 	 * 
 	 * Get the settings of a plugin or of an instance of plugin.
-	 * If you set only the pluginId property in @param pluginSettingsObject you will get the global customSettings and the global userSettings
-	 * If you set the pluginId, instanceId and desktopId properties in @param pluginSettingsObject you will get the global customSettings and the instance userSettings
+	 * If you set only the pluginId property in pluginSettingsObject you will get the global customSettings and the global userSettings
+	 * If you set the pluginId, instanceId and desktopId properties in pluginSettingsObject you will get the global customSettings and the instance userSettings
 	 * @param pluginSettingsObject
 	 * @returns The customSettings (the global settings of plugin) and userSettings (the userSetting of plugin or widget instance plugin)
 	 */
@@ -437,8 +437,8 @@ export interface IPluginService {
 	* @deprecated since version 2.4
 	*
 	* Save the user settings of a plugin or of an instance of plugin.
-	* If you set only the pluginId property in @param pluginSettingsObject you will save the global userSettings
-	* If you set the pluginId, instanceId and desktopId properties in @param pluginSettingsObject you will save the instance userSettings
+	* If you set only the pluginId property in pluginSettingsObject you will save the global userSettings
+	* If you set the pluginId, instanceId and desktopId properties in pluginSettingsObject you will save the instance userSettings
 	* @param pluginSettingsObject
 	* @param userSettingValues
 	* @returns The customSettings (the global settings of plugin) and userSettings (the userSetting of plugin or widget instance plugin)

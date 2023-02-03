@@ -132,8 +132,6 @@ ___
 
 Retrieve the URL's profilation route that contains the bufferId of the file to upload.
 
-  *
-
 ##### Parameters
 
 | Name | Type |
