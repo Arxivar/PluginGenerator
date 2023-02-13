@@ -9,12 +9,11 @@ var AppGenerator = require('../app');
 
 module.exports = class extends AppGenerator {
   initializing() {
-    this.showInfo();
     this.log('Running ' + chalk.red('ROUTE') + ' generator!');
   }
 
   prompting() {
-    var prompts = this.requiredSettings({
+    var prompts = this._requiredSettings({
       exclude: ['requireRefresh', 'advConfig'],
       minVersion: {
         type: 'input',
@@ -24,7 +23,7 @@ module.exports = class extends AppGenerator {
       }
     });
 
-    const resolvedValue = this.getResolvedValues(prompts)
+    const resolvedValue = this._getResolvedValues(prompts)
 
     return resolvedValue.then(
       function (props) {
@@ -36,7 +35,7 @@ module.exports = class extends AppGenerator {
         props.paramsCommentEx = '';
         props.paramsCommentParams = '';
         props.paramsCommentParamsEx = '';
-        props.explanations = this.getPluginsExplanations();
+        props.explanations = this._getPluginsExplanations();
         if (props.injectParams) {
           if (!props.typescript) {
             props.dependencies.push('params');

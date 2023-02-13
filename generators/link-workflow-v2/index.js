@@ -19,12 +19,11 @@ const {
 
 module.exports = class extends AppGenerator {
   initializing() {
-    this.showInfo();
     this.log('Running ' + chalk.red('LINK WORKFLOW V2') + ' generator!');
   }
 
   prompting() {
-    const promptsRequiredSettings = this.linkSettings({
+    const promptsRequiredSettings = this._linkSettings({
       exclude: ['requireRefresh', 'injectParams', 'typescript'],
       minVersion: {
         type: 'input',
@@ -34,13 +33,13 @@ module.exports = class extends AppGenerator {
       }
     });
 
-    const resolvedValue = this.getResolvedValues(promptsRequiredSettings)
+    const resolvedValue = this._getResolvedValues(promptsRequiredSettings)
 
-    const promptsAdvancedSettings = this.advancedConfigSettings();
-    const promptsInputParameter = this.inputParameter();
-    const promptsOutputParameter = this.outputParameter();
-    const promptsInQuestion = this.inputQuestion();
-    const promptsOutQuestion = this.outputQuestion();
+    const promptsAdvancedSettings = this._advancedConfigSettings();
+    const promptsInputParameter = this._inputParameter();
+    const promptsOutputParameter = this._outputParameter();
+    const promptsInQuestion = this._inputQuestion();
+    const promptsOutQuestion = this._outputQuestion();
     const that = this;
 
     const loopInputQuestion = () => {
@@ -134,7 +133,7 @@ module.exports = class extends AppGenerator {
         that.props.guid = uuid.v4();
         that.props.nestedGuid = uuid.v4();
         that.props.presolutionGuid = uuid.v4();
-        that.props.explanations = that.getPluginsExplanations();
+        that.props.explanations = that._getPluginsExplanations();
         //that.props.servicesString = that.props.linkServices ? that.props.linkServices.map(i => '\'' + i + '\'') || [] : [];
 
         if (that.props.typescriptLink) {

@@ -7,11 +7,10 @@ var AppGenerator = require('../app');
 
 module.exports = class extends AppGenerator {
   initializing() {
-    this.showInfo();
     this.log('Running ' + chalk.red('COMMAND PROFILATION') + ' generator!');
   }
   prompting() {
-    var prompts = this.requiredSettings({
+    var prompts = this._requiredSettings({
       exclude: ['injectParams', 'requireRefresh', 'advConfig'],
       minVersion: {
         type: 'input',
@@ -21,7 +20,7 @@ module.exports = class extends AppGenerator {
       }
     });
 
-    const resolvedValue = this.getResolvedValues(prompts)
+    const resolvedValue = this._getResolvedValues(prompts)
 
     return resolvedValue.then(
       function (props) {
@@ -70,7 +69,7 @@ module.exports = class extends AppGenerator {
         props.dependenciesString = props.dependencies.map(i => '\'' + i + '\'') || [];
         props.dependenciesString.shift();
         props.dependenciesString.push('');
-        props.explanations = this.getPluginsExplanations();
+        props.explanations = this._getPluginsExplanations();
         this.props = props;
       }.bind(this)
     );

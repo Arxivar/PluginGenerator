@@ -215,6 +215,7 @@ function searchServiceFront(answers, input) {
 }
 
 var AppGenerator = module.exports = class extends Generator {
+  //all function declared in this class will be automatically launched in sequence!!! Except those with the underscore in front (Yeoman docs)
 
   constructor(...args) {
     super(...args);
@@ -225,15 +226,13 @@ var AppGenerator = module.exports = class extends Generator {
     }
   }
 
-  shouldPrompt() {
+
+  _shouldPrompt() {
     return this._args === undefined || this._args === null || !this._args.includes('--auto');
   }
 
-  getResolvedValues(prompts) {
-    if (prompts === undefined) {
-      return Promise.resolve();
-    }
-    const shouldPrompt = this.shouldPrompt();
+  _getResolvedValues(prompts) {
+    const shouldPrompt = this._shouldPrompt();
     if (shouldPrompt) {
       return this.prompt(prompts);
     }
@@ -287,7 +286,7 @@ var AppGenerator = module.exports = class extends Generator {
     ].join('\n');
     this.log(logo);
   }
-  getPluginsExplanations() {
+  _getPluginsExplanations() {
     return {
       requiredSettings: {
         MAIN: '// MANDATORY settings in order for the plugin to work.',
@@ -329,7 +328,7 @@ var AppGenerator = module.exports = class extends Generator {
     };
   }
   //settings di tutti i plugins escluso il plugin link
-  requiredSettings(options) {
+  _requiredSettings(options) {
 
     var prompts = [{
       type: 'input',
@@ -474,7 +473,7 @@ var AppGenerator = module.exports = class extends Generator {
     return prompts;
   }
   //settings principali del - plugin Link	
-  linkSettings(options) {
+  _linkSettings(options) {
 
     var prompts = [{
       type: 'input',
@@ -555,7 +554,7 @@ var AppGenerator = module.exports = class extends Generator {
     return prompts;
   }
 
-  inputQuestion() {
+  _inputQuestion() {
     const prompts = [{
       type: 'list',
       name: 'inParams',
@@ -572,7 +571,7 @@ var AppGenerator = module.exports = class extends Generator {
     return prompts;
   }
 
-  outputQuestion() {
+  _outputQuestion() {
     const prompts = [{
       type: 'list',
       name: 'outParams',
@@ -589,7 +588,7 @@ var AppGenerator = module.exports = class extends Generator {
     return prompts;
   }
 
-  inputParameter() {
+  _inputParameter() {
     const prompts = [{
       type: 'input',
       name: 'propertyName',
@@ -625,7 +624,7 @@ var AppGenerator = module.exports = class extends Generator {
     return prompts;
   }
 
-  outputParameter() {
+  _outputParameter() {
     const prompts = [{
       type: 'input',
       name: 'propertyName',
@@ -661,7 +660,7 @@ var AppGenerator = module.exports = class extends Generator {
     return prompts;
   }
   //settings delle configurazioni avanzate - plugin Link
-  advancedConfigSettings() {
+  _advancedConfigSettings() {
     this.env.adapter.promptModule.registerPrompt("checkbox-plus", require("inquirer-checkbox-plus-prompt"));
     const prompts = [{
       type: 'list',

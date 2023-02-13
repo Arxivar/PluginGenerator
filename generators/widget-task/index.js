@@ -8,16 +8,15 @@ var path = require('path');
 var AppGenerator = require('../app');
 module.exports = class extends AppGenerator {
   initializing() {
-    this.showInfo();
     this.log('Running ' + chalk.red('WIDGET TASK') + ' generator!');
   }
 
   prompting() {
-    var prompts = this.requiredSettings({
+    var prompts = this._requiredSettings({
       exclude: ['requireRefresh', 'injectParams', 'advConfig']
     });
 
-    const resolvedValue = this.getResolvedValues(prompts)
+    const resolvedValue = this._getResolvedValues(prompts)
 
     return resolvedValue.then(
       function (props) {
@@ -69,7 +68,7 @@ module.exports = class extends AppGenerator {
         props.dependenciesString.shift();
         props.dependenciesString.push('');
 
-        props.explanations = this.getPluginsExplanations();
+        props.explanations = this._getPluginsExplanations();
         this.props = props;
       }.bind(this)
     );
