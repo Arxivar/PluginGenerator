@@ -33,6 +33,11 @@ declare global {
         description: string;
         externalId: any;
     };
+    type ICommandParamsFile = {
+        fileGuid:string,
+        name:string,
+        isSelected:boolean,
+    }
     export interface ISettingsGenericTypeValue {
         name: string,
         description: string,
@@ -69,7 +74,7 @@ declare global {
 
     type ISettingsTypeValue = ISettingsStringValue | ISettingsNumberValue | ISettingsBooleanValue | ISettingsDateValue;
     type ISettingsTypeValueForRuntime = ISettingsStringValueForRuntime | ISettingsNumberValueForRuntime | ISettingsBooleanValueForRuntime | ISettingsDateValueForRuntime;
-    type IProfilationCommandParams = { docnumber?: number; elementId: string, fields: ICommandParamsField[] };
+    type IProfilationCommandParams = { docnumber?: number; elementId: string, fields: ICommandParamsField[]; files?:ICommandParamsFile[] };
     type IMoment = typeof moment;
     type ILoDash = typeof LoDashStatic;
     type IRouteParams = { queryParams: string };

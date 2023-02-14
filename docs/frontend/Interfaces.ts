@@ -389,6 +389,10 @@ export interface IUrlFilter {
 	 * @property Defines the second value of the field, if required by the operator set.
 	 */
 	value2?: any;
+	/**
+	 * @property Defines if the values have formulas.
+	 */
+	isFormula?: boolean;
 }
 
 type PluginSettingsType = {

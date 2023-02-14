@@ -8,12 +8,23 @@
 
 ### Properties
 
+- [isFormula](Interfaces.IUrlFilter.md#isformula)
 - [name](Interfaces.IUrlFilter.md#name)
 - [operator](Interfaces.IUrlFilter.md#operator)
 - [value1](Interfaces.IUrlFilter.md#value1)
 - [value2](Interfaces.IUrlFilter.md#value2)
 
 ## Properties
+
+### isFormula
+
+• `Optional` **isFormula**: `boolean`
+
+**`Property`**
+
+if the values have formulas.
+
+___
 
 ### name
 

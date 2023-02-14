@@ -103,6 +103,38 @@ ___
 
 Retrieve the URL of search with params.
 
+**`Remarks`**
+
+In params, in all fields, is possible to insert a formulas with string format. 		
+
+If the field type is different of string(number,boolean,date) the conversion could fail, and throw an error.	
+	
+The escape char for the formulas is $.	
+		
+The formula keys are:
+
+**`Label`**
+
+$USERCODE$: It will be replaced with the code of the connected user.
+
+**`Label`**
+
+$USER$ e $UTENTE$: It will be replaced with the string UNIT\USERNAME of the connected user.
+
+**`Label`**
+
+$USERDESC$:It will be replaced with the string USERNAME of the connected user.
+
+**`Label`**
+
+$NOW:FORMAT$ It will be replaced with the string in the chosen format of today's date . Eg:$NOW:ddMMyyyy$	
+		
+For date format check in [https://date-fns.org/v2.29.3/docs/format](https://date-fns.org/v2.29.3/docs/format)		
+
+These formulas won't work on contact fields in advance mode().			
+
+The formulas will work with the fifth params to true, not the forth because it could be the value2.
+
 #### Parameters
 
 | Name | Type | Description |
@@ -224,6 +256,38 @@ ___
 ▸ **getViewURLWithParams**(`params`, `viewId`): `string`
 
 Retrieve the URL of view with params.
+
+**`Remarks`**
+
+In params, in all fields, is possible to insert a formulas with string format. 		
+
+If the field type is different of string(number,boolean,date) the conversion could fail, and throw an error.	
+	
+The escape char for the formulas is $.	
+		
+The formula keys are:
+
+**`Label`**
+
+$USERCODE$: It will be replaced with the code of the connected user.
+
+**`Label`**
+
+$USER$ e $UTENTE$: It will be replaced with the string UNIT\USERNAME of the connected user.
+
+**`Label`**
+
+$USERDESC$:It will be replaced with the string USERNAME of the connected user.
+
+**`Label`**
+
+$NOW:FORMAT$ It will be replaced with the string in the chosen format of today's date . Eg:$NOW:ddMMyyyy$	
+		
+For date format check in [https://date-fns.org/v2.29.3/docs/format](https://date-fns.org/v2.29.3/docs/format)		
+
+These formulas won't work on contact fields in advance mode().			
+
+The formulas will work with the fifth params to true, not the forth because it could be the value2.
 
 #### Parameters
 
