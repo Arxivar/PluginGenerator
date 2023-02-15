@@ -19,6 +19,7 @@
 - [IPluginService](../interfaces/Interfaces.IPluginService.md)
 - [IUrlFilter](../interfaces/Interfaces.IUrlFilter.md)
 - [IUrlSearchParams](../interfaces/Interfaces.IUrlSearchParams.md)
+- [IUrlViewParams](../interfaces/Interfaces.IUrlViewParams.md)
 - [IUserService](../interfaces/Interfaces.IUserService.md)
 
 ### Type Aliases

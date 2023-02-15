@@ -113,20 +113,12 @@ The escape char for the formulas is $.
 		
 The formula keys are:
 
-**`Label`**
-
 $USERCODE$: It will be replaced with the code of the connected user.
 
-**`Label`**
-
 $USER$ e $UTENTE$: It will be replaced with the string UNIT\USERNAME of the connected user.
-
-**`Label`**
-
+			
 $USERDESC$:It will be replaced with the string USERNAME of the connected user.
-
-**`Label`**
-
+					
 $NOW:FORMAT$ It will be replaced with the string in the chosen format of today's date . Eg:$NOW:ddMMyyyy$	
 		
 For date format check in [https://date-fns.org/v2.29.3/docs/format](https://date-fns.org/v2.29.3/docs/format)		
@@ -267,20 +259,12 @@ The escape char for the formulas is $.
 		
 The formula keys are:
 
-**`Label`**
-
 $USERCODE$: It will be replaced with the code of the connected user.
 
-**`Label`**
-
-$USER$ e $UTENTE$: It will be replaced with the string UNIT\USERNAME of the connected user.
-
-**`Label`**
-
-$USERDESC$:It will be replaced with the string USERNAME of the connected user.
-
-**`Label`**
-
+$USER$ e $UTENTE$: It will be replaced with the string UNIT\USERNAME of the connected user.	
+		
+$USERDESC$:It will be replaced with the string USERNAME of the connected user.		
+			
 $NOW:FORMAT$ It will be replaced with the string in the chosen format of today's date . Eg:$NOW:ddMMyyyy$	
 		
 For date format check in [https://date-fns.org/v2.29.3/docs/format](https://date-fns.org/v2.29.3/docs/format)		
@@ -293,7 +277,7 @@ The formulas will work with the fifth params to true, not the forth because it c
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `params` | [`IUrlSearchParams`](../interfaces/Interfaces.IUrlSearchParams.md) | The params for the view. |
+| `params` | [`IUrlViewParams`](../interfaces/Interfaces.IUrlViewParams.md) | The params for the view. |
 | `viewId` | `string` | The viewId. |
 
 #### Returns

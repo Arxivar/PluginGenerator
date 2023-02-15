@@ -372,6 +372,26 @@ export interface IUrlSearchParams {
 	fields: IUrlFilter[];
 }
 
+export interface IUrlViewParams {
+	/**
+	 * @property Defines the maximum number of results for the search. Set 0 for no limit. If not set,the default is that of the last search.
+	 */
+	maxResults?: number;
+	/**
+	 * @property Defines the search mode for from and to. 0 and 1 or. If not set, the default is that of the last search.
+	 */
+	fromTo?: number;
+	/**
+	 * @property Defines if the view will go to result or stay in the search page.
+	 */
+	redirectResults?: boolean;
+	/**
+	 * @property Defines the fields to be set for the search.
+	 */
+	fields: IUrlFilter[];
+}
+
+
 export interface IUrlFilter {
 	/**
 	 * @property Defines the field name
