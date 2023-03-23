@@ -198,7 +198,7 @@ ___
 
 ### getViewURLWithParams
 
-• **getViewURLWithParams**: (`params`: [`IUrlSearchParams`](Interfaces.IUrlSearchParams.md), `viewId`: `string`) => `string`
+• **getViewURLWithParams**: (`params`: [`IUrlViewParams`](Interfaces.IUrlViewParams.md), `viewId`: `string`) => `string`
 
 #### Type declaration
 
@@ -210,7 +210,7 @@ Retrieve the URL of view with params.
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `params` | [`IUrlSearchParams`](Interfaces.IUrlSearchParams.md) | The params for the view. |
+| `params` | [`IUrlViewParams`](Interfaces.IUrlViewParams.md) | The params for the view. |
 | `viewId` | `string` | The viewId. |
 
 ##### Returns

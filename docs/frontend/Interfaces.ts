@@ -346,7 +346,7 @@ export interface IArxivarRouteService {
 	 * @param viewId The viewId.
 	 * @returns The url of the view with params.
 	*/
-	getViewURLWithParams: (params: IUrlSearchParams, viewId: string) => string;
+	getViewURLWithParams: (params: IUrlViewParams, viewId: string) => string;
 
 }
 //UserService
