@@ -1,6 +1,5 @@
-angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['PluginProfilation', <%
-  -props.dependenciesString.join(', ') %>  'arxivarResourceService', 'arxivarUserServiceCreator', 'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService',
-  function ( PluginProfilation <%= props.dependencies.join(', ') %> ,  arxivarResourceService, arxivarUserServiceCreator, arxivarRouteService, arxivarDocumentsService, arxivarNotifierService) {
+angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['PluginProfilation', <%-props.dependenciesString.join(', ') %>'arxivarResourceService', 'arxivarUserServiceCreator', 'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService',
+  function ( PluginProfilation<%= props.dependencies.join(', ') %>, arxivarResourceService, arxivarUserServiceCreator, arxivarRouteService, arxivarDocumentsService, arxivarNotifierService) {
     <%= props.explanations.requiredSettings.MAIN %>
       var requiredSettings = {
         id: '<%= props.id %>',

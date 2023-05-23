@@ -1,6 +1,6 @@
 angular.module('arxivar.plugins.directives').directive('<%= props.pluginname.toLowerCase() %>directive', [
-    'pluginService',<%- props.dependenciesString.join(', ') %>'arxivarResourceService' , 'arxivarUserServiceCreator' , 'arxivarRouteService' , 'arxivarDocumentsService' , 'arxivarNotifierService' ,'<%= props.pluginname %>',
-    function(pluginService<%= props.dependencies.join(', ') %> , arxivarResourceService, arxivarUserServiceCreator, arxivarRouteService, arxivarDocumentsService, arxivarNotifierService, <%= props.pluginname %>) {
+    'pluginService', <%- props.dependenciesString.join(', ') %>'arxivarResourceService', 'arxivarUserServiceCreator', 'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService','<%= props.pluginname %>',
+    function(pluginService<%= props.dependencies.join(', ') %>, arxivarResourceService, arxivarUserServiceCreator, arxivarRouteService, arxivarDocumentsService, arxivarNotifierService, <%= props.pluginname %>) {
     return {
         restrict: 'E',
         scope: {
@@ -15,7 +15,7 @@ angular.module('arxivar.plugins.directives').directive('<%= props.pluginname.toL
                 $mainContainer.addClass(scope.instanceId);
             }
 
-
+            
         }
     };
 }]);
