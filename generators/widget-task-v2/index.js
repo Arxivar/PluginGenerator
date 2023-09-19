@@ -13,7 +13,13 @@ module.exports = class extends AppGenerator {
 
   prompting() {
     var prompts = this._requiredSettings({
-      exclude: ['requireRefresh', 'injectParams', 'advConfig']
+      exclude: ['requireRefresh', 'injectParams', 'advConfig'],
+      minVersion: {
+        type: 'input',
+        name: 'minVersion',
+        message: 'Minimum portal version supported?',
+        default: '2.7.0'
+      }
     });
 
     const resolvedValue = this._getResolvedValues(prompts)
@@ -88,16 +94,16 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('src/PluginWidgetTaskV2Template.ts'),
         this.destinationPath('src/' + factoryRouteFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + factoryRouteFilename));
       // Copio l'html
       this.fs.copyTpl(
         this.templatePath('src/PluginWidgetTaskV2Template.html'),
         this.destinationPath('src/' + pageRouteFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + pageRouteFilename));
 
@@ -105,8 +111,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('src/PluginWidgetTaskV2TemplateDirective.ts'),
         this.destinationPath('src/' + controllerRouteFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + controllerRouteFilename));
 
@@ -114,8 +120,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('src/PluginWidgetTaskV2Template.css'),
         this.destinationPath('src/' + styleRouteFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + styleRouteFilename));
 
@@ -123,8 +129,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('READMELIBS.txt'),
         this.destinationPath('libs/README.txt'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Create folder libs'));
 
@@ -132,8 +138,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath(basePath + '.babelrc'),
         this.destinationPath('.babelrc'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: .babelrc'));
 
@@ -141,8 +147,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath(basePath + '.eslintrc'),
         this.destinationPath('.eslintrc'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: .eslintrc'));
 
@@ -150,8 +156,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath(basePath + 'global.d.ts'),
         this.destinationPath('global.d.ts'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: global.d.ts'));
 
@@ -159,8 +165,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath(interfacePath + 'Interfaces.ts'),
         this.destinationPath('Interfaces.ts'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: Interfaces.ts'));
 
@@ -168,8 +174,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath(basePath + 'templatepackage.json'),
         this.destinationPath('package.json'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: package.json'));
 
@@ -177,8 +183,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath(basePath + 'postcss.config.js'),
         this.destinationPath('postcss.config.js'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: postcss.config.js'));
 
@@ -186,8 +192,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath(basePath + 'tsconfig.json'),
         this.destinationPath('tsconfig.json'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: tsconfig.json'));
 
@@ -195,8 +201,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('webpack.config.js'),
         this.destinationPath('webpack.config.js'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: webpack.config.js'));
     }
@@ -214,16 +220,16 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('PluginWidgetTaskV2Template.js'),
         this.destinationPath(factoryRouteFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + factoryRouteFilename));
       // Copio l'html
       this.fs.copyTpl(
         this.templatePath('PluginWidgetTaskV2Template.html'),
         this.destinationPath(pageRouteFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + pageRouteFilename));
 
@@ -231,8 +237,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('PluginWidgetTaskV2TemplateDirective.js'),
         this.destinationPath(directiveFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + directiveFilename));
 
@@ -240,8 +246,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('PluginWidgetTaskV2Template.css'),
         this.destinationPath(styleRouteFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + styleRouteFilename));
 
@@ -249,8 +255,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('READMELIBS.txt'),
         this.destinationPath('libs/README.txt'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Create folder libs'));
     }
