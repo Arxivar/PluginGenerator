@@ -5,13 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-  	<PackageReference Include="ARXivar.Workflow.Plugins" Version="2.8.2">
-		<ExcludeAssets>runtime</ExcludeAssets>
-	</PackageReference>   
+    <PackageReference Include="ARXivar.Workflow.Plugins" Version="2.9.0">
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
   </ItemGroup>
-  
+
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	<Exec Command="call &quot;$(SolutionDir)\postbuild.bat&quot; &quot;$(TargetDir)&quot; &quot;$(TargetDir)\*&quot; &quot;..\$(ProjectName)&quot;" />
+    <Exec
+      Command="call &quot;$(SolutionDir)\postbuild.bat&quot; &quot;$(TargetDir)&quot; &quot;$(TargetDir)\*&quot; &quot;..\$(ProjectName)&quot;" />
   </Target>
 
 </Project>
