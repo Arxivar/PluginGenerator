@@ -42,7 +42,6 @@ module.exports = {
 								'isTSX': true
 							}
 							]
-
 						],
 						plugins: [
 							'@babel/plugin-syntax-function-bind',
@@ -90,27 +89,27 @@ module.exports = {
 	},
 	plugins: [
 		new MiniCssExtractPlugin({ filename: '[name].css' }),
-		new CopyWebpackPlugin(
-			[{
+		new CopyWebpackPlugin({
+			patterns: [{
 				from: './src\\' + pluginName + '.css',
-				to: './'
-
+				to: './' + pluginName + '.css',
+				toType: 'file',
 			},
 			{
 				from: './src\\' + pluginName + '.html',
-				to: './'
-
+				to: './' + pluginName + '.html',
+				toType: 'file',
 			}]
-		)
+		})
 	],
 	optimization: {
 		minimize: true,
 		minimizer: [
 			new TerserPlugin({
 				parallel: true,
-				sourceMap: true,
 				extractComments: false,
 				terserOptions: {
+					sourceMap: true,
 					output: {
 						comments: false
 					},
@@ -125,8 +124,9 @@ module.exports = {
 	output: {
 		filename: '[name].js',
 		path: path.resolve(outDir),
-		devtoolLineToLine: true,
+		// devtoolLineToLine: true,
 		pathinfo: true,
 		sourceMapFilename: '[name].js.map'
 	},
-}
+};
+

@@ -40,7 +40,6 @@ module.exports = {
 								'isTSX': true
 							}
 							]
-
 						],
 						plugins: [
 							'@babel/plugin-syntax-function-bind',
@@ -61,39 +60,54 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				use: [{
-					loader: 'style-loader'
-				}, {
-					loader: 'css-loader'
-				}
+				use: [
+					MiniCssExtractPlugin.loader,
+					{
+						loader: 'css-loader'
+					}
 				]
 			},
 			{
 				test: /\.scss$/,
-				use: [{
-					loader: 'style-loader'
-				}, {
-					loader: 'css-loader',
-					options: {
-						importLoaders: 2, // 0 => no loaders (default); 1 => postcss-loader; 2 => postcss-loader, sass-loader
+				use: [
+					MiniCssExtractPlugin.loader,
+					{
+						loader: 'css-loader',
+						options: {
+							importLoaders: 2 // 0 => no loaders (default); 1 => postcss-loader; 2 => postcss-loader, sass-loader
+						}
+					}, {
+						loader: 'postcss-loader'
+					}, {
+						loader: 'sass-loader'
 					}
-				}, {
-					loader: 'postcss-loader'
-				}, {
-					loader: 'sass-loader'
-				},
-				],
+				]
 			}
 		],
 	},
+	plugins: [
+		new MiniCssExtractPlugin({ filename: '[name].css' }),
+		new CopyWebpackPlugin({
+			patterns: [{
+				from: './src\\' + pluginName + '.css',
+				to: './' + pluginName + '.css',
+				toType: 'file',
+			},
+			{
+				from: './src\\' + pluginName + '.html',
+				to: './' + pluginName + '.html',
+				toType: 'file',
+			}]
+		})
+	],
 	optimization: {
 		minimize: true,
 		minimizer: [
 			new TerserPlugin({
 				parallel: true,
-				sourceMap: true,
 				extractComments: false,
 				terserOptions: {
+					sourceMap: true,
 					output: {
 						comments: false
 					},
@@ -108,8 +122,9 @@ module.exports = {
 	output: {
 		filename: '[name].js',
 		path: path.resolve(outDir),
-		devtoolLineToLine: true,
+		// devtoolLineToLine: true,
 		pathinfo: true,
 		sourceMapFilename: '[name].js.map'
 	},
-}
+};
+
