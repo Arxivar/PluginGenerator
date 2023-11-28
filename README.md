@@ -13,7 +13,7 @@ _Note: if nodejs is installed with nvm you will also have to install the windows
 - When nodejs has finished installing, install [Yeoman](http://yeoman.io): open a command prompt and run the following command:
 
 ```bash
-npm install -g yo
+npm install -g yo@4
 ```
 
 _Note: npm is the package manager for Node.js and comes bundled with it._
