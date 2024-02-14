@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{<%= props.pr
 		scripts\src\<%= props.pluginname %>.html = scripts\src\<%= props.pluginname %>.html
 		scripts\src\<%= props.pluginname %>.js = scripts\src\<%= props.pluginname %>.js
 	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

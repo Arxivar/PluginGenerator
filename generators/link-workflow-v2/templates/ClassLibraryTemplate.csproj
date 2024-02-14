@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ARXivar.Workflow.Plugins" Version="2.9.0">
+    <PackageReference Include="ARXivar.Workflow.Plugins" Version="2.9.3">
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
   </ItemGroup>
