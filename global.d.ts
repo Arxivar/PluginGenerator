@@ -7,6 +7,7 @@ declare global {
     type IArxivarNotifierService = arxInterfaces.IArxivarNotifierService;
     type IArxivarResourceService = arxInterfaces.IArxivarResourceService;
     type IArxivarRouteService = arxInterfaces.IArxivarRouteService;
+    type ITaskV2PluginService = arxInterfaces.ITaskV2PluginService;
     type IArxivarUserServiceCreator = arxInterfaces.IArxivarUserServiceCreator;
     type IWorkflowResourceService = arxInterfaces.IArxivarResourceService;
     type IHttpOptions = arxInterfaces.IHttpOptions;
@@ -34,9 +35,9 @@ declare global {
         externalId: any;
     };
     type ICommandParamsFile = {
-        fileGuid:string,
-        name:string,
-        isSelected:boolean,
+        fileGuid: string,
+        name: string,
+        isSelected: boolean,
     }
     export interface ISettingsGenericTypeValue {
         name: string,
@@ -74,7 +75,7 @@ declare global {
 
     type ISettingsTypeValue = ISettingsStringValue | ISettingsNumberValue | ISettingsBooleanValue | ISettingsDateValue;
     type ISettingsTypeValueForRuntime = ISettingsStringValueForRuntime | ISettingsNumberValueForRuntime | ISettingsBooleanValueForRuntime | ISettingsDateValueForRuntime;
-    type IProfilationCommandParams = { docnumber?: number; elementId: string, fields: ICommandParamsField[]; files?:ICommandParamsFile[] };
+    type IProfilationCommandParams = { docnumber?: number; elementId: string, fields: ICommandParamsField[]; files?: ICommandParamsFile[] };
     type IMoment = typeof moment;
     type ILoDash = typeof LoDashStatic;
     type IRouteParams = { queryParams: string };
