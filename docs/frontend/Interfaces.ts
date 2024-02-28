@@ -13,37 +13,35 @@ export interface IHttpOptions {
 	hideUserMessageError: boolean;
 }
 
-
 export interface IArxivarDocumentsService {
 	/**
-	*  This method converts an api call response of type arraybuffer into a file.
-	*
-	* @param data The data of the call.
-	* @param status The status of the call.
-	* @param headers The headers of the call.
-	  * @returns The file download Promise.
-	*/
+	 *  This method converts an api call response of type arraybuffer into a file.
+	 *
+	 * @param data The data of the call.
+	 * @param status The status of the call.
+	 * @param headers The headers of the call.
+	 * @returns The file download Promise.
+	 */
 	downloadStream: (data: any, status: any, headers: any) => Promise<any>;
 
 	/**
-	* Download the document linked to a profile.
-	*
-	* @param docnumber The docnumber of the profile.
-	* @returns The file download Promise.
-	*/
+	 * Download the document linked to a profile.
+	 *
+	 * @param docnumber The docnumber of the profile.
+	 * @returns The file download Promise.
+	 */
 	getDocumentByDocnumber: (docnumber: number) => Promise<any>;
 
 	/**
-	* Download the document linked to a profile with a specific revision.
-	*
-	* @param revisionId The ID of the revision.
-	* @returns The file download Promise.
-	*/
+	 * Download the document linked to a profile with a specific revision.
+	 *
+	 * @param revisionId The ID of the revision.
+	 * @returns The file download Promise.
+	 */
 	getRevisionByID: (revisionId: number) => Promise<any>;
 }
 
 export interface IArxivarResourceService {
-
 	webApiUrl: string;
 
 	/**
@@ -52,16 +50,16 @@ export interface IArxivarResourceService {
 	 * @param resourceName The resource name
 	 * @param options The options of the call
 	 * @returns The resource information
-	*/
+	 */
 	get: (resourceName: string, options: IHttpOptions) => Promise<any>;
 
 	/**
-	* Retrieve information on a certain type of resource of ARXivar with additional options
-	* @param resourceName The resource name
-	* @param httpOptions The options of the call 
-	* @param options The additional options of the call
-	* @returns The resource information
-	*/
+	 * Retrieve information on a certain type of resource of ARXivar with additional options
+	 * @param resourceName The resource name
+	 * @param httpOptions The options of the call
+	 * @param options The additional options of the call
+	 * @returns The resource information
+	 */
 	queryWithOptions: (resourceName: string, httpOptions: IHttpOptions, options: any) => Promise<any>;
 
 	/**
@@ -73,29 +71,28 @@ export interface IArxivarResourceService {
 	getValue: (resourceName: string, options: IHttpOptions) => Promise<any>;
 
 	/**
-	* Retrieve information of a certain resource of ARXivar
-	* @param resourceName The resource name
-	* @param postData Additional parameter of the call
-	* @param options The options of the call
-	* @returns The resource value
-	*/
+	 * Retrieve information of a certain resource of ARXivar
+	 * @param resourceName The resource name
+	 * @param postData Additional parameter of the call
+	 * @param options The options of the call
+	 * @returns The resource value
+	 */
 	getPost: (resourceName: string, postData: any, options: IHttpOptions) => Promise<any>;
 
-
 	/**
-	  * Retrieve a download stream for a certain resource of ARXivar
-	  * @param resourceName The resource name
-	  * @param options The options of the call
-	  * @returns The download stream for the resource
-	  */
+	 * Retrieve a download stream for a certain resource of ARXivar
+	 * @param resourceName The resource name
+	 * @param options The options of the call
+	 * @returns The download stream for the resource
+	 */
 	getByteArray: (resourceName: string, options: IHttpOptions) => Promise<any>;
 
 	/**
-	  * Retrieve a download stream for a certain resource of ARXivar
-	  * @param resourceName The resource name
-	  * @param options The options of the call
-	  * @returns The download stream for the resource
-	  */
+	 * Retrieve a download stream for a certain resource of ARXivar
+	 * @param resourceName The resource name
+	 * @param options The options of the call
+	 * @returns The download stream for the resource
+	 */
 	getPostByteArray: (resourceName: string, postData: any, options: IHttpOptions) => Promise<any>;
 	/**
 	 * Submit and save the selected resource on Arxivar
@@ -139,28 +136,28 @@ export interface IArxivarNotifierService {
 	 * Notify error message.
 	 *
 	 * @param message The docnumber of the profile.
-	*/
+	 */
 	notifyError: (message: string) => void;
 
 	/**
-	* Notify warning message.
-	*
-	* @param message The docnumber of the profile.
-	*/
+	 * Notify warning message.
+	 *
+	 * @param message The docnumber of the profile.
+	 */
 	notifyWarning: (message: string) => void;
 
 	/**
-	* Notify info message.
-	*
-	* @param message The docnumber of the profile.
-	*/
+	 * Notify info message.
+	 *
+	 * @param message The docnumber of the profile.
+	 */
 	notifyInfo: (message: string) => void;
 
 	/**
 	 * Notify success message.
 	 *
 	 * @param message The docnumber of the profile.
-	*/
+	 */
 	notifySuccess: (message: string) => void;
 }
 
@@ -178,9 +175,9 @@ export interface IUserService {
 	getUserId: () => string;
 
 	/**
-	* Get the name of the user
-	* @returns The username
-	*/
+	 * Get the name of the user
+	 * @returns The username
+	 */
 	getUserName: () => string;
 
 	/**
@@ -190,9 +187,9 @@ export interface IUserService {
 	getUserNameComplete: () => string;
 
 	/**
-	* Get the description of the user
-	* @returns The description of the user
-	*/
+	 * Get the description of the user
+	 * @returns The description of the user
+	 */
 	getDescription: () => string;
 
 	/**
@@ -208,9 +205,9 @@ export interface IUserService {
 	getLang: () => string;
 
 	/**
-	* Get the user's avatar
-	* @returns The base64 code of the user's avatar
-	*/
+	 * Get the user's avatar
+	 * @returns The base64 code of the user's avatar
+	 */
 	getAvatar: () => string;
 
 	/**
@@ -240,11 +237,11 @@ export interface IUserService {
 	getDatabase: () => null;
 
 	/**
-	* @deprecated Return always null. 
-	* _Use GET /api/management/Database/DbInfo instead (with management scope)._
-	* Get the server name
-	* @returns null
-	*/
+	 * @deprecated Return always null.
+	 * _Use GET /api/management/Database/DbInfo instead (with management scope)._
+	 * Get the server name
+	 * @returns null
+	 */
 	getServerName: () => null;
 	/**
 	 * @deprecated Return always null.
@@ -265,79 +262,79 @@ export interface IUserService {
 	 */
 	isInRole: (roleName: string) => boolean;
 	/**
-	 * @deprecated 
+	 * @deprecated
 	 * Use {@link ArxivarUserServiceCreator.create} instead.
 	 * Load the database information
 	 */
 	getDatabaseInfo: () => Promise<IUserService>;
 
 	/**
-	* @deprecated 
-	* Use {@link UserService.isInRole} instead.
-	* Check if the currently logged user has a certain role enabled
-	* @param roleName object containing the name of the role
-	* @returns true if the user has the selected roles, false otherwise
-	*/
+	 * @deprecated
+	 * Use {@link UserService.isInRole} instead.
+	 * Check if the currently logged user has a certain role enabled
+	 * @param roleName object containing the name of the role
+	 * @returns true if the user has the selected roles, false otherwise
+	 */
 	hasRole: (roleName: any) => any;
 }
 
 export interface IArxivarRouteService {
 	/**
-	* Retrieve the URL's profilation route that contains the bufferId of the file to upload.
-	*
-	* @param bufferId The bufferId of uploaded file.
-	* @param fileName The fileName of uploaded file.
-	* @returns The url of profilation route.
-	*/
+	 * Retrieve the URL's profilation route that contains the bufferId of the file to upload.
+	 *
+	 * @param bufferId The bufferId of uploaded file.
+	 * @param fileName The fileName of uploaded file.
+	 * @returns The url of profilation route.
+	 */
 	getURLProfilation: ({ bufferId, fileName }?: { bufferId: string; fileName: string }) => string;
 
 	/**
-	* Retrieve the URL's mask route that contains the bufferId of the file to upload
-	*
-	* @param id The mask Id.
-	  * @param bufferId The bufferId of uploaded file.
-	* @param fileName The fileName of uploaded file.
-	  * @returns The url of mask route.
-	*/
+	 * Retrieve the URL's mask route that contains the bufferId of the file to upload
+	 *
+	 * @param id The mask Id.
+	 * @param bufferId The bufferId of uploaded file.
+	 * @param fileName The fileName of uploaded file.
+	 * @returns The url of mask route.
+	 */
 	getMaskProfilation: (id: string, { bufferId, fileName }?: { bufferId: string; fileName: string }) => string;
 
 	/**
-	* Retrieve the URL of the profile route.
-	*
-	* @param docnumber The docnumber of the profile.
-	* @returns The url of the profile route.
-	*/
+	 * Retrieve the URL of the profile route.
+	 *
+	 * @param docnumber The docnumber of the profile.
+	 * @returns The url of the profile route.
+	 */
 	getURLProfileReadonly: (docnumber: number) => string;
 
 	/**
-	* Retrieve the URL's route that contains the list of Revisions for a specific document
-	*
-	* @param docnumber The docnumber of the profile.
-	* @returns The url of the revisions list of the profile.
-	*/
+	 * Retrieve the URL's route that contains the list of Revisions for a specific document
+	 *
+	 * @param docnumber The docnumber of the profile.
+	 * @returns The url of the revisions list of the profile.
+	 */
 	getURLRevisionsByDocnumber: (docnumber: number) => string;
 
 	/**
-	* Retrieve the URL's route of pluginRoute
-	*
-	* @param pluginId The pluginId.
-	* @returns The url of the plugin route.
-	*/
+	 * Retrieve the URL's route of pluginRoute
+	 *
+	 * @param pluginId The pluginId.
+	 * @returns The url of the plugin route.
+	 */
 	getURLPluginRoute: (pluginId: string) => string;
 
 	/**
-	* Retrieve the partial URL of workflow pluginLink execute command
-	*
-	* @param pluginId The pluginId.
-	* @returns The partial url of the plugin link execute command.
-	*/
+	 * Retrieve the partial URL of workflow pluginLink execute command
+	 *
+	 * @param pluginId The pluginId.
+	 * @returns The partial url of the plugin link execute command.
+	 */
 	getPartialURLPluginLinkExecuteCommand: (pluginId: string) => string;
 	/**
 	 *  Retrieve the URL of search with params.
 	 *
 	 * @param params The params for the search.
 	 * @returns The url of the search with params.
-	*/
+	 */
 	getSearchURLWithParams: (params: IUrlSearchParams) => string;
 	/**
 	 *  Retrieve the URL of view with params.
@@ -345,9 +342,8 @@ export interface IArxivarRouteService {
 	 * @param params The params for the view.
 	 * @param viewId The viewId.
 	 * @returns The url of the view with params.
-	*/
+	 */
 	getViewURLWithParams: (params: IUrlViewParams, viewId: string) => string;
-
 }
 //UserService
 export interface IArxivarUserServiceCreator {
@@ -391,7 +387,6 @@ export interface IUrlViewParams {
 	fields: IUrlFilter[];
 }
 
-
 export interface IUrlFilter {
 	/**
 	 * @property Defines the field name
@@ -430,25 +425,24 @@ type PluginSettingsObjectType = {
 };
 export type ScopeSettings = 'global' | 'user';
 export interface IPluginService {
-
 	/**
-	* Get the settings of a plugin or of an instance of plugin.
-	* @param ScopeSettings "global" for all users "user" for me
-	* @param params: PluginParamsObjectType set pluginId, instanceId and desktop for this instances, set only pluginId for all instances
-	* @returns The settings of plugin
-	*/
+	 * Get the settings of a plugin or of an instance of plugin.
+	 * @param ScopeSettings "global" for all users "user" for me
+	 * @param params: PluginParamsObjectType set pluginId, instanceId and desktop for this instances, set only pluginId for all instances
+	 * @returns The settings of plugin
+	 */
 	getSettings(scope: ScopeSettings, params: PluginParamsObjectType): Promise<any>;
 	/**
-	* Set the settings of a plugin or of an instance of plugin with UPSERT strategy.
-	* @param ScopeSettings "global" for all users "user" for me
-	* @param params: PluginParamsObjectType set pluginId,instanceId and desktop for this instances, set only pluginId for all instances
-	* @param settings: PluginSettingsType array of object {name:"myParamName",value:"myParamValue"}
-	* @returns The settings of plugin
-	*/
+	 * Set the settings of a plugin or of an instance of plugin with UPSERT strategy.
+	 * @param ScopeSettings "global" for all users "user" for me
+	 * @param params: PluginParamsObjectType set pluginId,instanceId and desktop for this instances, set only pluginId for all instances
+	 * @param settings: PluginSettingsType array of object {name:"myParamName",value:"myParamValue"}
+	 * @returns The settings of plugin
+	 */
 	saveSettings(scope: ScopeSettings, params: PluginParamsObjectType, settings: PluginSettingsType): Promise<any>;
 	/**
 	 * @deprecated since version 2.4
-	 * 
+	 *
 	 * Get the settings of a plugin or of an instance of plugin.
 	 * If you set only the pluginId property in pluginSettingsObject you will get the global customSettings and the global userSettings
 	 * If you set the pluginId, instanceId and desktopId properties in pluginSettingsObject you will get the global customSettings and the instance userSettings
@@ -458,17 +452,16 @@ export interface IPluginService {
 	getPluginByUser(pluginSettingsObject: PluginParamsObjectType): Promise<PluginSettingsObjectType>;
 
 	/**
-	* @deprecated since version 2.4
-	*
-	* Save the user settings of a plugin or of an instance of plugin.
-	* If you set only the pluginId property in pluginSettingsObject you will save the global userSettings
-	* If you set the pluginId, instanceId and desktopId properties in pluginSettingsObject you will save the instance userSettings
-	* @param pluginSettingsObject
-	* @param userSettingValues
-	* @returns The customSettings (the global settings of plugin) and userSettings (the userSetting of plugin or widget instance plugin)
-	*/
+	 * @deprecated since version 2.4
+	 *
+	 * Save the user settings of a plugin or of an instance of plugin.
+	 * If you set only the pluginId property in pluginSettingsObject you will save the global userSettings
+	 * If you set the pluginId, instanceId and desktopId properties in pluginSettingsObject you will save the instance userSettings
+	 * @param pluginSettingsObject
+	 * @param userSettingValues
+	 * @returns The customSettings (the global settings of plugin) and userSettings (the userSetting of plugin or widget instance plugin)
+	 */
 	setPluginByUser(pluginSettingsObject: PluginParamsObjectType, userSettingValues: PluginSettingsType): Promise<void>;
-
 }
 
 export enum ConfigurationDataTypeEnum {
@@ -476,7 +469,46 @@ export enum ConfigurationDataTypeEnum {
 	Int = 2,
 	Datetime = 3,
 	Bool = 4,
-	Decimal = 5
+	Decimal = 5,
 }
 
+export type IWidgetSettings = {
+	/**
+	 * @property Defines if the widget is collaspled.
+	 */
+	collapse: boolean;
+	/**
+	 * @property Defines the widget title value.
+	 */
+	title: string;
+	/**
+	 * @property Defines the widget icon value.
+	 */
+	icon: string;
+	/**
+	 * @property Defines the widget height value.
+	 */
+	height: number;
+};
 
+export interface ITaskV2PluginService {
+	/**
+	 * Update the settings of a widget bt instance Id.
+	 * @param pluginId plugin id
+	 * @param instanceId instance id
+	 * @param propToModify property to modify
+	 * @param valueToModify value to modify
+	 */
+
+	updateWidgetSettings<T extends keyof IWidgetSettings>(
+		pluginId: string,
+		instanceId: string,
+		propToModify: T,
+		valueToModify: IWidgetSettings[T]
+	): void;
+	/**
+	 * Force the update the outcomes by task Id
+	 * @param taskId  task Id
+	 */
+	forceUpdateOutcomesByTaskId(taskId: string): void;
+}
