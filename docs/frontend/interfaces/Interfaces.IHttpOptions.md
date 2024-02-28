@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [Interfaces](../modules/Interfaces.md) / IHttpOptions
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [Interfaces](../modules/Interfaces.md) / IHttpOptions
 
 # Interface: IHttpOptions
 
@@ -17,16 +17,8 @@
 
 • **hideUserMessageError**: `boolean`
 
-**`Property`**
-
-if the eventual call error should be shown
-
 ___
 
 ### openloader
 
 • **openloader**: `boolean`
-
-**`Property`**
-
-if the ARXivar loader should be shown during the call execution

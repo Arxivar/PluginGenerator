@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / ArxivarRouteService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / ArxivarRouteService
 
 # Module: ArxivarRouteService
 

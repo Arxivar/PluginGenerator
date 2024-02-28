@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [Interfaces](../modules/Interfaces.md) / IArxivarRouteService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [Interfaces](../modules/Interfaces.md) / IArxivarRouteService
 
 # Interface: IArxivarRouteService
 
@@ -25,11 +25,25 @@
 
 ### getMaskProfilation
 
-• **getMaskProfilation**: (`id`: `string`, `__namedParameters?`: { `bufferId`: `string` ; `fileName`: `string`  }) => `string`
+• **getMaskProfilation**: (`id`: `string`, `__namedParameters?`: \{ `bufferId`: `string` ; `fileName`: `string`  }) => `string`
+
+Retrieve the URL's mask route that contains the bufferId of the file to upload
+
+**`Param`**
+
+The mask Id.
+
+**`Param`**
+
+The bufferId of uploaded file.
+
+**`Param`**
+
+The fileName of uploaded file.
 
 #### Type declaration
 
-▸ (`id`, `__namedParameters?`): `string`
+▸ (`id`, `«destructured»?`): `string`
 
 Retrieve the URL's mask route that contains the bufferId of the file to upload
 
@@ -37,10 +51,10 @@ Retrieve the URL's mask route that contains the bufferId of the file to upload
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `id` | `string` | The mask Id.    * |
-| `__namedParameters?` | `Object` | - |
-| `__namedParameters.bufferId` | `string` | - |
-| `__namedParameters.fileName` | `string` | - |
+| `id` | `string` | The mask Id. |
+| `«destructured»` | `Object` | - |
+| › `bufferId` | `string` | - |
+| › `fileName` | `string` | - |
 
 ##### Returns
 
@@ -53,6 +67,12 @@ ___
 ### getPartialURLPluginLinkExecuteCommand
 
 • **getPartialURLPluginLinkExecuteCommand**: (`pluginId`: `string`) => `string`
+
+Retrieve the partial URL of workflow pluginLink execute command
+
+**`Param`**
+
+The pluginId.
 
 #### Type declaration
 
@@ -78,6 +98,12 @@ ___
 
 • **getSearchURLWithParams**: (`params`: [`IUrlSearchParams`](Interfaces.IUrlSearchParams.md)) => `string`
 
+Retrieve the URL of search with params.
+
+**`Param`**
+
+The params for the search.
+
 #### Type declaration
 
 ▸ (`params`): `string`
@@ -102,6 +128,12 @@ ___
 
 • **getURLPluginRoute**: (`pluginId`: `string`) => `string`
 
+Retrieve the URL's route of pluginRoute
+
+**`Param`**
+
+The pluginId.
+
 #### Type declaration
 
 ▸ (`pluginId`): `string`
@@ -124,11 +156,21 @@ ___
 
 ### getURLProfilation
 
-• **getURLProfilation**: (`__namedParameters?`: { `bufferId`: `string` ; `fileName`: `string`  }) => `string`
+• **getURLProfilation**: (`__namedParameters?`: \{ `bufferId`: `string` ; `fileName`: `string`  }) => `string`
+
+Retrieve the URL's profilation route that contains the bufferId of the file to upload.
+
+**`Param`**
+
+The bufferId of uploaded file.
+
+**`Param`**
+
+The fileName of uploaded file.
 
 #### Type declaration
 
-▸ (`__namedParameters?`): `string`
+▸ (`«destructured»?`): `string`
 
 Retrieve the URL's profilation route that contains the bufferId of the file to upload.
 
@@ -136,9 +178,9 @@ Retrieve the URL's profilation route that contains the bufferId of the file to u
 
 | Name | Type |
 | :------ | :------ |
-| `__namedParameters?` | `Object` |
-| `__namedParameters.bufferId` | `string` |
-| `__namedParameters.fileName` | `string` |
+| `«destructured»` | `Object` |
+| › `bufferId` | `string` |
+| › `fileName` | `string` |
 
 ##### Returns
 
@@ -151,6 +193,12 @@ ___
 ### getURLProfileReadonly
 
 • **getURLProfileReadonly**: (`docnumber`: `number`) => `string`
+
+Retrieve the URL of the profile route.
+
+**`Param`**
+
+The docnumber of the profile.
 
 #### Type declaration
 
@@ -176,6 +224,12 @@ ___
 
 • **getURLRevisionsByDocnumber**: (`docnumber`: `number`) => `string`
 
+Retrieve the URL's route that contains the list of Revisions for a specific document
+
+**`Param`**
+
+The docnumber of the profile.
+
 #### Type declaration
 
 ▸ (`docnumber`): `string`
@@ -199,6 +253,16 @@ ___
 ### getViewURLWithParams
 
 • **getViewURLWithParams**: (`params`: [`IUrlViewParams`](Interfaces.IUrlViewParams.md), `viewId`: `string`) => `string`
+
+Retrieve the URL of view with params.
+
+**`Param`**
+
+The params for the view.
+
+**`Param`**
+
+The viewId.
 
 #### Type declaration
 

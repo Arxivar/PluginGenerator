@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [ArxivarRouteService](../modules/ArxivarRouteService.md) / ArxivarRouteService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [ArxivarRouteService](../modules/ArxivarRouteService.md) / ArxivarRouteService
 
 # Class: ArxivarRouteService
 
@@ -48,7 +48,7 @@ angular
 
 ### getMaskProfilation
 
-▸ **getMaskProfilation**(`id`, `__namedParameters?`): `string`
+▸ **getMaskProfilation**(`id`, `«destructured»?`): `string`
 
 Retrieve the URL's mask route that contains the bufferId of the file to upload
 
@@ -56,10 +56,10 @@ Retrieve the URL's mask route that contains the bufferId of the file to upload
 
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
-| `id` | `string` | `undefined` | The mask Id.   * |
-| `__namedParameters` | `Object` | `null` | - |
-| `__namedParameters.bufferId` | `string` | `undefined` | - |
-| `__namedParameters.fileName` | `string` | `undefined` | - |
+| `id` | `string` | `undefined` | The mask Id. |
+| `«destructured»` | `Object` | `null` | - |
+| › `bufferId` | `string` | `undefined` | - |
+| › `fileName` | `string` | `undefined` | - |
 
 #### Returns
 
@@ -69,7 +69,7 @@ The url of mask route.
 
 #### Implementation of
 
-IArxivarRouteService.getMaskProfilation
+[IArxivarRouteService](../interfaces/Interfaces.IArxivarRouteService.md).[getMaskProfilation](../interfaces/Interfaces.IArxivarRouteService.md#getmaskprofilation)
 
 ___
 
@@ -93,7 +93,7 @@ The partial url of the plugin link execute command.
 
 #### Implementation of
 
-IArxivarRouteService.getPartialURLPluginLinkExecuteCommand
+[IArxivarRouteService](../interfaces/Interfaces.IArxivarRouteService.md).[getPartialURLPluginLinkExecuteCommand](../interfaces/Interfaces.IArxivarRouteService.md#getpartialurlpluginlinkexecutecommand)
 
 ___
 
@@ -102,30 +102,6 @@ ___
 ▸ **getSearchURLWithParams**(`params`): `string`
 
 Retrieve the URL of search with params.
-
-**`Remarks`**
-
-In params, in all fields, is possible to insert a formulas with string format. 		
-
-If the field type is different of string(number,boolean,date) the conversion could fail, and throw an error.	
-	
-The escape char for the formulas is $.	
-		
-The formula keys are:
-
-$USERCODE$: It will be replaced with the code of the connected user.
-
-$USER$ e $UTENTE$: It will be replaced with the string UNIT\USERNAME of the connected user.
-			
-$USERDESC$:It will be replaced with the string USERNAME of the connected user.
-					
-$NOW:FORMAT$ It will be replaced with the string in the chosen format of today's date . Eg:$NOW:ddMMyyyy$	
-		
-For date format check in [https://date-fns.org/v2.29.3/docs/format](https://date-fns.org/v2.29.3/docs/format)		
-
-These formulas won't work on contact fields in advance mode().			
-
-The formulas will work with the fifth params to true, not the forth because it could be the value2.
 
 #### Parameters
 
@@ -139,9 +115,33 @@ The formulas will work with the fifth params to true, not the forth because it c
 
 The url of the search with params.
 
+**`Remarks`**
+
+In params, in all fields, is possible to insert a formulas with string format.
+
+If the field type is different of string(number,boolean,date) the conversion could fail, and throw an error.
+
+The escape char for the formulas is $.
+
+The formula keys are:
+
+$USERCODE$: It will be replaced with the code of the connected user.
+
+$USER$ e $UTENTE$: It will be replaced with the string UNIT\USERNAME of the connected user.
+
+$USERDESC$:It will be replaced with the string USERNAME of the connected user.
+
+$NOW:FORMAT$ It will be replaced with the string in the chosen format of today's date . Eg:$NOW:ddMMyyyy$
+
+For date format check in [https://date-fns.org/v2.29.3/docs/format](https://date-fns.org/v2.29.3/docs/format)
+
+These formulas won't work on contact fields in advance mode().
+
+The formulas will work with the fifth params to true, not the forth because it could be the value2.
+
 #### Implementation of
 
-IArxivarRouteService.getSearchURLWithParams
+[IArxivarRouteService](../interfaces/Interfaces.IArxivarRouteService.md).[getSearchURLWithParams](../interfaces/Interfaces.IArxivarRouteService.md#getsearchurlwithparams)
 
 ___
 
@@ -165,13 +165,13 @@ The url of the plugin route.
 
 #### Implementation of
 
-IArxivarRouteService.getURLPluginRoute
+[IArxivarRouteService](../interfaces/Interfaces.IArxivarRouteService.md).[getURLPluginRoute](../interfaces/Interfaces.IArxivarRouteService.md#geturlpluginroute)
 
 ___
 
 ### getURLProfilation
 
-▸ **getURLProfilation**(`__namedParameters?`): `string`
+▸ **getURLProfilation**(`«destructured»?`): `string`
 
 Retrieve the URL's profilation route that contains the bufferId of the file to upload.
 
@@ -179,9 +179,9 @@ Retrieve the URL's profilation route that contains the bufferId of the file to u
 
 | Name | Type | Default value |
 | :------ | :------ | :------ |
-| `__namedParameters` | `Object` | `null` |
-| `__namedParameters.bufferId` | `string` | `undefined` |
-| `__namedParameters.fileName` | `string` | `undefined` |
+| `«destructured»` | `Object` | `null` |
+| › `bufferId` | `string` | `undefined` |
+| › `fileName` | `string` | `undefined` |
 
 #### Returns
 
@@ -191,7 +191,7 @@ The url of profilation route.
 
 #### Implementation of
 
-IArxivarRouteService.getURLProfilation
+[IArxivarRouteService](../interfaces/Interfaces.IArxivarRouteService.md).[getURLProfilation](../interfaces/Interfaces.IArxivarRouteService.md#geturlprofilation)
 
 ___
 
@@ -215,7 +215,7 @@ The url of the profile route.
 
 #### Implementation of
 
-IArxivarRouteService.getURLProfileReadonly
+[IArxivarRouteService](../interfaces/Interfaces.IArxivarRouteService.md).[getURLProfileReadonly](../interfaces/Interfaces.IArxivarRouteService.md#geturlprofilereadonly)
 
 ___
 
@@ -239,7 +239,7 @@ The url of the revisions list of the profile.
 
 #### Implementation of
 
-IArxivarRouteService.getURLRevisionsByDocnumber
+[IArxivarRouteService](../interfaces/Interfaces.IArxivarRouteService.md).[getURLRevisionsByDocnumber](../interfaces/Interfaces.IArxivarRouteService.md#geturlrevisionsbydocnumber)
 
 ___
 
@@ -248,30 +248,6 @@ ___
 ▸ **getViewURLWithParams**(`params`, `viewId`): `string`
 
 Retrieve the URL of view with params.
-
-**`Remarks`**
-
-In params, in all fields, is possible to insert a formulas with string format. 		
-
-If the field type is different of string(number,boolean,date) the conversion could fail, and throw an error.	
-	
-The escape char for the formulas is $.	
-		
-The formula keys are:
-
-$USERCODE$: It will be replaced with the code of the connected user.
-
-$USER$ e $UTENTE$: It will be replaced with the string UNIT\USERNAME of the connected user.	
-		
-$USERDESC$:It will be replaced with the string USERNAME of the connected user.		
-			
-$NOW:FORMAT$ It will be replaced with the string in the chosen format of today's date . Eg:$NOW:ddMMyyyy$	
-		
-For date format check in [https://date-fns.org/v2.29.3/docs/format](https://date-fns.org/v2.29.3/docs/format)		
-
-These formulas won't work on contact fields in advance mode().			
-
-The formulas will work with the fifth params to true, not the forth because it could be the value2.
 
 #### Parameters
 
@@ -286,6 +262,30 @@ The formulas will work with the fifth params to true, not the forth because it c
 
 The url of the view with params.
 
+**`Remarks`**
+
+In params, in all fields, is possible to insert a formulas with string format.
+
+If the field type is different of string(number,boolean,date) the conversion could fail, and throw an error.
+
+The escape char for the formulas is $.
+
+The formula keys are:
+
+$USERCODE$: It will be replaced with the code of the connected user.
+
+$USER$ e $UTENTE$: It will be replaced with the string UNIT\USERNAME of the connected user.
+
+$USERDESC$:It will be replaced with the string USERNAME of the connected user.
+
+$NOW:FORMAT$ It will be replaced with the string in the chosen format of today's date . Eg:$NOW:ddMMyyyy$
+
+For date format check in [https://date-fns.org/v2.29.3/docs/format](https://date-fns.org/v2.29.3/docs/format)
+
+These formulas won't work on contact fields in advance mode().
+
+The formulas will work with the fifth params to true, not the forth because it could be the value2.
+
 #### Implementation of
 
-IArxivarRouteService.getViewURLWithParams
+[IArxivarRouteService](../interfaces/Interfaces.IArxivarRouteService.md).[getViewURLWithParams](../interfaces/Interfaces.IArxivarRouteService.md#getviewurlwithparams)

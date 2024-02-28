@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [Interfaces](../modules/Interfaces.md) / IUserService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [Interfaces](../modules/Interfaces.md) / IUserService
 
 # Interface: IUserService
 
@@ -37,6 +37,8 @@
 
 • **getAoo**: () => `string`
 
+Get the Aoo of the user
+
 #### Type declaration
 
 ▸ (): `string`
@@ -54,6 +56,8 @@ ___
 ### getAvatar
 
 • **getAvatar**: () => `string`
+
+Get the user's avatar
 
 #### Type declaration
 
@@ -73,15 +77,15 @@ ___
 
 • **getDatabase**: () => ``null``
 
-#### Type declaration
-
-▸ (): ``null``
-
 **`Deprecated`**
 
 Return always null.
 _Use GET /api/management/Database/DbInfo instead (with management scope)._
 Get the database name
+
+#### Type declaration
+
+▸ (): ``null``
 
 ##### Returns
 
@@ -89,30 +93,43 @@ Get the database name
 
 null
 
+**`Deprecated`**
+
+Return always null.
+_Use GET /api/management/Database/DbInfo instead (with management scope)._
+Get the database name
+
 ___
 
 ### getDatabaseInfo
 
-• **getDatabaseInfo**: () => `Promise`<[`IUserService`](Interfaces.IUserService.md)\>
-
-#### Type declaration
-
-▸ (): `Promise`<[`IUserService`](Interfaces.IUserService.md)\>
+• **getDatabaseInfo**: () => `Promise`\<[`IUserService`](Interfaces.IUserService.md)\>
 
 **`Deprecated`**
 
 Use ArxivarUserServiceCreator.create instead.
 Load the database information
 
+#### Type declaration
+
+▸ (): `Promise`\<[`IUserService`](Interfaces.IUserService.md)\>
+
 ##### Returns
 
-`Promise`<[`IUserService`](Interfaces.IUserService.md)\>
+`Promise`\<[`IUserService`](Interfaces.IUserService.md)\>
+
+**`Deprecated`**
+
+Use ArxivarUserServiceCreator.create instead.
+Load the database information
 
 ___
 
 ### getDescription
 
 • **getDescription**: () => `string`
+
+Get the description of the user
 
 #### Type declaration
 
@@ -132,6 +149,8 @@ ___
 
 • **getLang**: () => `string`
 
+Get the language of the user
+
 #### Type declaration
 
 ▸ (): `string`
@@ -150,15 +169,15 @@ ___
 
 • **getProvider**: () => ``null``
 
-#### Type declaration
-
-▸ (): ``null``
-
 **`Deprecated`**
 
 Return always null.
 _Use GET /api/management/Database/DbInfo instead (with management scope)._
 Get the database provider name
+
+#### Type declaration
+
+▸ (): ``null``
 
 ##### Returns
 
@@ -166,21 +185,29 @@ Get the database provider name
 
 null
 
+**`Deprecated`**
+
+Return always null.
+_Use GET /api/management/Database/DbInfo instead (with management scope)._
+Get the database provider name
+
 ___
 
 ### getRoles
 
-• **getRoles**: () => { `roleName`: `string` ; `value`: `boolean`  }[]
+• **getRoles**: () => \{ `roleName`: `string` ; `value`: `boolean`  }[]
+
+Get the roles of the user
 
 #### Type declaration
 
-▸ (): { `roleName`: `string` ; `value`: `boolean`  }[]
+▸ (): \{ `roleName`: `string` ; `value`: `boolean`  }[]
 
 Get the roles of the user
 
 ##### Returns
 
-{ `roleName`: `string` ; `value`: `boolean`  }[]
+\{ `roleName`: `string` ; `value`: `boolean`  }[]
 
 The user roles
 
@@ -190,15 +217,15 @@ ___
 
 • **getServerName**: () => ``null``
 
+**`Deprecated`**
+
+Return always null.
+_Use GET /api/management/Database/DbInfo instead (with management scope)._
+Get the server name
+
 #### Type declaration
 
 ▸ (): ``null``
-
-**`Deprecated`**
-
-Return always null. 
-_Use GET /api/management/Database/DbInfo instead (with management scope)._
-Get the server name
 
 ##### Returns
 
@@ -206,11 +233,19 @@ Get the server name
 
 null
 
+**`Deprecated`**
+
+Return always null.
+_Use GET /api/management/Database/DbInfo instead (with management scope)._
+Get the server name
+
 ___
 
 ### getStatus
 
 • **getStatus**: () => `number`
+
+Get the status of the user
 
 #### Type declaration
 
@@ -228,7 +263,9 @@ ___
 
 ### getUserGroup
 
-• **getUserGroup**: () => { `groupId`: `number` ; `isAdmin`: `boolean` ; `isProfiler`: `boolean` ; `isUser`: `boolean` ; `notSet`: `boolean`  }
+• **getUserGroup**: () => \{ `groupId`: `number` ; `isAdmin`: `boolean` ; `isProfiler`: `boolean` ; `isUser`: `boolean` ; `notSet`: `boolean`  }
+
+Retrieve information about the group of the current user
 
 #### Type declaration
 
@@ -256,6 +293,8 @@ ___
 
 • **getUserId**: () => `string`
 
+Get the id of the user
+
 #### Type declaration
 
 ▸ (): `string`
@@ -273,6 +312,8 @@ ___
 ### getUserName
 
 • **getUserName**: () => `string`
+
+Get the name of the user
 
 #### Type declaration
 
@@ -292,6 +333,8 @@ ___
 
 • **getUserNameComplete**: () => `string`
 
+Get the complete name of the user
+
 #### Type declaration
 
 ▸ (): `string`
@@ -309,6 +352,8 @@ ___
 ### hasAvatar
 
 • **hasAvatar**: () => `boolean`
+
+Get the information about the user's avatar status
 
 #### Type declaration
 
@@ -328,14 +373,18 @@ ___
 
 • **hasRole**: (`roleName`: `any`) => `any`
 
-#### Type declaration
-
-▸ (`roleName`): `any`
-
 **`Deprecated`**
 
 Use UserService.isInRole instead.
 Check if the currently logged user has a certain role enabled
+
+**`Param`**
+
+object containing the name of the role
+
+#### Type declaration
+
+▸ (`roleName`): `any`
 
 ##### Parameters
 
@@ -349,11 +398,22 @@ Check if the currently logged user has a certain role enabled
 
 true if the user has the selected roles, false otherwise
 
+**`Deprecated`**
+
+Use UserService.isInRole instead.
+Check if the currently logged user has a certain role enabled
+
 ___
 
 ### isInRole
 
 • **isInRole**: (`roleName`: `string`) => `boolean`
+
+Check if the currently logged user has a certain role enabled
+
+**`Param`**
+
+the name of the role
 
 #### Type declaration
 
@@ -377,16 +437,18 @@ ___
 
 ### isNotAdmin
 
-• **isNotAdmin**: () => `boolean` \| `Promise`<`boolean`\>
+• **isNotAdmin**: () => `boolean` \| `Promise`\<`boolean`\>
+
+Check if the user currently logged is not an administrator
 
 #### Type declaration
 
-▸ (): `boolean` \| `Promise`<`boolean`\>
+▸ (): `boolean` \| `Promise`\<`boolean`\>
 
 Check if the user currently logged is not an administrator
 
 ##### Returns
 
-`boolean` \| `Promise`<`boolean`\>
+`boolean` \| `Promise`\<`boolean`\>
 
 false if the user is administrator, true otherwise

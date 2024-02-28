@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [ArxivarDocumentsService](../modules/ArxivarDocumentsService.md) / ArxivarDocumentsService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [ArxivarDocumentsService](../modules/ArxivarDocumentsService.md) / ArxivarDocumentsService
 
 # Class: ArxivarDocumentsService
 
@@ -43,7 +43,7 @@ angular
 
 ### downloadStream
 
-▸ **downloadStream**(`data`, `status`, `headers`): `Promise`<`any`\>
+▸ **downloadStream**(`data`, `status`, `headers`): `Promise`\<`any`\>
 
 This method converts an api call response of type arraybuffer into a file.
 
@@ -57,7 +57,7 @@ This method converts an api call response of type arraybuffer into a file.
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`\<`any`\>
 
 The file download Promise.
 
@@ -65,7 +65,7 @@ ___
 
 ### getDocumentByDocnumber
 
-▸ **getDocumentByDocnumber**(`docnumber`): `Promise`<`any`\>
+▸ **getDocumentByDocnumber**(`docnumber`): `Promise`\<`any`\>
 
 Download the document linked to a profile.
 
@@ -77,7 +77,7 @@ Download the document linked to a profile.
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`\<`any`\>
 
 The file download Promise.
 
@@ -85,7 +85,7 @@ ___
 
 ### getRevisionByID
 
-▸ **getRevisionByID**(`revisionId`): `Promise`<`any`\>
+▸ **getRevisionByID**(`revisionId`): `Promise`\<`any`\>
 
 Download the document linked to a profile with a specific revision.
 
@@ -97,6 +97,6 @@ Download the document linked to a profile with a specific revision.
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`\<`any`\>
 
 The file download Promise.

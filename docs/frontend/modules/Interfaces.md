@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / Interfaces
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / Interfaces
 
 # Module: Interfaces
 
@@ -17,6 +17,7 @@
 - [IArxivarUserServiceCreator](../interfaces/Interfaces.IArxivarUserServiceCreator.md)
 - [IHttpOptions](../interfaces/Interfaces.IHttpOptions.md)
 - [IPluginService](../interfaces/Interfaces.IPluginService.md)
+- [ITaskV2PluginService](../interfaces/Interfaces.ITaskV2PluginService.md)
 - [IUrlFilter](../interfaces/Interfaces.IUrlFilter.md)
 - [IUrlSearchParams](../interfaces/Interfaces.IUrlSearchParams.md)
 - [IUrlViewParams](../interfaces/Interfaces.IUrlViewParams.md)
@@ -24,9 +25,25 @@
 
 ### Type Aliases
 
+- [IWidgetSettings](Interfaces.md#iwidgetsettings)
 - [ScopeSettings](Interfaces.md#scopesettings)
 
 ## Type Aliases
+
+### IWidgetSettings
+
+Ƭ **IWidgetSettings**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `collapse` | `boolean` |
+| `height` | `number` |
+| `icon` | `string` |
+| `title` | `string` |
+
+___
 
 ### ScopeSettings
 

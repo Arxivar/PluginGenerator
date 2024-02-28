@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [UserService](../modules/UserService.md) / UserService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [UserService](../modules/UserService.md) / UserService
 
 # Class: UserService
 
@@ -72,7 +72,7 @@ The Aoo name
 
 #### Implementation of
 
-IUserService.getAoo
+[IUserService](../interfaces/Interfaces.IUserService.md).[getAoo](../interfaces/Interfaces.IUserService.md#getaoo)
 
 ___
 
@@ -90,13 +90,19 @@ The base64 code of the user's avatar
 
 #### Implementation of
 
-IUserService.getAvatar
+[IUserService](../interfaces/Interfaces.IUserService.md).[getAvatar](../interfaces/Interfaces.IUserService.md#getavatar)
 
 ___
 
 ### getDatabase
 
 ▸ **getDatabase**(): ``null``
+
+#### Returns
+
+``null``
+
+always null
 
 **`Deprecated`**
 
@@ -105,35 +111,29 @@ _Use GET /api/management/Database/DbInfo instead (with management scope)._
 
 Get the database name
 
-#### Returns
-
-``null``
-
-always null
-
 #### Implementation of
 
-IUserService.getDatabase
+[IUserService](../interfaces/Interfaces.IUserService.md).[getDatabase](../interfaces/Interfaces.IUserService.md#getdatabase)
 
 ___
 
 ### getDatabaseInfo
 
-▸ **getDatabaseInfo**(): `Promise`<[`UserService`](UserService.UserService.md)\>
+▸ **getDatabaseInfo**(): `Promise`\<[`UserService`](UserService.UserService.md)\>
+
+#### Returns
+
+`Promise`\<[`UserService`](UserService.UserService.md)\>
+
+Promise<UserService>
 
 **`Deprecated`**
 
 _Use ArxivarUserServiceCreator.create instead._ Load the database information
 
-#### Returns
-
-`Promise`<[`UserService`](UserService.UserService.md)\>
-
-Promise<UserService>
-
 #### Implementation of
 
-IUserService.getDatabaseInfo
+[IUserService](../interfaces/Interfaces.IUserService.md).[getDatabaseInfo](../interfaces/Interfaces.IUserService.md#getdatabaseinfo)
 
 ___
 
@@ -151,7 +151,7 @@ The description of the user
 
 #### Implementation of
 
-IUserService.getDescription
+[IUserService](../interfaces/Interfaces.IUserService.md).[getDescription](../interfaces/Interfaces.IUserService.md#getdescription)
 
 ___
 
@@ -169,7 +169,7 @@ The language of the user
 
 #### Implementation of
 
-IUserService.getLang
+[IUserService](../interfaces/Interfaces.IUserService.md).[getLang](../interfaces/Interfaces.IUserService.md#getlang)
 
 ___
 
@@ -177,39 +177,39 @@ ___
 
 ▸ **getProvider**(): ``null``
 
-**`Deprecated`**
-
-Return always null. 
-_Use GET /api/management/Database/DbInfo instead (with management scope)._
-Get the database provider name
-
 #### Returns
 
 ``null``
 
 null
 
+**`Deprecated`**
+
+Return always null.
+_Use GET /api/management/Database/DbInfo instead (with management scope)._
+Get the database provider name
+
 #### Implementation of
 
-IUserService.getProvider
+[IUserService](../interfaces/Interfaces.IUserService.md).[getProvider](../interfaces/Interfaces.IUserService.md#getprovider)
 
 ___
 
 ### getRoles
 
-▸ **getRoles**(): { `roleName`: `string` ; `value`: `boolean`  }[]
+▸ **getRoles**(): \{ `roleName`: `string` ; `value`: `boolean`  }[]
 
 Get the roles of the user
 
 #### Returns
 
-{ `roleName`: `string` ; `value`: `boolean`  }[]
+\{ `roleName`: `string` ; `value`: `boolean`  }[]
 
 The user roles
 
 #### Implementation of
 
-IUserService.getRoles
+[IUserService](../interfaces/Interfaces.IUserService.md).[getRoles](../interfaces/Interfaces.IUserService.md#getroles)
 
 ___
 
@@ -217,21 +217,21 @@ ___
 
 ▸ **getServerName**(): ``null``
 
-**`Deprecated`**
-
-Return always null. 
-_Use GET /api/management/Database/DbInfo instead (with management scope)._
-Get the server name
-
 #### Returns
 
 ``null``
 
 null
 
+**`Deprecated`**
+
+Return always null.
+_Use GET /api/management/Database/DbInfo instead (with management scope)._
+Get the server name
+
 #### Implementation of
 
-IUserService.getServerName
+[IUserService](../interfaces/Interfaces.IUserService.md).[getServerName](../interfaces/Interfaces.IUserService.md#getservername)
 
 ___
 
@@ -249,7 +249,7 @@ The user id
 
 #### Implementation of
 
-IUserService.getStatus
+[IUserService](../interfaces/Interfaces.IUserService.md).[getStatus](../interfaces/Interfaces.IUserService.md#getstatus)
 
 ___
 
@@ -275,7 +275,7 @@ The user group
 
 #### Implementation of
 
-IUserService.getUserGroup
+[IUserService](../interfaces/Interfaces.IUserService.md).[getUserGroup](../interfaces/Interfaces.IUserService.md#getusergroup)
 
 ___
 
@@ -293,7 +293,7 @@ The user id
 
 #### Implementation of
 
-IUserService.getUserId
+[IUserService](../interfaces/Interfaces.IUserService.md).[getUserId](../interfaces/Interfaces.IUserService.md#getuserid)
 
 ___
 
@@ -311,7 +311,7 @@ The username
 
 #### Implementation of
 
-IUserService.getUserName
+[IUserService](../interfaces/Interfaces.IUserService.md).[getUserName](../interfaces/Interfaces.IUserService.md#getusername)
 
 ___
 
@@ -329,7 +329,7 @@ The complete name of the user
 
 #### Implementation of
 
-IUserService.getUserNameComplete
+[IUserService](../interfaces/Interfaces.IUserService.md).[getUserNameComplete](../interfaces/Interfaces.IUserService.md#getusernamecomplete)
 
 ___
 
@@ -347,18 +347,13 @@ The state of the avatar
 
 #### Implementation of
 
-IUserService.hasAvatar
+[IUserService](../interfaces/Interfaces.IUserService.md).[hasAvatar](../interfaces/Interfaces.IUserService.md#hasavatar)
 
 ___
 
 ### hasRole
 
 ▸ **hasRole**(`roleName`): `any`
-
-**`Deprecated`**
-
-_Use [isInRole](UserService.UserService.md#isinrole) instead._
-Check if the currently logged user has a certain role enabled
 
 #### Parameters
 
@@ -372,9 +367,14 @@ Check if the currently logged user has a certain role enabled
 
 true if the user has the selected roles, false otherwise
 
+**`Deprecated`**
+
+_Use [UserService.isInRole](UserService.UserService.md#isinrole) instead._
+Check if the currently logged user has a certain role enabled
+
 #### Implementation of
 
-IUserService.hasRole
+[IUserService](../interfaces/Interfaces.IUserService.md).[hasRole](../interfaces/Interfaces.IUserService.md#hasrole)
 
 ___
 
@@ -398,22 +398,22 @@ true if the user has the roles, false otherwise
 
 #### Implementation of
 
-IUserService.isInRole
+[IUserService](../interfaces/Interfaces.IUserService.md).[isInRole](../interfaces/Interfaces.IUserService.md#isinrole)
 
 ___
 
 ### isNotAdmin
 
-▸ **isNotAdmin**(): `boolean` \| `Promise`<`boolean`\>
+▸ **isNotAdmin**(): `boolean` \| `Promise`\<`boolean`\>
 
 Check if the user currently logged is not an administrator
 
 #### Returns
 
-`boolean` \| `Promise`<`boolean`\>
+`boolean` \| `Promise`\<`boolean`\>
 
 false if the user is administrator, true otherwise
 
 #### Implementation of
 
-IUserService.isNotAdmin
+[IUserService](../interfaces/Interfaces.IUserService.md).[isNotAdmin](../interfaces/Interfaces.IUserService.md#isnotadmin)

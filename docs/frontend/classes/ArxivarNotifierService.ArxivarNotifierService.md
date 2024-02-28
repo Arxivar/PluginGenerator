@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [ArxivarNotifierService](../modules/ArxivarNotifierService.md) / ArxivarNotifierService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [ArxivarNotifierService](../modules/ArxivarNotifierService.md) / ArxivarNotifierService
 
 # Class: ArxivarNotifierService
 
@@ -60,7 +60,7 @@ Notify error message.
 
 #### Implementation of
 
-IArxivarNotifierService.notifyError
+[IArxivarNotifierService](../interfaces/Interfaces.IArxivarNotifierService.md).[notifyError](../interfaces/Interfaces.IArxivarNotifierService.md#notifyerror)
 
 ___
 
@@ -82,7 +82,7 @@ Notify info message.
 
 #### Implementation of
 
-IArxivarNotifierService.notifyInfo
+[IArxivarNotifierService](../interfaces/Interfaces.IArxivarNotifierService.md).[notifyInfo](../interfaces/Interfaces.IArxivarNotifierService.md#notifyinfo)
 
 ___
 
@@ -104,7 +104,7 @@ Notify success message.
 
 #### Implementation of
 
-IArxivarNotifierService.notifySuccess
+[IArxivarNotifierService](../interfaces/Interfaces.IArxivarNotifierService.md).[notifySuccess](../interfaces/Interfaces.IArxivarNotifierService.md#notifysuccess)
 
 ___
 
@@ -126,4 +126,4 @@ Notify warning message.
 
 #### Implementation of
 
-IArxivarNotifierService.notifyWarning
+[IArxivarNotifierService](../interfaces/Interfaces.IArxivarNotifierService.md).[notifyWarning](../interfaces/Interfaces.IArxivarNotifierService.md#notifywarning)

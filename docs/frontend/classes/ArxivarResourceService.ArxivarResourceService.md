@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [ArxivarResourceService](../modules/ArxivarResourceService.md) / ArxivarResourceService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [ArxivarResourceService](../modules/ArxivarResourceService.md) / ArxivarResourceService
 
 # Class: ArxivarResourceService
 
@@ -66,7 +66,7 @@ angular
 
 ### delete
 
-▸ **delete**(`resourceName`, `postData`, `options`): `Promise`<`any`\>
+▸ **delete**(`resourceName`, `postData`, `options`): `Promise`\<`any`\>
 
 Delete the selected resource from Arxivar
 
@@ -80,19 +80,19 @@ Delete the selected resource from Arxivar
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`\<`any`\>
 
 The deleted resource
 
 #### Implementation of
 
-IArxivarResourceService.delete
+[IArxivarResourceService](../interfaces/Interfaces.IArxivarResourceService.md).[delete](../interfaces/Interfaces.IArxivarResourceService.md#delete)
 
 ___
 
 ### get
 
-▸ **get**(`resourceName`, `options`): `Promise`<`any`\>
+▸ **get**(`resourceName`, `options`): `Promise`\<`any`\>
 
 Retrieve information on a certain type of resource ofs ARXivar
 
@@ -105,19 +105,19 @@ Retrieve information on a certain type of resource ofs ARXivar
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`\<`any`\>
 
 The resource information
 
 #### Implementation of
 
-IArxivarResourceService.get
+[IArxivarResourceService](../interfaces/Interfaces.IArxivarResourceService.md).[get](../interfaces/Interfaces.IArxivarResourceService.md#get)
 
 ___
 
 ### getByteArray
 
-▸ **getByteArray**(`resourceName`, `options`): `Promise`<`any`\>
+▸ **getByteArray**(`resourceName`, `options`): `Promise`\<`any`\>
 
 Retrieve a download stream for a certain resource of ARXivar
 
@@ -130,19 +130,19 @@ Retrieve a download stream for a certain resource of ARXivar
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`\<`any`\>
 
 The download stream for the resource
 
 #### Implementation of
 
-IArxivarResourceService.getByteArray
+[IArxivarResourceService](../interfaces/Interfaces.IArxivarResourceService.md).[getByteArray](../interfaces/Interfaces.IArxivarResourceService.md#getbytearray)
 
 ___
 
 ### getPost
 
-▸ **getPost**(`resourceName`, `postData`, `options`): `Promise`<`any`\>
+▸ **getPost**(`resourceName`, `postData`, `options`): `Promise`\<`any`\>
 
 Retrieve information of a certain resource of ARXivar
 
@@ -156,19 +156,19 @@ Retrieve information of a certain resource of ARXivar
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`\<`any`\>
 
 The resource value
 
 #### Implementation of
 
-IArxivarResourceService.getPost
+[IArxivarResourceService](../interfaces/Interfaces.IArxivarResourceService.md).[getPost](../interfaces/Interfaces.IArxivarResourceService.md#getpost)
 
 ___
 
 ### getPostByteArray
 
-▸ **getPostByteArray**(`resourceName`, `postData`, `options`): `Promise`<`any`\>
+▸ **getPostByteArray**(`resourceName`, `postData`, `options`): `Promise`\<`any`\>
 
 Retrieve a download stream for a certain resource of ARXivar
 
@@ -182,19 +182,19 @@ Retrieve a download stream for a certain resource of ARXivar
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`\<`any`\>
 
 The download stream for the resource
 
 #### Implementation of
 
-IArxivarResourceService.getPostByteArray
+[IArxivarResourceService](../interfaces/Interfaces.IArxivarResourceService.md).[getPostByteArray](../interfaces/Interfaces.IArxivarResourceService.md#getpostbytearray)
 
 ___
 
 ### getValue
 
-▸ **getValue**(`resourceName`, `options`): `Promise`<`any`\>
+▸ **getValue**(`resourceName`, `options`): `Promise`\<`any`\>
 
 Retrieve the value of a certain resource of ARXivar
 
@@ -207,19 +207,19 @@ Retrieve the value of a certain resource of ARXivar
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`\<`any`\>
 
 The resource value
 
 #### Implementation of
 
-IArxivarResourceService.getValue
+[IArxivarResourceService](../interfaces/Interfaces.IArxivarResourceService.md).[getValue](../interfaces/Interfaces.IArxivarResourceService.md#getvalue)
 
 ___
 
 ### queryWithOptions
 
-▸ **queryWithOptions**(`resourceName`, `httpOptions`, `options`): `Promise`<`any`\>
+▸ **queryWithOptions**(`resourceName`, `httpOptions`, `options`): `Promise`\<`any`\>
 
 Retrieve information on a certain type of resource of ARXivar with additional options
 
@@ -233,19 +233,19 @@ Retrieve information on a certain type of resource of ARXivar with additional op
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`\<`any`\>
 
 The resource information
 
 #### Implementation of
 
-IArxivarResourceService.queryWithOptions
+[IArxivarResourceService](../interfaces/Interfaces.IArxivarResourceService.md).[queryWithOptions](../interfaces/Interfaces.IArxivarResourceService.md#querywithoptions)
 
 ___
 
 ### save
 
-▸ **save**(`resourceName`, `postData`, `options`): `Promise`<`any`\>
+▸ **save**(`resourceName`, `postData`, `options`): `Promise`\<`any`\>
 
 Submit and save the selected resource on Arxivar
 
@@ -259,19 +259,19 @@ Submit and save the selected resource on Arxivar
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`\<`any`\>
 
 The resource
 
 #### Implementation of
 
-IArxivarResourceService.save
+[IArxivarResourceService](../interfaces/Interfaces.IArxivarResourceService.md).[save](../interfaces/Interfaces.IArxivarResourceService.md#save)
 
 ___
 
 ### update
 
-▸ **update**(`resourceName`, `postData`, `options`): `Promise`<`any`\>
+▸ **update**(`resourceName`, `postData`, `options`): `Promise`\<`any`\>
 
 Submit and update the selected resource on Arxivar
 
@@ -285,19 +285,19 @@ Submit and update the selected resource on Arxivar
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`\<`any`\>
 
 The resource
 
 #### Implementation of
 
-IArxivarResourceService.update
+[IArxivarResourceService](../interfaces/Interfaces.IArxivarResourceService.md).[update](../interfaces/Interfaces.IArxivarResourceService.md#update)
 
 ___
 
 ### updateCollection
 
-▸ **updateCollection**(`resourceName`, `postData`, `options`): `Promise`<`any`\>
+▸ **updateCollection**(`resourceName`, `postData`, `options`): `Promise`\<`any`\>
 
 Submit and update a collection of resources on Arxivar
 
@@ -311,10 +311,10 @@ Submit and update a collection of resources on Arxivar
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`\<`any`\>
 
 The resources
 
 #### Implementation of
 
-IArxivarResourceService.updateCollection
+[IArxivarResourceService](../interfaces/Interfaces.IArxivarResourceService.md).[updateCollection](../interfaces/Interfaces.IArxivarResourceService.md#updatecollection)

@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [Interfaces](../modules/Interfaces.md) / IArxivarNotifierService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [Interfaces](../modules/Interfaces.md) / IArxivarNotifierService
 
 # Interface: IArxivarNotifierService
 
@@ -23,6 +23,12 @@
 
 • **notifyError**: (`message`: `string`) => `void`
 
+Notify error message.
+
+**`Param`**
+
+The docnumber of the profile.
+
 #### Type declaration
 
 ▸ (`message`): `void`
@@ -44,6 +50,12 @@ ___
 ### notifyInfo
 
 • **notifyInfo**: (`message`: `string`) => `void`
+
+Notify info message.
+
+**`Param`**
+
+The docnumber of the profile.
 
 #### Type declaration
 
@@ -67,6 +79,12 @@ ___
 
 • **notifySuccess**: (`message`: `string`) => `void`
 
+Notify success message.
+
+**`Param`**
+
+The docnumber of the profile.
+
 #### Type declaration
 
 ▸ (`message`): `void`
@@ -88,6 +106,12 @@ ___
 ### notifyWarning
 
 • **notifyWarning**: (`message`: `string`) => `void`
+
+Notify warning message.
+
+**`Param`**
+
+The docnumber of the profile.
 
 #### Type declaration
 

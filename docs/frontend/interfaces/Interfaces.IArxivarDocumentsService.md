@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [Interfaces](../modules/Interfaces.md) / IArxivarDocumentsService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [Interfaces](../modules/Interfaces.md) / IArxivarDocumentsService
 
 # Interface: IArxivarDocumentsService
 
@@ -16,11 +16,25 @@
 
 ### downloadStream
 
-• **downloadStream**: (`data`: `any`, `status`: `any`, `headers`: `any`) => `Promise`<`any`\>
+• **downloadStream**: (`data`: `any`, `status`: `any`, `headers`: `any`) => `Promise`\<`any`\>
+
+This method converts an api call response of type arraybuffer into a file.
+
+**`Param`**
+
+The data of the call.
+
+**`Param`**
+
+The status of the call.
+
+**`Param`**
+
+The headers of the call.
 
 #### Type declaration
 
-▸ (`data`, `status`, `headers`): `Promise`<`any`\>
+▸ (`data`, `status`, `headers`): `Promise`\<`any`\>
 
 This method converts an api call response of type arraybuffer into a file.
 
@@ -30,11 +44,11 @@ This method converts an api call response of type arraybuffer into a file.
 | :------ | :------ | :------ |
 | `data` | `any` | The data of the call. |
 | `status` | `any` | The status of the call. |
-| `headers` | `any` | The headers of the call.    * |
+| `headers` | `any` | The headers of the call. |
 
 ##### Returns
 
-`Promise`<`any`\>
+`Promise`\<`any`\>
 
 The file download Promise.
 
@@ -42,11 +56,17 @@ ___
 
 ### getDocumentByDocnumber
 
-• **getDocumentByDocnumber**: (`docnumber`: `number`) => `Promise`<`any`\>
+• **getDocumentByDocnumber**: (`docnumber`: `number`) => `Promise`\<`any`\>
+
+Download the document linked to a profile.
+
+**`Param`**
+
+The docnumber of the profile.
 
 #### Type declaration
 
-▸ (`docnumber`): `Promise`<`any`\>
+▸ (`docnumber`): `Promise`\<`any`\>
 
 Download the document linked to a profile.
 
@@ -58,7 +78,7 @@ Download the document linked to a profile.
 
 ##### Returns
 
-`Promise`<`any`\>
+`Promise`\<`any`\>
 
 The file download Promise.
 
@@ -66,11 +86,17 @@ ___
 
 ### getRevisionByID
 
-• **getRevisionByID**: (`revisionId`: `number`) => `Promise`<`any`\>
+• **getRevisionByID**: (`revisionId`: `number`) => `Promise`\<`any`\>
+
+Download the document linked to a profile with a specific revision.
+
+**`Param`**
+
+The ID of the revision.
 
 #### Type declaration
 
-▸ (`revisionId`): `Promise`<`any`\>
+▸ (`revisionId`): `Promise`\<`any`\>
 
 Download the document linked to a profile with a specific revision.
 
@@ -82,6 +108,6 @@ Download the document linked to a profile with a specific revision.
 
 ##### Returns
 
-`Promise`<`any`\>
+`Promise`\<`any`\>
 
 The file download Promise.

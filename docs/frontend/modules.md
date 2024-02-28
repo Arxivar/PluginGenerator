@@ -1,4 +1,4 @@
-[ARXivar Documentation](README.md) / Modules
+[ARXivar Documentation](README.md) / Exports
 
 # ARXivar Documentation
 
@@ -13,5 +13,6 @@
 - [ArxivarUserServiceCreator](modules/ArxivarUserServiceCreator.md)
 - [Interfaces](modules/Interfaces.md)
 - [PluginService](modules/PluginService.md)
+- [TaskV2PluginService](modules/TaskV2PluginService.md)
 - [UserService](modules/UserService.md)
 - [WorkflowResourceService](modules/WorkflowResourceService.md)

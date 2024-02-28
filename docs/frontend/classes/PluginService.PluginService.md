@@ -1,4 +1,4 @@
-[ARXivar Documentation](../README.md) / [Modules](../modules.md) / [PluginService](../modules/PluginService.md) / PluginService
+[ARXivar Documentation](../README.md) / [Exports](../modules.md) / [PluginService](../modules/PluginService.md) / PluginService
 
 # Class: PluginService
 
@@ -33,17 +33,29 @@ ___
 
 ### loadPlugins
 
-• **loadPlugins**: `Promise`<`any`[]\>
+• **loadPlugins**: `Promise`\<`any`[]\>
 
 ## Methods
 
 ### getPluginByUser
 
-▸ **getPluginByUser**(`pluginSettingsObject`): `Promise`<`PluginSettingsObjectType`\>
+▸ **getPluginByUser**(`pluginSettingsObject`): `Promise`\<`PluginSettingsObjectType`\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `pluginSettingsObject` | `PluginParamsObjectType` |
+
+#### Returns
+
+`Promise`\<`PluginSettingsObjectType`\>
+
+The customSettings (the global settings of plugin) and userSettings (the userSetting of plugin or widget instance plugin)
 
 **`Deprecated`**
 
-since version 2.4. 
+since version 2.4.
 
 Get the settings of a plugin or of an instance of plugin.
 If you set only the pluginId property in pluginSettingsObject you will get the global customSettings and the global userSettings
@@ -89,18 +101,6 @@ angular
 ]);
 ```
 
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `pluginSettingsObject` | `PluginParamsObjectType` |
-
-#### Returns
-
-`Promise`<`PluginSettingsObjectType`\>
-
-The customSettings (the global settings of plugin) and userSettings (the userSetting of plugin or widget instance plugin)
-
 #### Implementation of
 
 [IPluginService](../interfaces/Interfaces.IPluginService.md).[getPluginByUser](../interfaces/Interfaces.IPluginService.md#getpluginbyuser)
@@ -109,7 +109,7 @@ ___
 
 ### getSettings
 
-▸ **getSettings**(`scope`, `params`): `Promise`<`any`\>
+▸ **getSettings**(`scope`, `params`): `Promise`\<`any`\>
 
 Get the settings of a plugin or of an instance of plugin.
 ```javascript
@@ -162,7 +162,7 @@ angular
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`\<`any`\>
 
 The settings of plugin
 
@@ -184,7 +184,7 @@ ___
 
 ### saveSettings
 
-▸ **saveSettings**(`scope`, `params`, `settings`): `Promise`<`any`\>
+▸ **saveSettings**(`scope`, `params`, `settings`): `Promise`\<`any`\>
 
 Set the settings of a plugin or of an instance of plugin with UPSERT strategy.
 ```javascript
@@ -236,7 +236,7 @@ angular
 
 #### Returns
 
-`Promise`<`any`\>
+`Promise`\<`any`\>
 
 The settings of plugin
 
@@ -248,15 +248,7 @@ ___
 
 ### setPluginByUser
 
-▸ **setPluginByUser**(`pluginSettingsObject`, `userSettingValues`): `Promise`<`void`\>
-
-**`Deprecated`**
-
-since version 2.4
-
-Save the user settings of a plugin or of an instance of plugin.
-If you set only the pluginId property in pluginSettingsObject you will save the global userSettings
-If you set the pluginId, instanceId and desktopId properites in pluginSettingsObject you will save the instace userSettings
+▸ **setPluginByUser**(`pluginSettingsObject`, `userSettingValues`): `Promise`\<`void`\>
 
 #### Parameters
 
@@ -267,9 +259,17 @@ If you set the pluginId, instanceId and desktopId properites in pluginSettingsOb
 
 #### Returns
 
-`Promise`<`void`\>
+`Promise`\<`void`\>
 
 The customSettings (the global settings of plugin) and userSettings (the userSetting of plugin or widget instance plugin)
+
+**`Deprecated`**
+
+since version 2.4
+
+Save the user settings of a plugin or of an instance of plugin.
+If you set only the pluginId property in pluginSettingsObject you will save the global userSettings
+If you set the pluginId, instanceId and desktopId properites in pluginSettingsObject you will save the instace userSettings
 
 #### Implementation of
 
