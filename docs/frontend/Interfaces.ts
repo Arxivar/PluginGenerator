@@ -493,10 +493,10 @@ export type IWidgetSettings = {
 
 export interface ITaskV2PluginService {
 	/**
-	 * Update the settings of a widget bt instance Id.
+	 * Update the settings of a widget by instance Id.
 	 * @param pluginId plugin id
 	 * @param instanceId instance id
-	 * @param propToModify property to modify
+	 * @param propToModify property to modify of  {@link IWidgetSettings}
 	 * @param valueToModify value to modify
 	 */
 
@@ -507,7 +507,7 @@ export interface ITaskV2PluginService {
 		valueToModify: IWidgetSettings[T]
 	): void;
 	/**
-	 * Force the update the outcomes by task Id
+	 * Update the outcomes by task Id
 	 * @param taskId  task Id
 	 */
 	forceUpdateOutcomesByTaskId(taskId: string): void;

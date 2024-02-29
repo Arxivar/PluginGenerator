@@ -21,7 +21,7 @@
 
 ▸ **forceUpdateOutcomesByTaskId**(`taskId`): `void`
 
-Force the update the outcomes by task Id
+Update the outcomes by task Id
 
 #### Parameters
 
@@ -39,7 +39,7 @@ ___
 
 ▸ **updateWidgetSettings**\<`T`\>(`pluginId`, `instanceId`, `propToModify`, `valueToModify`): `void`
 
-Update the settings of a widget bt instance Id.
+Update the settings of a widget by instance Id.
 
 #### Type parameters
 
@@ -53,7 +53,7 @@ Update the settings of a widget bt instance Id.
 | :------ | :------ | :------ |
 | `pluginId` | `string` | plugin id |
 | `instanceId` | `string` | instance id |
-| `propToModify` | `T` | property to modify |
+| `propToModify` | `T` | property to modify of [IWidgetSettings](../modules/Interfaces.md#iwidgetsettings) |
 | `valueToModify` | [`IWidgetSettings`](../modules/Interfaces.md#iwidgetsettings)[`T`] | value to modify |
 
 #### Returns

@@ -1,6 +1,6 @@
 angular.module('arxivar.plugins.directives').directive('<%= props.pluginname.toLowerCase() %>directive', [
-	'pluginService', <%- props.dependenciesString.join(', ') %>'arxivarResourceService', 'workflowResourceService', 'arxivarUserServiceCreator', 'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService', '<%= props.pluginname %>',
-	function (pluginService<%= props.dependencies.join(', ') %>, arxivarResourceService, workflowResourceService, arxivarUserServiceCreator, arxivarRouteService, arxivarDocumentsService, arxivarNotifierService, <%= props.pluginname %>){
+	'pluginService', <%- props.dependenciesString.join(', ') %>'arxivarResourceService', 'workflowResourceService', 'arxivarUserServiceCreator', 'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService', 'taskV2PluginService', '<%= props.pluginname %>',
+	function (pluginService<%= props.dependencies.join(', ') %>, arxivarResourceService, workflowResourceService, arxivarUserServiceCreator, arxivarRouteService, arxivarDocumentsService, arxivarNotifierService, taskV2PluginService, <%= props.pluginname %>){
     return {
         restrict: 'E',
         scope: {
