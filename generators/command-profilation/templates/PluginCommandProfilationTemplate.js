@@ -1,7 +1,9 @@
+/* eslint-disable angular/di-unused */
+
 angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['PluginProfilation', <%-props.dependenciesString.join(', ') %>'arxivarResourceService', 'arxivarUserServiceCreator', 'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService',
   function ( PluginProfilation<%= props.dependencies.join(', ') %>, arxivarResourceService, arxivarUserServiceCreator, arxivarRouteService, arxivarDocumentsService, arxivarNotifierService) {
     <%= props.explanations.requiredSettings.MAIN %>
-      var requiredSettings = {
+      const requiredSettings = {
         id: '<%= props.id %>',
         <%= props.explanations.requiredSettings.id %>
         name: '<%= props.pluginname %>',
@@ -20,20 +22,25 @@ angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['PluginPro
       };
 
     <%= props.explanations.customSettings.MAIN %>
-      var customSettings = [
+      const customSettings = [
         //{name: '', description: '', defaultValue:'', type: 'string'},
       ];
 
     <%= props.explanations.userSettings.MAIN %>
-      var userSettings = [
+      const userSettings = [
         //{name: '', description: '', defaultValue:'', type: 'string'},
       ];
 
-    var myPlugin = new PluginProfilation(requiredSettings, customSettings, userSettings);
+    const myPlugin = new PluginProfilation(requiredSettings, customSettings, userSettings);
 
     <%= props.explanations.pluginCommandProfilation.canRun %>
       myPlugin.canRun = function (params) {
-        return params.hasOwnProperty('fields') && params.fields.length >= 1 ? Promise.resolve(true) : Promise.resolve(arxivarNotifierService.notifyWarning('Please select an item'));
+        if (params.hasOwnProperty('fields') && params.fields.length >= 1) {
+          return Promise.resolve(true);
+        } else {
+          arxivarNotifierService.notifyWarning('No fields');
+          return Promise.resolve(false);
+        }
       };
 
     <%= props.explanations.pluginCommandProfilation.run %>

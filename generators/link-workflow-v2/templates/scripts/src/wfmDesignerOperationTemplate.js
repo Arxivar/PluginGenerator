@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-constructor */
 'use strict';
 
-var pluginId = '<%= props.id %>';
+const pluginId = '<%= props.id %>';
 class <%= props.pluginname %> {
 	constructor(<%- props.linkServicesFrontJs.join(', ') %>) {
 	<% for (var i = 0; i < props.linkServicesFrontJs.length; i++) { %>

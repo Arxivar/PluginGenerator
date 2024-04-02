@@ -1,3 +1,4 @@
+/* eslint-disable angular/di-unused */
 import {widgetType} from './<%= props.pluginname %>';
 import { LoDashStatic } from 'lodash';
 
@@ -11,7 +12,7 @@ angular.module('arxivar.plugins.directives').directive('<%= props.pluginname.toL
 			taskDto: '=?'
 		},
 		templateUrl: './Scripts/plugins/<%= props.pluginname %>/<%= props.pluginname %>.html',
-		link: (scope: IScopeWidgetTask, element, attrs, ctrls) => {
+		link: (scope: IScopeWidgetTask, element: JQuery) => {
 			const $mainContainer = element.find('div.arx-' + <%= props.pluginname %>.plugin.name.toLowerCase());
 			if ($mainContainer.length > 0) {
 				$mainContainer.addClass(scope.instanceId);

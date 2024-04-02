@@ -1,8 +1,10 @@
+/* eslint-disable angular/di-unused */
+
 angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['PluginCommand', <%-props.dependenciesString.join(', ') %>'arxivarResourceService', 'arxivarUserServiceCreator', 'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService', 'taskV2PluginService',
   function ( PluginCommand<%= props.dependencies.join(', ') %>, arxivarResourceService, arxivarUserServiceCreator, arxivarRouteService, arxivarDocumentsService, arxivarNotifierService, taskV2PluginService) {
 
     <%= props.explanations.requiredSettings.MAIN %>
-      var requiredSettings = {
+      const requiredSettings = {
         id: '<%= props.id %>',
         <%= props.explanations.requiredSettings.id %>
         name: '<%= props.pluginname %>',
@@ -23,20 +25,25 @@ angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['PluginCom
       };
 
     <%= props.explanations.customSettings.MAIN %>
-      var customSettings = [
+      const customSettings = [
         //{name: '', description: '', defaultValue:'', type: 'string'},
       ];
 
     <%= props.explanations.userSettings.MAIN %>
-      var userSettings = [
+      const userSettings = [
         //{name: '', description: '', defaultValue:'', type: 'string'},
       ];
 
-    var myPlugin = new PluginCommand(requiredSettings, customSettings, userSettings);
+    const myPlugin = new PluginCommand(requiredSettings, customSettings, userSettings);
 
     <%= props.explanations.pluginCommand.canRun %>
       myPlugin.canRun = function (params) {
-        return params.hasOwnProperty('docnumbers') && params.docnumbers.length >= 1 ? Promise.resolve(true) : Promise.resolve(arxivarNotifierService.notifyWarning('Please select an item'));
+        if (params.hasOwnProperty('docnumbers') && params.docnumbers.length >= 1) {
+          return Promise.resolve(true);
+        } else {
+          arxivarNotifierService.notifyWarning('Please select an item');
+          return Promise.resolve(false);
+        }
       };
 
     <%= props.explanations.pluginCommand.run %>

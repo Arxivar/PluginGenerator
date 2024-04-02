@@ -1,3 +1,4 @@
+/* eslint-disable angular/di-unused */
 import { LoDashStatic } from 'lodash';
 
 angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['PluginProfilation', <%- props.dependenciesString.join(', ') %>'arxivarResourceService', 'arxivarUserServiceCreator', 'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService',
@@ -29,7 +30,12 @@ const myPlugin = new PluginProfilation(requiredSettings, customSettings, userSet
 
 <%= props.explanations.pluginCommandProfilation.canRun %>
 	myPlugin.canRun = (params) => {
-		return params.hasOwnProperty('fields') && params.fields.length >= 1 ? Promise.resolve(true) : Promise.resolve(arxivarNotifierService.notifyWarning('Please select an item'));
+		if (params.hasOwnProperty('fields') && params.fields.length >= 1) {
+			return Promise.resolve(true);
+		} else {
+			arxivarNotifierService.notifyWarning('No fields');
+			return Promise.resolve(false);
+		}
 	};
 
 <%= props.explanations.pluginCommandProfilation.run %>
