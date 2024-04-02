@@ -1,6 +1,6 @@
 angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['PluginWidgetTask', function (PluginWidgetTask) {
     <%= props.explanations.requiredSettings.MAIN %>
-    var requiredSettings = {
+    const requiredSettings = {
         id: '<%= props.id %>', <%= props.explanations.requiredSettings.id %>
         name: '<%= props.pluginname %>', <%= props.explanations.requiredSettings.pluginname %>
         icon: '<%= props.icon %>', <%= props.explanations.requiredSettings.icon %>
@@ -12,15 +12,15 @@ angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['PluginWid
     };
 
     <%= props.explanations.customSettings.MAIN %>
-	var customSettings = [
+	const customSettings = [
 	//{name: '', description: '', defaultValue:'', type: 'string'},
 	];
 
     <%= props.explanations.userSettings.MAIN %>
-	var userSettings = [
+	const userSettings = [
 	//{name: '', description: '', defaultValue:'', type: 'string'},
 	];
 
-    var myPlugin = new PluginWidgetTask(requiredSettings, customSettings, userSettings);
+    const myPlugin = new PluginWidgetTask(requiredSettings, customSettings, userSettings);
     return { plugin: myPlugin };
 }]);

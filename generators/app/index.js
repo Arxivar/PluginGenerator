@@ -385,7 +385,7 @@ var AppGenerator = module.exports = class extends Generator {
     {
       type: 'input',
       name: 'icon',
-      message: 'FontAwesome icon for command (https://fontawesome.com/icons up to version 5.10.0)',
+      message: 'FontAwesome icon for command (https://fontawesome.com/icons up to version 6.5.1)',
       default: function (answers) {
         return 'fas fa-puzzle-piece';
       }
@@ -530,7 +530,7 @@ var AppGenerator = module.exports = class extends Generator {
     {
       type: 'input',
       name: 'icon',
-      message: 'FontAwesome icon for command (https://fontawesome.com/icons up to version 5.10.0)',
+      message: 'FontAwesome icon for command (https://fontawesome.com/icons up to version 6.5.1)',
       default: function (answers) {
         return 'far fa-puzzle-piece';
       }

@@ -1,6 +1,6 @@
 angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['PluginRoute', function (PluginRoute) {
     <%= props.explanations.requiredSettings.MAIN %>
-    var requiredSettings = {
+    const requiredSettings = {
         id: '<%= props.id %>', <%= props.explanations.requiredSettings.id %>
         name: '<%= props.pluginname %>', <%= props.explanations.requiredSettings.pluginname %>
         icon: '<%= props.icon %>', <%= props.explanations.requiredSettings.icon %>
@@ -13,15 +13,15 @@ angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['PluginRou
     };
 
     <%= props.explanations.customSettings.MAIN %>
-	var customSettings = [
+	const customSettings = [
 	//{name: '', description: '', defaultValue:'', type: 'string'},
 	];
 
     <%= props.explanations.userSettings.MAIN %>
-	var userSettings = [
+	const userSettings = [
 	//{name: '', description: '', defaultValue:'', type: 'string'},
 	];
 	
-    var myPlugin = new PluginRoute(requiredSettings, customSettings, userSettings);
+    const myPlugin = new PluginRoute(requiredSettings, customSettings, userSettings);
     return { plugin: myPlugin };
 }]);
