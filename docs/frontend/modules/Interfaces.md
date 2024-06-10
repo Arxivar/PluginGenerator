@@ -17,6 +17,7 @@
 - [IArxivarUserServiceCreator](../interfaces/Interfaces.IArxivarUserServiceCreator.md)
 - [IHttpOptions](../interfaces/Interfaces.IHttpOptions.md)
 - [IPluginService](../interfaces/Interfaces.IPluginService.md)
+- [ITaskV2Dto](../interfaces/Interfaces.ITaskV2Dto.md)
 - [ITaskV2PluginService](../interfaces/Interfaces.ITaskV2PluginService.md)
 - [IUrlFilter](../interfaces/Interfaces.IUrlFilter.md)
 - [IUrlSearchParams](../interfaces/Interfaces.IUrlSearchParams.md)

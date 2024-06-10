@@ -512,3 +512,38 @@ export interface ITaskV2PluginService {
 	 */
 	forceUpdateOutcomesByTaskId(taskId: string): void;
 }
+
+export interface ITaskV2Dto {
+	id: string;
+	processTaskInfo: {
+		id: string;
+		hasCustomDiagram: boolean;
+		priority: number;
+		creationDateUtc: string;
+		startDateUtc: string | null;
+		description: string;
+		detail: string;
+		diagramId: string;
+		diagramName: string;
+		diagramRevision: number;
+	};
+	diagramObjectId: string;
+	activationDate: string | null;
+	expirationDate: string;
+	taskName: string;
+	taskDescription: string;
+	user: { dmUtentiId: number; description: string; delegaId: number | null };
+	status: number;
+	read: boolean;
+	priority: number;
+	takeChargeSettings: { takeCharge: boolean; takeChargeDateTimeUtc: string | null };
+	passwordOnConclude: boolean;
+	groupId: string | null;
+	defaultOutcome: { id: string; name: string };
+	externalId: string;
+	executers: { executer: { dmUtentiId: number; description: string; delegaId: number | null }; status: number }[];
+	notes: boolean;
+	hasPrimary: boolean;
+	hasSecondary: boolean;
+	hasAttachments: boolean;
+}

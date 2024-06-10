@@ -15,6 +15,7 @@ declare global {
     type IUserService = arxInterfaces.IUserService;
     type IScopeWidgetDesktop = angular.IScope & { instanceId: string; desktopId: string;[propScope: string]: any };
     type IScopeWidgetTask = angular.IScope & { instanceId: string; desktopId: string;[propScope: string]: any };
+    type IScopeWidgetTaskV2 = angular.IScope & { instanceId: string; taskDto: arxInterfaces.ITaskV2Dto;[propScope: string]: any };
     type IRequiredSettings = {
         id: string,
         name: string,
