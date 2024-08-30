@@ -20,8 +20,8 @@ angular
 			templateUrl: 'WidgetDesktopPlugin.html',
 			link: function(scope) {
 				var docnumber = 100;
-        return arxivarDocumentsService.getDocumentByDocnumber(docnumber)
-					.then(({data,status, headers})=>arxivarDocumentsService.downloadStream(data,status, headers));             
+				return arxivarDocumentsService.getDocumentByDocnumber(docnumber)
+				.then(({data,status, headers})=>arxivarDocumentsService.downloadStream(data,status, headers));             
 			}
 		};
 	}
