@@ -26,7 +26,7 @@
 	  "inquirer-checkbox-plus-prompt": "^1.0.1",
 	  "lodash": "^4.17.21",
 	  "node-uuid": "^1.4.7",
-	  "yeoman-generator": "^2.0.5",
+	  "yeoman-generator": "^5.7.0",
 	  "yosay": "^1.0.0"
 	},
 	"devDependencies": {
@@ -43,7 +43,7 @@
 	  "gulp-plumber": "^1.0.0",
 	  "moment": "^2.29.1",
 	  "yeoman-assert": "^2.0.0",
-	  "yeoman-test": "^1.0.0"
+	  "yeoman-test": "^6.3.0"
 	},
 	"eslintConfig": {
 	  "extends": "xo-space",
