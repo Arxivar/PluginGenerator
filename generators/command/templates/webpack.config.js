@@ -34,7 +34,6 @@ module.exports = {
 								'corejs': '3'
 							}
 							],
-							['@babel/preset-react'],
 							['@babel/preset-typescript', {
 								'allExtensions': true,
 								'isTSX': true
