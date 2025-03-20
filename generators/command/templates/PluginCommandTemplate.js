@@ -1,6 +1,6 @@
 /* eslint-disable angular/di-unused */
 
-angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['PluginCommand', <%-props.dependenciesString.join(', ') %>'arxivarResourceService', 'arxivarUserServiceCreator', 'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService', 'taskV2PluginService',
+angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['PluginCommand', <%- props.dependenciesString.join(', ') %>'arxivarResourceService', 'arxivarUserServiceCreator', 'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService', 'taskV2PluginService',
   function ( PluginCommand<%= props.dependencies.join(', ') %>, arxivarResourceService, arxivarUserServiceCreator, arxivarRouteService, arxivarDocumentsService, arxivarNotifierService, taskV2PluginService) {
 
     <%= props.explanations.requiredSettings.MAIN %>
