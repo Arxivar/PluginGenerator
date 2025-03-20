@@ -3,7 +3,7 @@ import { widgetType } from './<%= props.pluginname %>';
 import { LoDashStatic } from 'lodash';
 
 angular.module('arxivar.plugins.directives').directive('<%= props.pluginname.toLowerCase() %>directive', [
-	'pluginService', <% - props.dependenciesString.join(', ') %> 'arxivarResourceService', 'workflowResourceService', 'arxivarUserServiceCreator', 'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService', 'taskV2PluginService', '<%= props.pluginname %>',
+	'pluginService', <%- props.dependenciesString.join(', ') %> 'arxivarResourceService', 'workflowResourceService', 'arxivarUserServiceCreator', 'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService', 'taskV2PluginService', '<%= props.pluginname %>',
 	(pluginService: IPluginService<%= props.dependenciesType.join(', ') %>, arxivarResourceService: IArxivarResourceService, workflowResourceService: IWorkflowResourceService, arxivarUserServiceCreator: IArxivarUserServiceCreator, arxivarRouteService: IArxivarRouteService, arxivarDocumentsService: IArxivarDocumentsService, arxivarNotifierService: IArxivarNotifierService, taskV2PluginService: ITaskV2PluginService, <%= props.pluginname %>: widgetType) => {
 	return {
 		restrict: 'E',

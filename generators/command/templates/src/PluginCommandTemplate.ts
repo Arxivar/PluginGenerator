@@ -2,7 +2,7 @@
 import { LoDashStatic } from 'lodash';
 
 angular.module('arxivar.plugins').factory('<%= props.pluginname %>', [
-	'PluginCommand', <% - props.dependenciesString.join(', ') %> 'arxivarResourceService', 'arxivarUserServiceCreator', 'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService', 'taskV2PluginService',
+	'PluginCommand', <%- props.dependenciesString.join(', ') %> 'arxivarResourceService', 'arxivarUserServiceCreator', 'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService', 'taskV2PluginService',
 	(PluginCommand: IPluginCommand<%= props.dependenciesType.join(', ') %>, arxivarResourceService: IArxivarResourceService, arxivarUserServiceCreator: IArxivarUserServiceCreator, arxivarRouteService: IArxivarRouteService, arxivarDocumentsService: IArxivarDocumentsService, arxivarNotifierService: IArxivarNotifierService, taskV2PluginService: ITaskV2PluginService) => {
 
 	<%= props.explanations.requiredSettings.MAIN %>
