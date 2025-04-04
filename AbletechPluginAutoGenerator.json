@@ -448,5 +448,63 @@
         "dependencies": "$uibModal moment $document $window $rootScope $http $filter $timeout _ $q",
         "typescript": true,
         "arxPath": "C:/Git/ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins/testAutoWidgetTaskV2TSDependencies"
+    },
+    {
+        "pluginType": "arxivar-plugins:command-task '--auto'",
+        "pluginname": "testAutoCommandTask",
+        "description": null,
+        "author": null,
+        "id": null,
+        "label": null,
+        "icon": null,
+        "minVersion": null,
+        "requireRefresh": false,
+        "injectParams": false,
+        "dependencies": "",
+        "typescript": false
+    },
+    {
+        "pluginType": "arxivar-plugins:command-task '--auto'",
+        "pluginname": "testAutoCommandTaskDependencies",
+        "description": null,
+        "author": null,
+        "id": null,
+        "label": null,
+        "icon": null,
+        "minVersion": null,
+        "requireRefresh": false,
+        "injectParams": false,
+        "dependencies": "$uibModal moment $document $window $rootScope $http $filter $timeout _ $q",
+        "typescript": false
+    },
+    {
+        "pluginType": "arxivar-plugins:command-task '--auto'",
+        "pluginname": "testAutoCommandTaskTS",
+        "description": null,
+        "author": null,
+        "id": null,
+        "label": null,
+        "icon": null,
+        "minVersion": null,
+        "requireRefresh": false,
+        "injectParams": false,
+        "dependencies": "",
+        "typescript": true,
+        "arxPath": "C:/Git/ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins/testAutoCommandTaskTS"
+    },
+    {
+        "pluginType": "arxivar-plugins:command-task '--auto'",
+        "pluginname": "testAutoCommandTaskTSDependencies",
+        "description": null,
+        "author": null,
+        "id": null,
+        "label": null,
+        "icon": null,
+        "minVersion": null,
+        "requireRefresh": false,
+        "injectParams": false,
+        "dependencies": "$uibModal moment $document $window $rootScope $http $filter $timeout _ $q",
+        "typescript": true,
+        "arxPath": "C:/Git/ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins/testAutoCommandTaskTSDependencies"
     }
 ]
