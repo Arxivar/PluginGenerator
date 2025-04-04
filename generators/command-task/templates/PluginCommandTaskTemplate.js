@@ -43,7 +43,7 @@ angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['PluginCom
           return Promise.resolve(false);
         }
       };
-
+//To properly update the grid, this function must return `true`.
     <%= props.explanations.pluginCommandTask.run %>
       myPlugin.run = function (params) {
         return myPlugin.canRun(params).then(function (canRun) {

@@ -14,7 +14,13 @@ module.exports = class extends AppGenerator {
 
   prompting() {
     var prompts = this._requiredSettings({
-      exclude: ['injectParams', 'advConfig']
+      exclude: ['injectParams', 'advConfig'],
+      minVersion: {
+        type: 'input',
+        name: 'minVersion',
+        message: 'Minimum portal version supported?',
+        default: '2.12.0'
+      }
     });
 
     const resolvedValue = this._getResolvedValues(prompts)

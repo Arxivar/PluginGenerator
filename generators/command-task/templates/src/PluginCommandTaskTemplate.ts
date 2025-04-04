@@ -39,6 +39,7 @@ const myPlugin = new PluginCommandTask(requiredSettings, customSettings, userSet
 		}
 	};
 
+//To properly update the grid, this function must return `true`.
 <%= props.explanations.pluginCommandTask.run %>
 	myPlugin.run = (params) => {
 		return myPlugin.canRun(params).then((canRun) => {
