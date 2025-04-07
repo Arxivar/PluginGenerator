@@ -261,7 +261,7 @@ var AppGenerator = module.exports = class extends Generator {
       'Type ' + chalk.green('yo arxivar-plugins:command-profilation') + ' in order to create ' + chalk.green('command-profilation plugin')
     );
     this.log(
-      'Type ' + chalk.green('yo arxivar-plugins:command-task') + ' in order to create ' + chalk.green('command-task plugin')
+      'Type ' + chalk.green('yo arxivar-plugins:command-task-v2') + ' in order to create ' + chalk.green('command-task-v2 plugin')
     );
     this.log(
       'Type ' + chalk.green('yo arxivar-plugins:route') + ' in order to create ' + chalk.green('route plugin')
@@ -402,20 +402,7 @@ var AppGenerator = module.exports = class extends Generator {
       name: 'minVersion',
       message: 'Minimum portal version supported?',
       default: '2.0.0'
-    },
-    {
-      type: 'list',
-      name: 'requireRefresh',
-      message: 'Does your plugin require grid data refresh?',
-      default: 'no',
-      choices: ['no', 'yes'],
-      validate: function (requireRefreshString) {
-        return requireRefreshString === 'yes' || requireRefreshString === 'no';
-      },
-      filter: function (requireRefreshString) {
-        return requireRefreshString === 'yes';
-      }
-    },
+    },  
     {
       type: 'list',
       name: 'injectParams',

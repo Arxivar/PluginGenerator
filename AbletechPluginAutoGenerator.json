@@ -450,7 +450,7 @@
         "arxPath": "C:/Git/ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins/testAutoWidgetTaskV2TSDependencies"
     },
     {
-        "pluginType": "arxivar-plugins:command-task '--auto'",
+        "pluginType": "arxivar-plugins:command-task-v2 '--auto'",
         "pluginname": "testAutoCommandTask",
         "description": null,
         "author": null,
@@ -464,7 +464,7 @@
         "typescript": false
     },
     {
-        "pluginType": "arxivar-plugins:command-task '--auto'",
+        "pluginType": "arxivar-plugins:command-task-v2 '--auto'",
         "pluginname": "testAutoCommandTaskDependencies",
         "description": null,
         "author": null,
@@ -478,7 +478,7 @@
         "typescript": false
     },
     {
-        "pluginType": "arxivar-plugins:command-task '--auto'",
+        "pluginType": "arxivar-plugins:command-task-v2 '--auto'",
         "pluginname": "testAutoCommandTaskTS",
         "description": null,
         "author": null,
@@ -493,7 +493,7 @@
         "arxPath": "C:/Git/ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins/testAutoCommandTaskTS"
     },
     {
-        "pluginType": "arxivar-plugins:command-task '--auto'",
+        "pluginType": "arxivar-plugins:command-task-v2 '--auto'",
         "pluginname": "testAutoCommandTaskTSDependencies",
         "description": null,
         "author": null,
