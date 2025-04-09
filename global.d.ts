@@ -107,6 +107,11 @@ declare global {
         canRun: (params: ICommandParams) => Promise<boolean>,
         run: (params: ICommandParams) => Promise<any>
     }
+    interface IPluginCommandTask extends IPluginBase {
+        new(requiredSettings: IRequiredSettings, customSettings: ICustomSettings[], userSettings: IUserSettings[]): IPluginCommand,
+        canRun: (params: ICommandParams) => Promise<boolean>,
+        run: (params: ICommandParams) => Promise<any>
+    }
     interface IPluginProfilation extends IPluginBase {
         new(requiredSettings: IRequiredSettings, customSettings: ICustomSettings[], userSettings: IUserSettings[]): IPluginProfilation,
         canRun: (params: IProfilationCommandParams) => Promise<boolean>,

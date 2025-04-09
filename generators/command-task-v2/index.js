@@ -90,7 +90,7 @@ module.exports = class extends AppGenerator {
       );
       var pluginCommandFilename = this.props.pluginname + 'PluginCommandTask.ts';
       this.fs.copyTpl(
-        this.templatePath('src/PluginCommandTemplate.ts'),
+        this.templatePath('src/PluginCommandTaskTemplate.ts'),
         this.destinationPath('src/' + pluginCommandFilename), {
           props: this.props
         }
