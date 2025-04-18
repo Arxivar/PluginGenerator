@@ -44,8 +44,9 @@ const myPlugin = new PluginCommandTask(requiredSettings, customSettings, userSet
 	myPlugin.run = (params) => {
 		return myPlugin.canRun(params).then((canRun) => {
 			if (canRun) {
-				alert('Hello <%= props.label %>');
+				alert('Hello <%= props.label %>');				
 			}
+			return false;
 		});
 	};
 

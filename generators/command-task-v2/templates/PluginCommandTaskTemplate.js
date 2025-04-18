@@ -50,6 +50,7 @@ angular.module('arxivar.plugins').factory('<%= props.pluginname %>', ['PluginCom
           if (canRun) {
             alert('Hello <%= props.label %>');
           }
+          return false;
         });
       };
 
