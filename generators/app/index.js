@@ -323,8 +323,8 @@ var AppGenerator = module.exports = class extends Generator {
         run: '// This function is a promise with asyncronous run logic. Input parameters: array of docnumbers (params.docnumbers), flag locked (params.locked only in F2) \n\t// Output parameter type expected: Promise of any'
       },
       pluginCommandTask: {
-        canRun: '// This function is a promise with asyncronous logic to determine if this plugin can run. Input parameters: array of docnumbers (params.docnumbers), flag locked (params.locked only in F2) \n\t// Output parameter: Promise of bool',
-        run: '// This function is a promise with asyncronous run logic. Input parameters: array of docnumbers (params.docnumbers), flag locked (params.locked only in F2) \n\t// Output parameter type expected: Promise of any'
+        canRun: '// This function is a promise with asyncronous logic to determine if this plugin can run. Input parameters: array of tasks (params.tasks) \n\t// Output parameter: Promise of bool',
+        run: '// This function is a promise with asynchronous run logic. Input parameters: an array of tasks (params.tasks). Output parameter type expected: Promise of boolean (true to indicate the need for a grid refresh)'
       },
       pluginRoute: {
         inputdesc: '//To pass a parameter to the routePlugin add the queryParams parameter to the querystring',
