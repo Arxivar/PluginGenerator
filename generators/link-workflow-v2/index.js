@@ -1,10 +1,8 @@
 'use strict';
 
-// var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
-// var yosay = require('yosay');
 var path = require('path');
-var uuid = require('node-uuid');
+const { v4: uuidv4 } = require('uuid');
 var _ = require('lodash');
 
 String.prototype.capitalize = function () {
@@ -127,12 +125,12 @@ module.exports = class extends AppGenerator {
         that.props.paramsCommentEx = '';
         that.props.paramsCommentParams = '';
         that.props.paramsCommentParamsEx = '';
-        that.props.projectId = uuid.v4();
-        that.props.nestedProject = uuid.v4();
-        that.props.secondProjectId = uuid.v4();
-        that.props.guid = uuid.v4();
-        that.props.nestedGuid = uuid.v4();
-        that.props.presolutionGuid = uuid.v4();
+        that.props.projectId = uuidv4();
+        that.props.nestedProject = uuidv4();
+        that.props.secondProjectId = uuidv4();
+        that.props.guid = uuidv4();
+        that.props.nestedGuid = uuidv4();
+        that.props.presolutionGuid = uuidv4();
         that.props.explanations = that._getPluginsExplanations();
         //that.props.servicesString = that.props.linkServices ? that.props.linkServices.map(i => '\'' + i + '\'') || [] : [];
 
@@ -213,32 +211,32 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('ClassTemplate.cs'),
         this.destinationPath(this.props.pluginname + '/' + classFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + classFilename));
 
       this.fs.copyTpl(
         this.templatePath('ClassLibraryTemplate.csproj'),
         this.destinationPath(this.props.pluginname + '/' + classLibraryFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + classLibraryFilename));
 
       this.fs.copyTpl(
         this.templatePath('postbuild.bat'),
         this.destinationPath('postbuild.bat'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: postbuild.bat'));
 
       this.fs.copyTpl(
         this.templatePath('solutionTemplate.sln'),
         this.destinationPath(solution), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + solution));
       this.log(chalk.green('********** ' + pluginName + ' folder created into plugins-link **********'));
@@ -259,8 +257,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('ClassTemplate.cs'),
         this.destinationPath(this.props.pluginname + '/' + classFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + classFilename));
 
@@ -268,32 +266,32 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('ClassLibraryTemplateAdvTs.csproj'),
         this.destinationPath(this.props.pluginname + '/' + classLibraryFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + classLibraryFilename));
 
       this.fs.copyTpl(
         this.templatePath('prebuildAdvTs.bat'),
         this.destinationPath('prebuild.bat'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: prebuild.bat'));
 
       this.fs.copyTpl(
         this.templatePath('postbuildAdvTs.bat'),
         this.destinationPath('postbuild.bat'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: postbuild.bat'));
 
       this.fs.copyTpl(
         this.templatePath('solutionTemplateAdvTs.sln'),
         this.destinationPath(solution), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + solution));
 
@@ -306,32 +304,32 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('scripts/src/WfmDesignerOperationTemplate.ts'),
         this.destinationPath('scripts/src/' + controllerFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + controllerFilename));
 
       this.fs.copyTpl(
         this.templatePath('scripts/src/WfmDesignerOperationTemplateTs.html'),
         this.destinationPath('scripts/src/' + pageLinkFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + pageLinkFilename));
 
       this.fs.copyTpl(
         this.templatePath('scripts/src/WfmDesignerStyleTs.css'),
         this.destinationPath('scripts/src/' + styleFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + styleFilename));
 
       this.fs.copyTpl(
         this.templatePath(basePath + 'global.d.ts'),
         this.destinationPath('scripts/global.d.ts'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: global.d.ts'));
 
@@ -339,8 +337,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath(interfacePath + 'Interfaces.ts'),
         this.destinationPath('scripts/Interfaces.ts'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: Interfaces.ts'));
 
@@ -348,8 +346,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('.babelrc'),
         this.destinationPath('.babelrc'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: .babelrc'));
 
@@ -357,8 +355,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('.eslintrc'),
         this.destinationPath('.eslintrc'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: .eslintrc'));
 
@@ -366,8 +364,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('package.json'),
         this.destinationPath('package.json'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: package.json'));
 
@@ -375,8 +373,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('postcss.config.js'),
         this.destinationPath('postcss.config.js'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: postcss.config.js'));
 
@@ -384,8 +382,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('tsconfig.json'),
         this.destinationPath('tsconfig.json'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: tsconfig.json'));
 
@@ -393,8 +391,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('webpack.config.js'),
         this.destinationPath('webpack.config.js'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: webpack.config.js'));
       this.log(chalk.green('********** ' + pluginName + ' folder created into plugins-link, run npm install there **********'));
@@ -417,8 +415,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('ClassTemplate.cs'),
         this.destinationPath(this.props.pluginname + '/' + classFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + classFilename));
 
@@ -426,16 +424,16 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('ClassLibraryTemplateAdvJs.csproj'),
         this.destinationPath(this.props.pluginname + '/' + classLibraryFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + classLibraryFilename));
 
       this.fs.copyTpl(
         this.templatePath('postbuildAdvJs.bat'),
         this.destinationPath('postbuild.bat'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: postbuild.bat'));
 
@@ -443,8 +441,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('solutionTemplateAdvJs.sln'),
         this.destinationPath(solution), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + solution));
 
@@ -457,16 +455,16 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('scripts/src/WfmDesignerOperationTemplate.js'),
         this.destinationPath('scripts/src/' + controllerFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + controllerFilename));
 
       this.fs.copyTpl(
         this.templatePath('scripts/src/WfmDesignerOperationTemplateJs.html'),
         this.destinationPath('scripts/src/' + pageLinkFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + pageLinkFilename));
 
@@ -474,8 +472,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('scripts/src/wfmDesignerStyleJs.css'),
         this.destinationPath('scripts/src/' + styleFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + styleFilename));
 

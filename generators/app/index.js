@@ -1,12 +1,9 @@
-'use strict';
-var chalk = require('chalk');
-// var yosay = require('yosay');
-
-var uuid = require('node-uuid');
-var _ = require('lodash');
-var path = require('path');
+const chalk = require('chalk');
+const { v4: uuidv4 } = require('uuid');
+const _ = require('lodash');
+const path = require('path');
 const Generator = require('yeoman-generator');
-var fuzzy = require('fuzzy');
+const fuzzy = require('fuzzy');
 
 
 
@@ -192,35 +189,25 @@ const linkServices = [
 
 const linkServicesFront = ['workflowResourceService', '_', 'arxivarResourceService', 'arxivarUserServiceCreator', 'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService', 'moment', '$timeout', '$document', '$window', '$rootScope', '$filter', '$q', '$uibModal'];
 
-function searchService(answers, input) {
-  input = input || '';
-  return new Promise(function (resolve) {
-    var fuzzyResult = fuzzy.filter(input, linkServices);
-    var data = fuzzyResult.map(function (element) {
-      return element.original;
-    });
-    resolve(data);
-  });
+function searchService(answers, input = '') {
+  const fuzzyResult = fuzzy.filter(input, linkServices);
+  const data = fuzzyResult.map(e => e.original);
+  return Promise.resolve(data);
 }
 
-function searchServiceFront(answers, input) {
-  input = input || '';
-  return new Promise(function (resolve) {
-    var fuzzyResult = fuzzy.filter(input, linkServicesFront);
-    var data = fuzzyResult.map(function (element) {
-      return element.original;
-    });
-    resolve(data);
-  });
+function searchServiceFront(answers, input = '') {
+  const fuzzyResult = fuzzy.filter(input, linkServicesFront);
+  const data = fuzzyResult.map(e => e.original);
+  return Promise.resolve(data);
 }
 
-var AppGenerator = module.exports = class extends Generator {
+module.exports = class AppGenerator extends Generator {
   //all function declared in this class will be automatically launched in sequence!!! Except those with the underscore in front (Yeoman docs)
 
   constructor(...args) {
     super(...args);
 
-    if (this.options && this.options.destinationRoot) {
+    if (this.options?.destinationRoot) {
       this.log('Set destinationRoot with: ' + this.options.destinationRoot);
       this.destinationRoot(this.options.destinationRoot);
     }
@@ -228,12 +215,11 @@ var AppGenerator = module.exports = class extends Generator {
 
 
   _shouldPrompt() {
-    return this._args === undefined || this._args === null || !this._args.includes('--auto');
+    return !this._args || !this._args.includes('--auto');
   }
 
   _getResolvedValues(prompts) {
-    const shouldPrompt = this._shouldPrompt();
-    if (shouldPrompt) {
+    if (this._shouldPrompt()) {
       return this.prompt(prompts);
     }
     Object.keys(this.options.arxivarPluginSettings).forEach(key => {
@@ -373,12 +359,12 @@ var AppGenerator = module.exports = class extends Generator {
       type: 'input',
       name: 'id',
       message: 'Your plugin unique identifier',
-      default: uuid.v4(),
+      default: uuidv4(),
       validate: function (guid) {
         if (_.isEmpty(_.trim(guid)) === false) {
           return true;
         }
-        return 'Invalid plugin identifier. Try something like: ' + uuid.v4();
+        return 'Invalid plugin identifier. Try something like: ' + uuidv4();
       }
     },
     {
@@ -402,7 +388,7 @@ var AppGenerator = module.exports = class extends Generator {
       name: 'minVersion',
       message: 'Minimum portal version supported?',
       default: '2.0.0'
-    },  
+    },
     {
       type: 'list',
       name: 'injectParams',
@@ -505,12 +491,12 @@ var AppGenerator = module.exports = class extends Generator {
       type: 'input',
       name: 'id',
       message: 'Your plugin unique identifier',
-      default: uuid.v4(),
+      default: uuidv4(),
       validate: function (guid) {
         if (_.isEmpty(_.trim(guid)) === false) {
           return true;
         }
-        return 'Invalid plugin identifier. Try something like: ' + uuid.v4();
+        return 'Invalid plugin identifier. Try something like: ' + uuidv4();
       }
     },
     {

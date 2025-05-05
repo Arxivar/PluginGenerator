@@ -9,7 +9,7 @@ var AppGenerator = require('../app');
 
 module.exports = class extends AppGenerator {
   initializing() {
-    this.log('Running ' + chalk.red('COMMAND') + ' generator!');
+    this.log('Running ' + chalk.red('COMMAND TASK V2') + ' generator!');
   }
 
   prompting() {
@@ -92,8 +92,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('src/PluginCommandTaskTemplate.ts'),
         this.destinationPath('src/' + pluginCommandFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + pluginCommandFilename));
 
@@ -101,8 +101,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('READMELIBS.txt'),
         this.destinationPath('libs/README.txt'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Create folder libs'));
 
@@ -110,8 +110,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath(basePath + '.babelrc'),
         this.destinationPath('.babelrc'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: .babelrc'));
 
@@ -119,8 +119,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath(basePath + '.eslintrc'),
         this.destinationPath('.eslintrc'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: .eslintrc'));
 
@@ -128,8 +128,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath(basePath + 'global.d.ts'),
         this.destinationPath('global.d.ts'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: global.d.ts'));
 
@@ -137,8 +137,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath(interfacePath + 'Interfaces.ts'),
         this.destinationPath('Interfaces.ts'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: Interfaces.ts'));
 
@@ -146,8 +146,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath(basePath + 'templatepackage.json'),
         this.destinationPath('package.json'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: package.json'));
 
@@ -155,8 +155,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath(basePath + 'postcss.config.js'),
         this.destinationPath('postcss.config.js'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: postcss.config.js'));
 
@@ -164,8 +164,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath(basePath + 'tsconfig.json'),
         this.destinationPath('tsconfig.json'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: tsconfig.json'));
 
@@ -173,8 +173,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('webpack.config.js'),
         this.destinationPath('webpack.config.js'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: webpack.config.js'));
 
@@ -188,8 +188,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('PluginCommandTaskTemplate.js'),
         this.destinationPath(pluginCommandFilename), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Written file: ' + pluginCommandFilename));
 
@@ -197,8 +197,8 @@ module.exports = class extends AppGenerator {
       this.fs.copyTpl(
         this.templatePath('READMELIBS.txt'),
         this.destinationPath('libs/README.txt'), {
-          props: this.props
-        }
+        props: this.props
+      }
       );
       this.log(chalk.green('Create folder libs'));
     }
