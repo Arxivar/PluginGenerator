@@ -1,210 +1,143 @@
-'use strict';
-// var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
-var path = require('path');
+// command-generator.js – ESM version of the `arxivar-plugins:command` sub‑generator
+// -----------------------------------------------------------------------------
+// Copia e incolla questo file in generators/command/index.js (o percorso analogo)
+// È scritto in ESM, quindi assicurati che il tuo package.json contenga
+//   "type": "module"
+// -----------------------------------------------------------------------------
 
-var AppGenerator = require('../app');
+import chalk from 'chalk';
+import path from 'path';
+import AppGenerator from '../app/index.js'; // percorso relativo al generatore root (ESM)
 
+export default class CommandGenerator extends AppGenerator {
+  /* ---------------------------------------------------------------------- */
+  /*  LIFECYCLE HOOKS                                                       */
+  /* ---------------------------------------------------------------------- */
 
-
-module.exports = class extends AppGenerator {
   initializing() {
-    this.log('Running ' + chalk.red('COMMAND') + ' generator!');
+    this.log(`Running ${chalk.red('COMMAND')} generator!`);
   }
 
-  prompting() {
-    var prompts = this._requiredSettings({
-      exclude: ['injectParams', 'advConfig']
-    });
+  /* ---------------------------------------------------------------------- */
+  /*  PROMPTING                                                            */
+  /* ---------------------------------------------------------------------- */
 
-    const resolvedValue = this._getResolvedValues(prompts)
+  async prompting() {
+    // 1) Prompt base settings (esclude injectParams e advConfig)
+    const prompts = this._requiredSettings({ exclude: ['injectParams', 'advConfig'] });
 
-    return resolvedValue.then(
-      function (props) {
-        props.dependencies = props.dependencies.toString().match(/[^ ]+/g) || [];
-        props.dependenciesType = props.dependencies.toString().match(/[^ ]+/g) || [];
+    // 2) Risolve valori (supporta modalità --auto)
+    const props = await this._getResolvedValues(prompts);
 
-        if (props.typescript) {
-          props.dependenciesType = props.dependencies.map(matchType) || [];
+    /* ------------------------------------------------------------------ */
+    /*  POST‑PROCESS                                                     */
+    /* ------------------------------------------------------------------ */
 
-          // eslint-disable-next-line no-inner-declarations
-          function matchType(i) {
-            switch (i) {
-              case '$uibModal':
-                return '$uibModal:angular.ui.bootstrap.IModalService';
-              case 'moment':
-                return 'moment: IMoment';
-              case 'params':
-                return 'params: IRouteParams';
-              case '$document':
-                return '$document: angular.IDocumentService';
-              case '$window':
-                return '$window: angular.IWindowService';
-              case '$rootScope':
-                return '$rootScope: angular.IRootScopeService';
-              case '$http':
-                return '$http: angular.IHttpService';
-              case '$filter':
-                return '$filter: angular.IFilterService';
-              case '$timeout':
-                return '$timeout: angular.ITimeoutService';
-              case '_':
-                return '_: LoDashStatic';
-              case '$q':
-                return '$q: angular.IQService';
-              default:
-                return i;
-            }
-          }
+    // Normalizza dependencies
+    props.dependencies = (props.dependencies.toString().match(/[^ ]+/g) || []);
+    props.dependenciesType = [...props.dependencies];
 
-          //props.dependenciesType = props.dependencies.map(matchType) || [];
-
+    // Aggiunge typings specifici in modalità TypeScript
+    if (props.typescript) {
+      props.dependenciesType = props.dependencies.map((dep) => {
+        switch (dep) {
+          case '$uibModal':
+            return '$uibModal: angular.ui.bootstrap.IModalService';
+          case 'moment':
+            return 'moment: IMoment';
+          case 'params':
+            return 'params: IRouteParams';
+          case '$document':
+            return '$document: angular.IDocumentService';
+          case '$window':
+            return '$window: angular.IWindowService';
+          case '$rootScope':
+            return '$rootScope: angular.IRootScopeService';
+          case '$http':
+            return '$http: angular.IHttpService';
+          case '$filter':
+            return '$filter: angular.IFilterService';
+          case '$timeout':
+            return '$timeout: angular.ITimeoutService';
+          case '_':
+            return '_: LoDashStatic';
+          case '$q':
+            return '$q: angular.IQService';
+          default:
+            return dep;
         }
+      });
+    }
 
-        props.dependenciesType.unshift('');
-        props.dependencies.unshift('');
-        props.dependenciesString = props.dependencies.map(i => '\'' + i + '\'') || [];
-        props.dependenciesString.shift();
-        props.dependenciesString.push('');
-        props.explanations = this._getPluginsExplanations();
-        this.props = props;
-      }.bind(this)
-    );
+    // Prepara stringhe utili al template
+    props.dependenciesType.unshift('');
+    props.dependencies.unshift('');
+    props.dependenciesString = props.dependencies.map((d) => `'${d}'`);
+    props.dependenciesString.shift();
+    props.dependenciesString.push('');
+
+    props.explanations = this._getPluginsExplanations();
+
+    /* ------------------------------------------------------------------ */
+    /*  Salva in this.props per i task successivi                         */
+    /* ------------------------------------------------------------------ */
+    this.props = props;
   }
 
+  /* ---------------------------------------------------------------------- */
+  /*  WRITING                                                              */
+  /* ---------------------------------------------------------------------- */
 
   writing() {
+    const interfacePath = '../../../docs/frontend/';
+    const basePath = '../../../';
+    const tplContext = { ...this.props, props: this.props };
 
-    var interfacePath = '../../../docs/frontend/';
-    var basePath = '../../../';
-
+    /* -------------------------------- TS -------------------------------- */
     if (this.props.typescript) {
-      this.destinationRoot(
-        path.join('./plugins-ts', this.props.pluginname)
-      );
-      var pluginCommandFilename = this.props.pluginname + 'PluginCommand.ts';
+      this.destinationRoot(path.join('./plugins-ts', this.props.pluginname));
+      const pluginCommandFilename = `${this.props.pluginname}PluginCommand.ts`;
+
+      // Template TS
       this.fs.copyTpl(
         this.templatePath('src/PluginCommandTemplate.ts'),
-        this.destinationPath('src/' + pluginCommandFilename), {
-          props: this.props
-        }
+        this.destinationPath(`src/${pluginCommandFilename}`),
+        tplContext
       );
-      this.log(chalk.green('Written file: ' + pluginCommandFilename));
+      this.log(chalk.green(`Written file: ${pluginCommandFilename}`));
 
-      //Copio il file dummy per creare la folder libs
-      this.fs.copyTpl(
-        this.templatePath('READMELIBS.txt'),
-        this.destinationPath('libs/README.txt'), {
-          props: this.props
-        }
-      );
-      this.log(chalk.green('Create folder libs'));
+      // libs/ (dummy)
+      this.fs.copyTpl(this.templatePath('READMELIBS.txt'), this.destinationPath('libs/README.txt'), tplContext);
+      this.log(chalk.green('Created folder libs'));
 
-      //Copio .babelrc
-      this.fs.copyTpl(
-        this.templatePath(basePath + '.babelrc'),
-        this.destinationPath('.babelrc'), {
-          props: this.props
-        }
-      );
-      this.log(chalk.green('Written file: .babelrc'));
+      // Config / typings comuni
+      this.fs.copyTpl(this.templatePath(`${basePath}.babelrc`), this.destinationPath('.babelrc'), tplContext);
+      this.fs.copyTpl(this.templatePath(`${basePath}.eslintrc`), this.destinationPath('.eslintrc'), tplContext);
+      this.fs.copyTpl(this.templatePath(`${basePath}global.d.ts`), this.destinationPath('global.d.ts'), tplContext);
+      this.fs.copyTpl(this.templatePath(`${interfacePath}Interfaces.ts`), this.destinationPath('Interfaces.ts'), tplContext);
+      this.fs.copyTpl(this.templatePath(`${basePath}templatepackage.json`), this.destinationPath('package.json'), tplContext);
+      this.fs.copyTpl(this.templatePath(`${basePath}postcss.config.js`), this.destinationPath('postcss.config.js'), tplContext);
+      this.fs.copyTpl(this.templatePath(`${basePath}tsconfig.json`), this.destinationPath('tsconfig.json'), tplContext);
+      this.fs.copyTpl(this.templatePath('webpack.config.js'), this.destinationPath('webpack.config.js'), tplContext);
 
-      //Copio .eslintrc
-      this.fs.copyTpl(
-        this.templatePath(basePath + '.eslintrc'),
-        this.destinationPath('.eslintrc'), {
-          props: this.props
-        }
-      );
-      this.log(chalk.green('Written file: .eslintrc'));
-
-      //Copio global.d.ts
-      this.fs.copyTpl(
-        this.templatePath(basePath + 'global.d.ts'),
-        this.destinationPath('global.d.ts'), {
-          props: this.props
-        }
-      );
-      this.log(chalk.green('Written file: global.d.ts'));
-
-      //Copio Interfaces.ts
-      this.fs.copyTpl(
-        this.templatePath(interfacePath + 'Interfaces.ts'),
-        this.destinationPath('Interfaces.ts'), {
-          props: this.props
-        }
-      );
-      this.log(chalk.green('Written file: Interfaces.ts'));
-
-      //Copio package.json
-      this.fs.copyTpl(
-        this.templatePath(basePath + 'templatepackage.json'),
-        this.destinationPath('package.json'), {
-          props: this.props
-        }
-      );
-      this.log(chalk.green('Written file: package.json'));
-
-      //Copio postcss.config.js
-      this.fs.copyTpl(
-        this.templatePath(basePath + 'postcss.config.js'),
-        this.destinationPath('postcss.config.js'), {
-          props: this.props
-        }
-      );
-      this.log(chalk.green('Written file: postcss.config.js'));
-
-      //Copio tsconfig.json
-      this.fs.copyTpl(
-        this.templatePath(basePath + 'tsconfig.json'),
-        this.destinationPath('tsconfig.json'), {
-          props: this.props
-        }
-      );
-      this.log(chalk.green('Written file: tsconfig.json'));
-
-      //Copio webpack.config.js
-      this.fs.copyTpl(
-        this.templatePath('webpack.config.js'),
-        this.destinationPath('webpack.config.js'), {
-          props: this.props
-        }
-      );
-      this.log(chalk.green('Written file: webpack.config.js'));
-
+      this.log(chalk.green('TypeScript scaffolding completed'));
     }
 
+    /* ------------------------------ JS PLAIN ---------------------------- */
     if (!this.props.typescript) {
-      this.destinationRoot(
-        path.join('./plugins', this.props.pluginname)
-      );
-      var pluginCommandFilename = this.props.pluginname + 'PluginCommand.js';
+      this.destinationRoot(path.join('./plugins', this.props.pluginname));
+      const pluginCommandFilename = `${this.props.pluginname}PluginCommand.js`;
+
       this.fs.copyTpl(
         this.templatePath('PluginCommandTemplate.js'),
-        this.destinationPath(pluginCommandFilename), {
-          props: this.props
-        }
+        this.destinationPath(pluginCommandFilename),
+        tplContext
       );
-      this.log(chalk.green('Written file: ' + pluginCommandFilename));
+      this.log(chalk.green(`Written file: ${pluginCommandFilename}`));
 
-      //Copio il file dummy per creare la folder libs
-      this.fs.copyTpl(
-        this.templatePath('READMELIBS.txt'),
-        this.destinationPath('libs/README.txt'), {
-          props: this.props
-        }
-      );
-      this.log(chalk.green('Create folder libs'));
+      // libs/
+      this.fs.copyTpl(this.templatePath('READMELIBS.txt'), this.destinationPath('libs/README.txt'), tplContext);
+      this.log(chalk.green('Created folder libs'));
     }
-
   }
-
-
-
-  // install: function () {
-  //   this.log(
-  //       'Install in command generator'
-  //   );
-  //   this.installDependencies();
-  // }
-};
+}
