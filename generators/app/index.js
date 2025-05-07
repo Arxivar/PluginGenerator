@@ -9,7 +9,7 @@ import fuzzy from 'fuzzy';
 /*  CONSTANTS                                                                 */
 /* -------------------------------------------------------------------------- */
 
-const linkServices = [
+export const linkServices = [
   "IAdditionalFieldsManagementApi", "IAddressBookApi", "IAddressBookCategoryApi", "IAddressBookManagementApi", "IAddressBookNoteApi",
   "IAddressBookSearchApi", "IAddressBookSearchV3Api", "IAddressBookSearchV4Api", "IAddressBookV3Api", "IAddressBookV4Api",
   "IApiCallManagementApi", "IArxCeServicesManagementApi", "IArxESignApi", "IArxESignConfigurationManagementApi",
@@ -51,11 +51,6 @@ const linkServicesFront = [
 /*  HELPERS                                                                   */
 /* -------------------------------------------------------------------------- */
 
-/**
- * Restituisce l'elenco filtrato fuzzy (case‑insensitive) in base all'input.
- * @param {string[]} list
- * @param {string} input
- */
 function fuzzyFilter(list, input) {
   if (!input) return list;
   return fuzzy.filter(input, list).map((e) => e.original);
@@ -264,7 +259,7 @@ export default class AppGenerator extends Generator {
         type: 'input',
         name: 'pluginname',
         message: 'Your plugin name',
-        validate: (name) => (/^[a-zA-Z0-9]+$/.test(name) ? true : 'Use only [a‑zA‑Z0‑9]')
+        validate: (name) => (/^[a-zA-Z0-9]+$/.test(name) ? true : 'Use only [az AZ 09]')
       },
       { type: 'input', name: 'description', message: 'Plugin description', default: (a) => `${a.pluginname} description` },
       { type: 'input', name: 'author', message: 'Author', default: (a) => `${a.pluginname} author` },
@@ -273,21 +268,14 @@ export default class AppGenerator extends Generator {
       { type: 'input', name: 'icon', message: 'FontAwesome icon', default: 'far fa-puzzle-piece' },
       { type: 'input', name: 'version', message: 'Plugin version', default: '1.0.0' },
 
-      // — Filtro + selezione multipla (input ➔ checkbox)
-      {
-        type: 'input',
-        name: 'serviceSearch',
-        message: 'Search keyword to filter services (empty = all):',
-        default: ''
-      },
-      {
-        type: 'checkbox',
-        name: 'linkServices',
-        message: 'Select services (use space to mark):',
-        pageSize: 12,
-        choices: (ans) => fuzzyFilter(linkServices, ans.serviceSearch),
-        validate: (arr) => (arr.length === 0 ? 'Select at least one service' : true)
-      }
+      // {
+      //   type: 'checkbox',
+      //   name: 'linkServices',
+      //   message: 'Select services (use space to mark):',
+      //   pageSize: 12,
+      //   choices: (ans) => fuzzyFilter(linkServices, ans.serviceSearch),
+      //   validate: (arr) => (arr.length === 0 ? 'Select at least one service' : true)
+      // }
     ];
   }
 
@@ -301,13 +289,6 @@ export default class AppGenerator extends Generator {
         choices: ['no', 'yes'],
         default: 'no',
         filter: (v) => v === 'yes'
-      },
-      {
-        type: 'input',
-        name: 'frontSearch',
-        message: 'Filter front‑end services (empty = all):',
-        when: (ans) => ans.advConfig === true,
-        default: ''
       },
       {
         type: 'checkbox',
