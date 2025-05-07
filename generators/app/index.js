@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 import _ from 'lodash';
 import path from 'path';
 import Generator from 'yeoman-generator';
-import fuzzy from 'fuzzy';
 
 /* -------------------------------------------------------------------------- */
 /*  CONSTANTS                                                                 */
@@ -41,20 +40,11 @@ export const linkServices = [
   "IViewsBuilderApi", "IViewsPermissionsApi", "IViewsV3Api", "IWorkflowApi", "IWorkflowEventsApi", "IWorkflowExtraGrantApi"
 ].sort();
 
-const linkServicesFront = [
+export const linkServicesFront = [
   'workflowResourceService', '_', 'arxivarResourceService', 'arxivarUserServiceCreator',
   'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService', 'moment', '$timeout',
   '$document', '$window', '$rootScope', '$filter', '$q', '$uibModal'
 ];
-
-/* -------------------------------------------------------------------------- */
-/*  HELPERS                                                                   */
-/* -------------------------------------------------------------------------- */
-
-function fuzzyFilter(list, input) {
-  if (!input) return list;
-  return fuzzy.filter(input, list).map((e) => e.original);
-}
 
 /* -------------------------------------------------------------------------- */
 /*  GENERATOR CLASS                                                           */
@@ -267,15 +257,6 @@ export default class AppGenerator extends Generator {
       { type: 'input', name: 'label', message: 'Label', default: (a) => `${a.pluginname} label` },
       { type: 'input', name: 'icon', message: 'FontAwesome icon', default: 'far fa-puzzle-piece' },
       { type: 'input', name: 'version', message: 'Plugin version', default: '1.0.0' },
-
-      // {
-      //   type: 'checkbox',
-      //   name: 'linkServices',
-      //   message: 'Select services (use space to mark):',
-      //   pageSize: 12,
-      //   choices: (ans) => fuzzyFilter(linkServices, ans.serviceSearch),
-      //   validate: (arr) => (arr.length === 0 ? 'Select at least one service' : true)
-      // }
     ];
   }
 
@@ -289,15 +270,6 @@ export default class AppGenerator extends Generator {
         choices: ['no', 'yes'],
         default: 'no',
         filter: (v) => v === 'yes'
-      },
-      {
-        type: 'checkbox',
-        name: 'linkServicesFront',
-        message: 'Select front‑end services:',
-        when: (ans) => ans.advConfig === true,
-        pageSize: 12,
-        choices: (ans) => fuzzyFilter(linkServicesFront, ans.frontSearch),
-        default: ['workflowResourceService', '_']
       },
       {
         type: 'list',

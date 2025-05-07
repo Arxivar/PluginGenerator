@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 import _ from 'lodash';
-import AppGenerator, { linkServices as linkServicesConst } from '../app/index.js';
+import AppGenerator, { linkServices as linkServicesConst, linkServicesFront as linkServicesFrontConst } from '../app/index.js';
 import { select } from 'inquirer-select-pro';
 
 
@@ -59,12 +59,18 @@ export default class extends AppGenerator {
     // Getting values --------------------------------
     return resolvedValue
       .then(async (_props) => {
+        const serviceOptions = linkServicesConst.map((s) => ({ name: s, value: s }));
         const selectedServices = await select({
-          message: 'Select services:',
+          message: 'Select backend services:',
+          confirmDelete: true,
           multiple: true,
           required: true,
           pageSize: 12,
-          options: linkServicesConst.map((s) => ({ name: s, value: s }))
+          clearInputWhenSelected: true,
+          options: async (input = "") => {
+            if (!input) return serviceOptions;
+            return serviceOptions.filter((option) => option.name.toLowerCase().includes(input.toLowerCase()));
+          }
         });
         that.props = { ...that.props, ..._props, linkServices: selectedServices };
       })
@@ -93,6 +99,29 @@ export default class extends AppGenerator {
       .then((_props) => {
         that.props = { ...that.props, ..._props };
         return that.prompt(promptsAdvancedSettings);
+      })
+      .then(async (_props) => {
+        that.props = { ...that.props, ..._props };
+        if (that.props.advConfig) {
+          const serviceOptions = linkServicesFrontConst.map((s) => ({ name: s, value: s }));
+          const selectedServices = await select({
+            message: 'Select frontend services:',
+            confirmDelete: true,
+            multiple: true,
+            required: true,
+            pageSize: 12,
+            defaultValue: ['workflowResourceService', '_'],
+            clearInputWhenSelected: true,
+            options: async (input = "") => {
+              if (!input) return serviceOptions;
+              return serviceOptions.filter((option) => option.name.toLowerCase().includes(input.toLowerCase()));
+            }
+          });
+          that.props = { ...that.props, ..._props, linkServicesFront: selectedServices };
+        } else {
+          return;
+        }
+
       })
       .then((_props) => {
         that.props = { ...that.props, ..._props };
