@@ -1,11 +1,3 @@
-// AppGenerator.js – fully self‑contained, no external prompt plugins.
-// Compatible with Yeoman ≥ 7 (which uses @inquirer/prompts under the hood).
-// -----------------------------------------------------------------------------
-// ⚠️  Copy & paste this file over the old generator. Remove any leftover
-//     dependencies: `npm uninstall inquirer inquirer-checkbox-plus-prompt`.
-//     Keep: chalk, uuid, lodash, path, yeoman-generator, fuzzy.
-// -----------------------------------------------------------------------------
-
 import chalk from 'chalk';
 import { v4 as uuidv4 } from 'uuid';
 import _ from 'lodash';
@@ -17,7 +9,6 @@ import fuzzy from 'fuzzy';
 /*  CONSTANTS                                                                 */
 /* -------------------------------------------------------------------------- */
 
-// ✂️  Lista completa invariata; riordinata alfabeticamente.
 const linkServices = [
   "IAdditionalFieldsManagementApi", "IAddressBookApi", "IAddressBookCategoryApi", "IAddressBookManagementApi", "IAddressBookNoteApi",
   "IAddressBookSearchApi", "IAddressBookSearchV3Api", "IAddressBookSearchV4Api", "IAddressBookV3Api", "IAddressBookV4Api",

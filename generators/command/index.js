@@ -1,13 +1,6 @@
-// command-generator.js – ESM version of the `arxivar-plugins:command` sub‑generator
-// -----------------------------------------------------------------------------
-// Copia e incolla questo file in generators/command/index.js (o percorso analogo)
-// È scritto in ESM, quindi assicurati che il tuo package.json contenga
-//   "type": "module"
-// -----------------------------------------------------------------------------
-
 import chalk from 'chalk';
 import path from 'path';
-import AppGenerator from '../app/index.js'; // percorso relativo al generatore root (ESM)
+import AppGenerator from '../app/index.js';
 
 export default class CommandGenerator extends AppGenerator {
   /* ---------------------------------------------------------------------- */

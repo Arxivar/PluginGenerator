@@ -1,12 +1,6 @@
-// command-profilation-generator.js – ESM version of `arxivar-plugins:command-profilation`
-// -----------------------------------------------------------------------------
-// Copia in generators/command-profilation/index.js (o percorso equivalente)
-// Assicurati che il root `package.json` usi "type": "module".
-// -----------------------------------------------------------------------------
-
 import chalk from 'chalk';
 import path from 'path';
-import AppGenerator from '../app/index.js'; // percorso relativo al generatore principale
+import AppGenerator from '../app/index.js';
 
 export default class CommandProfilationGenerator extends AppGenerator {
   /* ---------------------------------------------------------------------- */
