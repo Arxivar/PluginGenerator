@@ -6,14 +6,14 @@
 
 ## Installation
 
-- install [NodeJs](https://nodejs.org/en/) if you don't already have it (LTS version 16.13.2 should be fine).
+- install [NodeJs](https://nodejs.org/en/) if you don't already have it (LTS version 22.15.0 should be fine).
 
 _Note: if nodejs is installed with nvm you will also have to install the windows build tools using `npm install --global windows-build-tools --vs2015` command._
 
 - When nodejs has finished installing, install [Yeoman](http://yeoman.io): open a command prompt and run the following command:
 
 ```bash
-npm install -g yo@4
+npm install -g yo@5
 ```
 
 _Note: npm is the package manager for Node.js and comes bundled with it._
@@ -63,7 +63,7 @@ To use Typescript you have to follow these steps:
 
 - specify the name of the compiled plugin folder. (optionaly your can spacify the folder _YourARXivarPortalPath\Script\plugins\yourPluginName_ for an automatic deploy)
   
-- install [NodeJs](https://nodejs.org/en/) if you don't already have it (LTS version 16.13.2 should be fine).
+- install [NodeJs](https://nodejs.org/en/) if you don't already have it (LTS version 22.15.0 should be fine).
 
 - open the terminal into your plugin folder and run the command:
 

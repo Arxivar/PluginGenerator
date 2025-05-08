@@ -4,7 +4,7 @@
 	"description": "Generator for ARXivar client plugins",
 	"homepage": "www.arxivar.it",
 	"author": {
-		"name": "Abletech S.r.l.",
+		"name": "Abletech S.p.A.",
 		"email": "",
 		"url": ""
 	},
@@ -12,16 +12,17 @@
 	"files": [
 		"generators/app",
 		"generators/command",
+		"generators/command-profilation",
+		"generators/command-task-v2",
+		"generators/link-workflow-v2",
 		"generators/route",
-		"generators/widget",
 		"generators/widget-desktop",
 		"generators/widget-task",
-		"generators/widget-task-v2",
-		"generators/link-workflow-v2"
+		"generators/widget-task-v2"
 	],
 	"exports": "generators/app/index.js",
 	"engines": {
-		"node": ">=16.0.0"
+		"node": ">=20.0.0"
 	},
 	"keywords": [
 		"arxivar",
@@ -29,7 +30,6 @@
 	],
 	"dependencies": {
 		"@inquirer/prompts": "^7.5.0",
-		"@yeoman/types": "^1.6.0",
 		"chalk": "^4.1.2",
 		"inquirer-select-pro": "^1.0.0-alpha.9",
 		"lodash": "^4.17.21",

@@ -162,7 +162,7 @@ export default class AppGenerator extends Generator {
         message: 'Your plugin name',
         validate: (pluginname) => {
           if (_.isEmpty(_.trim(pluginname))) return 'Empty plugin name';
-          return /^[a-zA-Z0-9]*$/.test(pluginname) ? true : 'Use only [a‑zA‑Z0‑9]';
+          return /^[a-zA-Z0-9]*$/.test(pluginname) ? true : 'Use only [az AZ 09]';
         }
       },
       {
@@ -182,7 +182,7 @@ export default class AppGenerator extends Generator {
         name: 'id',
         message: 'Your plugin unique identifier',
         default: uuidv4(),
-        validate: (guid) => (_.isEmpty(_.trim(guid)) ? 'Invalid id' : true)
+        validate: (guid) => (_.isEmpty(_.trim(guid)) ? 'Invalid uuid v4' : true)
       },
       {
         type: 'input',
@@ -204,8 +204,16 @@ export default class AppGenerator extends Generator {
       },
       {
         type: 'list',
+        name: 'requireRefresh',
+        message: 'Does your plugin require grid data refresh?',
+        default: 'no',
+        choices: ['no', 'yes'],
+        filter: (v) => v === 'yes'
+      },
+      {
+        type: 'list',
         name: 'injectParams',
-        message: 'Does your plugin need params from querystring (>=2.1)?',
+        message: 'Does your plugin need params from querystring (>=2.1 required)?',
         choices: ['no', 'yes'],
         default: 'no',
         filter: (v) => v === 'yes'
