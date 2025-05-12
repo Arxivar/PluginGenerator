@@ -96,4 +96,4 @@ You can find the documentation of the current version [here](docs/README.md)
 
 ## License
 
-© [Abletech S.r.l.](http://www.arxivar.it/)
+© [Abletech S.p.A.](http://www.arxivar.it/)
