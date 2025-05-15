@@ -15,7 +15,7 @@ export const linkServices = [
   "IAssistantApi", "IAssociationsApi", "IAssociationsV2Api", "IAttachmentsApi", "IAuthenticationApi", "IAuthProvider",
   "IBarcodeApi", "IBinderSearchApi", "IBinderSearchV3Api", "IBinderTypeSearchApi", "IBindersApi", "IBufferApi", "IBusinessUnitsApi",
   "IBusinessUnitsManagementApi", "ICacheApi", "ICalendarApi", "IChatApi", "ICheckInOutApi", "ICheckInOutV2Api", "IClassAdditionalFieldsApi",
-  "IClassAdditionalFieldsV2Api", "IClientSettingsApi", "IContactCategoryApi", "ICustomLabelsApi", "IDatabaseManagenentApi",
+  "IClassAdditionalFieldsV2Api", "IClientSettingsApi", "IContactCategoryApi", "ICustomLabelsApi", "IDatabaseManagementApi",
   "IDelegationApi", "IDesktopApi", "IDesktopLayoutApi", "IDevicesApi", "IDiagramEventsApi", "IDiagramGroupsApi", "IDiagramObjectsApi",
   "IDiagramOperationsApi", "IDiagramVariablesApi", "IDiagramsApi", "IDocToOcrApi", "IDocumentTicketsApi", "IDocumentTypesApi",
   "IDocumentTypesManagementApi", "IDocumentsApi", "IElementApi", "IEncryptionApi", "IEncryptionManagementApi", "IExternalAppsApi",
@@ -252,7 +252,6 @@ export default class AppGenerator extends Generator {
   /* -------------------------- LINK PLUGIN SETTINGS ------------------------- */
   _linkSettings() {
     return [
-      // — Metadata (riusa la validazione di _requiredSettings)
       {
         type: 'input',
         name: 'pluginname',
@@ -268,48 +267,4 @@ export default class AppGenerator extends Generator {
     ];
   }
 
-  /* --------------------- ADVANCED FRONT CONFIG SETTINGS -------------------- */
-  _advancedConfigSettings() {
-    return [
-      {
-        type: 'list',
-        name: 'advConfig',
-        message: 'Would you like advanced configuration?',
-        choices: ['no', 'yes'],
-        default: 'no',
-        filter: (v) => v === 'yes'
-      },
-      {
-        type: 'list',
-        name: 'typescriptLink',
-        message: 'Use TypeScript?',
-        when: (ans) => ans.advConfig === true,
-        choices: ['no', 'yes'],
-        default: 'no',
-        filter: (v) => v === 'yes'
-      }
-    ];
-  }
-
-  /* -------------------- INPUT / OUTPUT PARAMETER PROMPTS ------------------- */
-  _inputQuestion() {
-    return [{ type: 'list', name: 'inParams', message: 'Add INPUT parameters?', choices: ['no', 'yes'], default: 'no', filter: (v) => v === 'yes' }];
-  }
-  _outputQuestion() {
-    return [{ type: 'list', name: 'outParams', message: 'Add OUTPUT parameters?', choices: ['no', 'yes'], default: 'no', filter: (v) => v === 'yes' }];
-  }
-  _inputParameter() {
-    return [
-      { type: 'input', name: 'propertyName', message: 'INPUT property name', validate: (n) => (!!n.trim() ? true : 'Cannot be empty') },
-      { type: 'list', name: 'propertyType', message: 'INPUT property type', choices: ['string', 'int', 'bool', 'DateTime', 'object[]', 'object[,]'], default: 'string' },
-      { type: 'list', name: 'repeat', message: 'Add more INPUT parameter?', choices: ['no', 'yes'], default: 'no', filter: (v) => v === 'yes' }
-    ];
-  }
-  _outputParameter() {
-    return [
-      { type: 'input', name: 'propertyName', message: 'OUTPUT property name', validate: (n) => (!!n.trim() ? true : 'Cannot be empty') },
-      { type: 'list', name: 'propertyType', message: 'OUTPUT property type', choices: ['string', 'int', 'bool', 'DateTime', 'object[]', 'object[,]'], default: 'string' },
-      { type: 'list', name: 'repeat', message: 'Add more OUTPUT parameter?', choices: ['no', 'yes'], default: 'no', filter: (v) => v === 'yes' }
-    ];
-  }
 }

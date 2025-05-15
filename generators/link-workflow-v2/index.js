@@ -4,186 +4,245 @@ import { v4 as uuidv4 } from 'uuid';
 import _ from 'lodash';
 import AppGenerator, { linkServices as linkServicesConst, linkServicesFront as linkServicesFrontConst } from '../app/index.js';
 import { select } from 'inquirer-select-pro';
+import {
+  input as inputPrompt,
+  select as selectPrompt,
+  confirm as confirmPrompt,
+} from '@inquirer/prompts';
 
 
-
-/* eslint-disable func-names */
 String.prototype.capitalize = function () {
   return this.charAt(0).toUpperCase() + this.slice(1);
 };
-/* eslint-enable func-names */
+
 
 export default class extends AppGenerator {
   initializing() {
     this.log(`Running ${chalk.red('LINK WORKFLOW V2')} generator!`);
   }
 
+  /* -------------------------------------------------------------------- */
+  /*  PROMPTING                                */
+  /* -------------------------------------------------------------------- */
   async prompting() {
-    // --- SETTINGS ------------------------------------------------------
-    const promptsRequiredSettings = this._linkSettings({
+    /* ---------- 1. SETTINGS DI BASE ----------------------------------- */
+    const requiredSettings = this._linkSettings({
       exclude: ['requireRefresh', 'injectParams', 'typescript'],
-      minVersion: '2.5.0'
+      minVersion: '2.5.0',
     });
 
-    const resolvedValue = this._getResolvedValues(promptsRequiredSettings);
+    const baseProps = await this._getResolvedValues(requiredSettings);
+    this.props = { ...this.props, ...baseProps };
 
-    // Additional prompt groups (identical to original)
-    const promptsAdvancedSettings = this._advancedConfigSettings();
-    const promptsInputParameter = this._inputParameter();
-    const promptsOutputParameter = this._outputParameter();
-    const promptsInQuestion = this._inputQuestion();
-    const promptsOutQuestion = this._outputQuestion();
-    const that = this;
+    /* ---------- 2. BACK-END SERVICES ---------------------------------- */
+    const backendOpts = linkServicesConst.map((s) => ({ name: s, value: s }));
+    this.props.linkServices = await select({
+      message: 'Select backend services:',
+      confirmDelete: true,
+      multiple: true,
+      required: true,
+      pageSize: 12,
+      clearInputWhenSelected: true,
+      options: async (input = '') =>
+        input
+          ? backendOpts.filter((o) =>
+            o.name.toLowerCase().includes(input.toLowerCase()),
+          )
+          : backendOpts,
+    });
 
-    // Recursive helpers (unchanged)
-    const loopInputQuestion = () => {
-      if (that.props.pluginname) {
-        return that.prompt(promptsInputParameter).then((props) => {
-          that.props.inputParameters.push({ propertyName: props.propertyName, propertyType: props.propertyType });
-          return props.repeat ? loopInputQuestion() : that.prompt([]);
-        });
-      }
-      return that.prompt([]);
-    };
+    /* ---------- 3. PARAMETRI INPUT ------------------------------------ */
+    this.props.inParams = await confirmPrompt({
+      message: 'Add INPUT parameters?',
+      default: false,
+    });
 
-    const loopOutputQuestion = () => {
-      if (that.props.pluginname) {
-        return that.prompt(promptsOutputParameter).then((props) => {
-          that.props.outputParameters.push({ propertyName: props.propertyName, propertyType: props.propertyType });
-          return props.repeat ? loopOutputQuestion() : that.prompt([]);
-        });
-      }
-      return that.prompt([]);
-    };
+    this.props.inputParameters = [];
+    if (this.props.inParams) {
+      await this._collectInputParameters();
+    }
 
-    // Getting values --------------------------------
-    return resolvedValue
-      .then(async (_props) => {
-        const serviceOptions = linkServicesConst.map((s) => ({ name: s, value: s }));
-        const selectedServices = await select({
-          message: 'Select backend services:',
-          confirmDelete: true,
-          multiple: true,
-          required: true,
-          pageSize: 12,
-          clearInputWhenSelected: true,
-          options: async (input = "") => {
-            if (!input) return serviceOptions;
-            return serviceOptions.filter((option) => option.name.toLowerCase().includes(input.toLowerCase()));
-          }
-        });
-        that.props = { ...that.props, ..._props, linkServices: selectedServices };
-      })
-      .then((_props) => {
-        that.props = { ...that.props, ..._props };
-        return that.prompt(promptsInQuestion);
-      })
-      .then((_props) => {
-        that.props = { ...that.props, ..._props };
-        that.props.inputParameters = [];
-        if (that.props.inParams) {
-          return loopInputQuestion();
-        }
-      })
-      .then((_props) => {
-        that.props = { ...that.props, ..._props };
-        return that.prompt(promptsOutQuestion);
-      })
-      .then((_props) => {
-        that.props = { ...that.props, ..._props };
-        that.props.outputParameters = [];
-        if (that.props.outParams) {
-          return loopOutputQuestion();
-        }
-      })
-      .then((_props) => {
-        that.props = { ...that.props, ..._props };
-        return that.prompt(promptsAdvancedSettings);
-      })
-      .then(async (_props) => {
-        that.props = { ...that.props, ..._props };
-        if (that.props.advConfig) {
-          const serviceOptions = linkServicesFrontConst.map((s) => ({ name: s, value: s }));
-          const selectedServices = await select({
-            message: 'Select frontend services:',
-            confirmDelete: true,
-            multiple: true,
-            required: true,
-            pageSize: 12,
-            defaultValue: ['workflowResourceService', '_'],
-            clearInputWhenSelected: true,
-            options: async (input = "") => {
-              if (!input) return serviceOptions;
-              return serviceOptions.filter((option) => option.name.toLowerCase().includes(input.toLowerCase()));
-            }
-          });
-          that.props = { ...that.props, ..._props, linkServicesFront: selectedServices };
-        } else {
-          return;
-        }
+    /* ---------- 4. PARAMETRI OUTPUT ----------------------------------- */
+    this.props.outParams = await confirmPrompt({
+      message: 'Add OUTPUT parameters?',
+      default: false,
+    });
 
-      })
-      .then((_props) => {
-        that.props = { ...that.props, ..._props };
-        // ---- Post‑processing ----------
-        that.props.folderName = that.appname;
-        that.props.plugincontroller = that.props.pluginname + 'Ctrl';
-        that.props.dependencies = that.props.dependencies ? that.props.dependencies.toString().match(/[^ ]+/g) || [] : [];
-        that.props.dependenciesType = that.props.dependencies ? that.props.dependencies.toString().match(/[^ ]+/g) || [] : [];
-        that.props.inputParameters = that.props.inputParameters || [];
-        that.props.outputParameter = that.props.outputParameter || [];
-        that.props.linkServicesFront = that.props.linkServicesFront || [];
-        that.props.paramsCommentDesc = '';
-        that.props.paramsCommentEx = '';
-        that.props.paramsCommentParams = '';
-        that.props.paramsCommentParamsEx = '';
-        that.props.projectId = uuidv4();
-        that.props.nestedProject = uuidv4();
-        that.props.secondProjectId = uuidv4();
-        that.props.guid = uuidv4();
-        that.props.nestedGuid = uuidv4();
-        that.props.presolutionGuid = uuidv4();
-        that.props.explanations = that._getPluginsExplanations();
+    this.props.outputParameters = [];
+    if (this.props.outParams) {
+      await this._collectOutputParameters();
+    }
 
-        if (that.props.typescriptLink) {
-          that.props.linkServicesFrontType = that.props.linkServicesFront.map(matchType) || [];
-          // Inner matchType 
-          function matchType(i) {
-            switch (i) {
-              case '$uibModal': return 'readonly $uibModal:angular.ui.bootstrap.IModalService';
-              case 'moment': return 'readonly moment: IMoment';
-              case 'params': return 'readonly params: IRouteParams';
-              case '$document': return 'readonly $document: angular.IDocumentService';
-              case '$window': return 'readonly $window: angular.IWindowService';
-              case '$rootScope': return 'readonly $rootScope: angular.IRootScopeService';
-              case '$http': return 'readonly $http: angular.IHttpService';
-              case '$filter': return 'readonly $filter: angular.IFilterService';
-              case '$timeout': return 'readonly $timeout: angular.ITimeoutService';
-              case '_': return 'readonly _: ILoDash';
-              case '$q': return 'readonly $q: angular.IQService';
-              case 'arxivarResourceService': return 'readonly arxivarResourceService: IArxivarResourceService';
-              case 'arxivarUserServiceCreator': return 'readonly arxivarUserServiceCreator: IArxivarUserServiceCreator';
-              case 'arxivarRouteService': return 'readonly arxivarRouteService: IArxivarRouteService';
-              case 'arxivarDocumentsService': return 'readonly arxivarDocumentsService: IArxivarDocumentsService';
-              case 'arxivarNotifierService': return 'readonly arxivarNotifierService: IArxivarNotifierService';
-              case 'workflowResourceService': return 'readonly workflowResourceService: IWorkflowResourceService';
-              default: return i;
-            }
-          }
-        }
+    /* ---------- 5. ADVANCED SETTINGS ---------------------------------- */
+    this.props.advConfig = await confirmPrompt({
+      message: 'Would you like advanced configuration?',
+      default: false,
+    });
 
-        that.props.linkServicesFrontJs = _.cloneDeep(that.props.linkServicesFront);
-        that.props.dependenciesType.unshift('');
-        that.props.dependencies.unshift('');
-        that.props.linkServicesFront.unshift('');
-        that.props.dependenciesString = that.props.dependencies.map((i) => `'${i}'`) || [];
-        that.props.linkServicesFrontString = that.props.linkServicesFront.map((i) => `'${i}'`) || [];
-        that.props.linkServicesFrontString.shift();
-        that.props.linkServicesFrontString.push('');
-        that.props.dependenciesString.shift();
-        that.props.dependenciesString.push('');
+    if (this.props.advConfig) {
+      const frontOpts = linkServicesFrontConst.map((s) => ({
+        name: s,
+        value: s,
+      }));
+      this.props.linkServicesFront = await select({
+        message: 'Select frontend services:',
+        confirmDelete: true,
+        multiple: true,
+        required: false,
+        pageSize: 12,
+        defaultValue: ['workflowResourceService', '_'],
+        clearInputWhenSelected: true,
+        options: async (input = '') =>
+          input
+            ? frontOpts.filter((o) =>
+              o.name.toLowerCase().includes(input.toLowerCase()),
+            )
+            : frontOpts,
       });
+
+      this.props.typescriptLink = await confirmPrompt({
+        message: 'Use TypeScript?',
+        default: false,
+      });
+    }
+
+    /* ---------- 6. POST-PROCESSING ----------------- */
+    this.props.folderName = this.appname;
+    this.props.plugincontroller = this.props.pluginname + 'Ctrl';
+    this.props.dependencies =
+      this.props.dependencies?.toString().match(/[^ ]+/g) || [];
+    this.props.dependenciesType =
+      this.props.dependencies?.toString().match(/[^ ]+/g) || [];
+    this.props.linkServicesFront = this.props.linkServicesFront || [];
+    this.props.paramsCommentDesc = '';
+    this.props.paramsCommentEx = '';
+    this.props.paramsCommentParams = '';
+    this.props.paramsCommentParamsEx = '';
+    this.props.projectId = uuidv4();
+    this.props.nestedProject = uuidv4();
+    this.props.secondProjectId = uuidv4();
+    this.props.guid = uuidv4();
+    this.props.nestedGuid = uuidv4();
+    this.props.presolutionGuid = uuidv4();
+    this.props.explanations = this._getPluginsExplanations();
+
+    if (this.props.typescriptLink) {
+      this.props.linkServicesFrontType =
+        this.props.linkServicesFront?.map(matchType) || [];
+      function matchType(i) {
+        switch (i) {
+          case '$uibModal':
+            return 'readonly $uibModal:angular.ui.bootstrap.IModalService';
+          case 'moment':
+            return 'readonly moment: IMoment';
+          case 'params':
+            return 'readonly params: IRouteParams';
+          case '$document':
+            return 'readonly $document: angular.IDocumentService';
+          case '$window':
+            return 'readonly $window: angular.IWindowService';
+          case '$rootScope':
+            return 'readonly $rootScope: angular.IRootScopeService';
+          case '$http':
+            return 'readonly $http: angular.IHttpService';
+          case '$filter':
+            return 'readonly $filter: angular.IFilterService';
+          case '$timeout':
+            return 'readonly $timeout: angular.ITimeoutService';
+          case '_':
+            return 'readonly _: ILoDash';
+          case '$q':
+            return 'readonly $q: angular.IQService';
+          case 'arxivarResourceService':
+            return 'readonly arxivarResourceService: IArxivarResourceService';
+          case 'arxivarUserServiceCreator':
+            return 'readonly arxivarUserServiceCreator: IArxivarUserServiceCreator';
+          case 'arxivarRouteService':
+            return 'readonly arxivarRouteService: IArxivarRouteService';
+          case 'arxivarDocumentsService':
+            return 'readonly arxivarDocumentsService: IArxivarDocumentsService';
+          case 'arxivarNotifierService':
+            return 'readonly arxivarNotifierService: IArxivarNotifierService';
+          case 'workflowResourceService':
+            return 'readonly workflowResourceService: IWorkflowResourceService';
+          default:
+            return i;
+        }
+      }
+    }
+
+    //helpers per template
+    this.props.linkServicesFrontJs = _.cloneDeep(this.props.linkServicesFront);
+    this.props.dependenciesType.unshift('');
+    this.props.dependencies.unshift('');
+    this.props.linkServicesFront.unshift('');
+    this.props.dependenciesString = this.props.dependencies.map((i) => `'${i}'`);
+    this.props.linkServicesFrontString = this.props.linkServicesFront.map(
+      (i) => `'${i}'`,
+    );
+    this.props.linkServicesFrontString.shift();
+    this.props.linkServicesFrontString.push('');
+    this.props.dependenciesString.shift();
+    this.props.dependenciesString.push('');
   }
+
+  /* -------------------------------------------------------------------- */
+  /*  HELPERS 
+  /* -------------------------------------------------------------------- */
+  async _collectInputParameters() {
+    const types = ['string', 'int', 'bool', 'DateTime', 'object[]', 'object[,]'].map(
+      (t) => ({ name: t, value: t }),
+    );
+
+    while (true) {
+      const propertyName = await inputPrompt({
+        message: 'INPUT property name',
+        validate: (v) => (v.trim() ? true : 'Cannot be empty'),
+      });
+
+      const propertyType = await selectPrompt({
+        message: 'INPUT property type',
+        choices: types,
+        default: 'string',
+      });
+
+      this.props.inputParameters.push({ propertyName, propertyType });
+
+      const again = await confirmPrompt({
+        message: 'Add another INPUT parameter?',
+        default: false,
+      });
+      if (!again) break;
+    }
+  }
+
+  async _collectOutputParameters() {
+    const types = ['string', 'int', 'bool', 'DateTime', 'object[]', 'object[,]'].map(
+      (t) => ({ name: t, value: t }),
+    );
+
+    while (true) {
+      const propertyName = await inputPrompt({
+        message: 'OUTPUT property name',
+        validate: (v) => (v.trim() ? true : 'Cannot be empty'),
+      });
+
+      const propertyType = await selectPrompt({
+        message: 'OUTPUT property type',
+        choices: types,
+        default: 'string',
+      });
+
+      this.props.outputParameters.push({ propertyName, propertyType });
+
+      const again = await confirmPrompt({
+        message: 'Add another OUTPUT parameter?',
+        default: false,
+      });
+      if (!again) break;
+    }
+  }
+
 
   /* -------------------------------------------------------------------- */
   /*  WRITING                                                              */
