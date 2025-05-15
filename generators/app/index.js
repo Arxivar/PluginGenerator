@@ -105,12 +105,12 @@ export default class AppGenerator extends Generator {
     this.log('Type ' + chalk.green('yo arxivar-plugins:link-workflow-v2') + ' to create a ' + chalk.green('link workflow V2 plugin'));
     const logo = [
       '           _____  __   ___             ',
-      '     /\   |  __ \ \ \ / (_)            ',
-      '    /  \  | |__) | \ V / ___   ____ _ ',
-      '   / /\ \ |  _  /   > < | \ \ / / _` |',
-      '  / ____ \| | \ \  / . \| |\ V / (_| |',
-      ' /_/    \_\_|  \_\/_/ \_\_| \_/ \__,_|',
-      '                                      '
+      '     /\\   |  __ \\ \\ \\ / (_)                ',
+      '    /  \\  | |__) | \\ V / ___   ____ _ _ __ ',
+      '   / /\\ \\ |  _  /   > < | \\ \\ / / _` |  __|',
+      '  / ____ \\| | \\ \\  / . \\| |\\ V / (_| | |   ',
+      ' /_/    \\_\\_|  \\_\\/_/ \\_\\_| \\_/ \\__,_|_|   ',
+      '                                           '
     ].join('\n');
     this.log(logo);
   }
