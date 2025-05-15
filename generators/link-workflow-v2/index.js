@@ -24,12 +24,11 @@ export default class extends AppGenerator {
     this.log(`Running ${chalk.red('LINK WORKFLOW V2')} generator!`);
 
     /* ---------- 1. SETTINGS DI BASE ----------------------------------- */
-    const requiredSettings = this._linkSettings({
-      exclude: ['requireRefresh', 'injectParams', 'typescript'],
+    const baseProps = await this._askRequiredSettings({
+      exclude: ['minVersion', 'requireRefresh', 'injectParams', 'dependencies', 'typescript'],
       minVersion: '2.5.0',
     });
 
-    const baseProps = await this._getResolvedValues(requiredSettings);
     this.props = { ...this.props, ...baseProps };
 
     /* ---------- 2. BACK-END SERVICES ---------------------------------- */

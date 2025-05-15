@@ -165,6 +165,7 @@ export default class AppGenerator extends Generator {
     if (!isExcluded('description')) {
       settings.description = await inputPrompt({
         message: 'Your plugin description',
+        required: true,
         default: () => `${settings.pluginname} description`,
       });
     }
@@ -172,6 +173,7 @@ export default class AppGenerator extends Generator {
     if (!isExcluded('author')) {
       settings.author = await inputPrompt({
         message: 'Plugin author name',
+        required: true,
         default: () => `${settings.pluginname} author`,
       });
     }
@@ -180,6 +182,7 @@ export default class AppGenerator extends Generator {
       settings.id = await inputPrompt({
         message: 'Your plugin unique identifier',
         default: uuidv4(),
+        required: true,
         validate: (guid) => guid.trim() ? true : 'Invalid uuid v4',
       });
     }
@@ -187,6 +190,7 @@ export default class AppGenerator extends Generator {
     if (!isExcluded('label')) {
       settings.label = await inputPrompt({
         message: 'Label for UI',
+        required: true,
         default: () => `${settings.pluginname} label`,
       });
     }
@@ -194,13 +198,22 @@ export default class AppGenerator extends Generator {
     if (!isExcluded('icon')) {
       settings.icon = await inputPrompt({
         message: 'FontAwesome icon (v6.5.1)',
+        required: true,
         default: 'fas fa-puzzle-piece',
+      });
+    }
+
+    if (!isExcluded('version')) {
+      settings.version = await inputPrompt({
+        message: 'Plugin version',
+        default: '1.0.0',
       });
     }
 
     if (!isExcluded('minVersion')) {
       settings.minVersion = await inputPrompt({
         message: 'Minimum portal version supported?',
+        required: true,
         default: options.minVersion || '2.0.0',
       });
     }
@@ -249,23 +262,4 @@ export default class AppGenerator extends Generator {
 
     return settings;
   }
-
-  /* -------------------------- LINK PLUGIN SETTINGS ------------------------- */
-  _linkSettings() {
-    return [
-      {
-        type: 'input',
-        name: 'pluginname',
-        message: 'Your plugin name',
-        validate: (name) => (/^[a-zA-Z0-9]+$/.test(name) ? true : 'Use only [az AZ 09]')
-      },
-      { type: 'input', name: 'description', message: 'Plugin description', default: (a) => `${a.pluginname} description` },
-      { type: 'input', name: 'author', message: 'Author', default: (a) => `${a.pluginname} author` },
-      { type: 'input', name: 'id', message: 'Unique id', default: uuidv4(), validate: (v) => (!!v ? true : 'Invalid id') },
-      { type: 'input', name: 'label', message: 'Label', default: (a) => `${a.pluginname} label` },
-      { type: 'input', name: 'icon', message: 'FontAwesome icon', default: 'far fa-puzzle-piece' },
-      { type: 'input', name: 'version', message: 'Plugin version', default: '1.0.0' },
-    ];
-  }
-
 }
