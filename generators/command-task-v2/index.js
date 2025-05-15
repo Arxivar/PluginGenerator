@@ -4,24 +4,16 @@ import AppGenerator from '../app/index.js';
 
 export default class CommandTaskV2Generator extends AppGenerator {
   /* ---------------------------------------------------------------------- */
-  /*  LIFECYCLE HOOKS                                                       */
-  /* ---------------------------------------------------------------------- */
-
-  initializing() {
-    this.log(`Running ${chalk.red('COMMAND TASK V2')} generator!`);
-  }
-
-  /* ---------------------------------------------------------------------- */
   /*  PROMPTING                                                            */
   /* ---------------------------------------------------------------------- */
 
   async prompting() {
-    const prompts = this._requiredSettings({
-      exclude: ['injectParams', 'advConfig'],
-      minVersion: '2.12.0' // default
-    });
+    this.log(`Running ${chalk.red('COMMAND TASK V2')} generator!`);
 
-    const props = await this._getResolvedValues(prompts);
+    const props = await this._askRequiredSettings({
+      exclude: ['injectParams', 'advConfig'],
+      minVersion: '2.12.0'
+    });
 
     // Post‑process dependencies ----------------------------------------- //
     props.dependencies = (props.dependencies.toString().match(/[^ ]+/g) || []);

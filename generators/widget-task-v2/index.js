@@ -3,17 +3,13 @@ import path from 'path';
 import AppGenerator from '../app/index.js';
 
 export default class WidgetTaskV2Generator extends AppGenerator {
-  initializing() {
-    this.log(`Running ${chalk.red('WIDGET TASK V2')} generator!`);
-  }
-
   async prompting() {
-    const prompts = this._requiredSettings({
+    this.log(`Running ${chalk.red('WIDGET TASK V2')} generator!`);
+
+    const props = await this._askRequiredSettings({
       exclude: ['requireRefresh', 'injectParams', 'advConfig'],
       minVersion: '2.7.0'
     });
-
-    const props = await this._getResolvedValues(prompts);
 
     props.folderName = this.appname;
     props.plugindirective = `${props.pluginname}Directive`;

@@ -3,6 +3,11 @@ import { v4 as uuidv4 } from 'uuid';
 import _ from 'lodash';
 import path from 'path';
 import Generator from 'yeoman-generator';
+import {
+  input as inputPrompt,
+  select as selectPrompt,
+  confirm as confirmPrompt
+} from '@inquirer/prompts';
 
 // disabilita warning "fs.Stats constructor is deprecated", da rimuovere quando yeoman verra patchato
 process.removeAllListeners('warning');
@@ -70,25 +75,6 @@ export default class AppGenerator extends Generator {
   /* ---------------------------------- UTIL --------------------------------- */
   _shouldPrompt() {
     return !this._args || !this._args.includes('--auto');
-  }
-
-  /**
-   * Wrapper per gestire --auto con valori pre‑iniettati via options.
-   */
-  _getResolvedValues(prompts) {
-    if (this._shouldPrompt()) return this.prompt(prompts);
-
-    // fallback to options.arxivarPluginSettings
-    Object.keys(this.options.arxivarPluginSettings).forEach((key) => {
-      const prompt = prompts?.find((p) => p.name === key);
-      const value = this.options.arxivarPluginSettings[key];
-      if (prompt && prompt.default && _.isNil(value)) {
-        this.options.arxivarPluginSettings[key] = _.isFunction(prompt.default)
-          ? prompt.default(this.options.arxivarPluginSettings)
-          : prompt.default;
-      }
-    });
-    return Promise.resolve(this.options.arxivarPluginSettings);
   }
 
   /* ----------------------------- WELCOME MSG ------------------------------- */
@@ -161,100 +147,107 @@ export default class AppGenerator extends Generator {
       }
     };
   }
+
   /* ------------------------ COMMON REQUIRED SETTINGS ----------------------- */
-  _requiredSettings(options) {
-    let prompts = [
-      {
-        type: 'input',
-        name: 'pluginname',
+  async _askRequiredSettings(options = {}) {
+    const settings = {};
+
+    const isExcluded = (key) => options.exclude?.includes(key);
+
+    if (!isExcluded('pluginname')) {
+      settings.pluginname = await inputPrompt({
         message: 'Your plugin name',
-        validate: (pluginname) => {
-          if (_.isEmpty(_.trim(pluginname))) return 'Empty plugin name';
-          return /^[a-zA-Z0-9]*$/.test(pluginname) ? true : 'Use only [az AZ 09]';
-        }
-      },
-      {
-        type: 'input',
-        name: 'description',
+        required: true,
+        validate: (val) => /^[a-zA-Z0-9]*$/.test(val.trim()) ? true : 'Use only [a-z A-Z 0-9]',
+      });
+    }
+
+    if (!isExcluded('description')) {
+      settings.description = await inputPrompt({
         message: 'Your plugin description',
-        default: (ans) => `${ans.pluginname} description`
-      },
-      {
-        type: 'input',
-        name: 'author',
+        default: () => `${settings.pluginname} description`,
+      });
+    }
+
+    if (!isExcluded('author')) {
+      settings.author = await inputPrompt({
         message: 'Plugin author name',
-        default: (ans) => `${ans.pluginname} author`
-      },
-      {
-        type: 'input',
-        name: 'id',
+        default: () => `${settings.pluginname} author`,
+      });
+    }
+
+    if (!isExcluded('id')) {
+      settings.id = await inputPrompt({
         message: 'Your plugin unique identifier',
         default: uuidv4(),
-        validate: (guid) => (_.isEmpty(_.trim(guid)) ? 'Invalid uuid v4' : true)
-      },
-      {
-        type: 'input',
-        name: 'label',
-        message: 'Label for UI',
-        default: (ans) => `${ans.pluginname} label`
-      },
-      {
-        type: 'input',
-        name: 'icon',
-        message: 'FontAwesome icon (v6.5.1)',
-        default: 'fas fa-puzzle-piece'
-      },
-      {
-        type: 'input',
-        name: 'minVersion',
-        message: 'Minimum portal version supported?',
-        default: '2.0.0'
-      },
-      {
-        type: 'list',
-        name: 'requireRefresh',
-        message: 'Does your plugin require grid data refresh?',
-        default: 'no',
-        choices: ['no', 'yes'],
-        filter: (v) => v === 'yes'
-      },
-      {
-        type: 'list',
-        name: 'injectParams',
-        message: 'Does your plugin need params from querystring (>=2.1 required)?',
-        choices: ['no', 'yes'],
-        default: 'no',
-        filter: (v) => v === 'yes'
-      },
-      {
-        type: 'input',
-        name: 'dependencies',
-        message: 'Plugin dependencies (space separated)'
-      },
-      {
-        type: 'list',
-        name: 'typescript',
-        message: 'Would you like to use TypeScript?',
-        choices: ['no', 'yes'],
-        default: 'no',
-        filter: (v) => v === 'yes'
-      },
-      {
-        type: 'input',
-        name: 'arxPath',
-        message: 'Path for the compiled plugin after webpack',
-        when: (ans) => ans.typescript === true,
-        default: (ans) => ans.pluginname,
-        filter: (p) => p.split(path.sep).join(path.posix.sep)
-      }
-    ];
-
-    if (options?.exclude) prompts = prompts.filter((p) => !options.exclude.includes(p.name));
-    if (options?.minVersion) {
-      const idx = prompts.findIndex((p) => p.name === 'minVersion');
-      if (idx !== -1) prompts[idx].default = options.minVersion;
+        validate: (guid) => guid.trim() ? true : 'Invalid uuid v4',
+      });
     }
-    return prompts;
+
+    if (!isExcluded('label')) {
+      settings.label = await inputPrompt({
+        message: 'Label for UI',
+        default: () => `${settings.pluginname} label`,
+      });
+    }
+
+    if (!isExcluded('icon')) {
+      settings.icon = await inputPrompt({
+        message: 'FontAwesome icon (v6.5.1)',
+        default: 'fas fa-puzzle-piece',
+      });
+    }
+
+    if (!isExcluded('minVersion')) {
+      settings.minVersion = await inputPrompt({
+        message: 'Minimum portal version supported?',
+        default: options.minVersion || '2.0.0',
+      });
+    }
+
+    if (!isExcluded('requireRefresh')) {
+      const requireRefresh = await confirmPrompt({
+        message: 'Does your plugin require grid data refresh?',
+        default: false,
+      });
+      settings.requireRefresh = requireRefresh;
+    }
+
+    if (!isExcluded('injectParams')) {
+      const injectParams = await confirmPrompt({
+        message: 'Does your plugin need params from querystring (>=2.1 required)?',
+        default: false,
+      });
+      settings.injectParams = injectParams;
+    }
+
+    if (!isExcluded('dependencies')) {
+      settings.dependencies = await inputPrompt({
+        message: 'Plugin dependencies (space separated)',
+      });
+    }
+
+    if (!isExcluded('typescript')) {
+      const typescript = await selectPrompt({
+        message: 'Would you like to use TypeScript?',
+        choices: [
+          { name: 'No', value: false },
+          { name: 'Yes', value: true },
+        ],
+        default: false,
+      });
+      settings.typescript = typescript;
+    }
+
+    if (!isExcluded('arxPath') && settings.typescript) {
+      settings.arxPath = await inputPrompt({
+        message: 'Path for the compiled plugin after webpack',
+        default: settings.pluginname,
+        filter: (p) => p.split(path.sep).join(path.posix.sep),
+      });
+    }
+
+    return settings;
   }
 
   /* -------------------------- LINK PLUGIN SETTINGS ------------------------- */

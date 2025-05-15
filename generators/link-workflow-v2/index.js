@@ -17,14 +17,12 @@ String.prototype.capitalize = function () {
 
 
 export default class extends AppGenerator {
-  initializing() {
-    this.log(`Running ${chalk.red('LINK WORKFLOW V2')} generator!`);
-  }
-
   /* -------------------------------------------------------------------- */
   /*  PROMPTING                                */
   /* -------------------------------------------------------------------- */
   async prompting() {
+    this.log(`Running ${chalk.red('LINK WORKFLOW V2')} generator!`);
+
     /* ---------- 1. SETTINGS DI BASE ----------------------------------- */
     const requiredSettings = this._linkSettings({
       exclude: ['requireRefresh', 'injectParams', 'typescript'],

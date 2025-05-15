@@ -3,15 +3,10 @@ import path from 'path';
 import AppGenerator from '../app/index.js';
 
 export default class WidgetTaskGenerator extends AppGenerator {
-  /* ------------------------------------------------------------------ */
-  initializing() {
-    this.log(`Running ${chalk.red('WIDGET TASK')} generator!`);
-  }
-
-  /* ------------------------------------------------------------------ */
   async prompting() {
-    const prompts = this._requiredSettings({ exclude: ['requireRefresh', 'injectParams', 'advConfig'] });
-    const props = await this._getResolvedValues(prompts);
+    this.log(`Running ${chalk.red('WIDGET TASK')} generator!`);
+
+    const props = await this._askRequiredSettings({ exclude: ['requireRefresh', 'injectParams', 'advConfig'] });
 
     props.folderName = this.appname;
     props.plugindirective = `${props.pluginname}Directive`;
@@ -48,7 +43,6 @@ export default class WidgetTaskGenerator extends AppGenerator {
     this.props = props;
   }
 
-  /* ------------------------------------------------------------------ */
   writing() {
     const interfacePath = '../../../docs/frontend/';
     const basePath = '../../../';

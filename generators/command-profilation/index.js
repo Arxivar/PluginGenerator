@@ -4,25 +4,17 @@ import AppGenerator from '../app/index.js';
 
 export default class CommandProfilationGenerator extends AppGenerator {
   /* ---------------------------------------------------------------------- */
-  /*  LIFECYCLE HOOKS                                                       */
-  /* ---------------------------------------------------------------------- */
-
-  initializing() {
-    this.log(`Running ${chalk.red('COMMAND PROFILATION')} generator!`);
-  }
-
-  /* ---------------------------------------------------------------------- */
   /*  PROMPTING                                                            */
   /* ---------------------------------------------------------------------- */
 
   async prompting() {
+    this.log(`Running ${chalk.red('COMMAND PROFILATION')} generator!`);
+
     // Prompt base settings – exclude injectParams, requireRefresh, advConfig – override minVersion default 2.2.0
-    const prompts = this._requiredSettings({
+    const props = await this._askRequiredSettings({
       exclude: ['injectParams', 'requireRefresh', 'advConfig'],
       minVersion: '2.2.0'
     });
-
-    const props = await this._getResolvedValues(prompts);
 
     // ---- post‑process dependencies ------------------------------------ //
     props.dependencies = (props.dependencies.toString().match(/[^ ]+/g) || []);

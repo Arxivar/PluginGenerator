@@ -4,23 +4,14 @@ import AppGenerator from '../app/index.js';
 
 export default class CommandGenerator extends AppGenerator {
   /* ---------------------------------------------------------------------- */
-  /*  LIFECYCLE HOOKS                                                       */
-  /* ---------------------------------------------------------------------- */
-
-  initializing() {
-    this.log(`Running ${chalk.red('COMMAND')} generator!`);
-  }
-
-  /* ---------------------------------------------------------------------- */
   /*  PROMPTING                                                            */
   /* ---------------------------------------------------------------------- */
 
   async prompting() {
-    // 1) Prompt base settings (esclude injectParams e advConfig)
-    const prompts = this._requiredSettings({ exclude: ['injectParams', 'advConfig'] });
+    this.log(`Running ${chalk.red('COMMAND')} generator!`);
 
-    // 2) Risolve valori (supporta modalità --auto)
-    const props = await this._getResolvedValues(prompts);
+    // 1) Prompt base settings (esclude injectParams e advConfig)
+    const props = await this._askRequiredSettings({ exclude: ['injectParams', 'advConfig'] });
 
     /* ------------------------------------------------------------------ */
     /*  POST‑PROCESS                                                     */
@@ -74,6 +65,7 @@ export default class CommandGenerator extends AppGenerator {
     /* ------------------------------------------------------------------ */
     /*  Salva in this.props per i task successivi                         */
     /* ------------------------------------------------------------------ */
+
     this.props = props;
   }
 

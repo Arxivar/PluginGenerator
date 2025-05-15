@@ -4,22 +4,15 @@ import AppGenerator from '../app/index.js';
 
 export default class RouteGenerator extends AppGenerator {
   /* -------------------------------------------------------------------- */
-  /*  LIFECYCLE                                                           */
-  /* -------------------------------------------------------------------- */
-  initializing() {
-    this.log(`Running ${chalk.red('ROUTE')} generator!`);
-  }
-
-  /* -------------------------------------------------------------------- */
   /*  PROMPTING                                                           */
   /* -------------------------------------------------------------------- */
   async prompting() {
-    const prompts = this._requiredSettings({
+    this.log(`Running ${chalk.red('ROUTE')} generator!`);
+
+    const props = await this._askRequiredSettings({
       exclude: ['requireRefresh', 'advConfig'],
       minVersion: '2.1.0'
     });
-
-    const props = await this._getResolvedValues(prompts);
 
     /* --------------------- Post‑processing props ---------------------- */
     props.folderName = this.appname;

@@ -4,21 +4,14 @@ import AppGenerator from '../app/index.js';
 
 export default class WidgetDesktopGenerator extends AppGenerator {
   /* -------------------------------------------------------------------- */
-  /*  LIFECYCLE                                                           */
-  /* -------------------------------------------------------------------- */
-  initializing() {
-    this.log(`Running ${chalk.red('WIDGET DESKTOP')} generator!`);
-  }
-
-  /* -------------------------------------------------------------------- */
   /*  PROMPTING                                                           */
   /* -------------------------------------------------------------------- */
   async prompting() {
-    const prompts = this._requiredSettings({
+    this.log(`Running ${chalk.red('WIDGET DESKTOP')} generator!`);
+
+    const props = await this._askRequiredSettings({
       exclude: ['requireRefresh', 'injectParams', 'advConfig']
     });
-
-    const props = await this._getResolvedValues(prompts);
 
     props.folderName = this.appname;
     props.plugindirective = `${props.pluginname}Directive`;
