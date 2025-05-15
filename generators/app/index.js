@@ -4,6 +4,12 @@ import _ from 'lodash';
 import path from 'path';
 import Generator from 'yeoman-generator';
 
+// disabilita warning "fs.Stats constructor is deprecated", da rimuovere quando yeoman verra patchato
+process.removeAllListeners('warning');
+process.on('warning', (w) => {
+  if (w.code !== 'DEP0180') console.warn(w);
+});
+
 /* -------------------------------------------------------------------------- */
 /*  CONSTANTS                                                                 */
 /* -------------------------------------------------------------------------- */
@@ -51,8 +57,10 @@ export const linkServicesFront = [
 /* -------------------------------------------------------------------------- */
 
 export default class AppGenerator extends Generator {
-  constructor(...args) {
-    super(...args);
+  constructor(args, opts) {
+    //customInstallTask nasconde il warning "No change to package.json was detected. No package manager install will be executed."
+    super(args, opts, { customInstallTask: true });
+
     if (this.options?.destinationRoot) {
       this.log('Set destinationRoot with: ' + this.options.destinationRoot);
       this.destinationRoot(this.options.destinationRoot);
