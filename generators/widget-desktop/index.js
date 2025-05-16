@@ -11,7 +11,7 @@ export default class WidgetDesktopGenerator extends AppGenerator {
 
     /** @type {import('../../types.js').Props} */
     const props = await this._askRequiredSettings({
-      exclude: ['requireRefresh', 'injectParams', 'advConfig']
+      exclude: ['requireRefresh', 'injectParams', 'advConfig', 'version']
     });
 
     props.folderName = this.appname;

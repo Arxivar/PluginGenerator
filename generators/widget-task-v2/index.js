@@ -8,7 +8,7 @@ export default class WidgetTaskV2Generator extends AppGenerator {
 
     /** @type {import('../../types.js').Props} */
     const props = await this._askRequiredSettings({
-      exclude: ['requireRefresh', 'injectParams', 'advConfig'],
+      exclude: ['requireRefresh', 'injectParams', 'advConfig', 'version'],
       minVersion: '2.7.0'
     });
 

@@ -13,7 +13,7 @@ export default class CommandProfilationGenerator extends AppGenerator {
     // Prompt base settings – exclude injectParams, requireRefresh, advConfig – override minVersion default 2.2.0
     /** @type {import('../../types.js').Props} */
     const props = await this._askRequiredSettings({
-      exclude: ['injectParams', 'requireRefresh', 'advConfig'],
+      exclude: ['injectParams', 'requireRefresh', 'advConfig', 'version'],
       minVersion: '2.2.0'
     });
 

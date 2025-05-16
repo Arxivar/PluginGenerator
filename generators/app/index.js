@@ -151,11 +151,18 @@ export default class AppGenerator extends Generator {
 
   /* ------------------------ COMMON REQUIRED SETTINGS ----------------------- */
   async _askRequiredSettings(options = {}) {
-    const settings = {};
 
+    // ------- Serve per l'autogenerazione dei plugin --------
+    // @ts-ignore
+    const settings = { ...(this.options.arxivarPluginSettings ?? {}) };
     const isExcluded = (key) => options.exclude?.includes(key);
 
-    if (!isExcluded('pluginname')) {
+    const needPrompt = (key) =>
+      !isExcluded(key) && !Object.hasOwn(settings, key);
+
+
+    // ------- Inserimento campi prompt --------
+    if (needPrompt('pluginname')) {
       settings.pluginname = await inputPrompt({
         message: 'Your plugin name',
         required: true,
@@ -163,7 +170,7 @@ export default class AppGenerator extends Generator {
       });
     }
 
-    if (!isExcluded('description')) {
+    if (needPrompt('description')) {
       settings.description = await inputPrompt({
         message: 'Your plugin description',
         required: true,
@@ -171,7 +178,7 @@ export default class AppGenerator extends Generator {
       });
     }
 
-    if (!isExcluded('author')) {
+    if (needPrompt('author')) {
       settings.author = await inputPrompt({
         message: 'Plugin author name',
         required: true,
@@ -179,7 +186,7 @@ export default class AppGenerator extends Generator {
       });
     }
 
-    if (!isExcluded('id')) {
+    if (needPrompt('id')) {
       settings.id = await inputPrompt({
         message: 'Your plugin unique identifier',
         default: uuidv4(),
@@ -188,7 +195,7 @@ export default class AppGenerator extends Generator {
       });
     }
 
-    if (!isExcluded('label')) {
+    if (needPrompt('label')) {
       settings.label = await inputPrompt({
         message: 'Label for UI',
         required: true,
@@ -196,7 +203,7 @@ export default class AppGenerator extends Generator {
       });
     }
 
-    if (!isExcluded('icon')) {
+    if (needPrompt('icon')) {
       settings.icon = await inputPrompt({
         message: 'FontAwesome icon (v6.5.1)',
         required: true,
@@ -204,14 +211,14 @@ export default class AppGenerator extends Generator {
       });
     }
 
-    if (!isExcluded('version')) {
+    if (needPrompt('version')) {
       settings.version = await inputPrompt({
         message: 'Plugin version',
         default: '1.0.0',
       });
     }
 
-    if (!isExcluded('minVersion')) {
+    if (needPrompt('minVersion')) {
       settings.minVersion = await inputPrompt({
         message: 'Minimum portal version supported?',
         required: true,
@@ -219,7 +226,7 @@ export default class AppGenerator extends Generator {
       });
     }
 
-    if (!isExcluded('requireRefresh')) {
+    if (needPrompt('requireRefresh')) {
       const requireRefresh = await confirmPrompt({
         message: 'Does your plugin require grid data refresh?',
         default: false,
@@ -227,7 +234,7 @@ export default class AppGenerator extends Generator {
       settings.requireRefresh = requireRefresh;
     }
 
-    if (!isExcluded('injectParams')) {
+    if (needPrompt('injectParams')) {
       const injectParams = await confirmPrompt({
         message: 'Does your plugin need params from querystring (>=2.1 required)?',
         default: false,
@@ -235,13 +242,13 @@ export default class AppGenerator extends Generator {
       settings.injectParams = injectParams;
     }
 
-    if (!isExcluded('dependencies')) {
+    if (needPrompt('dependencies')) {
       settings.dependencies = await inputPrompt({
         message: 'Plugin dependencies (space separated)',
       });
     }
 
-    if (!isExcluded('typescript')) {
+    if (needPrompt('typescript')) {
       const typescript = await selectPrompt({
         message: 'Would you like to use TypeScript?',
         choices: [
@@ -253,7 +260,7 @@ export default class AppGenerator extends Generator {
       settings.typescript = typescript;
     }
 
-    if (!isExcluded('arxPath') && settings.typescript) {
+    if (needPrompt('arxPath') && settings.typescript) {
       let arxPath = await inputPrompt({
         message: 'Path for the compiled plugin after webpack',
         default: settings.pluginname,

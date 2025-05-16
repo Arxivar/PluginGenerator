@@ -12,7 +12,7 @@ export default class CommandTaskV2Generator extends AppGenerator {
 
     /** @type {import('../../types.js').Props} */
     const props = await this._askRequiredSettings({
-      exclude: ['injectParams', 'advConfig'],
+      exclude: ['injectParams', 'advConfig', 'version'],
       minVersion: '2.12.0'
     });
 

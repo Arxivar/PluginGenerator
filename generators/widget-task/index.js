@@ -7,7 +7,7 @@ export default class WidgetTaskGenerator extends AppGenerator {
     this.log(`Running ${chalk.red('WIDGET TASK')} generator!`);
 
     /** @type {import('../../types.js').Props} */
-    const props = await this._askRequiredSettings({ exclude: ['requireRefresh', 'injectParams', 'advConfig'] });
+    const props = await this._askRequiredSettings({ exclude: ['requireRefresh', 'injectParams', 'advConfig', 'version'] });
 
     props.folderName = this.appname;
     props.plugindirective = `${props.pluginname}Directive`;

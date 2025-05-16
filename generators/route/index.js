@@ -11,7 +11,7 @@ export default class RouteGenerator extends AppGenerator {
 
     /** @type {import('../../types.js').Props} */
     const props = await this._askRequiredSettings({
-      exclude: ['requireRefresh', 'advConfig'],
+      exclude: ['requireRefresh', 'advConfig', 'version'],
       minVersion: '2.1.0'
     });
 

@@ -12,7 +12,7 @@ export default class CommandGenerator extends AppGenerator {
 
     // 1) Prompt base settings (esclude injectParams e advConfig)
     /** @type {import('../../types.js').Props} */
-    const props = await this._askRequiredSettings({ exclude: ['injectParams', 'advConfig'] });
+    const props = await this._askRequiredSettings({ exclude: ['injectParams', 'advConfig', 'version'] });
 
     /* ------------------------------------------------------------------ */
     /*  POST‑PROCESS                                                     */
