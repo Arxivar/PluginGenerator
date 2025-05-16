@@ -9,6 +9,7 @@ export default class WidgetDesktopGenerator extends AppGenerator {
   async prompting() {
     this.log(`Running ${chalk.red('WIDGET DESKTOP')} generator!`);
 
+    /** @type {import('../../types.js').Props} */
     const props = await this._askRequiredSettings({
       exclude: ['requireRefresh', 'injectParams', 'advConfig']
     });

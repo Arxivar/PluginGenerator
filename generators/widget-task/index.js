@@ -6,6 +6,7 @@ export default class WidgetTaskGenerator extends AppGenerator {
   async prompting() {
     this.log(`Running ${chalk.red('WIDGET TASK')} generator!`);
 
+    /** @type {import('../../types.js').Props} */
     const props = await this._askRequiredSettings({ exclude: ['requireRefresh', 'injectParams', 'advConfig'] });
 
     props.folderName = this.appname;

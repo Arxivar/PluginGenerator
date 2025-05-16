@@ -11,6 +11,7 @@ export default class CommandGenerator extends AppGenerator {
     this.log(`Running ${chalk.red('COMMAND')} generator!`);
 
     // 1) Prompt base settings (esclude injectParams e advConfig)
+    /** @type {import('../../types.js').Props} */
     const props = await this._askRequiredSettings({ exclude: ['injectParams', 'advConfig'] });
 
     /* ------------------------------------------------------------------ */

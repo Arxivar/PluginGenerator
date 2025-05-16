@@ -11,6 +11,7 @@ export default class CommandProfilationGenerator extends AppGenerator {
     this.log(`Running ${chalk.red('COMMAND PROFILATION')} generator!`);
 
     // Prompt base settings – exclude injectParams, requireRefresh, advConfig – override minVersion default 2.2.0
+    /** @type {import('../../types.js').Props} */
     const props = await this._askRequiredSettings({
       exclude: ['injectParams', 'requireRefresh', 'advConfig'],
       minVersion: '2.2.0'

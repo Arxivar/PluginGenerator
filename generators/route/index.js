@@ -9,6 +9,7 @@ export default class RouteGenerator extends AppGenerator {
   async prompting() {
     this.log(`Running ${chalk.red('ROUTE')} generator!`);
 
+    /** @type {import('../../types.js').Props} */
     const props = await this._askRequiredSettings({
       exclude: ['requireRefresh', 'advConfig'],
       minVersion: '2.1.0'

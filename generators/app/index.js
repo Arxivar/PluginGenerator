@@ -11,9 +11,10 @@ import {
 
 // disabilita warning "fs.Stats constructor is deprecated", da rimuovere quando yeoman verra patchato
 process.removeAllListeners('warning');
-process.on('warning', (w) => {
+process.on('warning', /** @type {(w: Error & { code?: string }) => void} */(w) => {
   if (w.code !== 'DEP0180') console.warn(w);
 });
+
 
 /* -------------------------------------------------------------------------- */
 /*  CONSTANTS                                                                 */
@@ -166,7 +167,7 @@ export default class AppGenerator extends Generator {
       settings.description = await inputPrompt({
         message: 'Your plugin description',
         required: true,
-        default: () => `${settings.pluginname} description`,
+        default: `${settings.pluginname} description`,
       });
     }
 
@@ -174,7 +175,7 @@ export default class AppGenerator extends Generator {
       settings.author = await inputPrompt({
         message: 'Plugin author name',
         required: true,
-        default: () => `${settings.pluginname} author`,
+        default: `${settings.pluginname} author`,
       });
     }
 
@@ -191,7 +192,7 @@ export default class AppGenerator extends Generator {
       settings.label = await inputPrompt({
         message: 'Label for UI',
         required: true,
-        default: () => `${settings.pluginname} label`,
+        default: `${settings.pluginname} label`,
       });
     }
 
@@ -253,11 +254,12 @@ export default class AppGenerator extends Generator {
     }
 
     if (!isExcluded('arxPath') && settings.typescript) {
-      settings.arxPath = await inputPrompt({
+      let arxPath = await inputPrompt({
         message: 'Path for the compiled plugin after webpack',
         default: settings.pluginname,
-        filter: (p) => p.split(path.sep).join(path.posix.sep),
       });
+
+      settings.arxPath = arxPath.split(path.sep).join(path.posix.sep);
     }
 
     return settings;
