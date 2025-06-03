@@ -38,7 +38,6 @@ export default class extends AppGenerator {
       message: 'Select backend services:',
       confirmDelete: true,
       multiple: true,
-      required: true,
       pageSize: 12,
       clearInputWhenSelected: true,
       options: async (input = '') =>
@@ -127,6 +126,7 @@ export default class extends AppGenerator {
     if (this.props.typescriptLink) {
       this.props.linkServicesFrontType =
         this.props.linkServicesFront?.map(matchType) || [];
+
       function matchType(i) {
         switch (i) {
           case '$uibModal':
