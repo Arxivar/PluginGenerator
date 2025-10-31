@@ -204,7 +204,12 @@ export default class extends AppGenerator {
         default: 'string',
       });
 
-      this.props.inputParameters.push({ propertyName, propertyType });
+      const propertyRequired = await confirmPrompt({
+        message: 'INPUT property required?',
+        default: false,
+      });
+
+      this.props.inputParameters.push({ propertyName, propertyType, propertyRequired });
 
       const again = await confirmPrompt({
         message: 'Add another INPUT parameter?',
@@ -231,7 +236,12 @@ export default class extends AppGenerator {
         default: 'string',
       });
 
-      this.props.outputParameters.push({ propertyName, propertyType });
+      const propertyRequired = await confirmPrompt({
+        message: 'OUTPUT property required?',
+        default: false,
+      });
+
+      this.props.outputParameters.push({ propertyName, propertyType, propertyRequired });
 
       const again = await confirmPrompt({
         message: 'Add another OUTPUT parameter?',

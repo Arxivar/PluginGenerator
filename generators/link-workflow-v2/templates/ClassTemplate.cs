@@ -7,6 +7,7 @@ using Abletech.WebApi.Client.Arxivar.Client;
 using Abletech.Workflow.Plugins.Attributes;
 using Abletech.Workflow.Plugins.Link;
 using Abletech.Workflow.Plugins.Services;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using System;
 
@@ -20,14 +21,16 @@ namespace <%= props.pluginname%>
 		 /// <summary>
    		 /// <%= props.inputParameters[i].propertyType %> type input parameter named <%= props.inputParameters[i].propertyName.capitalize() %>
    		 /// </summary>
+		<% if (props.inputParameters[i].propertyRequired) { %>[Required]<% } %>
 		[InputParameter(DisplayName = "<%= props.inputParameters[i].propertyName.capitalize() %>", Description = "Please insert a description", DisplayOrder = <%= props.inputParameters.indexOf(props.inputParameters[i])%>)]
 		public <%= props.inputParameters[i].propertyType %> <%= props.inputParameters[i].propertyName.capitalize() %> { get; set; }		
 		<% } %>
 		<% for (let i=0; i<props.outputParameters.length; i++) { %>
-		 /// <summary>
-   		 /// <%= props.outputParameters[i].propertyType %> type output parameter named <%= props.outputParameters[i].propertyName.capitalize() %>
-   		 /// </summary>
-		[OutputParameter(DisplayName = "<%= props.outputParameters[i].propertyName.capitalize() %>", Description = "Please insert a description"%>)]
+		/// <summary>
+		/// <%= props.outputParameters[i].propertyType %> type output parameter named <%= props.outputParameters[i].propertyName.capitalize() %>
+		/// </summary>
+		<% if (props.outputParameters[i].propertyRequired) { %>[Required]<% } %>
+		[OutputParameter(DisplayName = "<%= props.outputParameters[i].propertyName.capitalize() %>", Description = "Please insert a description", DisplayOrder = <%= props.outputParameters.indexOf(props.outputParameters[i]) %>)]
 		public <%= props.outputParameters[i].propertyType %> <%= props.outputParameters[i].propertyName.capitalize() %> { get; set; }		
 		<% } %>
   		[Injected]
