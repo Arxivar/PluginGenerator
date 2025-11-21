@@ -18,16 +18,16 @@ npm install -g yo@5
 
 _Note: npm is the package manager for Node.js and comes bundled with it._
 
-- You can now download this project (download the .zip file or clone the repo, it's the same) and:
+- You can now download this project (download the .zip file or clone the repo, it's the same), go inside the "PluginGenerator" folder and type the following command:
 
 ```bash
-go inside the "PluginGenerator" folder and type "npm link"
+npm link
 ```
 
 - then run the command:
 
 ```bash
-  npm install
+npm install
 ```
 
 - Now with the command:
@@ -68,13 +68,13 @@ To use Typescript you have to follow these steps:
 - open the terminal into your plugin folder and run the command:
 
 ```bash
-  npm install
+npm install
 ```
 
 - execute webpack with running the command:
 
 ```bash
-  npm run webpack
+npm run webpack
 ```
 
 _Remember: if you specify the path in the options, you dont need to follow the steps below. Your plugin is already running in ARXivar._
