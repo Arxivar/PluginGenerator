@@ -6,14 +6,14 @@
 
 ## Installation
 
-- install [NodeJs](https://nodejs.org/en/) if you don't already have it (LTS version 22.15.0 should be fine).
+- install [NodeJs](https://nodejs.org/en/) if you don't already have it ( LTS version 22.15.0 should be fine).
 
 _Note: if nodejs is installed with nvm you will also have to install the windows build tools using `npm install --global windows-build-tools --vs2015` command._
 
 - When nodejs has finished installing, install [Yeoman](http://yeoman.io): open a command prompt and run the following command:
 
 ```bash
-npm install -g yo@5
+npm install -g yo@6
 ```
 
 _Note: npm is the package manager for Node.js and comes bundled with it._

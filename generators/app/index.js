@@ -205,7 +205,7 @@ export default class AppGenerator extends Generator {
 
     if (needPrompt('icon')) {
       settings.icon = await inputPrompt({
-        message: 'FontAwesome icon (v6.5.1)',
+        message: 'FontAwesome icon (v7)',
         required: true,
         default: 'fas fa-puzzle-piece',
       });
