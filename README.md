@@ -6,7 +6,7 @@
 
 ## Installation
 
-- install [NodeJs](https://nodejs.org/en/) if you don't already have it ( LTS version 22.15.0 should be fine).
+- install [NodeJs](https://nodejs.org/en/) if you don't already have it (**only Node.js 22 is supported**, e.g. 22.22.0 LTS).
 
 _Note: if nodejs is installed with nvm you will also have to install the windows build tools using `npm install --global windows-build-tools --vs2015` command._
 
