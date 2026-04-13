@@ -166,7 +166,7 @@ export default class AppGenerator extends Generator {
       settings.pluginname = await inputPrompt({
         message: 'Your plugin name',
         required: true,
-        validate: (val) => /^[a-zA-Z0-9]*$/.test(val.trim()) ? true : 'Use only [a-z A-Z 0-9]',
+        validate: (val) => /^(?![0-9])[a-zA-Z0-9]+$/.test(val.trim()) ? true : 'Name must be alphanumeric and cannot start with a number',
       });
     }
 
