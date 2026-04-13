@@ -4,86 +4,94 @@
 	"description": "Generator for ARXivar client plugins",
 	"homepage": "www.arxivar.it",
 	"author": {
-	  "name": "Abletech S.r.l.",
-	  "email": "",
-	  "url": ""
+		"name": "Abletech S.p.A.",
+		"email": "",
+		"url": ""
 	},
+	"type": "module",
 	"files": [
-	  "generators\\app",
-	  "generators\\command",
-	  "generators\\route",
-	  "generators\\widget"
+		"generators/app",
+		"generators/command",
+		"generators/command-profilation",
+		"generators/command-task-v2",
+		"generators/link-workflow-v2",
+		"generators/route",
+		"generators/widget-desktop",
+		"generators/widget-task",
+		"generators/widget-task-v2"
 	],
-	"main": "generators\\app\\index.js",
+	"exports": "generators/app/index.js",
+	"engines": {
+		"node": ">=20.0.0"
+	},
 	"keywords": [
-	  "arxivar",
-	  "yeoman-generator"
+		"arxivar",
+		"yeoman-generator"
 	],
 	"dependencies": {
-	  "chalk": "^1.0.0",
-	  "fuzzy": "^0.1.3",
-	  "inquirer-autocomplete-prompt": "^1.3.0",
-	  "inquirer-checkbox-plus-prompt": "^1.0.1",
-	  "lodash": "^4.17.21",
-	  "node-uuid": "^1.4.7",
-	  "yeoman-generator": "^2.0.5",
-	  "yosay": "^1.0.0"
+		"@inquirer/prompts": "^7.5.0",
+		"chalk": "^4.1.2",
+		"inquirer-select-pro": "^1.0.0-alpha.9",
+		"lodash": "^4.17.21",
+		"uuid": "^11.1.0",
+		"yeoman-environment": "^4.4.3",
+		"yeoman-generator": "^7.5.1"
 	},
 	"devDependencies": {
-	  "eslint": "^4.18.2",
-	  "eslint-config-xo-space": "^0.13.0",
-	  "eslint-plugin-angular": "^4.0.0",
-	  "eslint-plugin-es5": "^1.4.1",
-	  "gulp": "^4.0.2",
-	  "gulp-eslint": "^2.0.0",
-	  "gulp-exclude-gitignore": "^1.0.0",
-	  "gulp-istanbul": "^1.1.3",
-	  "gulp-line-ending-corrector": "^1.0.1",
-	  "gulp-mocha": "^7.0.2",
-	  "gulp-plumber": "^1.0.0",
-	  "moment": "^2.29.1",
-	  "yeoman-assert": "^2.0.0",
-	  "yeoman-test": "^1.0.0"
+		"eslint": "^4.18.2",
+		"eslint-config-xo-space": "^0.13.0",
+		"eslint-plugin-angular": "^4.0.0",
+		"eslint-plugin-es5": "^1.4.1",
+		"gulp": "^4.0.2",
+		"gulp-eslint": "^2.0.0",
+		"gulp-exclude-gitignore": "^1.0.0",
+		"gulp-istanbul": "^1.1.3",
+		"gulp-line-ending-corrector": "^1.0.1",
+		"gulp-mocha": "^7.0.2",
+		"gulp-plumber": "^1.0.0",
+		"moment": "^2.29.1",
+		"yeoman-assert": "^2.0.0",
+		"yeoman-test": "^1.0.0"
 	},
 	"eslintConfig": {
-	  "extends": "xo-space",
-	  "env": {
-		"jquery": true,
-		"es6": true,
-		"mocha": true
-	  },
-	  "plugins": [
-		"angular"
-	  ],
-	  "globals": {
-		"global": true,
-		"angular": true,
-		"module": true,
-		"confirm": true,
-		"alert": true
-	  },
-	  "rules": {
-		"linebreak-style": 0,
-		"no-unused-vars": 0,
-		"no-useless-escape": 0,
-		"no-multi-spaces": 0,
-		"no-trailing-spaces": 0,
-		"space-before-function-paren": 0,
-		"no-mixed-spaces-and-tabs": 0,
-		"keyword-spacing": 0,
-		"no-alert": 0,
-		"no-multiple-empty-lines": 0,
-		"object-curly-spacing": 0,
-		"spaced-comment": 0,
-		"padded-blocks": 0,
-		"space-before-blocks": 0,
-		"indent": 0,
-		"comma-spacing": 0
-	  }
+		"extends": "xo-space",
+		"env": {
+			"jquery": true,
+			"es6": true,
+			"mocha": true
+		},
+		"plugins": [
+			"angular"
+		],
+		"globals": {
+			"global": true,
+			"angular": true,
+			"module": true,
+			"confirm": true,
+			"alert": true
+		},
+		"rules": {
+			"linebreak-style": 0,
+			"no-unused-vars": 0,
+			"no-useless-escape": 0,
+			"no-multi-spaces": 0,
+			"no-trailing-spaces": 0,
+			"space-before-function-paren": 0,
+			"no-mixed-spaces-and-tabs": 0,
+			"keyword-spacing": 0,
+			"no-alert": 0,
+			"no-multiple-empty-lines": 0,
+			"object-curly-spacing": 0,
+			"spaced-comment": 0,
+			"padded-blocks": 0,
+			"space-before-blocks": 0,
+			"indent": 0,
+			"comma-spacing": 0
+		}
 	},
 	"repository": "/generator-arxivar-plugins",
 	"scripts": {
-	  "test": "gulp"
+		"test": "gulp"
 	},
 	"private": true
-  }
+}

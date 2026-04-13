@@ -1,486 +1,383 @@
-'use strict';
+import chalk from 'chalk';
+import path from 'path';
+import { v4 as uuidv4 } from 'uuid';
+import _ from 'lodash';
+import AppGenerator, { linkServices as linkServicesConst, linkServicesFront as linkServicesFrontConst } from '../app/index.js';
+import { select } from 'inquirer-select-pro';
+import {
+  input as inputPrompt,
+  select as selectPrompt,
+  confirm as confirmPrompt,
+} from '@inquirer/prompts';
 
-// var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
-// var yosay = require('yosay');
-var path = require('path');
-var uuid = require('node-uuid');
-var _ = require('lodash');
 
+//@ts-ignore
 String.prototype.capitalize = function () {
   return this.charAt(0).toUpperCase() + this.slice(1);
-}
+};
 
-var AppGenerator = require('../app');
-const {
-  toUpper,
-  takeRight
-} = require('lodash');
 
-module.exports = class extends AppGenerator {
-  initializing() {
-    this.log('Running ' + chalk.red('LINK WORKFLOW V2') + ' generator!');
-  }
+export default class extends AppGenerator {
+  /* -------------------------------------------------------------------- */
+  /*  PROMPTING                                */
+  /* -------------------------------------------------------------------- */
+  async prompting() {
+    this.log(`Running ${chalk.red('LINK WORKFLOW V2')} generator!`);
 
-  prompting() {
-    const promptsRequiredSettings = this._linkSettings({
-      exclude: ['requireRefresh', 'injectParams', 'typescript'],
-      minVersion: {
-        type: 'input',
-        name: 'minVersion',
-        message: 'Minimum portal version supported?',
-        default: '2.5.0'
-      }
+    /* ---------- 1. SETTINGS DI BASE ----------------------------------- */
+    const baseProps = await this._askRequiredSettings({
+      exclude: ['minVersion', 'requireRefresh', 'injectParams', 'dependencies', 'typescript'],
+      minVersion: '2.5.0',
     });
 
-    const resolvedValue = this._getResolvedValues(promptsRequiredSettings)
+    this.props = { ...this.props, ...baseProps };
 
-    const promptsAdvancedSettings = this._advancedConfigSettings();
-    const promptsInputParameter = this._inputParameter();
-    const promptsOutputParameter = this._outputParameter();
-    const promptsInQuestion = this._inputQuestion();
-    const promptsOutQuestion = this._outputQuestion();
-    const that = this;
+    /* ---------- 2. BACK-END SERVICES ---------------------------------- */
+    const backendOpts = linkServicesConst.map((s) => ({ name: s, value: s }));
+    this.props.linkServices = await select({
+      message: 'Select backend services:',
+      confirmDelete: true,
+      multiple: true,
+      pageSize: 12,
+      clearInputWhenSelected: true,
+      options: async (input = '') =>
+        input
+          ? backendOpts.filter((o) =>
+            o.name.toLowerCase().includes(input.toLowerCase()),
+          )
+          : backendOpts,
+    });
 
-    const loopInputQuestion = () => {
-      if (that.props.pluginname) {
-        return that.prompt(promptsInputParameter)
-          .then(props => {
-            that.props.inputParameters.push({
-              propertyName: props.propertyName,
-              propertyType: props.propertyType
-            });
-            return props.repeat ? loopInputQuestion() : that.prompt([]);
-          });
-      }
-      return that.prompt([]);
-    };
-    const loopOutputQuestion = () => {
-      if (that.props.pluginname) {
-        return that.prompt(promptsOutputParameter)
-          .then(props => {
-            that.props.outputParameters.push({
-              propertyName: props.propertyName,
-              propertyType: props.propertyType
-            });
-            return props.repeat ? loopOutputQuestion() : that.prompt([]);
-          });
-      }
-      return that.prompt([]);
-    };
+    /* ---------- 3. PARAMETRI INPUT ------------------------------------ */
+    this.props.inParams = await confirmPrompt({
+      message: 'Add INPUT parameters?',
+      default: false,
+    });
 
-    return resolvedValue
-      .then((_props) => {
-        that.props = {
-          ...that.props,
-          ..._props
-        };
-        return that.prompt(promptsInQuestion);
-      })
-      .then((_props) => {
-        that.props = {
-          ...that.props,
-          ..._props
-        };
-        that.props.inputParameters = [];
-        if (that.props.inParams) {
-          return loopInputQuestion();
-        }
-      })
-      .then((_props) => {
-        that.props = {
-          ...that.props,
-          ..._props
-        };
-        return that.prompt(promptsOutQuestion);
-      })
-      .then((_props) => {
-        that.props = {
-          ...that.props,
-          ..._props
-        };
-        that.props.outputParameters = [];
-        if (that.props.outParams) {
-          return loopOutputQuestion();
-        }
-      })
-      .then((_props) => {
-        that.props = {
-          ...that.props,
-          ..._props
-        };
-        return that.prompt(promptsAdvancedSettings);
-      })
-      .then((_props) => {
-        that.props = {
-          ...that.props,
-          ..._props
-        };
-        that.props.folderName = that.appname;
-        that.props.plugincontroller = that.props.pluginname + 'Ctrl';
-        that.props.dependencies = that.props.dependencies ? that.props.dependencies.toString().match(/[^ ]+/g) || [] : [];
-        that.props.dependenciesType = that.props.dependencies ? that.props.dependencies.toString().match(/[^ ]+/g) || [] : [];
-        that.props.inputParameters = that.props.inputParameters ? that.props.inputParameters : [];
-        that.props.outputParameter = that.props.outputParameter ? that.props.outputParameter : [];
-        that.props.linkServicesFront = that.props.linkServicesFront ? that.props.linkServicesFront : [];
-        that.props.paramsCommentDesc = '';
-        that.props.paramsCommentEx = '';
-        that.props.paramsCommentParams = '';
-        that.props.paramsCommentParamsEx = '';
-        that.props.projectId = uuid.v4();
-        that.props.nestedProject = uuid.v4();
-        that.props.secondProjectId = uuid.v4();
-        that.props.guid = uuid.v4();
-        that.props.nestedGuid = uuid.v4();
-        that.props.presolutionGuid = uuid.v4();
-        that.props.explanations = that._getPluginsExplanations();
-        //that.props.servicesString = that.props.linkServices ? that.props.linkServices.map(i => '\'' + i + '\'') || [] : [];
+    this.props.inputParameters = [];
+    if (this.props.inParams) {
+      await this._collectInputParameters();
+    }
 
-        if (that.props.typescriptLink) {
-          that.props.linkServicesFrontType = that.props.linkServicesFront ? that.props.linkServicesFront.map(matchType) || [] : [];
+    /* ---------- 4. PARAMETRI OUTPUT ----------------------------------- */
+    this.props.outParams = await confirmPrompt({
+      message: 'Add OUTPUT parameters?',
+      default: false,
+    });
 
-          // eslint-disable-next-line no-inner-declarations
-          function matchType(i) {
-            switch (i) {
-              case '$uibModal':
-                return 'readonly $uibModal:angular.ui.bootstrap.IModalService';
-              case 'moment':
-                return 'readonly moment: IMoment';
-              case 'params':
-                return 'readonly params: IRouteParams';
-              case '$document':
-                return 'readonly $document: angular.IDocumentService';
-              case '$window':
-                return 'readonly $window: angular.IWindowService';
-              case '$rootScope':
-                return 'readonly $rootScope: angular.IRootScopeService';
-              case '$http':
-                return 'readonly $http: angular.IHttpService';
-              case '$filter':
-                return 'readonly $filter: angular.IFilterService';
-              case '$timeout':
-                return 'readonly $timeout: angular.ITimeoutService';
-              case '_':
-                return 'readonly _: ILoDash';
-              case '$q':
-                return 'readonly $q: angular.IQService';
-              case 'arxivarResourceService':
-                return 'readonly arxivarResourceService: IArxivarResourceService';
-              case 'arxivarUserServiceCreator':
-                return 'readonly arxivarUserServiceCreator: IArxivarUserServiceCreator';
-              case 'arxivarRouteService':
-                return 'readonly arxivarRouteService: IArxivarRouteService';
-              case 'arxivarDocumentsService':
-                return 'readonly arxivarDocumentsService: IArxivarDocumentsService';
-              case 'arxivarNotifierService':
-                return 'readonly arxivarNotifierService: IArxivarNotifierService';
-              case 'workflowResourceService':
-                return 'readonly workflowResourceService: IWorkflowResourceService';
-              default:
-                return i;
-            }
-          }
+    this.props.outputParameters = [];
+    if (this.props.outParams) {
+      await this._collectOutputParameters();
+    }
 
-        }
+    /* ---------- 5. ADVANCED SETTINGS ---------------------------------- */
+    this.props.advConfig = await confirmPrompt({
+      message: 'Would you like advanced configuration?',
+      default: false,
+    });
 
-        that.props.linkServicesFrontJs = _.cloneDeep(that.props.linkServicesFront);
-        that.props.dependenciesType.unshift('');
-        that.props.dependencies.unshift('');
-        that.props.linkServicesFront.unshift('');
-        that.props.dependenciesString = that.props.dependencies.map(i => '\'' + i + '\'') || [];
-        that.props.linkServicesFrontString = that.props.linkServicesFront ? that.props.linkServicesFront.map(i => '\'' + i + '\'') || [] : [];
-        that.props.linkServicesFrontString.shift();
-        that.props.linkServicesFrontString.push('');
-        that.props.dependenciesString.shift();
-        that.props.dependenciesString.push('');
+    if (this.props.advConfig) {
+      const frontOpts = linkServicesFrontConst.map((s) => ({
+        name: s,
+        value: s,
+      }));
+      this.props.linkServicesFront = await select({
+        message: 'Select frontend services:',
+        confirmDelete: true,
+        multiple: true,
+        required: false,
+        pageSize: 12,
+        defaultValue: ['workflowResourceService', '_'],
+        clearInputWhenSelected: true,
+        options: async (input = '') =>
+          input
+            ? frontOpts.filter((o) =>
+              o.name.toLowerCase().includes(input.toLowerCase()),
+            )
+            : frontOpts,
       });
+
+      this.props.typescriptLink = await confirmPrompt({
+        message: 'Use TypeScript?',
+        default: false,
+      });
+    }
+
+    /* ---------- 6. POST-PROCESSING ----------------- */
+    this.props.folderName = this.appname;
+    this.props.plugincontroller = this.props.pluginname + 'Ctrl';
+    this.props.dependencies =
+      this.props.dependencies?.toString().match(/[^ ]+/g) || [];
+    this.props.dependenciesType =
+      this.props.dependencies?.toString().match(/[^ ]+/g) || [];
+    this.props.linkServicesFront = this.props.linkServicesFront || [];
+    this.props.paramsCommentDesc = '';
+    this.props.paramsCommentEx = '';
+    this.props.paramsCommentParams = '';
+    this.props.paramsCommentParamsEx = '';
+    this.props.projectId = uuidv4();
+    this.props.nestedProject = uuidv4();
+    this.props.secondProjectId = uuidv4();
+    this.props.guid = uuidv4();
+    this.props.nestedGuid = uuidv4();
+    this.props.presolutionGuid = uuidv4();
+    this.props.explanations = this._getPluginsExplanations();
+
+    if (this.props.typescriptLink) {
+      this.props.linkServicesFrontType =
+        this.props.linkServicesFront?.map(matchType) || [];
+
+      function matchType(i) {
+        switch (i) {
+          case '$uibModal':
+            return 'readonly $uibModal:angular.ui.bootstrap.IModalService';
+          case 'moment':
+            return 'readonly moment: IMoment';
+          case 'params':
+            return 'readonly params: IRouteParams';
+          case '$document':
+            return 'readonly $document: angular.IDocumentService';
+          case '$window':
+            return 'readonly $window: angular.IWindowService';
+          case '$rootScope':
+            return 'readonly $rootScope: angular.IRootScopeService';
+          case '$http':
+            return 'readonly $http: angular.IHttpService';
+          case '$filter':
+            return 'readonly $filter: angular.IFilterService';
+          case '$timeout':
+            return 'readonly $timeout: angular.ITimeoutService';
+          case '_':
+            return 'readonly _: ILoDash';
+          case '$q':
+            return 'readonly $q: angular.IQService';
+          case 'arxivarResourceService':
+            return 'readonly arxivarResourceService: IArxivarResourceService';
+          case 'arxivarUserServiceCreator':
+            return 'readonly arxivarUserServiceCreator: IArxivarUserServiceCreator';
+          case 'arxivarRouteService':
+            return 'readonly arxivarRouteService: IArxivarRouteService';
+          case 'arxivarDocumentsService':
+            return 'readonly arxivarDocumentsService: IArxivarDocumentsService';
+          case 'arxivarNotifierService':
+            return 'readonly arxivarNotifierService: IArxivarNotifierService';
+          case 'workflowResourceService':
+            return 'readonly workflowResourceService: IWorkflowResourceService';
+          default:
+            return i;
+        }
+      }
+    }
+
+    //helpers per template
+    this.props.linkServicesFrontJs = _.cloneDeep(this.props.linkServicesFront);
+    this.props.dependenciesType.unshift('');
+    this.props.dependencies.unshift('');
+    this.props.linkServicesFront.unshift('');
+    this.props.dependenciesString = this.props.dependencies.map((i) => `'${i}'`);
+    this.props.linkServicesFrontString = this.props.linkServicesFront.map(
+      (i) => `'${i}'`,
+    );
+    this.props.linkServicesFrontString.shift();
+    this.props.linkServicesFrontString.push('');
+    this.props.dependenciesString.shift();
+    this.props.dependenciesString.push('');
   }
 
+  /* -------------------------------------------------------------------- */
+  /*  HELPERS 
+  /* -------------------------------------------------------------------- */
+  async _collectInputParameters() {
+    const types = ['string', 'int', 'bool', 'DateTime', 'object[]', 'object[,]'].map(
+      (t) => ({ name: t, value: t }),
+    );
+
+    while (true) {
+      const propertyName = await inputPrompt({
+        message: 'INPUT property name',
+        validate: (v) => (v.trim() ? true : 'Cannot be empty'),
+      });
+
+      const propertyType = await selectPrompt({
+        message: 'INPUT property type',
+        choices: types,
+        default: 'string',
+      });
+
+      const propertyRequired = await confirmPrompt({
+        message: 'INPUT property required?',
+        default: false,
+      });
+
+      this.props.inputParameters.push({ propertyName, propertyType, propertyRequired });
+
+      const again = await confirmPrompt({
+        message: 'Add another INPUT parameter?',
+        default: false,
+      });
+      if (!again) break;
+    }
+  }
+
+  async _collectOutputParameters() {
+    const types = ['string', 'int', 'bool', 'DateTime', 'object[]', 'object[,]'].map(
+      (t) => ({ name: t, value: t }),
+    );
+
+    while (true) {
+      const propertyName = await inputPrompt({
+        message: 'OUTPUT property name',
+        validate: (v) => (v.trim() ? true : 'Cannot be empty'),
+      });
+
+      const propertyType = await selectPrompt({
+        message: 'OUTPUT property type',
+        choices: types,
+        default: 'string',
+      });
+
+      const propertyRequired = await confirmPrompt({
+        message: 'OUTPUT property required?',
+        default: false,
+      });
+
+      this.props.outputParameters.push({ propertyName, propertyType, propertyRequired });
+
+      const again = await confirmPrompt({
+        message: 'Add another OUTPUT parameter?',
+        default: false,
+      });
+      if (!again) break;
+    }
+  }
+
+
+  /* -------------------------------------------------------------------- */
+  /*  WRITING                                                              */
+  /* -------------------------------------------------------------------- */
   writing() {
-    var interfacePath = '../../../docs/frontend/';
-    var basePath = '../../../';
+    const interfacePath = '../../../docs/frontend/';
+    const basePath = '../../../';
+    const tpl = { ...this.props, props: this.props };
 
     if (!this.props.advConfig) {
-      this.destinationRoot(
-        path.join('./plugins-link', this.props.pluginname)
-      );
+      this.destinationRoot(path.join('./plugins-link', this.props.pluginname));
 
-      var classFilename = this.props.pluginname + '.cs';
-      var classLibraryFilename = this.props.pluginname + '.csproj';
-      var solution = this.props.pluginname + '.sln';
-      var pluginName = this.props.pluginname;
+      const classFilename = this.props.pluginname + '.cs';
+      const classLibraryFilename = this.props.pluginname + '.csproj';
+      const solution = this.props.pluginname + '.sln';
+      const pluginName = this.props.pluginname;
 
-      this.fs.copyTpl(
-        this.templatePath('ClassTemplate.cs'),
-        this.destinationPath(this.props.pluginname + '/' + classFilename), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('ClassTemplate.cs'), this.destinationPath(this.props.pluginname + '/' + classFilename), tpl);
       this.log(chalk.green('Written file: ' + classFilename));
 
-      this.fs.copyTpl(
-        this.templatePath('ClassLibraryTemplate.csproj'),
-        this.destinationPath(this.props.pluginname + '/' + classLibraryFilename), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('ClassLibraryTemplate.csproj'), this.destinationPath(this.props.pluginname + '/' + classLibraryFilename), tpl);
       this.log(chalk.green('Written file: ' + classLibraryFilename));
 
-      this.fs.copyTpl(
-        this.templatePath('postbuild.bat'),
-        this.destinationPath('postbuild.bat'), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('postbuild.bat'), this.destinationPath('postbuild.bat'), tpl);
       this.log(chalk.green('Written file: postbuild.bat'));
 
-      this.fs.copyTpl(
-        this.templatePath('solutionTemplate.sln'),
-        this.destinationPath(solution), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('solutionTemplate.sln'), this.destinationPath(solution), tpl);
       this.log(chalk.green('Written file: ' + solution));
       this.log(chalk.green('********** ' + pluginName + ' folder created into plugins-link **********'));
-
-
     }
 
     if (this.props.advConfig && this.props.typescriptLink) {
-      this.destinationRoot(
-        path.join('./plugins-link', this.props.pluginname)
-      );
-      //C#
-      var classFilename = this.props.pluginname + '.cs';
-      var classLibraryFilename = this.props.pluginname + '.csproj';
-      var solution = this.props.pluginname + '.sln';
-      var pluginName = this.props.pluginname;
+      this.destinationRoot(path.join('./plugins-link', this.props.pluginname));
+      const classFilename = this.props.pluginname + '.cs';
+      const classLibraryFilename = this.props.pluginname + '.csproj';
+      const solution = this.props.pluginname + '.sln';
+      const pluginName = this.props.pluginname;
 
-      this.fs.copyTpl(
-        this.templatePath('ClassTemplate.cs'),
-        this.destinationPath(this.props.pluginname + '/' + classFilename), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('ClassTemplate.cs'), this.destinationPath(this.props.pluginname + '/' + classFilename), tpl);
       this.log(chalk.green('Written file: ' + classFilename));
 
-
-      this.fs.copyTpl(
-        this.templatePath('ClassLibraryTemplateAdvTs.csproj'),
-        this.destinationPath(this.props.pluginname + '/' + classLibraryFilename), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('ClassLibraryTemplateAdvTs.csproj'), this.destinationPath(this.props.pluginname + '/' + classLibraryFilename), tpl);
       this.log(chalk.green('Written file: ' + classLibraryFilename));
 
-      this.fs.copyTpl(
-        this.templatePath('prebuildAdvTs.bat'),
-        this.destinationPath('prebuild.bat'), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('prebuildAdvTs.bat'), this.destinationPath('prebuild.bat'), tpl);
       this.log(chalk.green('Written file: prebuild.bat'));
 
-      this.fs.copyTpl(
-        this.templatePath('postbuildAdvTs.bat'),
-        this.destinationPath('postbuild.bat'), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('postbuildAdvTs.bat'), this.destinationPath('postbuild.bat'), tpl);
       this.log(chalk.green('Written file: postbuild.bat'));
 
-      this.fs.copyTpl(
-        this.templatePath('solutionTemplateAdvTs.sln'),
-        this.destinationPath(solution), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('solutionTemplateAdvTs.sln'), this.destinationPath(solution), tpl);
       this.log(chalk.green('Written file: ' + solution));
 
-      //TS
-      var controllerFilename = this.props.pluginname + '.ts';
-      var pageLinkFilename = this.props.pluginname + '.html';
-      var styleFilename = this.props.pluginname + '.css';
-      var pluginName = this.props.pluginname;
+      // TS Frontend
+      const controllerFilename = this.props.pluginname + '.ts';
+      const pageLinkFilename = this.props.pluginname + '.html';
+      const styleFilename = this.props.pluginname + '.css';
 
-      this.fs.copyTpl(
-        this.templatePath('scripts/src/WfmDesignerOperationTemplate.ts'),
-        this.destinationPath('scripts/src/' + controllerFilename), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('scripts/src/WfmDesignerOperationTemplate.ts'), this.destinationPath('scripts/src/' + controllerFilename), tpl);
       this.log(chalk.green('Written file: ' + controllerFilename));
 
-      this.fs.copyTpl(
-        this.templatePath('scripts/src/WfmDesignerOperationTemplateTs.html'),
-        this.destinationPath('scripts/src/' + pageLinkFilename), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('scripts/src/WfmDesignerOperationTemplateTs.html'), this.destinationPath('scripts/src/' + pageLinkFilename), tpl);
       this.log(chalk.green('Written file: ' + pageLinkFilename));
 
-      this.fs.copyTpl(
-        this.templatePath('scripts/src/WfmDesignerStyleTs.css'),
-        this.destinationPath('scripts/src/' + styleFilename), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('scripts/src/WfmDesignerStyleTs.css'), this.destinationPath('scripts/src/' + styleFilename), tpl);
       this.log(chalk.green('Written file: ' + styleFilename));
 
-      this.fs.copyTpl(
-        this.templatePath(basePath + 'global.d.ts'),
-        this.destinationPath('scripts/global.d.ts'), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath(basePath + 'global.d.ts'), this.destinationPath('scripts/global.d.ts'), tpl);
       this.log(chalk.green('Written file: global.d.ts'));
 
-      //Copio Interfaces.ts
-      this.fs.copyTpl(
-        this.templatePath(interfacePath + 'Interfaces.ts'),
-        this.destinationPath('scripts/Interfaces.ts'), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath(interfacePath + 'Interfaces.ts'), this.destinationPath('scripts/Interfaces.ts'), tpl);
       this.log(chalk.green('Written file: Interfaces.ts'));
 
-      //Copio .babelrc
-      this.fs.copyTpl(
-        this.templatePath('.babelrc'),
-        this.destinationPath('.babelrc'), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('.babelrc'), this.destinationPath('.babelrc'), tpl);
       this.log(chalk.green('Written file: .babelrc'));
 
-      //Copio .eslintrc
-      this.fs.copyTpl(
-        this.templatePath('.eslintrc'),
-        this.destinationPath('.eslintrc'), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('.eslintrc'), this.destinationPath('.eslintrc'), tpl);
       this.log(chalk.green('Written file: .eslintrc'));
 
-      //Copio package.json
-      this.fs.copyTpl(
-        this.templatePath('package.json'),
-        this.destinationPath('package.json'), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('package.json'), this.destinationPath('package.json'), tpl);
       this.log(chalk.green('Written file: package.json'));
 
-      //Copio postcss.config.js
-      this.fs.copyTpl(
-        this.templatePath('postcss.config.js'),
-        this.destinationPath('postcss.config.js'), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('postcss.config.js'), this.destinationPath('postcss.config.js'), tpl);
       this.log(chalk.green('Written file: postcss.config.js'));
 
-      //Copio tsconfig.json
-      this.fs.copyTpl(
-        this.templatePath('tsconfig.json'),
-        this.destinationPath('tsconfig.json'), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('tsconfig.json'), this.destinationPath('tsconfig.json'), tpl);
       this.log(chalk.green('Written file: tsconfig.json'));
 
-      //Copio webpack.config.js
-      this.fs.copyTpl(
-        this.templatePath('webpack.config.js'),
-        this.destinationPath('webpack.config.js'), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('webpack.config.js'), this.destinationPath('webpack.config.js'), tpl);
       this.log(chalk.green('Written file: webpack.config.js'));
       this.log(chalk.green('********** ' + pluginName + ' folder created into plugins-link, run npm install there **********'));
-
     }
 
-
     if (this.props.advConfig && !this.props.typescriptLink) {
+      this.destinationRoot(path.join('./plugins-link', this.props.pluginname));
+      const classFilename = this.props.pluginname + '.cs';
+      const classLibraryFilename = this.props.pluginname + '.csproj';
+      const solution = this.props.pluginname + '.sln';
+      const pluginName = this.props.pluginname;
 
-      this.destinationRoot(
-        path.join('./plugins-link', this.props.pluginname)
-      );
-
-      //C#
-      var classFilename = this.props.pluginname + '.cs';
-      var classLibraryFilename = this.props.pluginname + '.csproj';
-      var solution = this.props.pluginname + '.sln';
-      var pluginName = this.props.pluginname;
-
-      this.fs.copyTpl(
-        this.templatePath('ClassTemplate.cs'),
-        this.destinationPath(this.props.pluginname + '/' + classFilename), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('ClassTemplate.cs'), this.destinationPath(this.props.pluginname + '/' + classFilename), tpl);
       this.log(chalk.green('Written file: ' + classFilename));
 
-
-      this.fs.copyTpl(
-        this.templatePath('ClassLibraryTemplateAdvJs.csproj'),
-        this.destinationPath(this.props.pluginname + '/' + classLibraryFilename), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('ClassLibraryTemplateAdvJs.csproj'), this.destinationPath(this.props.pluginname + '/' + classLibraryFilename), tpl);
       this.log(chalk.green('Written file: ' + classLibraryFilename));
 
-      this.fs.copyTpl(
-        this.templatePath('postbuildAdvJs.bat'),
-        this.destinationPath('postbuild.bat'), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('postbuildAdvJs.bat'), this.destinationPath('postbuild.bat'), tpl);
       this.log(chalk.green('Written file: postbuild.bat'));
 
-
-      this.fs.copyTpl(
-        this.templatePath('solutionTemplateAdvJs.sln'),
-        this.destinationPath(solution), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('solutionTemplateAdvJs.sln'), this.destinationPath(solution), tpl);
       this.log(chalk.green('Written file: ' + solution));
 
-      //JS
-      var controllerFilename = this.props.pluginname + '.js';
-      var pageLinkFilename = this.props.pluginname + '.html';
-      var styleFilename = this.props.pluginname + '.css';
-      var pluginName = this.props.pluginname;
+      // JS frontend
+      const controllerFilename = this.props.pluginname + '.js';
+      const pageLinkFilename = this.props.pluginname + '.html';
+      const styleFilename = this.props.pluginname + '.css';
 
-      this.fs.copyTpl(
-        this.templatePath('scripts/src/WfmDesignerOperationTemplate.js'),
-        this.destinationPath('scripts/src/' + controllerFilename), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('scripts/src/WfmDesignerOperationTemplate.js'), this.destinationPath('scripts/src/' + controllerFilename), tpl);
       this.log(chalk.green('Written file: ' + controllerFilename));
 
-      this.fs.copyTpl(
-        this.templatePath('scripts/src/WfmDesignerOperationTemplateJs.html'),
-        this.destinationPath('scripts/src/' + pageLinkFilename), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('scripts/src/WfmDesignerOperationTemplateJs.html'), this.destinationPath('scripts/src/' + pageLinkFilename), tpl);
       this.log(chalk.green('Written file: ' + pageLinkFilename));
 
-
-      this.fs.copyTpl(
-        this.templatePath('scripts/src/wfmDesignerStyleJs.css'),
-        this.destinationPath('scripts/src/' + styleFilename), {
-          props: this.props
-        }
-      );
+      this.fs.copyTpl(this.templatePath('scripts/src/wfmDesignerStyleJs.css'), this.destinationPath('scripts/src/' + styleFilename), tpl);
       this.log(chalk.green('Written file: ' + styleFilename));
 
       this.log(chalk.green('********** ' + pluginName + ' folder created into plugins-link **********'));
-
     }
   }
-};
+}

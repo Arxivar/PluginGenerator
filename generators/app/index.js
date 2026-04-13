@@ -1,281 +1,96 @@
-'use strict';
-var chalk = require('chalk');
-// var yosay = require('yosay');
+import chalk from 'chalk';
+import { v4 as uuidv4 } from 'uuid';
+import _ from 'lodash';
+import path from 'path';
+import Generator from 'yeoman-generator';
+import {
+  input as inputPrompt,
+  select as selectPrompt,
+  confirm as confirmPrompt
+} from '@inquirer/prompts';
 
-var uuid = require('node-uuid');
-var _ = require('lodash');
-var path = require('path');
-const Generator = require('yeoman-generator');
-var fuzzy = require('fuzzy');
+// disabilita warning "fs.Stats constructor is deprecated", da rimuovere quando yeoman verra patchato
+process.removeAllListeners('warning');
+process.on('warning', /** @type {(w: Error & { code?: string }) => void} */(w) => {
+  if (w.code !== 'DEP0180') console.warn(w);
+});
 
 
+/* -------------------------------------------------------------------------- */
+/*  CONSTANTS                                                                 */
+/* -------------------------------------------------------------------------- */
 
-const linkServices = [
-  "IMongoDbProvider",
-  "IAuthProvider",
-  "IAddressBookApi",
-  "IAddressBookCategoryApi",
-  "IAddressBookNoteApi",
-  "IAddressBookSearchApi",
-  "IAddressBookSearchV3Api",
-  "IAddressBookSearchV4Api",
-  "IAddressBookV3Api",
-  "IAddressBookV4Api",
-  "IArxESignApi",
-  "IAssistantApi",
-  "IAssociationsApi",
-  "IAssociationsV2Api",
-  "IAttachmentsApi",
-  "IAuthenticationApi",
-  "IBarcodeApi",
-  "IBindersApi",
-  "IBinderSearchApi",
-  "IBinderSearchV3Api",
-  "IBinderTypeSearchApi",
-  "IBufferApi",
-  "IBusinessUnitsApi",
-  "ICacheApi",
-  "IChatApi",
-  "ICheckInOutApi",
-  "ICheckInOutV2Api",
-  "IClassAdditionalFieldsApi",
-  "IClassAdditionalFieldsV2Api",
-  "IClientSettingsApi",
-  "IContactCategoryApi",
-  "ICustomLabelsApi",
-  "IDelegationApi",
-  "IDesktopApi",
-  "IDesktopLayoutApi",
-  "IDevicesApi",
-  "IDocToOcrApi",
-  "IDocumentsApi",
-  "IDocumentTicketsApi",
-  "IDocumentTypesApi",
-  "IElementApi",
-  "IEncryptionApi",
-  "IExternalAppsApi",
-  "IFieldsSelectorApi",
-  "IFindApi",
-  "IFoldersApi",
-  "IFoldersV2Api",
-  "IFullTextApi",
-  "IGlobalSearchApi",
-  "IGlobalSearchV3Api",
-  "IGroupsModelsApi",
-  "IIxServicesApi",
-  "ILanguagesApi",
-  "ILayoutApi",
-  "ILicenseApi",
-  "ILogApi",
-  "ILogJsApi",
-  "IMailApi",
-  "IMailV2Api",
-  "IMasksApi",
-  "IMassiveChangeApi",
-  "IModelsApi",
-  "IMonitoredFoldersApi",
-  "IMonitoredFoldersDetailsApi",
-  "INotesApi",
-  "IOperationApi",
-  "IOptionsApi",
-  "IOriginsApi",
-  "IPasswordManagerApi",
-  "IPeriodsApi",
-  "IPluginsApi",
-  "IPredefinedProfilesApi",
-  "IPreviewsApi",
-  "IProcessAttachmentsApi",
-  "IProcessDocumentApi",
-  "IProcessInfoApi",
-  "IProcessNotesApi",
-  "IProcessProfessionalRoleApi",
-  "IProcessVariablesApi",
-  "IProfilePermissionsApi",
-  "IProfilesApi",
-  "IPushNotificationsApi",
-  "IQueueApi",
-  "IQuickSearchesApi",
-  "IQuickSearchesV2Api",
-  "IRelationsApi",
-  "IReportApi",
-  "IRevisionsApi",
-  "ISearchesApi",
-  "ISearchesV2Api",
-  "ISearchesV3Api",
-  "ISharingApi",
-  "ISharingDefinitionsApi",
-  "IShippingApi",
-  "ISignApi",
-  "IStampsApi",
-  "IStatesApi",
-  "ITaskLayoutApi",
-  "ITaskV2Api",
-  "ITaskWorkApi",
-  "ITaskWorkAttachmentsApi",
-  "ITaskWorkAttachmentsV2Api",
-  "ITaskWorkDocumentsApi",
-  "ITaskWorkHistoryApi",
-  "ITaskWorkHistoryV2Api",
-  "ITaskWorkInstructionsApi",
-  "ITaskWorkNotesApi",
-  "ITaskWorkOperationsApi",
-  "ITaskWorkV2Api",
-  "ITicketDownloadsApi",
-  "ITimeServerApi",
-  "ITimestampApi",
-  "IUsersApi",
-  "IUserSearchApi",
-  "IUserSearchV3Api",
-  "IUsersLangApi",
-  "IViewsApi",
-  "IViewsBuilderApi",
-  "IViewsPermissionsApi",
-  "IViewsV3Api",
-  "IWorkflowApi",
-  "IWorkflowEventsApi",
-  "IWorkflowExtraGrantApi",
-  "IAdditionalFieldsManagementApi",
-  "IAddressBookManagementApi",
-  "IApiCallManagementApi",
-  "IArxCeServicesManagementApi",
-  "IArxESignConfigurationManagementApi",
-  "IBusinessUnitsManagementApi",
-  "IDatabaseManagenentApi",
-  "IDataGroupsManagementApi",
-  "IDocumentTypesManagementApi",
-  "IEncryptionManagementApi",
-  "IExternalAppsManagementApi",
-  "IFoldersManagementApi",
-  "IFormulaManagementApi",
-  "IGroupsManagementApi",
-  "IIxCeServicesManagementApi",
-  "IIxFeServicesManagementApi",
-  "IIxServicesManagementApi",
-  "ILicenseManagementApi",
-  "ILogonProvidersManagementApi",
-  "IMailManagementApi",
-  "IMasksManagementApi",
-  "IMonitoredFoldersManagementApi",
-  "IOptionsManagementApi",
-  "IPredefinedProfilesManagementApi",
-  "IRemoteSignConfigurationManagementApi",
-  "ISearchManagementApi",
-  "ISecurityManagementApi",
-  "ISqlConditionsManagementApi",
-  "ISqlConnectionsManagementApi",
-  "ISqlQueriesManagementApi",
-  "IStatesManagementApi",
-  "IUsersManagementApi",
-  "IUtilitiesManagementApi",
-  "ICalendarApi",
-  "IDiagramEventsApi",
-  "IDiagramGroupsApi",
-  "IDiagramObjectsApi",
-  "IDiagramOperationsApi",
-  "IDiagramsApi",
-  "IDiagramVariablesApi",
-  "IFormulesApi",
-  "IOutcomeGroupsApi",
-  "IOutcomesApi",
-  "IProcessesApi",
-  "IProcessVariablesApi",
-  "IRestApisApi",
-  "ISqlConnectionsApi",
-  "ISqlQueriesApi",
-  "ITaskApi",
-  "ITaskDocumentsApi",
-  "ITaskLayoutApi",
-  "ITaskLayoutBaseApi",
-  "ITaskOperationsApi",
-  "IUserTagsApi"
+export const linkServices = [
+  "IAdditionalFieldsManagementApi", "IAddressBookApi", "IAddressBookCategoryApi", "IAddressBookManagementApi", "IAddressBookNoteApi",
+  "IAddressBookSearchApi", "IAddressBookSearchV3Api", "IAddressBookSearchV4Api", "IAddressBookV3Api", "IAddressBookV4Api",
+  "IApiCallManagementApi", "IArxCeServicesManagementApi", "IArxESignApi", "IArxESignConfigurationManagementApi",
+  "IAssistantApi", "IAssociationsApi", "IAssociationsV2Api", "IAttachmentsApi", "IAuthenticationApi", "IAuthProvider",
+  "IBarcodeApi", "IBinderSearchApi", "IBinderSearchV3Api", "IBinderTypeSearchApi", "IBindersApi", "IBufferApi", "IBusinessUnitsApi",
+  "IBusinessUnitsManagementApi", "ICacheApi", "ICalendarApi", "IChatApi", "ICheckInOutApi", "ICheckInOutV2Api", "IClassAdditionalFieldsApi",
+  "IClassAdditionalFieldsV2Api", "IClientSettingsApi", "IContactCategoryApi", "ICustomLabelsApi", "IDatabaseManagementApi",
+  "IDelegationApi", "IDesktopApi", "IDesktopLayoutApi", "IDevicesApi", "IDiagramEventsApi", "IDiagramGroupsApi", "IDiagramObjectsApi",
+  "IDiagramOperationsApi", "IDiagramVariablesApi", "IDiagramsApi", "IDocToOcrApi", "IDocumentTicketsApi", "IDocumentTypesApi",
+  "IDocumentTypesManagementApi", "IDocumentsApi", "IElementApi", "IEncryptionApi", "IEncryptionManagementApi", "IExternalAppsApi",
+  "IExternalAppsManagementApi", "IFieldsSelectorApi", "IFindApi", "IFoldersApi", "IFoldersManagementApi", "IFoldersV2Api", "IFullTextApi",
+  "IGlobalSearchApi", "IGlobalSearchV3Api", "IGroupsManagementApi", "IGroupsModelsApi", "IIxCeServicesManagementApi",
+  "IIxFeServicesManagementApi", "IIxServicesApi", "IIxServicesManagementApi", "ILanguagesApi", "ILayoutApi", "ILicenseApi",
+  "ILicenseManagementApi", "ILogApi", "ILogJsApi", "ILogonProvidersManagementApi", "IMailApi", "IMailManagementApi", "IMailV2Api",
+  "IMasksApi", "IMasksManagementApi", "IMassiveChangeApi", "IModelsApi", "IMongoDbProvider", "IMonitoredFoldersApi",
+  "IMonitoredFoldersDetailsApi", "IMonitoredFoldersManagementApi", "INotesApi", "IOperationApi", "IOptionsApi", "IOptionsManagementApi",
+  "IOriginsApi", "IOutcomeGroupsApi", "IOutcomesApi", "IPasswordManagerApi", "IPeriodsApi", "IPluginsApi", "IPredefinedProfilesApi",
+  "IPredefinedProfilesManagementApi", "IPreviewsApi", "IProcessAttachmentsApi", "IProcessDocumentApi", "IProcessInfoApi",
+  "IProcessNotesApi", "IProcessProfessionalRoleApi", "IProcessVariablesApi", "IProcessVariablesManagementApi", "IProcessesApi",
+  "IProfilePermissionsApi", "IProfilesApi", "IPushNotificationsApi", "IQueueApi", "IQuickSearchesApi", "IQuickSearchesV2Api",
+  "IRelationsApi", "IReportApi", "IRemoteSignConfigurationManagementApi", "IRevisionsApi", "IRestApisApi", "ISearchManagementApi",
+  "ISearchesApi", "ISearchesV2Api", "ISearchesV3Api", "ISecretManagementApi", "ISecurityManagementApi", "ISharingApi",
+  "ISharingDefinitionsApi", "IShippingApi", "ISignApi", "ISqlConditionsManagementApi", "ISqlConnectionsApi", "ISqlConnectionsManagementApi",
+  "ISqlQueriesApi", "ISqlQueriesManagementApi", "IStampsApi", "IStatesApi", "IStatesManagementApi", "ITaskApi", "ITaskDocumentsApi",
+  "ITaskLayoutApi", "ITaskLayoutBaseApi", "ITaskOperationsApi", "ITaskV2Api", "ITaskWorkApi", "ITaskWorkAttachmentsApi",
+  "ITaskWorkAttachmentsV2Api", "ITaskWorkDocumentsApi", "ITaskWorkHistoryApi", "ITaskWorkHistoryV2Api", "ITaskWorkInstructionsApi",
+  "ITaskWorkNotesApi", "ITaskWorkOperationsApi", "ITaskWorkV2Api", "ITicketDownloadsApi", "ITimeServerApi", "ITimestampApi", "IUserSearchApi",
+  "IUserSearchV3Api", "IUserTagsApi", "IUsersApi", "IUsersLangApi", "IUsersManagementApi", "IUtilitiesManagementApi", "IViewsApi",
+  "IViewsBuilderApi", "IViewsPermissionsApi", "IViewsV3Api", "IWorkflowApi", "IWorkflowEventsApi", "IWorkflowExtraGrantApi"
 ].sort();
 
-const linkServicesFront = ['workflowResourceService', '_', 'arxivarResourceService', 'arxivarUserServiceCreator', 'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService', 'moment', '$timeout', '$document', '$window', '$rootScope', '$filter', '$q', '$uibModal'];
+export const linkServicesFront = [
+  'workflowResourceService', '_', 'arxivarResourceService', 'arxivarUserServiceCreator',
+  'arxivarRouteService', 'arxivarDocumentsService', 'arxivarNotifierService', 'moment', '$timeout',
+  '$document', '$window', '$rootScope', '$filter', '$q', '$uibModal'
+];
 
-function searchService(answers, input) {
-  input = input || '';
-  return new Promise(function (resolve) {
-    var fuzzyResult = fuzzy.filter(input, linkServices);
-    var data = fuzzyResult.map(function (element) {
-      return element.original;
-    });
-    resolve(data);
-  });
-}
+/* -------------------------------------------------------------------------- */
+/*  GENERATOR CLASS                                                           */
+/* -------------------------------------------------------------------------- */
 
-function searchServiceFront(answers, input) {
-  input = input || '';
-  return new Promise(function (resolve) {
-    var fuzzyResult = fuzzy.filter(input, linkServicesFront);
-    var data = fuzzyResult.map(function (element) {
-      return element.original;
-    });
-    resolve(data);
-  });
-}
+export default class AppGenerator extends Generator {
+  constructor(args, opts) {
+    //customInstallTask nasconde il warning "No change to package.json was detected. No package manager install will be executed."
+    super(args, opts, { customInstallTask: true });
 
-var AppGenerator = module.exports = class extends Generator {
-  //all function declared in this class will be automatically launched in sequence!!! Except those with the underscore in front (Yeoman docs)
-
-  constructor(...args) {
-    super(...args);
-
-    if (this.options && this.options.destinationRoot) {
+    if (this.options?.destinationRoot) {
       this.log('Set destinationRoot with: ' + this.options.destinationRoot);
       this.destinationRoot(this.options.destinationRoot);
     }
   }
 
-
+  /* ---------------------------------- UTIL --------------------------------- */
   _shouldPrompt() {
-    return this._args === undefined || this._args === null || !this._args.includes('--auto');
+    return !this._args || !this._args.includes('--auto');
   }
 
-  _getResolvedValues(prompts) {
-    const shouldPrompt = this._shouldPrompt();
-    if (shouldPrompt) {
-      return this.prompt(prompts);
-    }
-    Object.keys(this.options.arxivarPluginSettings).forEach(key => {
-      const prompt = _.isNil(prompts) ? undefined : prompts.find(p => p.name === key);
-      const value = this.options.arxivarPluginSettings[key]
-      if (!_.isNil(prompt) && !_.isNil(prompt.default) && _.isNil(value)) {
-        this.options.arxivarPluginSettings[key] = _.isFunction(prompt.default) ? prompt.default(this.options.arxivarPluginSettings) : prompt.default
-      }
-    });
-    return Promise.resolve(this.options.arxivarPluginSettings)
-  }
-
+  /* ----------------------------- WELCOME MSG ------------------------------- */
   showInfo() {
-    // Have Yeoman greet the user.
-    this.log(
-      'Welcome to the pioneering ' + chalk.red('generator-arxivar-plugins') + ' generator!'
-    );
-    this.log(
-      'Type yo --help to see available generators and subgenerators'
-    );
-    this.log(
-      'Type ' + chalk.green('yo arxivar-plugins:command') + ' in order to create ' + chalk.green('command plugin')
-    );
-    this.log(
-      'Type ' + chalk.green('yo arxivar-plugins:command-profilation') + ' in order to create ' + chalk.green('command-profilation plugin')
-    );
-    this.log(
-      'Type ' + chalk.green('yo arxivar-plugins:route') + ' in order to create ' + chalk.green('route plugin')
-    );
-    this.log(
-      'Type ' + chalk.green('yo arxivar-plugins:widget-desktop') + ' in order to create ' + chalk.green('widget-desktop plugin')
-    );
-    this.log(
-      'Type ' + chalk.green('yo arxivar-plugins:widget-task') + ' in order to create ' + chalk.green('widget-task plugin')
-    );
-    this.log(
-      'Type ' + chalk.green('yo arxivar-plugins:widget-task-v2') + ' in order to create ' + chalk.green('widget-task V2 plugin')
-    );
-    this.log(
-      'Type ' + chalk.green('yo arxivar-plugins:link-workflow-v2') + ' in order to create ' + chalk.green('link workflow V2 plugin')
-    );
-    var logo = [
+    this.log('Welcome to the pioneering ' + chalk.red('generator-arxivar-plugins') + ' generator!');
+    this.log('Type yo --help to see available generators and subgenerators');
+    this.log('Type ' + chalk.green('yo arxivar-plugins:command') + ' to create a ' + chalk.green('command plugin'));
+    this.log('Type ' + chalk.green('yo arxivar-plugins:command-profilation') + ' to create a ' + chalk.green('command-profilation plugin'));
+    this.log('Type ' + chalk.green('yo arxivar-plugins:command-task-v2') + ' to create a ' + chalk.green('command-task-v2 plugin'));
+    this.log('Type ' + chalk.green('yo arxivar-plugins:route') + ' to create a ' + chalk.green('route plugin'));
+    this.log('Type ' + chalk.green('yo arxivar-plugins:widget-desktop') + ' to create a ' + chalk.green('widget-desktop plugin'));
+    this.log('Type ' + chalk.green('yo arxivar-plugins:widget-task') + ' to create a ' + chalk.green('widget-task plugin'));
+    this.log('Type ' + chalk.green('yo arxivar-plugins:widget-task-v2') + ' to create a ' + chalk.green('widget-task V2 plugin'));
+    this.log('Type ' + chalk.green('yo arxivar-plugins:link-workflow-v2') + ' to create a ' + chalk.green('link workflow V2 plugin'));
+    const logo = [
       '           _____  __   ___             ',
       '     /\\   |  __ \\ \\ \\ / (_)                ',
       '    /  \\  | |__) | \\ V / ___   ____ _ _ __ ',
@@ -286,6 +101,8 @@ var AppGenerator = module.exports = class extends Generator {
     ].join('\n');
     this.log(logo);
   }
+
+
   _getPluginsExplanations() {
     return {
       requiredSettings: {
@@ -319,6 +136,10 @@ var AppGenerator = module.exports = class extends Generator {
         canRun: '// This function is a promise with asyncronous logic to determine if this plugin can run. Input parameters: array of docnumbers (params.docnumbers), flag locked (params.locked only in F2) \n\t// Output parameter: Promise of bool',
         run: '// This function is a promise with asyncronous run logic. Input parameters: array of docnumbers (params.docnumbers), flag locked (params.locked only in F2) \n\t// Output parameter type expected: Promise of any'
       },
+      pluginCommandTask: {
+        canRun: '// This function is a promise with asyncronous logic to determine if this plugin can run. Input parameters: array of tasks (params.tasks) \n\t// Output parameter: Promise of bool',
+        run: '// This function is a promise with asynchronous run logic. Input parameters: an array of tasks (params.tasks). Output parameter type expected: Promise of boolean (true to indicate the need for a grid refresh)'
+      },
       pluginRoute: {
         inputdesc: '//To pass a parameter to the routePlugin add the queryParams parameter to the querystring',
         inputeg: '//E.g. {URL_PORTAL}/#!/pluginroutes/{PLUGIN_ID}?queryParams=valueToPass',
@@ -327,384 +148,127 @@ var AppGenerator = module.exports = class extends Generator {
       }
     };
   }
-  //settings di tutti i plugins escluso il plugin link
-  _requiredSettings(options) {
 
-    var prompts = [{
-      type: 'input',
-      name: 'pluginname',
-      message: 'Your plugin name',
-      // default: _.upperFirst(_.replace(_(this.appname).toString().trim().toLowerCase().replace(/ /g, '-').replace(/([^a-zA-Z0-9\._-]+)/, ''), '.', '')), // Default to current folder name
-      validate: function (pluginname) {
-        if (_.isEmpty(_.trim(pluginname)) === true) {
-          return 'Empty plugin name. Type a plugin name';
-        }
-        const validPlugiNnamePattern = /^[a-zA-Z0-9]*$/g;
-        if (!validPlugiNnamePattern.test(pluginname)) {
-          return 'Invalid plugin name. Try removing spaces and special characters ([a-zA-Z0-9] allowed only)';
-        }
-        return true;
-      }
-    },
-    {
-      type: 'input',
-      name: 'description',
-      message: 'Your plugin description',
-      default: function (answers) {
-        return answers.pluginname + ' description';
-      }
-    },
-    {
-      type: 'input',
-      name: 'author',
-      message: 'Plugin author name',
-      default: function (answers) {
-        return answers.pluginname + ' author';
-      }
-    },
-    {
-      type: 'input',
-      name: 'id',
-      message: 'Your plugin unique identifier',
-      default: uuid.v4(),
-      validate: function (guid) {
-        if (_.isEmpty(_.trim(guid)) === false) {
-          return true;
-        }
-        return 'Invalid plugin identifier. Try something like: ' + uuid.v4();
-      }
-    },
-    {
-      type: 'input',
-      name: 'label',
-      message: 'Label for UI',
-      default: function (answers) {
-        return answers.pluginname + ' label';
-      }
-    },
-    {
-      type: 'input',
-      name: 'icon',
-      message: 'FontAwesome icon for command (https://fontawesome.com/icons up to version 6.5.1)',
-      default: function (answers) {
-        return 'fas fa-puzzle-piece';
-      }
-    },
-    {
-      type: 'input',
-      name: 'minVersion',
-      message: 'Minimum portal version supported?',
-      default: '2.0.0'
-    },
-    {
-      type: 'list',
-      name: 'requireRefresh',
-      message: 'Does your plugin require grid data refresh?',
-      default: 'no',
-      choices: ['no', 'yes'],
-      validate: function (requireRefreshString) {
-        return requireRefreshString === 'yes' || requireRefreshString === 'no';
-      },
-      filter: function (requireRefreshString) {
-        return requireRefreshString === 'yes';
-      }
-    },
-    {
-      type: 'list',
-      name: 'injectParams',
-      message: 'Does your plugin need params from querystring (Ver. >=2.1 required)?',
-      default: 'no',
-      choices: ['no', 'yes'],
-      validate: function (injectParams) {
-        return injectParams === 'yes' || injectParams === 'no';
-      },
-      filter: function (injectParams) {
-        return injectParams === 'yes';
-      }
-    },
-    {
-      type: 'input',
-      name: 'dependencies',
-      message: 'Plugin dependencies (space-separated values)'
-    },
-    {
-      type: 'list',
-      name: 'typescript',
-      message: 'Would you like to use typescript?',
-      default: 'no',
-      choices: ['no', 'yes'],
-      validate: function (useTypescript) {
-        return useTypescript === 'yes' || useTypescript === 'no';
-      },
-      filter: function (useTypescript) {
-        return useTypescript === 'yes';
-      }
-    },
-    {
-      type: 'input',
-      name: 'arxPath',
-      message: 'Path for the compiled plugin after run webpack command',
-      default: function (answers) {
-        return answers.pluginname;
-      },
-      when: function (answers) {
-        return answers.typescript === true;
-      },
-      filter: function (arxPath) {
-        return arxPath.split(path.sep).join(path.posix.sep);
-      }
+  /* ------------------------ COMMON REQUIRED SETTINGS ----------------------- */
+  async _askRequiredSettings(options = {}) {
 
-    }
-    ];
+    // ------- Serve per l'autogenerazione dei plugin --------
+    // @ts-ignore
+    const settings = { ...(this.options.arxivarPluginSettings ?? {}) };
+    const isExcluded = (key) => options.exclude?.includes(key);
 
-    if (options && options.exclude) {
-      prompts = prompts.filter(function (obj) {
-        return (options.exclude.indexOf(obj.name) === -1);
+    const needPrompt = (key) =>
+      !isExcluded(key) && !Object.hasOwn(settings, key);
+
+
+    // ------- Inserimento campi prompt --------
+    if (needPrompt('pluginname')) {
+      settings.pluginname = await inputPrompt({
+        message: 'Your plugin name',
+        required: true,
+        validate: (val) => /^(?![0-9])[a-zA-Z0-9]+$/.test(val.trim()) ? true : 'Name must be alphanumeric and cannot start with a number',
       });
     }
-    if (options && options.minVersion) {
-      var defaultMinVersion = _.findIndex(prompts, {
-        name: 'minVersion'
+
+    if (needPrompt('description')) {
+      settings.description = await inputPrompt({
+        message: 'Your plugin description',
+        required: true,
+        default: `${settings.pluginname} description`,
       });
-      if (defaultMinVersion) {
-        prompts[defaultMinVersion] = options.minVersion;
-      }
     }
-    return prompts;
-  }
-  //settings principali del - plugin Link	
-  _linkSettings(options) {
 
-    var prompts = [{
-      type: 'input',
-      name: 'pluginname',
-      message: 'Your plugin name',
-      // default: _.upperFirst(_.replace(_(this.appname).toString().trim().toLowerCase().replace(/ /g, '-').replace(/([^a-zA-Z0-9\._-]+)/, ''), '.', '')), // Default to current folder name
-      validate: function (pluginname) {
-        if (_.isEmpty(_.trim(pluginname)) === true) {
-          return 'Empty plugin name. Type a plugin name';
-        }
-        const validPlugiNnamePattern = /^[a-zA-Z0-9]*$/g;
-        if (!validPlugiNnamePattern.test(pluginname)) {
-          return 'Invalid plugin name. Try removing spaces and special characters ([a-zA-Z0-9] allowed only)';
-        }
-        return true;
-      }
-    },
-    {
-      type: 'input',
-      name: 'description',
-      message: 'Your plugin description',
-      default: function (answers) {
-        return answers.pluginname + ' description';
-      }
-    },
-    {
-      type: 'input',
-      name: 'author',
-      message: 'Plugin author name',
-      default: function (answers) {
-        return answers.pluginname + ' author';
-      }
-    },
-    {
-      type: 'input',
-      name: 'id',
-      message: 'Your plugin unique identifier',
-      default: uuid.v4(),
-      validate: function (guid) {
-        if (_.isEmpty(_.trim(guid)) === false) {
-          return true;
-        }
-        return 'Invalid plugin identifier. Try something like: ' + uuid.v4();
-      }
-    },
-    {
-      type: 'input',
-      name: 'label',
-      message: 'Label for UI',
-      default: function (answers) {
-        return answers.pluginname + ' label';
-      }
-    },
-    {
-      type: 'input',
-      name: 'icon',
-      message: 'FontAwesome icon for command (https://fontawesome.com/icons up to version 6.5.1)',
-      default: function (answers) {
-        return 'far fa-puzzle-piece';
-      }
-    },
-    {
-      type: 'input',
-      name: 'version',
-      message: 'Insert plugin version: ',
-      default: '1.0.0'
-    },
-    {
-      type: 'checkbox-plus',
-      name: 'linkServices',
-      message: 'Insert Services (search by typing, select with spacebar): ',
-      pageSize: 10,
-      highlight: true,
-      searchable: true,
-      source: searchService,
+    if (needPrompt('author')) {
+      settings.author = await inputPrompt({
+        message: 'Plugin author name',
+        required: true,
+        default: `${settings.pluginname} author`,
+      });
     }
-    ];
-    return prompts;
-  }
 
-  _inputQuestion() {
-    const prompts = [{
-      type: 'list',
-      name: 'inParams',
-      message: 'Would you like to insert INPUT parameters?',
-      default: 'no',
-      choices: ['no', 'yes'],
-      validate: function (inParams) {
-        return inParams === 'yes' || inParams === 'no';
-      },
-      filter: function (inParams) {
-        return inParams === 'yes';
-      }
-    }];
-    return prompts;
-  }
-
-  _outputQuestion() {
-    const prompts = [{
-      type: 'list',
-      name: 'outParams',
-      message: 'Would you like to insert OUTPUT parameters?',
-      default: 'no',
-      choices: ['no', 'yes'],
-      validate: function (outParams) {
-        return outParams === 'yes' || outParams === 'no';
-      },
-      filter: function (outParams) {
-        return outParams === 'yes';
-      }
-    }];
-    return prompts;
-  }
-
-  _inputParameter() {
-    const prompts = [{
-      type: 'input',
-      name: 'propertyName',
-      message: 'Insert INPUT property name: ',
-      validate: function (propertyName) {
-        if (_.isEmpty(_.trim(propertyName)) === true) {
-          return 'Empty input property name. Type a name';
-        }
-        return true;
-      }
-    },
-    {
-      type: 'list',
-      name: 'propertyType',
-      choices: ['string', 'int', 'bool', 'DateTime', 'object[]', 'object[,]'],
-      default: 'string',
-      message: 'Insert INPUT property type: ',
-    },
-    {
-      type: 'list',
-      name: 'repeat',
-      message: 'Do you want to add more INPUT parameter? ',
-      default: 'no',
-      choices: ['no', 'yes'],
-      validate: function (addInput) {
-        return addInput === 'yes' || addInput === 'no';
-      },
-      filter: function (addInput) {
-        return addInput === 'yes';
-      }
+    if (needPrompt('id')) {
+      settings.id = await inputPrompt({
+        message: 'Your plugin unique identifier',
+        default: uuidv4(),
+        required: true,
+        validate: (guid) => guid.trim() ? true : 'Invalid uuid v4',
+      });
     }
-    ]
-    return prompts;
-  }
 
-  _outputParameter() {
-    const prompts = [{
-      type: 'input',
-      name: 'propertyName',
-      message: 'Insert OUTPUT property name: ',
-      validate: function (propertyName) {
-        if (_.isEmpty(_.trim(propertyName)) === true) {
-          return 'Empty output property name. Type a name';
-        }
-        return true;
-      }
-    },
-    {
-      type: 'list',
-      name: 'propertyType',
-      choices: ['string', 'int', 'bool', 'DateTime', 'object[]', 'object[,]'],
-      default: 'string',
-      message: 'Insert OUTPUT property type: ',
-    },
-    {
-      type: 'list',
-      name: 'repeat',
-      message: 'Do you want to add more OUTPUT parameter? ',
-      default: 'no',
-      choices: ['no', 'yes'],
-      validate: function (addInput) {
-        return addInput === 'yes' || addInput === 'no';
-      },
-      filter: function (addInput) {
-        return addInput === 'yes';
-      }
+    if (needPrompt('label')) {
+      settings.label = await inputPrompt({
+        message: 'Label for UI',
+        required: true,
+        default: `${settings.pluginname} label`,
+      });
     }
-    ]
-    return prompts;
+
+    if (needPrompt('icon')) {
+      settings.icon = await inputPrompt({
+        message: 'FontAwesome icon (v7)',
+        required: true,
+        default: 'fas fa-puzzle-piece',
+      });
+    }
+
+    if (needPrompt('version')) {
+      settings.version = await inputPrompt({
+        message: 'Plugin version',
+        default: '1.0.0',
+      });
+    }
+
+    if (needPrompt('minVersion')) {
+      settings.minVersion = await inputPrompt({
+        message: 'Minimum portal version supported?',
+        required: true,
+        default: options.minVersion || '2.0.0',
+      });
+    }
+
+    if (needPrompt('requireRefresh')) {
+      const requireRefresh = await confirmPrompt({
+        message: 'Does your plugin require grid data refresh?',
+        default: false,
+      });
+      settings.requireRefresh = requireRefresh;
+    }
+
+    if (needPrompt('injectParams')) {
+      const injectParams = await confirmPrompt({
+        message: 'Does your plugin need params from querystring (>=2.1 required)?',
+        default: false,
+      });
+      settings.injectParams = injectParams;
+    }
+
+    if (needPrompt('dependencies')) {
+      settings.dependencies = await inputPrompt({
+        message: 'Plugin dependencies (space separated)',
+      });
+    }
+
+    if (needPrompt('typescript')) {
+      const typescript = await selectPrompt({
+        message: 'Would you like to use TypeScript?',
+        choices: [
+          { name: 'No', value: false },
+          { name: 'Yes', value: true },
+        ],
+        default: false,
+      });
+      settings.typescript = typescript;
+    }
+
+    if (needPrompt('arxPath') && settings.typescript) {
+      let arxPath = await inputPrompt({
+        message: 'Path for the compiled plugin after webpack',
+        default: settings.pluginname,
+      });
+
+      settings.arxPath = arxPath.split(path.sep).join(path.posix.sep);
+    }
+
+    return settings;
   }
-  //settings delle configurazioni avanzate - plugin Link
-  _advancedConfigSettings() {
-    this.env.adapter.promptModule.registerPrompt("checkbox-plus", require("inquirer-checkbox-plus-prompt"));
-    const prompts = [{
-      type: 'list',
-      name: 'advConfig',
-      message: 'Would you like to use advanced configuration?',
-      default: 'no',
-      choices: ['no', 'yes'],
-      validate: function (useAdvConfig) {
-        return useAdvConfig === 'yes' || useAdvConfig === 'no';
-      },
-      filter: function (useAdvConfig) {
-        return useAdvConfig === 'yes';
-      }
-    },
-    {
-      type: 'checkbox-plus',
-      name: 'linkServicesFront',
-      message: 'Insert Services or Dependecies (search by typing, select with spacebar): ',
-      default: ['workflowResourceService', '_'],
-      pageSize: 10,
-      highlight: true,
-      searchable: true,
-      when: function (answers) {
-        return answers.advConfig === true;
-      },
-      source: searchServiceFront,
-    },
-    {
-      type: 'list',
-      name: 'typescriptLink',
-      message: 'Would you like to use typescript?',
-      default: 'no',
-      choices: ['no', 'yes'],
-      when: function (answers) {
-        return answers.advConfig === true;
-      },
-      validate: function (useTypescript) {
-        return useTypescript === 'yes' || useTypescript === 'no';
-      },
-      filter: function (useTypescript) {
-        return useTypescript === 'yes';
-      }
-    },
-    ]
-    return prompts;
-  }
-};
+}

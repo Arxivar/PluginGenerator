@@ -1,95 +1,64 @@
-var yeoman = require('yeoman-environment');
-const { exec } = require('child_process');
-const abletechPlugins = require('./AbletechPluginAutoGenerator.json');
-var env = yeoman.createEnv();
+// AbletechPluginAutoGenerator.mjs   (Node ≥ 20 con "type":"module")
+import { createEnv } from 'yeoman-environment';
+import { readFile } from 'node:fs/promises';
+import { exec as execCb } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+import { promisify } from 'node:util';
 
-//const grunt = require.resolve('grunt',{paths: ['C:\\Users\\l.nodari\\AppData\\Roaming\\nvm\\v16.13.2\\node_modules']});
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const exec = promisify(execCb);
+const pluginsCfg = JSON.parse(
+	await readFile(new URL('./AbletechPluginAutoGenerator.json', import.meta.url), 'utf8')
+);
 
-//env.register(require.resolve('generator-arxivar-plugins'));
-//env.register(require.resolve('generator-arxivar-plugins:command'));
+// ────────────────────────────────────────────────────────────────────────────
+// helper
+async function run(cmd, cwd) {
+	console.log(`∙ ${cmd}  (cwd: ${cwd})`);
+	try {
+		const { stdout, stderr } = await exec(cmd, { cwd });
+		if (stdout) console.log(stdout);
+		if (stderr) console.error(stderr);
+	} catch (err) {
+		console.error(`✖ "${cmd}" failed`, err);
+		throw err;
+	}
+}
 
-env.lookup();
+// ────────────────────────────────────────────────────────────────────────────
+for (const plugin of pluginsCfg) {
+	// 1) creo un env nuovo ad ogni giro
+	const env = createEnv();
+	env.lookup();                 // carica i generatori sotto ./generators
 
-// var generatorNames = env.getGeneratorNames()
-// var generatorsMeta = env.getGeneratorsMeta()
+	const pluginGenerator = plugin.pluginType.replace(/'/g, '"');
 
-// console.log('generatorNames: ' + JSON.stringify(generatorNames))
-// console.log('generatorsMeta: ' + JSON.stringify(generatorsMeta))
+	// 2) path dove (eventualmente) compilare il TS
+	const baseGitPath = 'C:/git';
+	const portalPluginRelativePath = 'ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins';
+	const fullPathPortalPlugins = join(baseGitPath, portalPluginRelativePath, plugin.pluginname);
 
-const runNpmInstall = (pluginDirectory) => {
-	console.log('Sto eseguendo l\'npm install del plugin nella cartella ' + pluginDirectory + ' ...');
-	return new Promise((resolve, reject) => {
-		exec('npm i', (error, stdout, stderr) => {
-			if (error) {
-				console.log('Npm install è terminato con gli errori', error, stderr);
-				reject();
-			} else {
-				console.log('Npm install è andato a buon fine!', stdout);
-				resolve();
-			}
-		});
-	});
-};
+	const arxPath = plugin.typescript ? (plugin.arxPath || fullPathPortalPlugins) : undefined;
 
-const runNpmRunWebpack = (pluginDirectory) => {
-	console.log('Sto eseguendo l\'npm run webpack del plugin nella cartella ' + pluginDirectory + ' ...');
-	exec('npm run webpack', (error, stdout, stderr) => {
-		if (error) {
-			console.log('Npm run webpack è terminato con gli errori', error, stderr);
-		} else {
-			console.log('Npm run webpack è andato a buon fine!', stdout);
+	console.log(`\n=== Genero "${plugin.pluginname}" (${pluginGenerator}) ===`);
+
+	// 3) eseguo il generatore
+	await env.run(pluginGenerator, {
+		destinationRoot: __dirname,
+		force: true,
+		arxivarPluginSettings: {
+			...plugin,
+			arxPath
 		}
 	});
-};
 
-let promiseChain = Promise.resolve();
-for (let index = 0; index < abletechPlugins.length; index++) {
-	promiseChain = promiseChain.then(() => {
-		return new Promise((resolve, reject) => {
-			const plugin = abletechPlugins[index];
-			const pluginGenerator = plugin.pluginType.replace(/'/g, '"');
-
-			const baseGitPath = 'C:/git';
-			const portalPluginRelativePath = 'ArxivarNext/Web/ARXivarSuite/Abletech.Arxivar.Client.Web.Portal/Scripts/plugins';
-			const fullPathPortalPlugins = `${baseGitPath}/${portalPluginRelativePath}/${plugin.pluginname}`;
-
-			let arxPath = undefined;
-			if (plugin.typescript) {
-				arxPath = plugin.arxPath || fullPathPortalPlugins;
-				console.log('Set arxPath only for typescript plugin: ', arxPath);
-			}
-
-			env.run(pluginGenerator, {
-				destinationRoot: __dirname,
-				arxivarPluginSettings: {
-					pluginname: plugin.pluginname,
-					description: plugin.description,
-					author: plugin.author,
-					id: plugin.id,
-					label: plugin.label,
-					icon: plugin.icon,
-					minVersion: plugin.minVersion,
-					requireRefresh: plugin.requireRefresh,
-					injectParams: plugin.injectParams,
-					dependencies: plugin.dependencies,
-					typescript: plugin.typescript,
-					arxPath: arxPath
-				}
-			}).then(() => {
-				if (!plugin.typescript) {
-					resolve();
-					return;
-				}
-
-				const pluginDirectory = `${__dirname}\\plugins-ts\\${plugin.pluginname}`;
-				return runNpmInstall(pluginDirectory)
-					.then(() => {
-						runNpmRunWebpack(pluginDirectory);
-						resolve();
-					});
-			}).catch((reason) => {
-				reject(reason);
-			});
-		});
-	});
+	// 4) se TS: npm install + webpack && aspetto che finisca
+	if (plugin.typescript) {
+		const pluginDir = join(__dirname, 'plugins-ts', plugin.pluginname);
+		await run('npm i --no-audit --no-fund', pluginDir);
+		await run('npx webpack --config webpack.config.js --progress --mode=production', pluginDir);
+	}
 }
+
+console.log('\n✅  Tutti i plugin sono stati generati con successo.');

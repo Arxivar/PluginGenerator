@@ -87,6 +87,7 @@ declare global {
     type IUserSettingsForRuntime = ISettingsTypeValueForRuntime;
     type IWidgetSettingsForRuntime = ISettingsTypeValueForRuntime;
     type ICommandParams = { docnumbers: number[]; }
+    type ICommandTaskParams = { tasks: string[]; }
     type IConfiguration = IConfigurationDynamic<arxInterfaces.ConfigurationDataTypeEnum>;
     type IConfigurationDynamicBase<T extends arxInterfaces.ConfigurationDataTypeEnum> = { name: string, dataType: T };
     type IConfigurationDynamic<T extends arxInterfaces.ConfigurationDataTypeEnum> =
@@ -106,6 +107,11 @@ declare global {
         new(requiredSettings: IRequiredSettings, customSettings: ICustomSettings[], userSettings: IUserSettings[]): IPluginCommand,
         canRun: (params: ICommandParams) => Promise<boolean>,
         run: (params: ICommandParams) => Promise<any>
+    }
+    interface IPluginCommandTask extends IPluginBase {
+        new(requiredSettings: IRequiredSettings, customSettings: ICustomSettings[], userSettings: IUserSettings[]): IPluginCommandTask,
+        canRun: (params: ICommandTaskParams) => Promise<boolean>,
+        run: (params: ICommandTaskParams) => Promise<boolean>
     }
     interface IPluginProfilation extends IPluginBase {
         new(requiredSettings: IRequiredSettings, customSettings: ICustomSettings[], userSettings: IUserSettings[]): IPluginProfilation,

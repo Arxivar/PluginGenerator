@@ -2,19 +2,21 @@ import chalk from 'chalk';
 import path from 'path';
 import AppGenerator from '../app/index.js';
 
-export default class WidgetTaskV2Generator extends AppGenerator {
+export default class CommandTaskV2Generator extends AppGenerator {
+  /* ---------------------------------------------------------------------- */
+  /*  PROMPTING                                                            */
+  /* ---------------------------------------------------------------------- */
+
   async prompting() {
-    this.log(`Running ${chalk.red('WIDGET TASK V2')} generator!`);
+    this.log(`Running ${chalk.red('COMMAND TASK V2')} generator!`);
 
     /** @type {import('../../types.js').Props} */
     const props = await this._askRequiredSettings({
-      exclude: ['requireRefresh', 'injectParams', 'advConfig', 'version'],
-      minVersion: '2.7.0'
+      exclude: ['injectParams', 'advConfig', 'version'],
+      minVersion: '2.12.0'
     });
 
-    props.folderName = this.appname;
-    props.plugindirective = `${props.pluginname}Directive`;
-
+    // Post‑process dependencies ----------------------------------------- //
     props.dependencies = (props.dependencies.toString().match(/[^ ]+/g) || []);
     props.dependenciesType = [...props.dependencies];
 
@@ -47,24 +49,33 @@ export default class WidgetTaskV2Generator extends AppGenerator {
     this.props = props;
   }
 
+  /* ---------------------------------------------------------------------- */
+  /*  WRITING                                                              */
+  /* ---------------------------------------------------------------------- */
+
   writing() {
     const interfacePath = '../../../docs/frontend/';
     const basePath = '../../../';
-    const tpl = { ...this.props, props: this.props };
+    const tplContext = { ...this.props, props: this.props };
 
     if (this.props.typescript) {
+      // ------------------------- TypeScript ----------------------------- //
       this.destinationRoot(path.join('./plugins-ts', this.props.pluginname));
-      const tsFiles = [
-        ['src/PluginWidgetTaskV2Template.ts', `src/${this.props.pluginname}.ts`],
-        ['src/PluginWidgetTaskV2Template.html', `src/${this.props.pluginname}.html`],
-        ['src/PluginWidgetTaskV2TemplateDirective.ts', `src/${this.props.plugindirective}.ts`],
-        ['src/PluginWidgetTaskV2Template.css', `src/${this.props.pluginname}.css`],
-        ['READMELIBS.txt', 'libs/README.txt']
-      ];
-      tsFiles.forEach(([src, dest]) => {
-        this.fs.copyTpl(this.templatePath(src), this.destinationPath(dest), tpl);
-        this.log(chalk.green(`Written file: ${dest}`));
-      });
+      const fileName = `${this.props.pluginname}PluginCommandTask.ts`;
+
+      this.fs.copyTpl(
+        this.templatePath('src/PluginCommandTaskTemplate.ts'),
+        this.destinationPath(`src/${fileName}`),
+        tplContext
+      );
+      this.log(chalk.green(`Written file: ${fileName}`));
+
+      this.fs.copyTpl(
+        this.templatePath('READMELIBS.txt'),
+        this.destinationPath('libs/README.txt'),
+        tplContext
+      );
+      this.log(chalk.green('Created folder libs'));
 
       const common = [
         [`${basePath}.babelrc`, '.babelrc'],
@@ -77,21 +88,26 @@ export default class WidgetTaskV2Generator extends AppGenerator {
         ['webpack.config.js', 'webpack.config.js']
       ];
       common.forEach(([src, dest]) => {
-        this.fs.copyTpl(this.templatePath(src), this.destinationPath(dest), tpl);
+        this.fs.copyTpl(this.templatePath(src), this.destinationPath(dest), tplContext);
       });
     } else {
+      // --------------------------- Plain JS ------------------------------ //
       this.destinationRoot(path.join('./plugins', this.props.pluginname));
-      const jsFiles = [
-        ['PluginWidgetTaskV2Template.js', `${this.props.pluginname}.js`],
-        ['PluginWidgetTaskV2Template.html', `${this.props.pluginname}.html`],
-        ['PluginWidgetTaskV2TemplateDirective.js', `${this.props.plugindirective}.js`],
-        ['PluginWidgetTaskV2Template.css', `${this.props.pluginname}.css`],
-        ['READMELIBS.txt', 'libs/README.txt']
-      ];
-      jsFiles.forEach(([src, dest]) => {
-        this.fs.copyTpl(this.templatePath(src), this.destinationPath(dest), tpl);
-        this.log(chalk.green(`Written file: ${dest}`));
-      });
+      const fileName = `${this.props.pluginname}PluginCommandTask.js`;
+
+      this.fs.copyTpl(
+        this.templatePath('PluginCommandTaskTemplate.js'),
+        this.destinationPath(fileName),
+        tplContext
+      );
+      this.log(chalk.green(`Written file: ${fileName}`));
+
+      this.fs.copyTpl(
+        this.templatePath('READMELIBS.txt'),
+        this.destinationPath('libs/README.txt'),
+        tplContext
+      );
+      this.log(chalk.green('Created folder libs'));
     }
   }
 }

@@ -6,28 +6,26 @@
 
 ## Installation
 
-- install [NodeJs](https://nodejs.org/en/) if you don't already have it (LTS version 16.13.2 should be fine).
-
-_Note: if nodejs is installed with nvm you will also have to install the windows build tools using `npm install --global windows-build-tools --vs2015` command._
+- install [NodeJs](https://nodejs.org/en/) if you don't already have it. Both Node.js 22 and Node.js 24 (**LTS versions**) are supported.
 
 - When nodejs has finished installing, install [Yeoman](http://yeoman.io): open a command prompt and run the following command:
 
 ```bash
-npm install -g yo@4
+npm install -g yo@7
 ```
 
 _Note: npm is the package manager for Node.js and comes bundled with it._
 
-- You can now download this project (download the .zip file or clone the repo, it's the same) and:
+- You can now download this project (download the .zip file or clone the repo, it's the same), go inside the "PluginGenerator" folder and type the following command:
 
 ```bash
-go inside the "PluginGenerator" folder and type "npm link"
+npm link
 ```
 
 - then run the command:
 
 ```bash
-  npm install
+npm install
 ```
 
 - Now with the command:
@@ -63,18 +61,18 @@ To use Typescript you have to follow these steps:
 
 - specify the name of the compiled plugin folder. (optionaly your can spacify the folder _YourARXivarPortalPath\Script\plugins\yourPluginName_ for an automatic deploy)
   
-- install [NodeJs](https://nodejs.org/en/) if you don't already have it (LTS version 16.13.2 should be fine).
+- install [NodeJs](https://nodejs.org/en/) if you don't already have it (LTS version 22.15.0 should be fine).
 
 - open the terminal into your plugin folder and run the command:
 
 ```bash
-  npm install
+npm install
 ```
 
 - execute webpack with running the command:
 
 ```bash
-  npm run webpack
+npm run webpack
 ```
 
 _Remember: if you specify the path in the options, you dont need to follow the steps below. Your plugin is already running in ARXivar._
@@ -96,4 +94,4 @@ You can find the documentation of the current version [here](docs/README.md)
 
 ## License
 
-© [Abletech S.r.l.](http://www.arxivar.it/)
+© [Abletech S.p.A.](http://www.arxivar.it/)
