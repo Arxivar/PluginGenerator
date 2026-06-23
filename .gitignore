@@ -5,6 +5,7 @@ package-lock.json
 plugins/**/*.*
 plugins-link/**/*.*
 plugins-ts/**/*.*
+plugins-arxai/**/*.*
 test/testTmp/**/*.*
 !plugins/.eslintrc.js
 !plugins/package.json

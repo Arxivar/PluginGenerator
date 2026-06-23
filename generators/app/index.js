@@ -90,6 +90,7 @@ export default class AppGenerator extends Generator {
     this.log('Type ' + chalk.green('yo arxivar-plugins:widget-task') + ' to create a ' + chalk.green('widget-task plugin'));
     this.log('Type ' + chalk.green('yo arxivar-plugins:widget-task-v2') + ' to create a ' + chalk.green('widget-task V2 plugin'));
     this.log('Type ' + chalk.green('yo arxivar-plugins:link-workflow-v2') + ' to create a ' + chalk.green('link workflow V2 plugin'));
+    this.log('Type ' + chalk.green('yo arxivar-plugins:arxai-plugin') + ' to create a ' + chalk.green('ArxAI plugin'));
     const logo = [
       '           _____  __   ___             ',
       '     /\\   |  __ \\ \\ \\ / (_)                ',

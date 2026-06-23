@@ -1,0 +1,61 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <AssemblyName>Abletech.Arxivar.ArxAI.Plugins.<%= props.pluginname %></AssemblyName>
+        <RootNamespace>Abletech.Arxivar.ArxAI.Plugins.<%= props.pluginname %></RootNamespace>
+        <!--
+          Genera il .deps.json anche in fase di build (di default una class library non lo emette).
+          E' il file con cui il CLI (Abletech.Arxivar.ArxAI.Plugins.Cli) identifica l'assembly del
+          plugin dentro lo zip: ne deve esistere esattamente uno nella root del pacchetto.
+        -->
+        <GenerateDependencyFile>true</GenerateDependencyFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!--
+          SDK dei plugin ArxAI (pacchetto NuGet, feed ARXivar). E' una "contract assembly" condivisa:
+          a runtime la fornisce l'host ArxAI (vedi PluginLoadContext.SharedContractAssemblies), quindi
+          NON deve finire nel pacchetto. ExcludeAssets=runtime => usato solo per compilare; la dll e le
+          sue dipendenze (Microsoft.Extensions.AI/Logging, da cui ILogger) non vengono copiate in output.
+        -->
+        <PackageReference Include="ARXivar.ArxAI.Plugins" Version="2.14.0">
+            <ExcludeAssets>runtime</ExcludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <!--
+      Packaging automatico: ad ogni build produce lo zip nel formato atteso dal CLI.
+      Contenuto: la dll del plugin + il suo .deps.json nella root dello zip (niente sottocartelle),
+      escluse le contract assembly fornite dall'host. Lo zip finisce in bin\<Configuration>\.
+    -->
+    <Target Name="CreateArxAiPluginPackage" AfterTargets="Build">
+        <PropertyGroup>
+            <PluginPackageStagingDir>$(IntermediateOutputPath)pluginpackage\</PluginPackageStagingDir>
+            <PluginPackageFile>$(MSBuildProjectDirectory)\bin\$(Configuration)\$(AssemblyName).zip</PluginPackageFile>
+        </PropertyGroup>
+
+        <ItemGroup>
+            <!-- Dll del plugin e relative dipendenze, escluse le contract assembly dell'host. -->
+            <_PluginPackageContent Include="$(OutDir)*.dll" />
+            <_PluginPackageContent Remove="$(OutDir)Abletech.Arxivar.ArxAI.Plugins.dll" />
+            <_PluginPackageContent Remove="$(OutDir)Microsoft.Extensions.AI.dll" />
+            <_PluginPackageContent Remove="$(OutDir)Microsoft.Extensions.AI.Abstractions.dll" />
+            <_PluginPackageContent Remove="$(OutDir)Microsoft.Extensions.Logging.Abstractions.dll" />
+            <!-- Identifica l'assembly del plugin lato CLI. -->
+            <_PluginPackageContent Include="$(OutDir)*.deps.json" />
+        </ItemGroup>
+
+        <!-- Staging pulita: evita che residui di build precedenti finiscano nello zip. -->
+        <RemoveDir Directories="$(PluginPackageStagingDir)" />
+        <MakeDir Directories="$(PluginPackageStagingDir)" />
+        <Copy SourceFiles="@(_PluginPackageContent)" DestinationFolder="$(PluginPackageStagingDir)" SkipUnchangedFiles="false" />
+
+        <ZipDirectory SourceDirectory="$(PluginPackageStagingDir)" DestinationFile="$(PluginPackageFile)" Overwrite="true" />
+
+        <Message Importance="high" Text="ArxAI plugin package creato: $(PluginPackageFile)" />
+    </Target>
+
+</Project>
