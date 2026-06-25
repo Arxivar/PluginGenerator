@@ -7,55 +7,118 @@
         <AssemblyName>Abletech.Arxivar.ArxAI.Plugins.<%= props.pluginname %></AssemblyName>
         <RootNamespace>Abletech.Arxivar.ArxAI.Plugins.<%= props.pluginname %></RootNamespace>
         <!--
-          Genera il .deps.json anche in fase di build (di default una class library non lo emette).
-          E' il file con cui il CLI (Abletech.Arxivar.ArxAI.Plugins.Cli) identifica l'assembly del
-          plugin dentro lo zip: ne deve esistere esattamente uno nella root del pacchetto.
+          Emit the .deps.json at build time too (a class library does not by default).
+          This is the file the CLI (Abletech.Arxivar.ArxAI.Plugins.Cli) uses to identify the
+          plugin assembly inside the zip: there must be exactly one of them in the package root.
         -->
         <GenerateDependencyFile>true</GenerateDependencyFile>
+        <!--
+          Copy the PackageReference DLLs into the output folder (a class library does not by
+          default, it emits only its own DLL). This is what makes "bring your own DLLs" work:
+          the plugin's external dependencies are copied to bin and then packaged.
+          Note: assemblies provided by the shared framework (see the Microsoft.AspNetCore.App
+          FrameworkReference below) are NOT copied — they stay the host's responsibility.
+        -->
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     </PropertyGroup>
 
     <ItemGroup>
         <!--
-          SDK dei plugin ArxAI (pacchetto NuGet, feed ARXivar). E' una "contract assembly" condivisa:
-          a runtime la fornisce l'host ArxAI (vedi PluginLoadContext.SharedContractAssemblies), quindi
-          NON deve finire nel pacchetto. ExcludeAssets=runtime => usato solo per compilare; la dll e le
-          sue dipendenze (Microsoft.Extensions.AI/Logging, da cui ILogger) non vengono copiate in output.
+          Shared framework of the ArxAI host (ASP.NET Core, net8.0). The host process
+          (Abletech.Arxivar.ArxAI.WebApi) runs on Microsoft.AspNetCore.App, so declaring the same
+          FrameworkReference here makes MSBuild treat every shared-framework assembly
+          (System.Text.Json, Microsoft.Extensions.*, etc.) as host-provided: those DLLs are NOT
+          copied to output and therefore can never end up in the package. At runtime the
+          PluginLoadContext resolves them from the host's default load context.
+          THIS is what prevents type-identity conflicts (e.g. two System.Text.Json -> a second
+          identity of JsonSerializerOptions -> MissingMethodException) without listing DLLs by hand.
+        -->
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <!--
+          ArxAI plugin SDK (NuGet package, ARXivar feed). It is a shared "contract assembly":
+          at runtime it is provided by the ArxAI host (see PluginLoadContext.SharedContractAssemblies),
+          so it must NOT end up in the package. ExcludeAssets=runtime => it is used only to compile;
+          the DLL and its dependencies (Microsoft.Extensions.AI/.Abstractions, Logging.Abstractions,
+          from which ILogger) are not copied to output.
         -->
         <PackageReference Include="ARXivar.ArxAI.Plugins" Version="2.14.0">
             <ExcludeAssets>runtime</ExcludeAssets>
         </PackageReference>
+
+        <!--
+          ADD YOUR OWN NuGet PACKAGES / EXTERNAL REFERENCES HERE (from the IDE or by hand).
+          Nothing else to configure: dependencies that are NOT provided by the host are packaged
+          automatically, while shared-framework assemblies are excluded automatically. Example:
+              <PackageReference Include="ModelContextProtocol" Version="1.4.0" />
+
+          Caveat: this auto-classification is safe for the shared framework and the SDK contract
+          assemblies. If the host application itself references a *private* third-party NuGet that
+          is NOT part of the shared framework, and this plugin uses the same library, the plugin
+          will still bundle its own copy (the host does not publish its private dependency closure,
+          so the build cannot detect the overlap). If you hit a type-identity error at runtime with
+          such a library, exclude that specific DLL from the package in the target below.
+        -->
     </ItemGroup>
 
     <!--
-      Packaging automatico: ad ogni build produce lo zip nel formato atteso dal CLI.
-      Contenuto: la dll del plugin + il suo .deps.json nella root dello zip (niente sottocartelle),
-      escluse le contract assembly fornite dall'host. Lo zip finisce in bin\<Configuration>\.
+      Automatic packaging: every build produces the zip in the format expected by the CLI.
+      Contents: the plugin DLL + its external dependencies + the .deps.json, all in the zip root
+      (no subfolders), excluding the contract assemblies provided by the host. The zip is written
+      to bin\<Configuration>\.
     -->
     <Target Name="CreateArxAiPluginPackage" AfterTargets="Build">
         <PropertyGroup>
             <PluginPackageStagingDir>$(IntermediateOutputPath)pluginpackage\</PluginPackageStagingDir>
             <PluginPackageFile>$(MSBuildProjectDirectory)\bin\$(Configuration)\$(AssemblyName).zip</PluginPackageFile>
+            <!--
+              RID of the ArxAI host process. Native (unmanaged) dependencies for this RID are
+              bundled automatically (see the runtimes\...\native glob below). The host runs on
+              Windows x64; override this (here or with -p:ArxAiHostRuntimeIdentifier=...) only if it
+              ever runs on a different RID, e.g. win-arm64. A single flat package targets one RID.
+            -->
+            <ArxAiHostRuntimeIdentifier Condition="'$(ArxAiHostRuntimeIdentifier)' == ''">win-x64</ArxAiHostRuntimeIdentifier>
         </PropertyGroup>
 
         <ItemGroup>
-            <!-- Dll del plugin e relative dipendenze, escluse le contract assembly dell'host. -->
+            <!--
+              Plugin DLL plus the external dependencies copied to output. Shared-framework
+              assemblies are not here (see the FrameworkReference above), so this glob only picks up
+              the plugin DLL and the third-party DLLs it genuinely ships.
+              The Remove lines are a defensive guard: even if a dependency dragged a contract
+              assembly into output through some other reference path, it must never be packaged
+              (the CLI would strip it anyway). Add a Remove line here to drop a specific DLL that
+              overlaps a private host dependency (see the caveat above).
+            -->
             <_PluginPackageContent Include="$(OutDir)*.dll" />
+            <!--
+              Native (unmanaged) dependencies. NuGet emits them under runtimes\<rid>\native\ (not the
+              output root), so the *.dll glob above misses them: a managed wrapper shipped without its
+              native companion fails at runtime with DllNotFoundException (e.g. SkiaSharp needs
+              libSkiaSharp, SQLitePCLRaw needs e_sqlite3, ...). This glob bundles every native lib for
+              the host RID into the flat package root, where the default native-library probing finds
+              it next to its managed wrapper. Fully automatic: adding the NuGet package via the IDE is
+              enough, no per-package line to add here.
+            -->
+            <_PluginPackageContent Include="$(OutDir)runtimes\$(ArxAiHostRuntimeIdentifier)\native\**\*.dll" />
             <_PluginPackageContent Remove="$(OutDir)Abletech.Arxivar.ArxAI.Plugins.dll" />
             <_PluginPackageContent Remove="$(OutDir)Microsoft.Extensions.AI.dll" />
             <_PluginPackageContent Remove="$(OutDir)Microsoft.Extensions.AI.Abstractions.dll" />
             <_PluginPackageContent Remove="$(OutDir)Microsoft.Extensions.Logging.Abstractions.dll" />
-            <!-- Identifica l'assembly del plugin lato CLI. -->
+            <!-- Identifies the plugin assembly on the CLI side (must be unique in the root). -->
             <_PluginPackageContent Include="$(OutDir)*.deps.json" />
         </ItemGroup>
 
-        <!-- Staging pulita: evita che residui di build precedenti finiscano nello zip. -->
+        <!-- Clean staging: prevents leftovers from previous builds from ending up in the zip. -->
         <RemoveDir Directories="$(PluginPackageStagingDir)" />
         <MakeDir Directories="$(PluginPackageStagingDir)" />
         <Copy SourceFiles="@(_PluginPackageContent)" DestinationFolder="$(PluginPackageStagingDir)" SkipUnchangedFiles="false" />
 
         <ZipDirectory SourceDirectory="$(PluginPackageStagingDir)" DestinationFile="$(PluginPackageFile)" Overwrite="true" />
 
-        <Message Importance="high" Text="ArxAI plugin package creato: $(PluginPackageFile)" />
+        <Message Importance="high" Text="ArxAI plugin package created: $(PluginPackageFile)" />
     </Target>
 
 </Project>
