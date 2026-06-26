@@ -1,6 +1,5 @@
-using Abletech.Arxivar.ArxAI.Plugins;
+using System.ComponentModel;
 using Microsoft.Extensions.Logging;
-using ToolDescription = System.ComponentModel.DescriptionAttribute;
 
 namespace Abletech.Arxivar.ArxAI.Plugins.<%= props.pluginname %>;
 
@@ -12,21 +11,21 @@ namespace Abletech.Arxivar.ArxAI.Plugins.<%= props.pluginname %>;
     Icon = "<%= props.icon %>")]
 public class <%= props.pluginname %>Plugin : ArxAiToolProvider, IInstructionsProvider, IInitializablePlugin, IAsyncDisposable
 {
-    public const string PluginIdValue = "<%= props.id %>";
+    const string PluginIdValue = "<%= props.id %>";
 
     /// <summary>Logger injected by the host, categorized with the plugin name.</summary>
     [Injected]
     public ILogger Logger { get; set; } = null;
 
     /// <summary>Sample configuration parameter.</summary>
-    [Parameter(DisplayName = "Sample value", Description = "A configurable sample value", DisplayOrder = 1)]
+    [Parameter(DisplayName = "Sample value", Description = "A configurable sample value", IsRequired = false, DisplayOrder = 1)]
     public string SampleValue { get; set; } = string.Empty;
 
     /// <summary>
     /// Sample protected parameter: persisted encrypted in the secure store, write-only in the
     /// management APIs, decrypted by the host only when the plugin is instantiated.
     /// </summary>
-    [ParameterSecure(DisplayName = "Secret value", Description = "A sample secret value", DisplayOrder = 2)]
+    [ParameterSecure(DisplayName = "Secret value", Description = "A sample secret value", IsRequired = false, DisplayOrder = 2)]
     public string SecretValue { get; set; } = string.Empty;
 
     /// <summary>
@@ -69,7 +68,7 @@ public class <%= props.pluginname %>Plugin : ArxAiToolProvider, IInstructionsPro
     /// Sample tool: returns the value of the SampleValue parameter.
     /// Public methods marked with [ToolDescription] are exposed as tools to the AI agent.
     /// </summary>
-    [ToolDescription("Returns the value of the SampleValue parameter")]
+    [Description("Returns the value of the SampleValue parameter")]
     public string GetSampleValue()
     {
         Logger.LogInformation("<%= props.pluginname %>Plugin: tool GetSampleValue invoked");
@@ -95,7 +94,7 @@ public class <%= props.pluginname %>Plugin : ArxAiToolProvider, IInstructionsPro
     /// </remarks>
     public ValueTask DisposeAsync()
     {
-        Logger?.LogInformation("<%= props.pluginname %>Plugin: disposing");
+        Logger.LogInformation("<%= props.pluginname %>Plugin: disposing");
 
         // TODO: release the resources owned by this instance.
         return ValueTask.CompletedTask;
