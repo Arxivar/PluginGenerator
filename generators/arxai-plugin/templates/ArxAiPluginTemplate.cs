@@ -18,14 +18,14 @@ public class <%= props.pluginname %>Plugin : ArxAiToolProvider, IInstructionsPro
     public ILogger Logger { get; set; } = null;
 
     /// <summary>Sample configuration parameter.</summary>
-    [Parameter(DisplayName = "Sample value", Description = "A configurable sample value", IsRequired = false, DisplayOrder = 1)]
+    [Parameter(DisplayName = "Sample value", Description = "A configurable sample value", Required = false, Confidential = false, DisplayOrder = 1)]
     public string SampleValue { get; set; } = string.Empty;
 
     /// <summary>
     /// Sample protected parameter: persisted encrypted in the secure store, write-only in the
     /// management APIs, decrypted by the host only when the plugin is instantiated.
     /// </summary>
-    [ParameterSecure(DisplayName = "Secret value", Description = "A sample secret value", IsRequired = false, DisplayOrder = 2)]
+    [Parameter(DisplayName = "Secret value", Description = "A sample secret value", Required = false, Confidential = true, DisplayOrder = 2)]
     public string SecretValue { get; set; } = string.Empty;
 
     /// <summary>
