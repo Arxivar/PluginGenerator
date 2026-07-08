@@ -88,6 +88,33 @@ You can choose between 2 types of configurations: Advanced or not. In the Advanc
 
 Click [here](https://github.com/Arxivar/SamplePlugins/tree/master/LinkWorkflowV2/) in order to see how to install and configure your plugin link. 
 
+## AI plugins (ArxAI)
+
+Besides the classic client plugins, the generator can also scaffold **ArxAI plugins**: .NET class libraries that extend the ARXivar AI assistant by exposing tools and instructions to the AI agent.
+
+Run:
+
+```bash
+yo arxivar-plugins:arxai-plugin
+```
+
+The generated project (created under a `plugins-arxai/` subfolder) contains a `*.sln`, a `*.csproj` and a plugin class that:
+
+- exposes methods marked with `[Description(...)]` as **tools** callable by the AI agent;
+- contributes an **instructions** fragment appended to the chatbot instructions (`GetInstructions`);
+- supports configurable `[Parameter(...)]` values, including confidential ones stored encrypted;
+- manages its lifecycle through `InitializeAsync` / `DisposeAsync` hooks.
+
+The ArxAI plugin SDK is referenced as a NuGet package (`ARXivar.ArxAI.Plugins`), so no path to an external project is required. Building the project automatically packages the plugin DLL, its external dependencies and the `.deps.json` into a `*.zip` under `bin\<Configuration>\`, ready to be uploaded to the ArxAI host.
+
+Use the `Abletech.Arxivar.ArxAI.Plugins.Cli` tool to manage plugins in the ArxAI catalog:
+
+```bash
+dotnet Abletech.Arxivar.ArxAI.Plugins.Cli.dll upload -p "path\to\YourPlugin.zip"
+```
+
+Other available commands are `update`, `delete` and `list` (add `-v` to also print configured parameters).
+
 ## Documentation
 
 You can find the documentation of the current version [here](docs/README.md)
