@@ -66,7 +66,7 @@ public class <%= props.pluginname %>Plugin : ArxAiToolProvider, IInstructionsPro
 
     /// <summary>
     /// Sample tool: returns the value of the SampleValue parameter.
-    /// Public methods marked with [ToolDescription] are exposed as tools to the AI agent.
+    /// Public methods marked with [Description] are exposed as tools to the AI agent.
     /// </summary>
     [Description("Returns the value of the SampleValue parameter")]
     public string GetSampleValue()
