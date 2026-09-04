@@ -9,6 +9,8 @@ namespace Abletech.Arxivar.ArxAI.Plugins.<%= props.pluginname %>;
 /// </summary>
 [ArxAiPlugin(PluginIdValue, "<%= props.label %>", "<%= props.version %>",
     Description = "<%= props.description %>",
+    // FontAwesome class of the icon shown in the management UI: the most popular FontAwesome icons
+    // are supported.
     Icon = "<%= props.icon %>")]
 public class <%= props.pluginname %>Plugin : ArxAiToolProvider, IInstructionsProvider, IInitializablePlugin, IAsyncDisposable
 {
