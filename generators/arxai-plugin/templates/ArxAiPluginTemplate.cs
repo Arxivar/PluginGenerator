@@ -7,7 +7,9 @@ namespace Abletech.Arxivar.ArxAI.Plugins.<%= props.pluginname %>;
 /// <summary>
 /// <%= props.description %>
 /// </summary>
-[ArxAiPlugin(PluginIdValue, "<%= props.label %>", "<%= props.version %>",
+[ArxAiPlugin(PluginIdValue, "<%= props.label %>", 
+	/// must be a valid <see cref="System.Version"/>.
+    "<%= props.version %>",
     Description = "<%= props.description %>",
     // FontAwesome class of the icon shown in the management UI: the most popular FontAwesome icons
     // are supported.
@@ -15,9 +17,9 @@ namespace Abletech.Arxivar.ArxAI.Plugins.<%= props.pluginname %>;
 public class <%= props.pluginname %>Plugin : ArxAiToolProvider, IInstructionsProvider, IInitializablePlugin, IAsyncDisposable
 {
     /// <summary>
-    /// Unique id of the plugin. It must be a valid <see cref="Guid"/>, and the version passed to the
-    /// attribute above a valid <see cref="System.Version"/>: the host parses both while reading the
-    /// attribute, so a malformed value makes the plugin unloadable.
+    /// Unique id of the plugin. It must be a valid <see cref="Guid"/>: the host parses both this id 
+	/// and the version (<see cref="ArxAiPlugin"/>) while reading the attribute, so a malformed value 
+	/// makes the plugin unloadable.
     /// </summary>
     public const string PluginIdValue = "<%= props.id %>";
 
