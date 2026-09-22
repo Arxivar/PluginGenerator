@@ -36,13 +36,18 @@ public class <%= props.pluginname %>Plugin : ArxAiToolProvider, IInstructionsPro
     /// variants — use <see cref="decimal"/> for fractional numbers, because <c>double</c> and
     /// <c>float</c> are rejected when the plugin is uploaded. The property needs both a public
     /// getter and a public setter.
+    /// <para>
+    /// The property initializer is the parameter's default, shown in the management UI. A
+    /// non-nullable value type always has one (<c>0</c>, <c>false</c>) and therefore always
+    /// satisfies <c>Required</c>: declare it nullable when "not set" must be a real state.
+    /// </para>
     /// </remarks>
     [Parameter(DisplayName = "Sample value", Description = "A configurable sample value", Required = false, Confidential = false, DisplayOrder = 1)]
     public string SampleValue { get; set; } = string.Empty;
 
     /// <summary>
-    /// Sample confidential parameter: persisted encrypted in the secure store, write-only in the
-    /// management APIs, decrypted by the host only when the plugin is instantiated.
+    /// Sample confidential parameter: persisted encrypted in the secure store, decrypted both for
+    /// the plugin instance and for the management APIs, which return it in clear for the UI to mask.
     /// </summary>
     [Parameter(DisplayName = "Secret value", Description = "A sample secret value", Required = false, Confidential = true, DisplayOrder = 2)]
     public string SecretValue { get; set; } = string.Empty;
@@ -61,8 +66,8 @@ public class <%= props.pluginname %>Plugin : ArxAiToolProvider, IInstructionsPro
     /// <see cref="MissingMethodException"/> anyway.
     /// <para>
     /// Keep it trivial and leave the real setup to <see cref="InitializeAsync"/>: besides the
-    /// instance that serves an activation, the host also creates a throwaway one when the plugin is
-    /// uploaded to read the defaults declared as property initializers.
+    /// instance that serves an activation, the host creates a throwaway one every time the
+    /// management API reads the defaults declared as property initializers.
     /// </para>
     /// </remarks>
     public <%= props.pluginname %>Plugin()
@@ -83,8 +88,9 @@ public class <%= props.pluginname %>Plugin : ArxAiToolProvider, IInstructionsPro
     /// Do NOT rethrow on failure: the host would discard the whole plugin (instructions included).
     /// Prefer logging the error and degrading gracefully (e.g. leave a field null and expose a
     /// readiness check tool), so the model can react instead of losing the plugin entirely. The
-    /// same discard happens when an injected service cannot be resolved or a required parameter has
-    /// no value: that plugin is skipped and the conversation carries on without it.
+    /// same discard happens when an injected service cannot be resolved, when a required nullable or
+    /// string parameter has no value, or when a configured value cannot be read as its declared
+    /// type: that plugin is skipped and the conversation carries on without it.
     /// </para>
     /// </remarks>
     public Task InitializeAsync()
@@ -166,6 +172,8 @@ public class <%= props.pluginname %>Plugin : ArxAiToolProvider, IInstructionsPro
     /// method, not here.</item>
     /// <item>Resources meant to be shared across activations must NOT be tied to this disposal:
     /// manage them out-of-band (e.g. a static cache with idle reclamation).</item>
+    /// <item>The throwaway instance used to read the defaults is disposed too, and it never went
+    /// through <see cref="InitializeAsync"/>: do not assume it did.</item>
     /// </list>
     /// <c>IDisposable</c> is honoured just as well, when there is nothing to await.
     /// </remarks>
