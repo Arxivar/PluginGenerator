@@ -38,7 +38,7 @@
 
     <ItemGroup>
         <!--
-          ArxAI plugin SDK (NuGet package, ARXivar feed). It is a shared "contract assembly":
+          ArxAI plugin SDK (NuGet package, nuget.org). It is a shared "contract assembly":
           at runtime it is provided by the ArxAI host (see PluginLoadContext.SharedContractAssemblies),
           so it must NOT end up in the package. ExcludeAssets=runtime => it is used only to compile;
           the DLL and its dependencies (Microsoft.Extensions.AI/.Abstractions, Logging.Abstractions,
