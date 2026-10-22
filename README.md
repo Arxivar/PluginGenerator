@@ -6,7 +6,7 @@
 
 ## Installation
 
-- install [NodeJs](https://nodejs.org/en/) if you don't already have it. Both Node.js 22 and Node.js 24 (**LTS versions**) are supported.
+- Install [Node.js](https://nodejs.org/en/) if you don't already have it. Node.js 24 (LTS) is supported. We recommend always keeping Node.js updated to the latest Node.js 24 release.
 
 - When nodejs has finished installing, install [Yeoman](http://yeoman.io): open a command prompt and run the following command:
 
